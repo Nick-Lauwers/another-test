@@ -143,6 +143,26 @@
         <% if current_user.dealership_id.present? %>
           <%= f.hidden_field :dealership_id, 
                              value: current_user.dealership_id %>
+                             
+          <%= f.hidden_field :street_address, 
+                             value: Dealership.
+                                      find(current_user.dealership_id).
+                                      address %>
+          
+          <%= f.hidden_field :building, 
+                             value: Dealership.
+                                      find(current_user.dealership_id).
+                                      building %>
+          
+          <%= f.hidden_field :city, 
+                             value: Dealership.
+                                      find(current_user.dealership_id).
+                                      city %>
+          
+          <%= f.hidden_field :state, 
+                             value: Dealership.
+                                      find(current_user.dealership_id).
+                                      state %>
         <% end %>
         
         <%= f.submit "Save", class: "btn btn-primary btn-basics" %>

@@ -30,8 +30,21 @@
         </li>
         
         <li class="hidden-xs">
-          <i class="fa fa-search fa-lg header-icon header-icon-desktop" 
+          <i class="fa 
+                    fa-search 
+                    fa-lg 
+                    header-icon 
+                    header-icon-desktop
+                    header-icon-search-bar" 
              aria-hidden="true"></i>
+        </li>
+        
+        <li class="hidden-xs">
+          <%= link_to "https://www.motominion.com", 
+                      class: "motominion-link" do %>
+            <i class="fa fa-motorcycle fa-lg header-icon header-icon-desktop" 
+               aria-hidden="true"></i>
+          <% end %>
         </li>
         
         <!--<li class="dropdown dropdown-frontend hidden-xs">-->
@@ -180,8 +193,20 @@
         </li>
         
         <li class="hidden-xs">
-          <i class="fa fa-search fa-lg header-icon header-icon-desktop" 
+          <i class="fa 
+                    fa-search 
+                    fa-lg 
+                    header-icon 
+                    header-icon-search-bar" 
              aria-hidden="true"></i>
+        </li>
+        
+        <li class="hidden-xs">
+          <%= link_to "https://www.motominion.com", 
+                      class: "motominion-link" do %>
+            <i class="fa fa-motorcycle fa-lg header-icon header-icon-desktop" 
+               aria-hidden="true"></i>
+          <% end %>
         </li>
         
         <!--<li class="dropdown dropdown-frontend hidden-xs">-->
@@ -276,7 +301,7 @@
           
           <%= text_field_tag :city, 
                              params[:city], 
-                             placeholder: "City (Eg. Detroit, MI)", 
+                             placeholder: "City (Eg. San Francisco, MI)", 
                              class: "form-control 
                                      header-form-control
                                      typeahead" %>

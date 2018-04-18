@@ -1,0 +1,8 @@
+[2018-04-02T01:53:02,627][INFO ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][180643] overhead, spent [337ms] collecting in the last [1s]
+[2018-04-02T07:19:37,423][INFO ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][200230] overhead, spent [393ms] collecting in the last [1s]
+[2018-04-02T14:34:00,031][INFO ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][226282] overhead, spent [335ms] collecting in the last [1.3s]
+[2018-04-02T16:22:53,864][INFO ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][232813] overhead, spent [251ms] collecting in the last [1s]
+[2018-04-02T16:24:02,025][INFO ][o.e.n.Node               ] [ht0EVsn] stopping ...
+[2018-04-02T16:24:02,272][INFO ][o.e.n.Node               ] [ht0EVsn] stopped
+[2018-04-02T16:24:02,275][INFO ][o.e.n.Node               ] [ht0EVsn] closing ...
+[2018-04-02T16:24:02,318][INFO ][o.e.n.Node               ] [ht0EVsn] closed

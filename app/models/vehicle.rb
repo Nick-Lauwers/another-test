@@ -27,6 +27,9 @@ class Vehicle < ActiveRecord::Base
   
   has_many :upgrades, dependent: :destroy
   accepts_nested_attributes_for :upgrades, allow_destroy: true
+  
+  has_many :special_offers, dependent: :destroy
+  accepts_nested_attributes_for :special_offers, allow_destroy: true
 
   # MINIMUM_PHOTOS = 2
 

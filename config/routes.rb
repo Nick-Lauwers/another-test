@@ -135,6 +135,9 @@ Rails.application.routes.draw do
     
     member do
       put :archive
+      put :reveal_identity
+      put :hide_identity
+      get 'export'
     end
   end
   
