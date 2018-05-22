@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  is_convertible: false
+  is_coupe: false
+  is_crossover: false
+  is_hatchback: false
+  is_minivan: false
+  is_pickup: false
+  is_sedan: false
+  is_suv: false
+  is_van: false
+  is_wagon: false
+
+two:
+  is_convertible: false
+  is_coupe: false
+  is_crossover: false
+  is_hatchback: false
+  is_minivan: false
+  is_pickup: false
+  is_sedan: false
+  is_suv: false
+  is_van: false
+  is_wagon: false

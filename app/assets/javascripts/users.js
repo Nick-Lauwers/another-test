@@ -47,6 +47,14 @@ $(function() {
         evn.preventDefault();
         $('html, body').scrollTo(this.hash, this.hash); 
       });
+  
+  // shortlist
+  
+    // fixed map
+      
+      var fixedShortlistMap = $('#shortlist-map');
+     
+      fixedShortlistMap.stick_in_parent();
 });
 
 // var ready = function () {

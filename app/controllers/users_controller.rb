@@ -4,7 +4,8 @@
 class UsersController < ApplicationController
   
   before_action :logged_in_user, only: [:edit, :update, :add_card]
-  before_action :correct_user,   only: [:edit, :update, :profile_pic]
+  before_action :correct_user,   only: [:edit, :update, :profile_pic, 
+                                        :profile_pic_dealer, :dealer_details]
   
   def new
     
@@ -34,12 +35,17 @@ class UsersController < ApplicationController
         @user.clubs.push(org)
       end
       
-      if @user.dealership_admin
+      if @user.dealership_id.present?
         log_in @user
-        redirect_to new_dealership_dealer_invitation_path(@user.dealership_id)
-      elsif @user.dealership_id.present?
-        log_in @user
-        redirect_to dealership_path(@user.dealership_id)
+        redirect_to dealer_details_user_path(@user)
+        
+      # if @user.dealership_admin
+      #   log_in @user
+      #   redirect_to new_dealership_dealer_invitation_path(@user.dealership_id)
+      # elsif @user.dealership_id.present?
+      #   log_in @user
+      #   redirect_to dealership_path(@user.dealership_id)
+      
       else
         @user.send_activation_email
         flash[:info] = "Please check your email to activate your account."
@@ -63,8 +69,14 @@ class UsersController < ApplicationController
   def update
     
     if @user.update_attributes(user_params)
-      flash[:success] = "Profile updated"
-      redirect_back_or edit_user_path(@user)
+      
+      if params[:redirect_location].present?
+        redirect_to params[:redirect_location]
+      
+      else
+        flash[:success] = "Profile updated"
+        redirect_back_or edit_user_path(@user)
+      end
       
     else
       render 'edit'
@@ -79,6 +91,65 @@ class UsersController < ApplicationController
   end
   
   def profile_pic
+  end
+  
+  def profile_pic_dealer
+  end
+  
+  def dealer_details
+  end
+
+  def shortlist
+    
+    @vehicles = current_user.favorites
+    
+    @test_drives = Appointment.where("buyer_id = ? AND date >= ?", 
+                                     current_user.id, 
+                                     Time.now)
+                                     
+    @purchases = Purchase.where(buyer_id: current_user.id)
+    
+    @vehicles_hash = Gmaps4rails.build_markers(@vehicles) do |vehicle, vehicle_marker|
+      
+      vehicle_marker.lat vehicle.latitude
+      vehicle_marker.lng vehicle.longitude
+      
+      vehicle_marker.picture({
+        url: "https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/map-marker-red.png",
+        width:  32,
+        height: 32
+      })
+      
+      vehicle_marker.json({ :id => vehicle.id })
+    end
+    
+    @test_drives_hash = Gmaps4rails.build_markers(@test_drives) do |test_drive, test_drive_marker|
+      
+      test_drive_marker.lat test_drive.vehicle.latitude
+      test_drive_marker.lng test_drive.vehicle.longitude
+      
+      test_drive_marker.picture({
+        url: "https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/map-marker-red.png",
+        width:  32,
+        height: 32
+      })
+      
+      test_drive_marker.json({ :id => test_drive.id })
+    end
+    
+    @purchases_hash = Gmaps4rails.build_markers(@purchases) do |purchase, purchase_marker|
+      
+      purchase_marker.lat purchase.vehicle.latitude
+      purchase_marker.lng purchase.vehicle.longitude
+      
+      purchase_marker.picture({
+        url: "https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/map-marker-red.png",
+        width:  32,
+        height: 32
+      })
+      
+      purchase_marker.json({ :id => purchase.id })
+    end
   end
   
   def payment

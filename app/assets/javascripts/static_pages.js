@@ -61,10 +61,10 @@ $(function() {
       
     // smooth scroll
       
-      // var popularSearchesLink = $(".popular-searches a")
+      var personalizedSearchLink = $("a.personalized-search-link")
       
-      // popularSearchesLink.click(function(evn){
-      //   evn.preventDefault();
-      //   $('html, body').scrollTo(this.hash, this.hash, { offset: -50 }); 
-      // });
+      personalizedSearchLink.click(function(evn){
+        evn.preventDefault();
+        $('html, body').scrollTo(this.hash, this.hash, { offset: -50 }); 
+      });
 });

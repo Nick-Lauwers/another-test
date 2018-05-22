@@ -18,6 +18,8 @@
 
 <%= render 'layouts/modal_special_offer' %>
 
+<%= render 'layouts/contact' %>
+
 <div class="hidden-xs hero">
   
   <div class="hero-video-container">
@@ -161,6 +163,15 @@
 <!--      </div>-->
 <!--    </div>-->
   </div>
+  
+  <!--<(perc)= link_to '#feed', class: "personalized-search-link" do %>-->
+  
+  <!--  <span class="personalized-search-title hidden-xs">-->
+  <!--    Try our personalized search-->
+  <!--  </span>-->
+    
+  <!--  <i class="fa fa-lg fa-chevron-down personalized-search-icon"></i>-->
+  <!--<(perc) end %>-->
 </div>
 
 <!--<div class="hero-mobile visible-xs">-->
@@ -219,6 +230,59 @@
         
       <!--  <li><(perc)= link_to "Advice", posts_path %></li>-->
       <!--</ul>-->
+      
+      <!--<h3 class="feed-title">What are you looking for?</h3>-->
+  
+      <!--<(perc)= form_for @personalized_search do |f| %>-->
+      <!--  <div class="personalized-search-list">-->
+          
+      <!--    <div class="row">-->
+            
+      <!--      <div class="col-md-15">-->
+      <!--        <(perc)= button_tag "Convertible", class: "personalized-search-red" %>-->
+      <!--      </div>-->
+            
+      <!--      <div class="col-md-15">-->
+      <!--        <(perc)= button_tag "Coupe", class: "personalized-search-yellow" %>-->
+      <!--      </div>-->
+            
+      <!--      <div class="col-md-15">-->
+      <!--        <(perc)= button_tag "Crossover", class: "personalized-search-red" %>-->
+      <!--      </div>-->
+            
+      <!--      <div class="col-md-15">-->
+      <!--        <(perc)= button_tag "Hatchback", class: "personalized-search-yellow" %>-->
+      <!--      </div>-->
+            
+      <!--      <div class="col-md-15">-->
+      <!--        <(perc)= button_tag "Minivan", class: "personalized-search-red" %>-->
+      <!--      </div>-->
+      <!--    </div>-->
+          
+      <!--    <div class="row">-->
+            
+      <!--      <div class="col-md-15">-->
+      <!--        <(perc)= button_tag "Pickup", class: "personalized-search-yellow" %>-->
+      <!--      </div>-->
+            
+      <!--      <div class="col-md-15">-->
+      <!--        <(perc)= button_tag "Sedan", class: "personalized-search-red" %> -->
+      <!--      </div>-->
+            
+      <!--      <div class="col-md-15">-->
+      <!--        <(perc)= button_tag "SUV", class: "personalized-search-yellow" %>-->
+      <!--      </div>-->
+            
+      <!--      <div class="col-md-15">-->
+      <!--        <(perc)= button_tag "Van", class: "personalized-search-red" %>-->
+      <!--      </div>-->
+            
+      <!--      <div class="col-md-15">-->
+      <!--        <(perc)= button_tag "Wagon", class: "personalized-search-yellow" %> -->
+      <!--      </div>-->
+      <!--    </div>-->
+      <!--  </div>-->
+      <!--<(perc) end %>-->
       
       <h3 class="hidden-xs feed-title">Discover Top Content</h3>
       
@@ -330,6 +394,8 @@
     </div>
   </div>
 <% end %>
+
+<%= render 'personalized_searches/form' %>
 
 <!--<div class="press">-->
   

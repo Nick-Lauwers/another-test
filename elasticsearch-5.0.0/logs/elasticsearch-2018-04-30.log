@@ -1,0 +1,56 @@
+[2018-04-30T03:55:38,083][INFO ][o.e.n.Node               ] [] initializing ...
+[2018-04-30T03:55:38,243][INFO ][o.e.e.NodeEnvironment    ] [ht0EVsn] using [1] data paths, mounts [[/ (none)]], net usable_space [5.7gb], net total_space [10.6gb], spins? [possibly], types [aufs]
+[2018-04-30T03:55:38,244][INFO ][o.e.e.NodeEnvironment    ] [ht0EVsn] heap size [1.9gb], compressed ordinary object pointers [true]
+[2018-04-30T03:55:38,326][INFO ][o.e.n.Node               ] [ht0EVsn] node name [ht0EVsn] derived from node ID; set [node.name] to override
+[2018-04-30T03:55:38,330][INFO ][o.e.n.Node               ] [ht0EVsn] version[5.0.0], pid[61716], build[253032b/2016-10-26T04:37:51.531Z], OS[Linux/4.9.80-c9/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_111/25.111-b14]
+[2018-04-30T03:55:40,894][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [aggs-matrix-stats]
+[2018-04-30T03:55:40,894][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [ingest-common]
+[2018-04-30T03:55:40,895][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [lang-expression]
+[2018-04-30T03:55:40,895][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [lang-groovy]
+[2018-04-30T03:55:40,895][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [lang-mustache]
+[2018-04-30T03:55:40,895][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [lang-painless]
+[2018-04-30T03:55:40,895][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [percolator]
+[2018-04-30T03:55:40,895][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [reindex]
+[2018-04-30T03:55:40,895][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [transport-netty3]
+[2018-04-30T03:55:40,895][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [transport-netty4]
+[2018-04-30T03:55:40,896][INFO ][o.e.p.PluginsService     ] [ht0EVsn] no plugins loaded
+[2018-04-30T03:55:50,707][INFO ][o.e.n.Node               ] [ht0EVsn] initialized
+[2018-04-30T03:55:50,707][INFO ][o.e.n.Node               ] [ht0EVsn] starting ...
+[2018-04-30T03:55:51,108][INFO ][o.e.t.TransportService   ] [ht0EVsn] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2018-04-30T03:55:51,262][WARN ][o.e.b.BootstrapCheck     ] [ht0EVsn] max virtual memory areas vm.max_map_count [65530] likely too low, increase to at least [262144]
+[2018-04-30T03:55:54,489][INFO ][o.e.c.s.ClusterService   ] [ht0EVsn] new_master {ht0EVsn}{ht0EVsnlRuyePr1G07P69g}{akEk7OXWSbGlGpLfusiRtg}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2018-04-30T03:55:54,880][INFO ][o.e.h.HttpServer         ] [ht0EVsn] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2018-04-30T03:55:54,880][INFO ][o.e.n.Node               ] [ht0EVsn] started
+[2018-04-30T03:56:19,161][INFO ][o.e.g.GatewayService     ] [ht0EVsn] recovered [5] indices into cluster_state
+[2018-04-30T03:56:21,655][INFO ][o.e.c.r.a.AllocationService] [ht0EVsn] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[vehicles][2]] ...]).
+[2018-04-30T04:00:38,680][INFO ][o.e.n.Node               ] [] initializing ...
+[2018-04-30T04:00:38,794][INFO ][o.e.e.NodeEnvironment    ] [ht0EVsn] using [1] data paths, mounts [[/ (none)]], net usable_space [5.7gb], net total_space [10.6gb], spins? [possibly], types [aufs]
+[2018-04-30T04:00:38,794][INFO ][o.e.e.NodeEnvironment    ] [ht0EVsn] heap size [1.9gb], compressed ordinary object pointers [true]
+[2018-04-30T04:00:38,889][INFO ][o.e.n.Node               ] [ht0EVsn] node name [ht0EVsn] derived from node ID; set [node.name] to override
+[2018-04-30T04:00:38,892][INFO ][o.e.n.Node               ] [ht0EVsn] version[5.0.0], pid[3853], build[253032b/2016-10-26T04:37:51.531Z], OS[Linux/4.9.80-c9/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_111/25.111-b14]
+[2018-04-30T04:00:40,890][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [aggs-matrix-stats]
+[2018-04-30T04:00:40,891][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [ingest-common]
+[2018-04-30T04:00:40,891][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [lang-expression]
+[2018-04-30T04:00:40,891][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [lang-groovy]
+[2018-04-30T04:00:40,891][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [lang-mustache]
+[2018-04-30T04:00:40,891][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [lang-painless]
+[2018-04-30T04:00:40,891][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [percolator]
+[2018-04-30T04:00:40,891][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [reindex]
+[2018-04-30T04:00:40,892][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [transport-netty3]
+[2018-04-30T04:00:40,892][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [transport-netty4]
+[2018-04-30T04:00:40,892][INFO ][o.e.p.PluginsService     ] [ht0EVsn] no plugins loaded
+[2018-04-30T04:00:45,307][INFO ][o.e.n.Node               ] [ht0EVsn] initialized
+[2018-04-30T04:00:45,307][INFO ][o.e.n.Node               ] [ht0EVsn] starting ...
+[2018-04-30T04:00:45,893][INFO ][o.e.t.TransportService   ] [ht0EVsn] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2018-04-30T04:00:45,908][WARN ][o.e.b.BootstrapCheck     ] [ht0EVsn] max virtual memory areas vm.max_map_count [65530] likely too low, increase to at least [262144]
+[2018-04-30T04:00:49,106][INFO ][o.e.c.s.ClusterService   ] [ht0EVsn] new_master {ht0EVsn}{ht0EVsnlRuyePr1G07P69g}{SLNaJjXFTiWrkE9MUbwQ5A}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2018-04-30T04:00:49,130][INFO ][o.e.h.HttpServer         ] [ht0EVsn] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2018-04-30T04:00:49,131][INFO ][o.e.n.Node               ] [ht0EVsn] started
+[2018-04-30T04:00:49,899][INFO ][o.e.g.GatewayService     ] [ht0EVsn] recovered [5] indices into cluster_state
+[2018-04-30T04:00:51,710][INFO ][o.e.c.r.a.AllocationService] [ht0EVsn] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[vehicles_development_20170328112843769][2], [vehicles_development_20170328112843769][3], [vehicles_development_20170328112843769][4]] ...]).
+[2018-04-30T04:02:09,807][WARN ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][84] overhead, spent [670ms] collecting in the last [1.2s]
+[2018-04-30T04:59:33,324][WARN ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][young][3520][3] duration [5.2s], collections [1]/[5.2s], total [5.2s]/[6.1s], memory [751.7mb]->[308mb]/[1.9gb], all_pools {[young] [532.5mb]->[4.5mb]/[532.5mb]}{[survivor] [66.5mb]->[59.9mb]/[66.5mb]}{[old] [152.7mb]->[243.5mb]/[1.3gb]}
+[2018-04-30T04:59:33,453][WARN ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][3520] overhead, spent [5.2s] collecting in the last [5.2s]
+[2018-04-30T06:40:28,269][WARN ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][young][9567][4] duration [6.3s], collections [1]/[6.7s], total [6.3s]/[12.4s], memory [835.6mb]->[302.4mb]/[1.9gb], all_pools {[young] [532.2mb]->[4.2mb]/[532.5mb]}{[survivor] [59.9mb]->[3.8mb]/[66.5mb]}{[old] [243.5mb]->[294.9mb]/[1.3gb]}
+[2018-04-30T06:40:28,270][WARN ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][9567] overhead, spent [6.3s] collecting in the last [6.7s]
+[2018-04-30T20:24:31,137][INFO ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][58995] overhead, spent [331ms] collecting in the last [1s]

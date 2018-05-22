@@ -6,7 +6,8 @@ class VehiclesController < ApplicationController
   before_action :profile_pic_upload, only:   [:new]
   before_action :get_vehicle,        only:   [:destroy, :show, :update, :basics,
                                               :details, :upgrades, :photos, 
-                                              :about_you, :post, :favorite, 
+                                              :about_you, :consumer_activity,
+                                              :post, :favorite, 
                                               :sold, :undo_sold, :bump]
   
   def new
@@ -115,88 +116,99 @@ class VehiclesController < ApplicationController
   end
   
   def search
-    
-    if params[:vehicle][:vehicle_make_id].present? && 
-       params[:city].present?
-      
-      coordinates = Geocoder.coordinates(params[:city])
-       
-      if VehicleModel.find_by(id: params[:vehicle][:vehicle_model_id]).name != "All models"
-        @vehicles = Vehicle.search params[:vehicle][:vehicle_make_id],
-                                   where: { vehicle_make_id: 
-                                              params[:vehicle][:vehicle_model_id],
-                                            vehicle_model_id: 
-                                              params[:vehicle][:vehicle_model_id],
-                                            location: { near: {
-                                                              lat: coordinates[0], 
-                                                              lon: coordinates[1]
-                                                              }, 
-                                                              within: "20mi" },
-                                            sold_at: nil,
-                                            posted_at: { not: nil } },
-                                   page: params[:page], 
-                                   per_page: 10,
-                                   order: { bumped_at: :desc, 
-                                            created_at: :desc }
 
-      else 
-        @vehicles = Vehicle.search params[:vehicle][:vehicle_make_id],
-                                   where: { vehicle_make_id: 
-                                              params[:vehicle][:vehicle_make_id],
-                                            location: { near: {
-                                                              lat: coordinates[0], 
-                                                              lon: coordinates[1]
-                                                              }, 
-                                                              within: "20mi" },
-                                            sold_at: nil,
-                                            posted_at: { not: nil } },
-                                   page: params[:page], 
-                                   per_page: 10,
-                                   order: { bumped_at: :desc, 
-                                            created_at: :desc }
-      end
-
-    elsif params[:vehicle][:vehicle_make_id].present?
+    # <!--params vehicle present fix with matches-->
+  
+    if params[:vehicle].present?
       
-      if VehicleModel.find_by(id: params[:vehicle][:vehicle_model_id]).name != "All models"
-        @vehicles = Vehicle.search params[:vehicle][:vehicle_make_id],
-                                   where: { vehicle_make_id:
-                                              params[:vehicle][:vehicle_make_id],
-                                            vehicle_model_id: 
-                                              params[:vehicle][:vehicle_model_id],
-                                            sold_at: nil,
-                                            posted_at: { not: nil },
-                                            latitude: { not: nil } },
-                                   page: params[:page], 
-                                   per_page: 10,
-                                   order: { bumped_at: :desc, 
-                                            created_at: :desc }
+      if params[:vehicle][:vehicle_make_id].present? && 
+         params[:city].present?
+        
+        coordinates = Geocoder.coordinates(params[:city])
+         
+        if VehicleModel.find_by(id: params[:vehicle][:vehicle_model_id]).name != "All models"
+          @vehicles = Vehicle.search params[:vehicle][:vehicle_make_id],
+                                     where: { vehicle_make_id: 
+                                                params[:vehicle][:vehicle_model_id],
+                                              vehicle_model_id: 
+                                                params[:vehicle][:vehicle_model_id],
+                                              location: { near: {
+                                                                lat: coordinates[0], 
+                                                                lon: coordinates[1]
+                                                                }, 
+                                                                within: "20mi" },
+                                              sold_at: nil,
+                                              posted_at: { not: nil } },
+                                     page: params[:page], 
+                                     per_page: 10,
+                                     order: { bumped_at: :desc, 
+                                              created_at: :desc }
+  
+        else 
+          @vehicles = Vehicle.search params[:vehicle][:vehicle_make_id],
+                                     where: { vehicle_make_id: 
+                                                params[:vehicle][:vehicle_make_id],
+                                              location: { near: {
+                                                                lat: coordinates[0], 
+                                                                lon: coordinates[1]
+                                                                }, 
+                                                                within: "20mi" },
+                                              sold_at: nil,
+                                              posted_at: { not: nil } },
+                                     page: params[:page], 
+                                     per_page: 10,
+                                     order: { bumped_at: :desc, 
+                                              created_at: :desc }
+        end
+  
+      elsif params[:vehicle][:vehicle_make_id].present?
+        
+        if VehicleModel.find_by(id: params[:vehicle][:vehicle_model_id]).name != "All models"
+          @vehicles = Vehicle.search params[:vehicle][:vehicle_make_id],
+                                     where: { vehicle_make_id:
+                                                params[:vehicle][:vehicle_make_id],
+                                              vehicle_model_id: 
+                                                params[:vehicle][:vehicle_model_id],
+                                              sold_at: nil,
+                                              posted_at: { not: nil },
+                                              latitude: { not: nil } },
+                                     page: params[:page], 
+                                     per_page: 10,
+                                     order: { bumped_at: :desc, 
+                                              created_at: :desc }
+        
+        else
+          @vehicles = Vehicle.search params[:vehicle][:vehicle_make_id],
+                                     where: { vehicle_make_id:
+                                                params[:vehicle][:vehicle_make_id],
+                                              sold_at: nil,
+                                              posted_at: { not: nil },
+                                              latitude: { not: nil } },
+                                     page: params[:page], 
+                                     per_page: 10,
+                                     order: { bumped_at: :desc, 
+                                              created_at: :desc }
+        end
       
+      elsif params[:city].present?
+        @vehicles = Vehicle.near(params[:city], 20).
+                            where(sold_at: nil).
+                            where.not(posted_at: nil).
+                            paginate(page: params[:page], per_page: 10).
+                            order(bumped_at: :desc, created_at: :desc)
+                            
       else
-        @vehicles = Vehicle.search params[:vehicle][:vehicle_make_id],
-                                   where: { vehicle_make_id:
-                                              params[:vehicle][:vehicle_make_id],
-                                            sold_at: nil,
-                                            posted_at: { not: nil },
-                                            latitude: { not: nil } },
-                                   page: params[:page], 
-                                   per_page: 10,
-                                   order: { bumped_at: :desc, 
-                                            created_at: :desc }
+        @vehicles = Vehicle.all.where(sold_at: nil).
+                                where.not(posted_at: nil, latitude: nil).
+                                paginate(page: params[:page], per_page: 10).
+                                order(bumped_at: :desc, created_at: :desc)
       end
     
-    elsif params[:city].present?
-      @vehicles = Vehicle.near(params[:city], 20).
-                          where(sold_at: nil).
-                          where.not(posted_at: nil).
-                          paginate(page: params[:page], per_page: 10).
-                          order(bumped_at: :desc, created_at: :desc)
-                          
     else
       @vehicles = Vehicle.all.where(sold_at: nil).
-                              where.not(posted_at: nil, latitude: nil).
-                              paginate(page: params[:page], per_page: 10).
-                              order(bumped_at: :desc, created_at: :desc)
+                                where.not(posted_at: nil, latitude: nil).
+                                paginate(page: params[:page], per_page: 10).
+                                order(bumped_at: :desc, created_at: :desc)
 
     end
     
@@ -214,7 +226,8 @@ class VehiclesController < ApplicationController
       marker.json({ :id => vehicle.id })
     end
     
-    @vehicle = Vehicle.new
+    @vehicle             = Vehicle.new
+    @personalized_search = PersonalizedSearch.new
   end
   
   def basics
@@ -230,6 +243,18 @@ class VehiclesController < ApplicationController
   def about_you
   end
   
+  def consumer_activity
+    
+    @orders = Purchase.
+                where(seller_id: current_user.id).
+                where.not(processed_at: nil)
+    
+    @test_drives = Appointment.
+                     where("seller_id = ? AND date >= ?",
+                     current_user.id,
+                     Time.now)
+  end
+  
   def post
     @vehicle.update_attribute(:posted_at, Time.now)
     flash[:success] = "#{ @vehicle.listing_name } posted!"
@@ -240,11 +265,12 @@ class VehiclesController < ApplicationController
     
     if current_user.favorite_vehicles.exists?(vehicle_id: @vehicle.id)
       flash[:failure] = "#{ @vehicle.listing_name } has already been added to 
-                         your wishlist!"
+                         your shortlist!"
     
     else
       current_user.favorites << @vehicle
-      flash[:success] = "#{ @vehicle.listing_name } was added to your wishlist!"
+      flash[:success] = "#{ @vehicle.listing_name } was added to your 
+                         shortlist!"
     end
     
     redirect_to :back

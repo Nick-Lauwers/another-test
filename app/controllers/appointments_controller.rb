@@ -46,20 +46,20 @@ class AppointmentsController < ApplicationController
     redirect_to request.referrer
   end
 
-  def test_drives
+  # def test_drives
     
-    @purchases = Purchase.where(buyer_id: current_user.id)
+  #   @purchases = Purchase.where(buyer_id: current_user.id)
     
-    @test_drives = Appointment.where("buyer_id = ? AND date >= ?", 
-                                     current_user.id, 
-                                     Time.now)
-  end
+  #   @test_drives = Appointment.where("buyer_id = ? AND date >= ?", 
+  #                                   current_user.id, 
+  #                                   Time.now)
+  # end
   
-  def customers
-    @customers = Appointment.where("seller_id = ? AND date >= ?",
-                                   current_user.id,
-                                   Time.now)
-  end
+  # def customers
+  #   @customers = Appointment.where("seller_id = ? AND date >= ?",
+  #                                 current_user.id,
+  #                                 Time.now)
+  # end
   
   def accept
     @appointment.update_attribute(:status, 'accepted')

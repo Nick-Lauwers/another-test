@@ -22,6 +22,8 @@ class User < ActiveRecord::Base
   has_many :favorite_autoparts,  dependent: :destroy
   has_many :memberships,         dependent: :destroy
   
+  has_one :personalized_search,  dependent: :destroy
+  
   has_many :authored_reviews, class_name: 'Review', dependent: :destroy,
     foreign_key: :reviewer_id
   has_many :received_reviews, class_name: 'Review', dependent: :destroy, 

@@ -3,7 +3,7 @@ class PurchasesController < ApplicationController
   before_action :logged_in_user
   before_action :profile_pic_upload
   before_action :get_purchase, except: [:new, :create, :purchases_made, 
-                                        :orders_received]
+                                        :orders_received, :show_modal]
   
   def new
     
@@ -92,7 +92,16 @@ class PurchasesController < ApplicationController
   def submit
     @purchase.update_attribute(:processed_at, Time.now)
     flash[:success] = "Purchase currently processing."
-    redirect_to purchases_made_path
+    redirect_to shortlist_user_path(current_user)
+  end
+  
+  def show_modal
+    
+    @purchase = Purchase.find_by_id(params[:purchase_id])
+    
+    respond_to do |format|
+       format.js {render 'show_modal'}
+    end
   end
   
   private

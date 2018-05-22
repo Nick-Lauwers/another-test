@@ -303,7 +303,7 @@ $(function() {
       modalSpecialOfferClose.click(function() {
         modalSpecialOffer.modal('hide');
       });
-
+    
   // basics
   
     // dependent dropdown

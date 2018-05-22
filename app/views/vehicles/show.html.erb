@@ -10,6 +10,8 @@
 
 <%= render 'layouts/modal_menu' %>
 
+<%= render 'layouts/contact' %>
+
 <%= render 'modal_appointment' %>
 
 <%= render 'modal_dealer_select' %>
@@ -191,7 +193,7 @@
               <i class="fa fa-heart-o" 
                  aria-hidden="true"></i> 
                    
-              Add to Wish List
+              Add to Shortlist
             <% end %>
           <!--<(perc) end %>-->
           
@@ -855,6 +857,17 @@
               </div>
             </div>
           </div>
+
+          <%= link_to favorite_vehicle_path(@vehicle), 
+                      class: "vehicle-scrolled-link",
+                      method: :put do %>
+                      
+            <i class="fa fa-heart-o" 
+               aria-hidden="true"></i> 
+                 
+            Add to Shortlist
+          <% end %>
+            
         <!--<(perc) end %>-->
 
         <!--<div class="appointment-scrolled">-->

@@ -1,0 +1,341 @@
+<!--completed-->
+
+<!--completed-->
+
+<% provide(:title, "Shortlist") %>
+
+<header class="header-static-gray">
+  <%= render 'layouts/header_secondary' %>
+</header>
+
+<%= render 'layouts/modal_search' %>
+
+<%= render 'layouts/modal_menu' %>
+
+<%= render 'purchases/modal_purchase' %>
+
+<%= render 'layouts/contact' %>
+
+<%= render 'layouts/hero_backend' %>
+
+<%= render 'layouts/secondary_navbar' %>
+
+<div class="search-results">
+  
+  <div id="shortlist-map" class="hidden-xs"></div>
+  
+  <div class="search-results-background">
+    <div class="search-list-container">
+      <div class="row">
+        
+        <div class="col-md-4 hidden-xs">
+          <!--intentionally left empty-->
+        </div>
+        
+        <div class="col-md-8 search-list-content">
+          
+          <div class="shortlist-purchases">
+            
+            <div class="search-introduction">
+            
+              <div class="search-introduction-static">
+                
+                <div class="row vertical-align">
+                  
+                  <div class="col-md-2">
+                    <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/purchase.png",
+                                  class: "search-introduction-static-image") %>
+                  </div>
+                  
+                  <div class="col-md-10">
+                    
+                    <span class="search-introduction-static-title">
+                      Purchases (<%= @purchases.count %>)
+                    </span>
+                
+                    <p class="search-introduction-static-info">
+                      If you have purchased any vehicles online, the details can 
+                      be viewed here. Make changes when necessary, but keep in 
+                      mind that modifications may slow processing time.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <% if @purchases.exists? %>
+              <ol class="row backend-list">
+                <%= render partial:    "purchases/purchase", 
+                           collection: @purchases %>
+              </ol>
+              
+            <% else %>
+              <p class="empty-list-info">
+                No purchases made
+              </p>
+            <% end %>
+          </div>
+          
+          <div class="shortlist-test-drives">
+          
+            <div class="search-introduction">
+            
+              <div class="search-introduction-static">
+                
+                <div class="row vertical-align">
+                  
+                  <div class="col-md-2">
+                    <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/test-drives.png",
+                                  class: "search-introduction-static-image") %>
+                  </div>
+                  
+                  <div class="col-md-10">
+                    
+                    <span class="search-introduction-static-title">
+                      Test Drives (<%= @test_drives.count %>)
+                    </span>
+                
+                    <p class="search-introduction-static-info">
+                      We keep track of all your test drives. When a seller 
+                      approves your test drive request, its status will change 
+                      from "Pending" to "Accepted" and the vehicle's address 
+                      will be displayed.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <% if @test_drives.exists? %>
+              <ol class="row test-drives">
+                <%= render partial:    "appointments/test_drive", 
+                           collection: @test_drives %>
+              </ol>
+              
+            <% else %>
+              <p class="empty-list-info">
+                No test drives scheduled
+              </p>
+            <% end %>
+          </div>
+          
+          <div class="shortlist-favorites">
+
+            <div class="search-introduction">
+            
+              <div class="search-introduction-static">
+                
+                <div class="row vertical-align">
+                  
+                  <div class="col-md-2">
+                    <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/shortlist.png",
+                                  class: "search-introduction-static-image") %>
+                  </div>
+                  
+                  <div class="col-md-10">
+                    
+                    <span class="search-introduction-static-title">
+                      Shortlist (<%= @vehicles.count %>)
+                    </span>
+                
+                    <p class="search-introduction-static-info">
+                      Any vehicles that have been added to your shortlist will 
+                      be saved below. Compare your favorites to ensure that you
+                      are making the right decision.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <% if @vehicles.exists? %>
+              <ol class="row search-items">
+                <%= render partial:    "wish_list", 
+                           collection: @vehicles, 
+                           as:         :vehicle %>
+              </ol>
+            
+            <% else %>
+              <p class="empty-list-info">
+                Shortlist is empty
+              </p>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    
+    // map
+    
+      var hoverMarkerIcon = {
+        url:    "https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/map-marker-aqua.png",
+        width:  32,
+        height: 32
+      };
+      
+      handler = Gmaps.build('Google');
+      
+      handler.buildMap({
+        
+        provider: {
+          
+          maxZoom:           14,
+          scrollwheel:       false,
+          mapTypeControl:    false,
+          streetViewControl: false,
+          
+          zoomControlOptions: {
+            position: google.maps.ControlPosition.TOP_LEFT
+          },
+          
+          styles: [
+            {
+              "featureType": "landscape",
+              "stylers": [
+                { "hue": "#FFBB00" },
+                { "saturation": 43.400000000000006 },
+                { "lightness": 37.599999999999994 },
+                { "gamma": 1 }
+              ]
+            },
+            
+            {
+              "featureType": "road.highway",
+              "stylers": [
+                { "hue": "#FFC200" },
+                { "saturation": -61.8 },
+                { "lightness": 45.599999999999994 },
+                { "gamma": 1 }
+              ]
+            },
+      
+            {
+              "featureType": "road.arterial",
+              "stylers": [
+                { "hue": "#FF0300" },
+                { "saturation": -100 },
+                { "lightness": 51.19999999999999 },
+                { "gamma": 1 }
+              ]
+            },
+          
+            {
+              "featureType": "road.local",
+              "stylers": [
+                { "hue": "#FF0300" },
+                { "saturation": -100 },
+                { "lightness": 52 },
+                { "gamma": 1 }
+              ]
+            },
+          
+            {
+              "featureType": "water",
+              "stylers": [
+                { "hue": "#0078FF" },
+                { "saturation": -13.200000000000003 },
+                { "lightness": 2.4000000000000057 },
+                { "gamma": 1 }
+              ]
+            },
+          
+            {
+              "featureType": "poi",
+              "stylers": [
+                { "hue": "#00FF6A" },
+                { "saturation": -1.0989010989011234 },
+                { "lightness": 11.200000000000017 },
+                { "gamma": 1 }
+              ]
+            }
+          ]
+        },
+            
+        internal: {
+          id: 'shortlist-map'
+        }
+      }, function() {
+            
+        vehicle_markers    = handler.addMarkers(<%= raw @vehicles_hash.to_json %>);
+        test_drive_markers = handler.addMarkers(<%= raw @test_drives_hash.to_json %>);
+        purchase_markers   = handler.addMarkers(<%= raw @purchases_hash.to_json %>);
+        
+        _.each(<%= raw @vehicles_hash.to_json %>, function(json, index) {
+          
+          var hoverMarker = {};
+          
+          hoverMarker.vehicle_marker = void 0;
+          json.vehicle_marker = vehicle_markers[index];
+          
+          $("#wish-list-item-" + json.id).on("mouseover", function() {
+            
+            hoverMarker = {
+              lat: json.lat,
+              lng: json.lng,
+              picture: hoverMarkerIcon
+            };
+            
+            handler.removeMarker(json.vehicle_marker);
+            hoverMarker.vehicle_marker = handler.addMarker(hoverMarker);
+          }).on("mouseout", function() {
+            handler.removeMarker(hoverMarker.vehicle_marker);
+            json.vehicle_marker = handler.addMarker(json);
+          });
+        });
+        
+        _.each(<%= raw @test_drives_hash.to_json %>, function(json, index) {
+          
+          var hoverMarker = {};
+          
+          hoverMarker.test_drive_marker = void 0;
+          json.test_drive_marker = test_drive_markers[index];
+          
+          $("#test-drive-item-" + json.id).on("mouseover", function() {
+            
+            hoverMarker = {
+              lat: json.lat,
+              lng: json.lng,
+              picture: hoverMarkerIcon
+            };
+            
+            handler.removeMarker(json.test_drive_marker);
+            hoverMarker.test_drive_marker = handler.addMarker(hoverMarker);
+          }).on("mouseout", function() {
+            handler.removeMarker(hoverMarker.test_drive_marker);
+            json.test_drive_marker = handler.addMarker(json);
+          });
+        });
+        
+        _.each(<%= raw @purchases_hash.to_json %>, function(json, index) {
+          
+          var hoverMarker = {};
+          
+          hoverMarker.purchase_marker = void 0;
+          json.purchase_marker = purchase_markers[index];
+          
+          $("#purchase-item-" + json.id).on("mouseover", function() {
+            
+            hoverMarker = {
+              lat: json.lat,
+              lng: json.lng,
+              picture: hoverMarkerIcon
+            };
+            
+            handler.removeMarker(json.purchase_marker);
+            hoverMarker.purchase_marker = handler.addMarker(hoverMarker);
+          }).on("mouseout", function() {
+            handler.removeMarker(hoverMarker.purchase_marker);
+            json.purchase_marker = handler.addMarker(json);
+          });
+        });
+        
+        handler.bounds.extendWith(vehicle_markers);
+        handler.fitMapToBounds();
+      });
+  });
+</script>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180417001733) do
+ActiveRecord::Schema.define(version: 20180521203846) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -358,6 +358,35 @@ ActiveRecord::Schema.define(version: 20180417001733) do
   add_index "payments", ["vehicle_id", "created_at"], name: "index_payments_on_vehicle_id_and_created_at"
   add_index "payments", ["vehicle_id"], name: "index_payments_on_vehicle_id"
 
+  create_table "personalized_searches", force: :cascade do |t|
+    t.integer  "price"
+    t.integer  "mileage"
+    t.integer  "year"
+    t.boolean  "is_convertible"
+    t.boolean  "is_coupe"
+    t.boolean  "is_crossover"
+    t.boolean  "is_hatchback"
+    t.boolean  "is_minivan"
+    t.boolean  "is_pickup"
+    t.boolean  "is_sedan"
+    t.boolean  "is_suv"
+    t.boolean  "is_van"
+    t.boolean  "is_wagon"
+    t.boolean  "is_leather_seats"
+    t.boolean  "is_sunroof"
+    t.boolean  "is_navigation_system"
+    t.boolean  "is_dvd_entertainment_system"
+    t.boolean  "is_bluetooth"
+    t.boolean  "is_backup_camera"
+    t.boolean  "is_remote_start"
+    t.boolean  "is_tow_package"
+    t.integer  "user_id"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "personalized_searches", ["user_id"], name: "index_personalized_searches_on_user_id"
+
   create_table "photos", force: :cascade do |t|
     t.integer  "vehicle_id"
     t.datetime "created_at",                     null: false
@@ -538,6 +567,8 @@ ActiveRecord::Schema.define(version: 20180417001733) do
     t.string   "merchant_id"
     t.integer  "dealership_id"
     t.boolean  "dealership_admin",    default: false
+    t.string   "dealer_position"
+    t.integer  "industry_experience"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

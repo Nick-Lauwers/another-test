@@ -62,9 +62,22 @@ Rails.application.routes.draw do
   resources :users do
     
     resources :reviews, only: [:index, :destroy]
+    
+    resource :personalized_search do
+      member do
+        get 'price'
+        get 'mileage'
+        get 'year'
+        get 'installed_options'
+        get 'summary'
+      end
+    end
 
     member do
       get 'profile_pic'
+      get 'profile_pic_dealer'
+      get 'dealer_details'
+      get 'shortlist'
     end
   end
 
@@ -88,6 +101,7 @@ Rails.application.routes.draw do
       get 'details'
       get 'photos'
       get 'about_you'
+      get 'consumer_activity'
     end
     
     collection do

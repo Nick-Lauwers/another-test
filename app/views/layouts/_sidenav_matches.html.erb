@@ -1,0 +1,18 @@
+<h2 class="sidenav-title">
+  Matches
+</h2>
+
+<ul class="sidenav-list">
+  
+  <li class="<%= 'sidenav-active' if 
+                   current_page?(summary_user_personalized_search_path) %>">
+    <%= link_to "Results", 
+                summary_user_personalized_search_path %>
+  </li>
+  
+  <li class="<%= 'sidenav-active' if 
+                   current_page?(edit_user_personalized_search_path) %>">
+    <%= link_to "Preferences", 
+                edit_user_personalized_search_path %>
+    </li>
+</ul>

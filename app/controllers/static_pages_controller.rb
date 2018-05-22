@@ -3,6 +3,11 @@
 class StaticPagesController < ApplicationController
   
   def home
+    
+    if logged_in?
+      @personalized_search = current_user.build_personalized_search
+    end
+
     @feed_items = Vehicle.
                   where(sold_at: nil).
                   where.not(posted_at: nil).

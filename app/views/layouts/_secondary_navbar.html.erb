@@ -8,21 +8,26 @@
       
       <li class="<%= 'nav-active' if 
         (current_page?(conversations_path) || 
-         current_page?(questions_path) ) %>">
+         current_page?(questions_path)) %>">
         <%= link_to "Inbox", conversations_path %>
       </li>
       
       <li class="<%= 'nav-active' if 
-        (current_page?(vehicles_path) || 
-         current_page?(customers_path) ||
-         current_page?(orders_received_path)) %>">
-        <%= link_to "Your Garage", vehicles_path %>
+        current_page?(shortlist_user_path(current_user)) %>">
+        <%= link_to "Shortlist", shortlist_user_path(current_user) %>
       </li>
       
       <li class="<%= 'nav-active' if 
-        (current_page?(test_drives_path) ||
-         current_page?(purchases_made_path)) %>">
-        <%= link_to "Showroom", test_drives_path %>
+        (current_page?(summary_user_personalized_search_path(current_user)) ||
+         current_page?(edit_user_personalized_search_path(current_user))) %>">
+        <%= link_to "Matches", 
+                    summary_user_personalized_search_path(current_user) %>
+      </li>
+      
+      <li class="<%= 'nav-active' if current_page?(vehicles_path) %>"> 
+         <!--current_page?(customers_path) ||-->
+         <!--current_page?(orders_received_path) ||-->
+        <%= link_to "Your Listings", vehicles_path %>
       </li>
       
       <li class="<%= 'nav-active' if 
@@ -56,18 +61,24 @@
     </a>
   <% end %>
   
-  <% if (current_page?(vehicles_path) || 
-         current_page?(customers_path) ||
-         current_page?(orders_received_path)) %>
+  <% if current_page?(shortlist_user_path(current_user)) %>
     <a href='#' class="dropdown-toggle" data-toggle="dropdown">
-      Your Garage <b class="caret"></b>
+      Shortlist <b class="caret"></b>
     </a>
   <% end %>
   
-  <% if (current_page?(test_drives_path) ||
-         current_page?(purchases_made_path)) %>
+  <% if (current_page?(summary_user_personalized_search_path(current_user)) ||
+         current_page?(edit_user_personalized_search_path(current_user))) %>
     <a href='#' class="dropdown-toggle" data-toggle="dropdown">
-      Showroom <b class="caret"></b>
+      Matches <b class="caret"></b>
+    </a>
+  <% end %>
+  
+  <% if current_page?(vehicles_path) %>
+         <!--current_page?(customers_path) ||-->
+         <!--current_page?(orders_received_path)) -->
+    <a href='#' class="dropdown-toggle" data-toggle="dropdown">
+      Your Listings <b class="caret"></b>
     </a>
   <% end %>
   
@@ -99,18 +110,23 @@
     </li>
     
     <li class="<%= 'dropdown-active' if 
-      (current_page?(vehicles_path) || 
-       current_page?(customers_path) ||
-       current_page?(orders_received_path)) %>">
-      <%= link_to "Your Garage", vehicles_path %>
+      current_page?(shortlist_user_path(current_user)) %>">
+      <%= link_to "Shortlist", shortlist_user_path(current_user) %>
     </li>
     
     <li class="<%= 'dropdown-active' if 
-      (current_page?(test_drives_path) ||
-       current_page?(purchases_made_path)) %>">
-      <%= link_to "Showroom", test_drives_path %>
+      (current_page?(summary_user_personalized_search_path(current_user)) ||
+       current_page?(edit_user_personalized_search_path(current_user))) %>">
+      <%= link_to "Matches", 
+                  summary_user_personalized_search_path(current_user) %>
     </li>
     
+    <li class="<%= 'dropdown-active' if current_page?(vehicles_path) %>"> 
+       <!--current_page?(customers_path) ||-->
+       <!--current_page?(orders_received_path)) -->
+      <%= link_to "Your Listings", vehicles_path %>
+    </li>
+
     <li class="<%= 'dropdown-active' if 
       (current_page?(edit_user_path(current_user)) || 
        current_page?(user_reviews_path(current_user))) %>">

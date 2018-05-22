@@ -10,20 +10,25 @@
 
 <%= render 'layouts/modal_menu' %>
 
+<%= render 'layouts/contact' %>
+
 <%= render 'layouts/modal_special_offer' %>
 
 <div class="search-summary">
   <div class="search-summary-content">
     
     <h1 class="search-summary-title">
-      
-      <% if params[:vehicle][:vehicle_make_id].present? %>
+
+      <!--params vehicle present fix with matches-->
+
+      <% if params[:vehicle].present? && 
+            params[:vehicle][:vehicle_make_id].present? %>
       
         <%= VehicleMake.find_by(id: params[:vehicle][:vehicle_make_id]).name %>
         <%= VehicleModel.find_by(id: params[:vehicle][:vehicle_model_id]).name  if VehicleModel.find_by(id: params[:vehicle][:vehicle_model_id]).name != "All models" %>
         
       <% else %>
-        All Makes and Models</h1>
+        All Makes and Models
       <% end %>
     </h1>
     
@@ -246,9 +251,11 @@
   </div>
 </div>
 
+<%= render 'personalized_searches/form' %>
+
 <script type="text/javascript">
   $(document).ready(function() {
-  
+    
     // map
     
       var hoverMarkerIcon = {
@@ -271,117 +278,75 @@
           zoomControlOptions: {
             position: google.maps.ControlPosition.TOP_LEFT
           },
+          
           styles: [
-    {
-        "featureType": "landscape",
-        "stylers": [
             {
-                "hue": "#FFBB00"
+              "featureType": "landscape",
+              "stylers": [
+                { "hue": "#FFBB00" },
+                { "saturation": 43.400000000000006 },
+                { "lightness": 37.599999999999994 },
+                { "gamma": 1 }
+              ]
             },
+            
             {
-                "saturation": 43.400000000000006
+              "featureType": "road.highway",
+              "stylers": [
+                { "hue": "#FFC200" },
+                { "saturation": -61.8 },
+                { "lightness": 45.599999999999994 },
+                { "gamma": 1 }
+              ]
             },
+      
             {
-                "lightness": 37.599999999999994
+              "featureType": "road.arterial",
+              "stylers": [
+                { "hue": "#FF0300" },
+                { "saturation": -100 },
+                { "lightness": 51.19999999999999 },
+                { "gamma": 1 }
+              ]
             },
+          
             {
-                "gamma": 1
+              "featureType": "road.local",
+              "stylers": [
+                { "hue": "#FF0300" },
+                { "saturation": -100 },
+                { "lightness": 52 },
+                { "gamma": 1 }
+              ]
+            },
+          
+            {
+              "featureType": "water",
+              "stylers": [
+                { "hue": "#0078FF" },
+                { "saturation": -13.200000000000003 },
+                { "lightness": 2.4000000000000057 },
+                { "gamma": 1 }
+              ]
+            },
+          
+            {
+              "featureType": "poi",
+              "stylers": [
+                { "hue": "#00FF6A" },
+                { "saturation": -1.0989010989011234 },
+                { "lightness": 11.200000000000017 },
+                { "gamma": 1 }
+              ]
             }
-        ]
-    },
-    {
-        "featureType": "road.highway",
-        "stylers": [
-            {
-                "hue": "#FFC200"
-            },
-            {
-                "saturation": -61.8
-            },
-            {
-                "lightness": 45.599999999999994
-            },
-            {
-                "gamma": 1
-            }
-        ]
-    },
-    {
-        "featureType": "road.arterial",
-        "stylers": [
-            {
-                "hue": "#FF0300"
-            },
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": 51.19999999999999
-            },
-            {
-                "gamma": 1
-            }
-        ]
-    },
-    {
-        "featureType": "road.local",
-        "stylers": [
-            {
-                "hue": "#FF0300"
-            },
-            {
-                "saturation": -100
-            },
-            {
-                "lightness": 52
-            },
-            {
-                "gamma": 1
-            }
-        ]
-    },
-    {
-        "featureType": "water",
-        "stylers": [
-            {
-                "hue": "#0078FF"
-            },
-            {
-                "saturation": -13.200000000000003
-            },
-            {
-                "lightness": 2.4000000000000057
-            },
-            {
-                "gamma": 1
-            }
-        ]
-    },
-    {
-        "featureType": "poi",
-        "stylers": [
-            {
-                "hue": "#00FF6A"
-            },
-            {
-                "saturation": -1.0989010989011234
-            },
-            {
-                "lightness": 11.200000000000017
-            },
-            {
-                "gamma": 1
-            }
-        ]
-    }
-]
+          ]
         },
-        
+            
         internal: {
           id: 'search-map'
         }
       }, function() {
-        
+            
         markers = handler.addMarkers(<%=raw @hash.to_json %>);
         
         _.each(<%=raw @hash.to_json %>, function(json, index) {
@@ -405,11 +370,11 @@
             json.marker = handler.addMarker(json);
           });
         });
-        
+            
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
       });
-    
+      
     // filters
     
       var filtersButton        = $('.btn-filters');

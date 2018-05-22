@@ -120,4 +120,91 @@ $(function() {
           vehicleModelModal.prop("disabled", true);
         }
       });
+      
+  // contact widget
+    
+    var contactWidgetPhone       = $('.contact-widget-phone');
+    var contactWidgetMail        = $('.contact-widget-mail');
+    var contactWidgetPhoneIcon   = $('.contact-widget-phone-icon');
+    var contactWidgetMailIcon    = $('.contact-widget-mail-icon');
+    var contactWidgetHiddenPhone = $('#contact-widget-hidden-phone');
+    var contactWidgetHiddenMail  = $('#contact-widget-hidden-mail');
+    
+    contactWidgetPhone.click(function() {
+      
+      if (contactWidgetPhone.hasClass('contact-widget-phone-inactive')) {
+      	
+      	contactWidgetPhone.
+      	  removeClass('contact-widget-phone-inactive').
+      	  addClass('contact-widget-phone-active');
+      	  
+      	contactWidgetMail.
+      	  removeClass('contact-widget-mail-active').
+      	  addClass('contact-widget-mail-inactive');
+      	  
+      	contactWidgetPhoneIcon.
+      	  removeClass('contact-widget-phone-icon-inactive').
+      	  addClass('contact-widget-phone-icon-active');
+      	
+      	contactWidgetMailIcon.
+      	  removeClass('contact-widget-mail-icon-active').
+      	  addClass('contact-widget-mail-icon-inactive');
+      	  
+      	contactWidgetHiddenPhone.removeClass('hidden');
+      	
+      	contactWidgetHiddenMail.addClass('hidden');
+      }
+        
+      else {
+        
+        contactWidgetPhone.
+      	  removeClass('contact-widget-phone-active').
+      	  addClass('contact-widget-phone-inactive');
+      	  
+      	contactWidgetPhoneIcon.
+      	  removeClass('contact-widget-phone-icon-active').
+      	  addClass('contact-widget-phone-icon-inactive');
+      	  
+      	contactWidgetHiddenPhone.addClass('hidden');
+      }
+    });
+  
+    contactWidgetMail.click(function() {
+      
+      if (contactWidgetMail.hasClass('contact-widget-mail-inactive')) {
+      	
+      	contactWidgetMail.
+      	  removeClass('contact-widget-mail-inactive').
+      	  addClass('contact-widget-mail-active');
+      	  
+      	contactWidgetPhone.
+      	  removeClass('contact-widget-phone-active').
+      	  addClass('contact-widget-phone-inactive');
+      	  
+      	contactWidgetMailIcon.
+      	  removeClass('contact-widget-mail-icon-inactive').
+      	  addClass('contact-widget-mail-icon-active');
+      	
+      	contactWidgetPhoneIcon.
+      	  removeClass('contact-widget-phone-icon-active').
+      	  addClass('contact-widget-phone-icon-inactive');
+      	
+      	contactWidgetHiddenMail.removeClass('hidden');
+      	
+      	contactWidgetHiddenPhone.addClass('hidden');
+      }
+        
+      else {
+        
+        contactWidgetMail.
+      	  removeClass('contact-widget-mail-active').
+      	  addClass('contact-widget-mail-inactive');
+      	  
+      	contactWidgetMailIcon.
+      	  removeClass('contact-widget-mail-icon-active').
+      	  addClass('contact-widget-mail-icon-inactive');
+      	  
+      	contactWidgetHiddenMail.addClass('hidden');
+      }
+    });
 });

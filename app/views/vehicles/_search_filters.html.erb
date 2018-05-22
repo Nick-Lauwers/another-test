@@ -5,10 +5,17 @@
     
 <%= form_tag search_vehicles_path, 
              method: :get do %>
-        
-  <%= hidden_field_tag :vehicle_make_id,  params[:vehicle][:vehicle_make_id] %>
+
+  <!--params vehicle present fix with matches-->
   
-  <%= hidden_field_tag :vehicle_model_id, params[:vehicle][:vehicle_model_id] %>
+  <% if params[:vehicle].present? %>      
+  
+    <%= hidden_field_tag :vehicle_make_id,  
+                         params[:vehicle][:vehicle_make_id] %>
+    
+    <%= hidden_field_tag :vehicle_model_id, 
+                         params[:vehicle][:vehicle_model_id] %>
+  <% end %>
   
   <%= hidden_field_tag :city,             params[:city] %>
 
