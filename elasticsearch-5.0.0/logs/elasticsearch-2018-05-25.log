@@ -1,0 +1,36 @@
+[2018-05-25T07:41:05,972][INFO ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][187058] overhead, spent [346ms] collecting in the last [1s]
+[2018-05-25T09:28:24,628][INFO ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][193494] overhead, spent [363ms] collecting in the last [1.3s]
+[2018-05-25T18:24:17,375][INFO ][o.e.n.Node               ] [ht0EVsn] stopping ...
+[2018-05-25T18:24:17,702][INFO ][o.e.n.Node               ] [ht0EVsn] stopped
+[2018-05-25T18:24:17,704][INFO ][o.e.n.Node               ] [ht0EVsn] closing ...
+[2018-05-25T18:24:17,809][INFO ][o.e.n.Node               ] [ht0EVsn] closed
+[2018-05-25T18:24:39,810][INFO ][o.e.n.Node               ] [] initializing ...
+[2018-05-25T18:24:40,010][INFO ][o.e.e.NodeEnvironment    ] [ht0EVsn] using [1] data paths, mounts [[/ (none)]], net usable_space [5.9gb], net total_space [10.6gb], spins? [possibly], types [aufs]
+[2018-05-25T18:24:40,010][INFO ][o.e.e.NodeEnvironment    ] [ht0EVsn] heap size [1.9gb], compressed ordinary object pointers [true]
+[2018-05-25T18:24:40,124][INFO ][o.e.n.Node               ] [ht0EVsn] node name [ht0EVsn] derived from node ID; set [node.name] to override
+[2018-05-25T18:24:40,129][INFO ][o.e.n.Node               ] [ht0EVsn] version[5.0.0], pid[127503], build[253032b/2016-10-26T04:37:51.531Z], OS[Linux/4.9.80-c9/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_111/25.111-b14]
+[2018-05-25T18:24:43,052][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [aggs-matrix-stats]
+[2018-05-25T18:24:43,052][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [ingest-common]
+[2018-05-25T18:24:43,052][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [lang-expression]
+[2018-05-25T18:24:43,053][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [lang-groovy]
+[2018-05-25T18:24:43,053][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [lang-mustache]
+[2018-05-25T18:24:43,053][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [lang-painless]
+[2018-05-25T18:24:43,053][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [percolator]
+[2018-05-25T18:24:43,054][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [reindex]
+[2018-05-25T18:24:43,054][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [transport-netty3]
+[2018-05-25T18:24:43,054][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [transport-netty4]
+[2018-05-25T18:24:43,055][INFO ][o.e.p.PluginsService     ] [ht0EVsn] no plugins loaded
+[2018-05-25T18:24:52,851][INFO ][o.e.n.Node               ] [ht0EVsn] initialized
+[2018-05-25T18:24:52,852][INFO ][o.e.n.Node               ] [ht0EVsn] starting ...
+[2018-05-25T18:24:53,841][INFO ][o.e.t.TransportService   ] [ht0EVsn] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2018-05-25T18:24:53,866][WARN ][o.e.b.BootstrapCheck     ] [ht0EVsn] max virtual memory areas vm.max_map_count [65530] likely too low, increase to at least [262144]
+[2018-05-25T18:24:57,125][INFO ][o.e.c.s.ClusterService   ] [ht0EVsn] new_master {ht0EVsn}{ht0EVsnlRuyePr1G07P69g}{ji6J9Q3lQG-6W4YTCBJbQA}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2018-05-25T18:24:57,253][INFO ][o.e.h.HttpServer         ] [ht0EVsn] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2018-05-25T18:24:57,254][INFO ][o.e.n.Node               ] [ht0EVsn] started
+[2018-05-25T18:24:59,069][INFO ][o.e.g.GatewayService     ] [ht0EVsn] recovered [5] indices into cluster_state
+[2018-05-25T18:25:02,616][INFO ][o.e.c.r.a.AllocationService] [ht0EVsn] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[vehicles][3]] ...]).
+[2018-05-25T19:13:03,851][INFO ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][2889] overhead, spent [397ms] collecting in the last [1s]
+[2018-05-25T20:18:52,339][INFO ][o.e.n.Node               ] [ht0EVsn] stopping ...
+[2018-05-25T20:18:52,451][INFO ][o.e.n.Node               ] [ht0EVsn] stopped
+[2018-05-25T20:18:52,452][INFO ][o.e.n.Node               ] [ht0EVsn] closing ...
+[2018-05-25T20:18:52,473][INFO ][o.e.n.Node               ] [ht0EVsn] closed

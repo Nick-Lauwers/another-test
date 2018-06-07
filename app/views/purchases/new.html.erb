@@ -29,14 +29,14 @@
         
           <div class="col-md-2 avatar-and-online">
             
-            <%= link_to user_path(@vehicle.user) do %>
+            <%= link_to @dealer do %>
               <div class="purchase-hero-avatar avatar-general", 
                    style="background-image: url(
-                           '<%= @vehicle.user.avatar.url(:thumb) %>')">
+                           '<%= @dealer.avatar.url(:thumb) %>')">
               </div>
             <% end %>
 
-            <% if @vehicle.user.online? %>
+            <% if @dealer.online? %>
               <div class="online online-lg-primary"></div>
             <% end %>
           </div>
@@ -47,8 +47,8 @@
                         @vehicle,
                         class: "purchase-hero-heading" %>
             
-            <%= link_to @vehicle.user.full_name, 
-                        @vehicle.user,
+            <%= link_to @dealer.full_name, 
+                        @dealer,
                         class: "purchase-hero-subheading" %>
             
             <span> · </span>

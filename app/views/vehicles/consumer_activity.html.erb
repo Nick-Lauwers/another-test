@@ -26,7 +26,7 @@
       
       <li>
         <%= link_to "Matches", 
-                    summary_user_personalized_search_path(current_user) %>
+                    personalized_search_path(current_user.personalized_search) %>
       </li>
       
       <li class="nav-active"><%= link_to "Your Listings", vehicles_path %></li>
@@ -49,7 +49,7 @@
     
     <li>
       <%= link_to "Matches",     
-                  summary_user_personalized_search_path(current_user) %>
+                  personalized_search_path(current_user.personalized_search) %>
     </li>
     
     <li class="dropdown-active">

@@ -1,0 +1,227 @@
+<% provide(:title, "Matches") %>
+
+<header class="header-static-gray">
+  <%= render 'layouts/header_secondary' %>
+</header>
+
+<%= render 'layouts/modal_search' %>
+
+<%= render 'layouts/modal_menu' %>
+
+<%= render 'layouts/contact' %>
+
+<%= render 'layouts/hero_backend' %>
+
+<%= render 'layouts/secondary_navbar' %>
+
+<div class="backend">
+  <div class="backend-content">
+    <div class="row">
+    
+      <div class="col-md-4 sidenav">
+        <%= render 'layouts/sidenav_matches' %>
+      </div>
+      
+      <div class="col-md-8">
+        
+        <%= form_for @personalized_search do |f| %>
+
+          <%= render 'shared/error_messages', object: f.object %>
+        
+          <div class="update-panel">
+      
+            <h2 class="panel-title">Buyer's Profile</h2>
+            
+            <ul class="installed-options-list">
+            
+              <li>
+                <%= f.check_box :is_convertible %>
+                <%= f.label :is_convertible, "Convertible" %> 
+              </li>
+              
+              <li>
+                <%= f.check_box :is_coupe %>
+                <%= f.label :is_coupe, "Coupe" %> 
+              </li>
+              
+              <li>
+                <%= f.check_box :is_crossover %>
+                <%= f.label :is_crossover, "Crossover" %> 
+              </li>
+              
+              <li>
+                <%= f.check_box :is_hatchback %>
+                <%= f.label :is_hatchback, "Hatchback" %>
+              </li>
+              
+              <li>
+                <%= f.check_box :is_minivan %>
+                <%= f.label :is_minivan, "Minivan" %> 
+              </li>
+              
+              <li>
+                <%= f.check_box :is_pickup %>
+                <%= f.label :is_pickup, "Pickup" %> 
+              </li>
+              
+              <li>
+                <%= f.check_box :is_sedan %>
+                <%= f.label :is_sedan, "Sedan" %>       
+              </li>
+              
+              <li>
+                <%= f.check_box :is_suv %>
+                <%= f.label :is_suv, "SUV" %>          
+              </li>
+              
+              <li>
+                <%= f.check_box :is_van %>
+                <%= f.label :is_van, "Van" %>          
+              </li>
+              
+              <li>
+                <%= f.check_box :is_wagon %>
+                <%= f.label :is_wagon, "Wagon" %>          
+              </li>
+            </ul>
+            
+            <div class="form-group form-group-search-parameter">
+        
+              <%= f.label :price, "Max Price" %>
+        
+              <span id="new_price_slider_val" class="slider-label">
+                $200000
+              </span>
+        
+              <%= f.text_field :price, 
+                               id: 'new_price_slider', 
+                               type: 'text',
+                               data: { 'slider-min'   => '0',
+                                       'slider-max'   => '200000',
+                                       'slider-step'  => '1',
+                                       'slider-value' => '200000' } %>
+            </div>
+            
+            <div class="form-group form-group-search-parameter">
+        
+              <%= f.label :mileage, "Max Mileage" %>
+          
+              <span id="new_mileage_slider_val" class="slider-label">
+                300000 mi
+              </span>
+              
+              <%= f.text_field :mileage,
+                               id: 'new_mileage_slider', 
+                               type: 'text',
+                               data: { 'slider-min'   => '0',
+                                       'slider-max'   => '300000',
+                                       'slider-step'  => '1',
+                                       'slider-value' => '300000' } %>
+            </div>
+            
+            <div class="form-group form-group-search-parameter">
+        
+              <%= f.label :year, "Earliest Year" %>
+              
+              <span id="new_year_slider_val" class="slider-label">
+                1900
+              </span>
+              
+              <%= f.text_field :year, 
+                               id: 'new_year_slider', 
+                               type: 'text',
+                               data: { 'slider-min'   => '1900',
+                                       'slider-max'   => '2016',
+                                       'slider-step'  => '1',
+                                       'slider-value' => '1900' } %>
+            </div>
+            
+            <ul class="installed-options-list">
+  
+              <li>
+                <%= f.check_box :is_backup_camera %>
+                <%= f.label :is_backup_camera, "Backup Camera" %> 
+              </li>
+              
+              <li>
+                <%= f.check_box :is_bluetooth %>
+                <%= f.label :is_bluetooth, "Bluetooth" %> 
+              </li>
+              
+              <li>
+                <%= f.check_box :is_dvd_entertainment_system %>
+                <%= f.label :is_dvd_entertainment_system, 
+                              "DVD Entertainment System" %> 
+              </li>
+              
+              <li>
+                <%= f.check_box :is_leather_seats %>
+                <%= f.label :is_leather_seats, "Leather Seats" %>
+              </li>
+              
+              <li>
+                <%= f.check_box :is_navigation_system %>
+                <%= f.label :is_navigation_system, "Navigation System" %> 
+              </li>
+              
+              <li>
+                <%= f.check_box :is_remote_start %>
+                <%= f.label :is_remote_start, "Remote Start" %> 
+              </li>
+              
+              <li>
+                <%= f.check_box :is_sunroof %>
+                <%= f.label :is_sunroof, "Sunroof" %>       
+              </li>
+              
+              <li>
+                <%= f.check_box :is_tow_package %>
+                <%= f.label :is_tow_package, "Tow Package" %>          
+              </li>
+            </ul>
+            
+            <%= f.submit "Save", class: "btn btn-primary btn-basics" %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    
+    // sliders
+      
+      var newPriceSlider        = $('#new_price_slider');
+      var newPriceSliderValue   = $('#new_price_slider_val');
+      var newMileageSlider      = $('#new_mileage_slider');
+      var newMileageSliderValue = $('#new_mileage_slider_val');
+      var newYearSlider         = $('#new_year_slider');
+      var newYearSliderValue    = $('#new_year_slider_val');
+      
+      newPriceSlider.slider();
+      newMileageSlider.slider();
+      newYearSlider.slider();
+      
+      newPriceSlider.on('slide', function(slideEvt) {
+      	newPriceSliderValue.text('$' + slideEvt.value);
+      });
+      newMileageSlider.on('slide', function(slideEvt) {
+      	newMileageSliderValue.text('$' + slideEvt.value);
+      });
+      newYearSlider.on('slide', function(slideEvt) {
+      	newYearSliderValue.text('$' + slideEvt.value);
+      });
+      
+      newPriceSlider.on('slideStop', function(slideEvt) {
+      	newPriceSliderValue.text('$' + slideEvt.value);
+      }); 
+      newMileageSlider.on('slideStop', function(slideEvt) {
+      	newMileageSliderValue.text('$' + slideEvt.value);
+      });
+      newYearSlider.on('slideStop', function(slideEvt) {
+      	newYearSliderValue.text('$' + slideEvt.value);
+      });
+  });
+</script>

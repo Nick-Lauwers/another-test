@@ -1,0 +1,125 @@
+<% provide(:title, "Matches") %>
+
+<header class="header-static-gray">
+  <%= render 'layouts/header_secondary' %>
+</header>
+
+<%= render 'layouts/modal_search' %>
+
+<%= render 'layouts/modal_menu' %>
+
+<%= render 'layouts/contact' %>
+
+<%= render 'layouts/hero_backend' %>
+
+<%= render 'layouts/secondary_navbar' %>
+
+<div class="backend">
+  <div class="backend-content">
+    <div class="row">
+    
+      <div class="col-md-4 sidenav">
+        <%= render 'layouts/sidenav_matches' %>
+      </div>
+      
+      <div class="col-md-8">
+        
+        <div class="matches-introduction">
+            
+          <i class="fa fa-times matches-introduction-close"></i>
+            
+          <div class="row vertical-align">
+              
+            <div class="col-md-2">
+              <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/matches.png",
+                            class: "matches-introduction-image") %>
+            </div>
+              
+            <div class="col-md-10">
+              <div class="matches-introduction-detail">
+                
+                <span class="matches-introduction-title">
+                  Personalize Your Search
+                </span>
+            
+                <span class="matches-introduction-info">
+                  Let us get to know you! We mix and match your 
+                  preferences, making it easier to discover cars with the 
+                  perfect combination of price, age, and features.
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-md-12">
+            
+            <%= form_for @personalized_search do |f| %>
+      
+              <ul class="installed-options-list">
+          
+                <li>
+                  <%= f.check_box :is_convertible %>
+                  <%= f.label :is_convertible, "Convertible" %> 
+                </li>
+                
+                <li>
+                  <%= f.check_box :is_coupe %>
+                  <%= f.label :is_coupe, "Coupe" %> 
+                </li>
+                
+                <li>
+                  <%= f.check_box :is_crossover %>
+                  <%= f.label :is_crossover, "Crossover" %> 
+                </li>
+                
+                <li>
+                  <%= f.check_box :is_hatchback %>
+                  <%= f.label :is_hatchback, "Hatchback" %>
+                </li>
+                
+                <li>
+                  <%= f.check_box :is_minivan %>
+                  <%= f.label :is_minivan, "Minivan" %> 
+                </li>
+                
+                <li>
+                  <%= f.check_box :is_pickup %>
+                  <%= f.label :is_pickup, "Pickup" %> 
+                </li>
+                
+                <li>
+                  <%= f.check_box :is_sedan %>
+                  <%= f.label :is_sedan, "Sedan" %>       
+                </li>
+                
+                <li>
+                  <%= f.check_box :is_suv %>
+                  <%= f.label :is_suv, "SUV" %>          
+                </li>
+                
+                <li>
+                  <%= f.check_box :is_van %>
+                  <%= f.label :is_van, "Van" %>          
+                </li>
+                
+                <li>
+                  <%= f.check_box :is_wagon %>
+                  <%= f.label :is_wagon, "Wagon" %>          
+                </li>
+              </ul>
+            
+              <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+                
+                Next
+                
+                <i class="fa fa-arrow-right search-parameter-next"></i>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

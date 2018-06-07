@@ -117,6 +117,42 @@ $(function() {
         }
       });
       
+    // test drive modal  
+      
+      var appointmentButton   = $('.btn-appointment');
+      var modalTestDrive      = $('#modal-test-drive');
+      var modalTestDriveClose = $('.modal-test-drive-close');
+      
+      appointmentButton.click(function() {
+        modalTestDrive.modal('show');
+      });
+      
+      modalTestDriveClose.click(function() {
+        modalTestDrive.modal('hide');
+      });  
+      
+      var modalTestDriveLeft   = $('.modal-test-drive-left');
+      var modalTestDriveRight  = $('.modal-test-drive-right');
+      var modalTestDriveScroll = $('.modal-test-drive-scroll');
+      
+      modalTestDriveLeft.click(function() {
+        
+        event.preventDefault();
+        
+        modalTestDriveScroll.animate({
+          scrollLeft: "-=300px"
+        }, "slow");
+      });
+      
+      modalTestDriveRight.click(function() {
+        
+        event.preventDefault();
+        
+        modalTestDriveScroll.animate({
+          scrollLeft: "+=300px"
+        }, "slow");
+      });
+      
     // dealer select modal
       
       var negotiateDealerButton  = $('.btn-negotiate-dealer')
@@ -131,6 +167,28 @@ $(function() {
         modalDealerSelect.modal('hide');
       });  
       
+      var modalDealerSelectLeft   = $('.modal-dealer-select-left');
+      var modalDealerSelectRight  = $('.modal-dealer-select-right');
+      var modalDealerSelectScroll = $('.modal-dealer-select-scroll');
+      
+      modalDealerSelectLeft.click(function() {
+        
+        event.preventDefault();
+        
+        modalDealerSelectScroll.animate({
+          scrollLeft: "-=300px"
+        }, "slow");
+      });
+      
+      modalDealerSelectRight.click(function() {
+        
+        event.preventDefault();
+        
+        modalDealerSelectScroll.animate({
+          scrollLeft: "+=300px"
+        }, "slow");
+      });
+      
     // buy online modal
   
       var buyOnlineButton     = $('.btn-buy-online')
@@ -144,6 +202,28 @@ $(function() {
       modalBuyOnlineClose.click(function() {
         modalBuyOnline.modal('hide');
       }); 
+      
+      var modalBuyOnlineLeft   = $('.modal-buy-online-left');
+      var modalBuyOnlineRight  = $('.modal-buy-online-right');
+      var modalBuyOnlineScroll = $('.modal-buy-online-scroll');
+      
+      modalBuyOnlineLeft.click(function() {
+        
+        event.preventDefault();
+        
+        modalBuyOnlineScroll.animate({
+          scrollLeft: "-=300px"
+        }, "slow");
+      });
+      
+      modalBuyOnlineRight.click(function() {
+        
+        event.preventDefault();
+        
+        modalBuyOnlineScroll.animate({
+          scrollLeft: "+=300px"
+        }, "slow");
+      });
   
     // image scaling
     
@@ -302,6 +382,37 @@ $(function() {
       
       modalSpecialOfferClose.click(function() {
         modalSpecialOffer.modal('hide');
+      });
+      
+    // dependent dropdown
+    
+      var vehicleModelSearch   = $('#vehicle-model-search');
+      var vehicleMakeSearch    = $('#vehicle-make-search');
+      var vehicle_model_search = vehicleModelSearch.html();
+        
+      vehicleModelSearch.prop("disabled", true);
+      
+      vehicleMakeSearch.change(function() {
+        
+        var vehicle_make_search = $('#vehicle-make-search :selected').text();
+        var escaped_vehicle_make_search = 
+          vehicle_make_search.
+            replace(/([ #;&,.+*~\':"!^$[\]()=>|\/@])/g, '\\$1');
+        var options_search = 
+          $(vehicle_model_search).
+            filter("optgroup[label=" + escaped_vehicle_make_search + "]").
+            html();
+        
+        if (options_search) {
+          vehicleModelSearch.html("<option value=''>All models</option>" +
+                                    options_search);
+          vehicleModelSearch.prop("disabled", false);
+        } 
+        
+        else {
+          vehicleModelSearch.empty();
+          vehicleModelSearch.prop("disabled", true);
+        }
       });
     
   // basics

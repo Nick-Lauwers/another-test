@@ -1,0 +1,2 @@
+[2018-05-30T00:24:51,840][WARN ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][young][40074][6] duration [19.8s], collections [1]/[20.6s], total [19.8s]/[35.4s], memory [826.7mb]->[298.7mb]/[1.9gb], all_pools {[young] [532.5mb]->[3.2mb]/[532.5mb]}{[survivor] [58.9mb]->[4.9mb]/[66.5mb]}{[old] [235.2mb]->[291.4mb]/[1.3gb]}
+[2018-05-30T00:24:51,973][WARN ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][40074] overhead, spent [19.8s] collecting in the last [20.6s]

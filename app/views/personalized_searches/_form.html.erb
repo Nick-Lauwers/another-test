@@ -1,91 +1,93 @@
-<% if logged_in? %>
-  <div class="search-personalization">
-    
-    <i class="fa fa-times search-personalization-close"></i>
-    
-    <span class="search-personalization-title">
-      Personalize Your Search
-    </span>
-    
-    <p class="search-personalization-info">
-      Not sure of a make or model? We provide a list of vehicles that is right 
-      for your needs.
-    </p>
-    
-    <%= form_for @personalized_search, 
-                 url: user_personalized_search_path(current_user) do |f| %>
-    
-      <div class="parameters">
-    
-        <ul class="parameters-list">
-            
-          <li>
-            <%= check_box_tag :is_convertible %>
-            <%= label_tag :is_convertible, "Convertible" %> 
-          </li>
-          
-          <li>
-            <%= check_box_tag :is_coupe %>
-            <%= label_tag :is_coupe, "Coupe" %> 
-          </li>
-          
-          <li>
-            <%= check_box_tag :is_crossover %>
-            <%= label_tag :is_crossover, "Crossover" %> 
-          </li>
-          
-          <li>
-            <%= check_box_tag :is_hatchback %>
-            <%= label_tag :is_hatchback, "Hatchback" %>
-          </li>
-          
-          <li>
-            <%= check_box_tag :is_minivan %>
-            <%= label_tag :is_minivan, "Minivan" %> 
-          </li>
-          
-          <li>
-            <%= check_box_tag :is_pickup %>
-            <%= label_tag :is_pickup, "Pickup" %> 
-          </li>
-          
-          <li>
-            <%= check_box_tag :is_sedan %>
-            <%= label_tag :is_sedan, "Sedan" %>       
-          </li>
-          
-          <li>
-            <%= check_box_tag :is_suv %>
-            <%= label_tag :is_suv, "SUV" %>          
-          </li>
-          
-          <li>
-            <%= check_box_tag :is_van %>
-            <%= label_tag :is_van, "Van" %>          
-          </li>
-          
-          <li>
-            <%= check_box_tag :is_wagon %>
-            <%= label_tag :is_wagon, "Wagon" %>          
-          </li>
-        </ul>
-        
-        <button class="left-paddle">
-          <i class="fa fa-chevron-left"></i>
-        </button>
-        
-        <button class="right-paddle">
-          <i class="fa fa-chevron-right"></i>
-        </button> 
+<div class="search-personalization">
+  
+  <i class="fa fa-times search-personalization-close"></i>
+  
+  <span class="search-personalization-title">
+    Personalize Your Search
+  </span>
+  
+  <p class="search-personalization-info">
+    Not sure of a make or model? We provide a list of vehicles that is right 
+    for your needs.
+  </p>
+  
+  <%= form_for @personalized_search do |f| %>
+  
+    <div class="search-personalization-parameters">
+
+      <div class="search-personalization-left">
+        <i class="fa fa-chevron-left"></i>
       </div>
       
-      <%= button_tag(type: 'submit', class: "btn-parameters") do %>
+      <div class="search-personalization-right">
+        <i class="fa fa-chevron-right"></i>
+      </div> 
+
+      <ul class="parameters-list">
+          
+        <li>
+          <%= f.check_box :is_convertible %>
+          <%= f.label :is_convertible, "Convertible" %> 
+        </li>
         
-        <i class="fa fa-search fa-lg filters-icon" 
-           aria-hidden="true"></i>
+        <li>
+          <%= f.check_box :is_coupe %>
+          <%= f.label :is_coupe, "Coupe" %> 
+        </li>
         
-        Search
-      <% end %>
+        <li>
+          <%= f.check_box :is_crossover %>
+          <%= f.label :is_crossover, "Crossover" %> 
+        </li>
+        
+        <li>
+          <%= f.check_box :is_hatchback %>
+          <%= f.label :is_hatchback, "Hatchback" %>
+        </li>
+        
+        <li>
+          <%= f.check_box :is_minivan %>
+          <%= f.label :is_minivan, "Minivan" %> 
+        </li>
+        
+        <li>
+          <%= f.check_box :is_pickup %>
+          <%= f.label :is_pickup, "Pickup" %> 
+        </li>
+        
+        <li>
+          <%= f.check_box :is_sedan %>
+          <%= f.label :is_sedan, "Sedan" %>       
+        </li>
+        
+        <li>
+          <%= f.check_box :is_suv %>
+          <%= f.label :is_suv, "SUV" %>          
+        </li>
+        
+        <li>
+          <%= f.check_box :is_van %>
+          <%= f.label :is_van, "Van" %>          
+        </li>
+        
+        <li>
+          <%= f.check_box :is_wagon %>
+          <%= f.label :is_wagon, "Wagon" %>          
+        </li>
+      </ul>
+    </div>
+    
+    <%= hidden_field_tag :redirect_location,
+                         price_personalized_search_path(@personalized_search) if 
+                           (current_user && 
+                            current_user.personalized_search.present?) %>
+    
+    <%= button_tag(type: 'submit', class: "btn-parameters") do %>
+      
+      <i class="fa fa-search fa-lg filters-icon" 
+         aria-hidden="true"></i>
+      
+      Search
     <% end %>
-  </div>
-<% end %>
+  <% end %>
+</div>

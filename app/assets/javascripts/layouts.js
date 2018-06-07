@@ -46,7 +46,8 @@ $(function() {
             html();
         
         if (options_header) {
-          vehicleModelHeader.html(options_header);
+          vehicleModelHeader.html("<option value=''>All models</option>" + 
+                                    options_header);
           vehicleModelHeader.prop("disabled", false);
         } 
         

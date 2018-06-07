@@ -1,0 +1,42 @@
+[2018-05-28T22:18:35,498][INFO ][o.e.n.Node               ] [] initializing ...
+[2018-05-28T22:18:35,825][INFO ][o.e.e.NodeEnvironment    ] [ht0EVsn] using [1] data paths, mounts [[/ (none)]], net usable_space [5.9gb], net total_space [10.6gb], spins? [possibly], types [aufs]
+[2018-05-28T22:18:35,826][INFO ][o.e.e.NodeEnvironment    ] [ht0EVsn] heap size [1.9gb], compressed ordinary object pointers [true]
+[2018-05-28T22:18:36,001][INFO ][o.e.n.Node               ] [ht0EVsn] node name [ht0EVsn] derived from node ID; set [node.name] to override
+[2018-05-28T22:18:36,022][INFO ][o.e.n.Node               ] [ht0EVsn] version[5.0.0], pid[143242], build[253032b/2016-10-26T04:37:51.531Z], OS[Linux/4.9.80-c9/amd64], JVM[Oracle Corporation/Java HotSpot(TM) 64-Bit Server VM/1.8.0_111/25.111-b14]
+[2018-05-28T22:18:59,652][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [aggs-matrix-stats]
+[2018-05-28T22:18:59,657][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [ingest-common]
+[2018-05-28T22:18:59,657][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [lang-expression]
+[2018-05-28T22:18:59,657][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [lang-groovy]
+[2018-05-28T22:18:59,658][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [lang-mustache]
+[2018-05-28T22:18:59,658][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [lang-painless]
+[2018-05-28T22:18:59,658][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [percolator]
+[2018-05-28T22:18:59,658][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [reindex]
+[2018-05-28T22:18:59,658][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [transport-netty3]
+[2018-05-28T22:18:59,659][INFO ][o.e.p.PluginsService     ] [ht0EVsn] loaded module [transport-netty4]
+[2018-05-28T22:18:59,660][INFO ][o.e.p.PluginsService     ] [ht0EVsn] no plugins loaded
+[2018-05-28T22:19:14,887][INFO ][o.e.n.Node               ] [ht0EVsn] initialized
+[2018-05-28T22:19:14,888][INFO ][o.e.n.Node               ] [ht0EVsn] starting ...
+[2018-05-28T22:19:15,543][INFO ][o.e.t.TransportService   ] [ht0EVsn] publish_address {127.0.0.1:9300}, bound_addresses {[::1]:9300}, {127.0.0.1:9300}
+[2018-05-28T22:19:15,634][WARN ][o.e.b.BootstrapCheck     ] [ht0EVsn] max virtual memory areas vm.max_map_count [65530] likely too low, increase to at least [262144]
+[2018-05-28T22:19:21,235][WARN ][o.e.d.z.p.u.UnicastZenPing] [ht0EVsn] [1] failed send ping to {#zen_unicast_6#}{7CTjzMcDRmq_FyY0OxKV-Q}{::1}{[::1]:9300}
+java.lang.IllegalStateException: handshake failed with {#zen_unicast_6#}{7CTjzMcDRmq_FyY0OxKV-Q}{::1}{[::1]:9300}
+	at org.elasticsearch.transport.TransportService.handshake(TransportService.java:364) ~[elasticsearch-5.0.0.jar:5.0.0]
+	at org.elasticsearch.transport.TransportService.connectToNodeLightAndHandshake(TransportService.java:339) ~[elasticsearch-5.0.0.jar:5.0.0]
+	at org.elasticsearch.transport.TransportService.connectToNodeLightAndHandshake(TransportService.java:313) ~[elasticsearch-5.0.0.jar:5.0.0]
+	at org.elasticsearch.discovery.zen.ping.unicast.UnicastZenPing$2.run(UnicastZenPing.java:419) [elasticsearch-5.0.0.jar:5.0.0]
+	at org.elasticsearch.common.util.concurrent.ThreadContext$ContextPreservingRunnable.run(ThreadContext.java:444) [elasticsearch-5.0.0.jar:5.0.0]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1142) [?:1.8.0_111]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:617) [?:1.8.0_111]
+	at java.lang.Thread.run(Thread.java:745) [?:1.8.0_111]
+Caused by: org.elasticsearch.transport.ReceiveTimeoutTransportException: [][[::1]:9300][internal:transport/handshake] request_id [2] timed out after [3417ms]
+	at org.elasticsearch.transport.TransportService$TimeoutHandler.run(TransportService.java:840) ~[elasticsearch-5.0.0.jar:5.0.0]
+	... 4 more
+[2018-05-28T22:19:21,699][INFO ][o.e.c.s.ClusterService   ] [ht0EVsn] new_master {ht0EVsn}{ht0EVsnlRuyePr1G07P69g}{FEJ4WVcpS2yNgnOJt63aow}{127.0.0.1}{127.0.0.1:9300}, reason: zen-disco-elected-as-master ([0] nodes joined)
+[2018-05-28T22:19:21,845][INFO ][o.e.h.HttpServer         ] [ht0EVsn] publish_address {127.0.0.1:9200}, bound_addresses {[::1]:9200}, {127.0.0.1:9200}
+[2018-05-28T22:19:21,845][INFO ][o.e.n.Node               ] [ht0EVsn] started
+[2018-05-28T22:19:23,821][INFO ][o.e.g.GatewayService     ] [ht0EVsn] recovered [5] indices into cluster_state
+[2018-05-28T22:19:28,063][INFO ][o.e.c.r.a.AllocationService] [ht0EVsn] Cluster health status changed from [RED] to [YELLOW] (reason: [shards started [[vehicles][0]] ...]).
+[2018-05-28T22:20:05,638][WARN ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][young][45][2] duration [3.8s], collections [1]/[4.2s], total [3.8s]/[4s], memory [577.3mb]->[247.1mb]/[1.9gb], all_pools {[young] [528.9mb]->[13.7mb]/[532.5mb]}{[survivor] [48.3mb]->[66.5mb]/[66.5mb]}{[old] [0b]->[167.1mb]/[1.3gb]}
+[2018-05-28T22:20:05,642][WARN ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][45] overhead, spent [3.8s] collecting in the last [4.2s]
+[2018-05-28T23:25:13,258][WARN ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][young][3943][3] duration [4s], collections [1]/[4s], total [4s]/[8.1s], memory [766.2mb]->[307.6mb]/[1.9gb], all_pools {[young] [532.5mb]->[3.7mb]/[532.5mb]}{[survivor] [66.5mb]->[60.2mb]/[66.5mb]}{[old] [167.1mb]->[243.6mb]/[1.3gb]}
+[2018-05-28T23:25:13,268][WARN ][o.e.m.j.JvmGcMonitorService] [ht0EVsn] [gc][3943] overhead, spent [4s] collecting in the last [4s]

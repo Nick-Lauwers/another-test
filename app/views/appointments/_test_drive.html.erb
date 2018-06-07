@@ -2,7 +2,13 @@
 <!--are these ordered based on most recent?-->
 
 <li id="test-drive-item-<%= test_drive.id %>" 
-    class="col-md-6 test-drive-item">
+    class="col-md-6 test-drive-item shortlist-item-<%= current_user.
+                                                       favorite_vehicles.
+                                                       where(
+                                                         vehicle: 
+                                                         test_drive.vehicle).
+                                                       first.
+                                                       vehicle_id %>">
   <%= link_to conversation_messages_path(test_drive.conversation) do %>
 
     <div class="test-drive-item-content">

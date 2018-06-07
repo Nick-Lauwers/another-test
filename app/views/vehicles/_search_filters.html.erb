@@ -1,123 +1,90 @@
-<!--<(perc)= search_field @search, -->
-<!--    remote: true, -->
-<!--    url: search_vehicles_path, -->
-<!--    method: :get do |f| %>-->
-    
-<%= form_tag search_vehicles_path, 
-             method: :get do %>
-
-  <!--params vehicle present fix with matches-->
+<%= form_for_filterrific @filterrific, 
+                         html: 
+                           { id: 'filterrific-no-ajax-auto-submit' } do |f| %>
   
-  <% if params[:vehicle].present? %>      
-  
-    <%= hidden_field_tag :vehicle_make_id,  
-                         params[:vehicle][:vehicle_make_id] %>
-    
-    <%= hidden_field_tag :vehicle_model_id, 
-                         params[:vehicle][:vehicle_model_id] %>
-  <% end %>
-  
-  <%= hidden_field_tag :city,             params[:city] %>
-
-  <div class="slider-filters">
+  <div class="vehicle-make-and-model-filters">
     <div class="row">
       
-      <div class="col-md-4 year">
+      <div class="col-md-4">
         <div class="form-group form-group-primary">
           
-          <%= label_tag :year_gteq, "Earliest Year" %>
+          <%= f.label :with_vehicle_make_id, "Vehicle" %>
           
-          <span id="year_slider_val" class="slider-label">1900</span>
+          <div class="form-element"> 
           
-          <%= text_field_tag :year_gteq, 
-                             nil,
-                             id: 'year_slider', 
-                             type: 'text',
-                             data: { 'slider-min'   => '1900',
-                                     'slider-max'   => '2016',
-                                     'slider-step'  => '1',
-                                     'slider-value' => '1900' } %>
-              <!--:onChange => "javascript: this.form.commit.click()" %>-->
+            <%= f.collection_select(:with_vehicle_make_id,
+                                    VehicleMake.all,
+                                    :id,
+                                    :name,
+                                    { include_blank: true,
+                                      prompt: "All makes" },
+                                    id: "vehicle-make-search",
+                                    class: "form-control select-secondary") %>
+                                            
+            <i class="fa fa-caret-down fa-lg form-caret" 
+               aria-hidden="true"></i>
+          </div>
         </div>
       </div>
       
-      <div class="col-md-4 price">
+      <div class="col-md-4">
         <div class="form-group form-group-primary">
           
-          <%= label_tag :price_lteq, "Max Price" %>
+          <%= f.label :with_vehicle_model_id, "&nbsp;".html_safe %>
           
-          <span id="price_slider_val" class="slider-label">
-            $200000
-          </span>
-          
-          <%= text_field_tag :price_lteq, 
-                             nil,
-                             id: 'price_slider', 
-                             type: 'text',
-                             data: { 'slider-min'   => '0',
-                                     'slider-max'   => '200000',
-                                     'slider-step'  => '1',
-                                     'slider-value' => '200000' } %>
-              <!--:onchange => "javascript: this.form.commit.click()" %>-->
+          <div class="form-element">
+            <%= f.grouped_collection_select(:with_vehicle_model_id,
+                                            VehicleMake.order(:name),
+                                            :vehicle_models,
+                                            :name,
+                                            :id,
+                                            :name,
+                                            { include_blank: 'All models' },
+                                            id: "vehicle-model-search",
+                                            class: "form-control 
+                                                    select-secondary") %>
+                                                    
+            <i class="fa fa-caret-down fa-lg form-caret" 
+               aria-hidden="true"></i>
+          </div>
         </div>
       </div>
       
-      <div class="col-md-4 mileage">
+      <div class="col-md-4">
         <div class="form-group form-group-primary">
           
-          <%= label_tag :mileage_lteq, "Max Mileage" %>
+          <%= f.label :with_city, "City" %>
           
-          <span id="mileage_slider_val" class="slider-label">
-            300000 km
-          </span>
-          
-          <%= text_field_tag :mileage_lteq,
-                             nil,
-                             id: 'mileage_slider', 
-                             type: 'text',
-                             data: { 'slider-min'   => '0',
-                                     'slider-max'   => '300000',
-                                     'slider-step'  => '1',
-                                     'slider-value' => '300000' } %>
-              <!--:onchange => "javascript: this.form.commit.click()" %>-->
+          <div class="form-element">
+            <%= f.text_field :with_city, 
+                             placeholder: "E.g. San Francisco, CA", 
+                             class: "form-control 
+                                     form-control-secondary
+                                     typeahead" %>
+          </div> 
         </div>
       </div>
     </div>
   </div>
   
   <div class="dropdown-filters">
+    
     <div class="row">
-      
-      <!--<div class="col-md-4 vehicle-condition">-->
-      <!--  <h4 class="vehicle-condition-title">Vehicle Condition</h4>-->
-      <!--  <ul class="vehicle-condition-list">-->
-      <!--    <li>-->
-      <!--      <(perc)= radio_button_tag 'q[vehicle_condition_eq]', 'new', false, -->
-      <!--          :onclick => "javascript: this.form.commit.click()" (perc)>-->
-      <!--      <(perc)= label_tag(:q_vehicle_condition_eq_new, "New", :value => 'New') %>-->
-      <!--    </li>-->
-      <!--    <li>-->
-      <!--      <(perc)= radio_button_tag 'q[vehicle_condition_eq]', 'old', false, -->
-      <!--          :onclick => "javascript: this.form.commit.click()" (perc)>-->
-      <!--      <(perc)= label_tag(:q_vehicle_condition_eq_old, "Old", :value => 'Old') %>-->
-      <!--    </li>-->
-      <!--  </ul>-->
-      <!--</div>-->
       
       <div class="col-md-4 body-style">
         <div class="form-group form-group-primary">
           
-          <%= label_tag :body_style_eq, "Style and Engine" %>
+          <%= f.label :with_body_style, "Style and Engine" %>
           
           <div class="form-element">
             
-            <%= select_tag :body_style_eq, 
-                           options_for_select(["Convertible", "Coupe", 
-                             "Crossover", "Hatchback", "Minivan", "Pickup", 
-                             "Sedan", "SUV", "Van", "Wagon"]),
-                           prompt: "Body style",
-                           class: "form-control select-primary" %>
-                <!--:onChange => "javascript: this.form.commit.click()" %>-->
+            <%= f.select :with_body_style, 
+                         [ "Convertible", "Coupe", "Crossover", "Hatchback", 
+                           "Minivan", "Pickup", "Sedan", "SUV", "Van", 
+                           "Wagon" ],
+                         { include_blank: true,
+                           prompt: "Body style" },
+                         class: "form-control select-primary" %>
                 
             <i class="fa fa-car fa-lg form-icon" 
                aria-hidden="true"></i>
@@ -130,18 +97,19 @@
       
       <div class="col-md-4 color">
         <div class="form-group form-group-primary">
-          <%= label_tag :color_eq, "&nbsp;".html_safe %>
+          
+          <%= f.label :with_color, "&nbsp;".html_safe %>
           
           <div class="form-element">
             
-            <%= select_tag :color_eq, 
-                           options_for_select(["Black", "Blue", "Brown", "Gold", 
-                             "Gray", "Green", "Orange", "Pink", "Purple", "Red", 
-                             "Silver", "Teal", "Unknown", "White", "Yellow"]),
-                           prompt: "Color", 
-                           class: "form-control select-primary" %>
-                <!--:onChange => "javascript: this.form.commit.click()" %>-->
-                
+            <%= f.select :with_color, 
+                         [ "Black", "Blue", "Brown", "Gold", 
+                           "Gray", "Green", "Orange", "Pink", "Purple", "Red", 
+                           "Silver", "Teal", "Unknown", "White", "Yellow" ],
+                         { include_blank: true,
+                           prompt: "Color" },
+                         class: "form-control select-primary" %>
+
             <i class="fa fa-paint-brush fa-lg form-icon" 
                aria-hidden="true"></i>
              
@@ -154,18 +122,17 @@
       <div class="col-md-4 seating-capacity">
         <div class="form-group form-group-primary">
           
-          <%= label_tag :seating_capacity_gteq, "&nbsp;".html_safe %>
+          <%= f.label :with_seating_capacity_gte, "&nbsp;".html_safe %>
           
           <div class="form-element">
             
-            <%= select_tag :seating_capacity_gteq, 
-                           options_for_select([["2", 2], ["3", 3], ["4", 4], 
-                             ["5", 5], ["6", 6], ["7", 7], ["8", 8], 
-                             ["9+", 9]]),
-                           prompt: "Seating",
-                           class: "form-control select-primary" %>
-                <!--:onChange => "javascript: this.form.commit.click()" %>-->
-                
+            <%= f.select :with_seating_capacity_gte, 
+                         [ ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6], 
+                           ["7", 7], ["8", 8], ["9+", 9] ],
+                         { include_blank: true,
+                           prompt: "Seating" },
+                         class: "form-control select-primary" %>
+
             <i class="fa fa-users fa-lg form-icon" 
                aria-hidden="true"></i>
                
@@ -175,19 +142,19 @@
         </div>
       </div>
     </div>
-  
+    
     <div class="row">
       
       <div class="col-md-4 transmission">
         <div class="form-group form-group-primary">
           <div class="form-element">
             
-            <%= select_tag :transmission_eq, 
-                           options_for_select(["Automatic", "Manual"]),
-                           prompt: "Transmission",
-                           class: "form-control select-primary" %>
-                <!--:onChange => "javascript: this.form.commit.click()" %>-->
-                
+            <%= f.select :with_transmission, 
+                         [ "Automatic", "Manual" ],
+                         { include_blank: true,
+                           prompt: "Transmission" },
+                         class: "form-control select-primary" %>
+
             <i class="fa fa-cogs fa-lg form-icon" 
                aria-hidden="true"></i>
                
@@ -201,14 +168,14 @@
         <div class="form-group form-group-primary">
           <div class="form-element">
             
-            <%= select_tag :fuel_type_eq, 
-                           options_for_select(["Biodiesel", 
-                             "Compressed Natural Gas", "Diesel", "Electric", 
-                             "Flex Fuel", "Gasoline", "Hybrid", "Propane"]),
-                           prompt: "Fuel type",
-                           class: "form-control select-primary" %>
-                <!--:onChange => "javascript: this.form.commit.click()" %>-->
-                
+            <%= f.select :with_fuel_type, 
+                         [ "Biodiesel", "Compressed Natural Gas", "Diesel", 
+                           "Electric", "Flex Fuel", "Gasoline", "Hybrid", 
+                           "Propane"],
+                         { include_blank: true,
+                           prompt: "Fuel type" },
+                         class: "form-control select-primary" %>
+
             <i class="fa fa-leaf fa-lg form-icon" 
                aria-hidden="true"></i>
                
@@ -222,14 +189,13 @@
         <div class="form-group form-group-primary">
           <div class="form-element">
             
-            <%= select_tag :drivetrain_eq, 
-                           options_for_select(["All-Wheel Drive", 
-                             "Front-Wheel Drive", "Rear-Wheel Drive", 
-                             "Four-Wheel Drive", "4X2"]),
-                           prompt: "Drivetrain",
-                           class: "form-control select-primary" %>
-                <!--:onChange => "javascript: this.form.commit.click()" %>-->
-                
+            <%= f.select :with_drivetrain, 
+                         [ "All-Wheel Drive", "Front-Wheel Drive", 
+                           "Rear-Wheel Drive", "Four-Wheel Drive", "4X2"],
+                         { include_blank: true,
+                           prompt: "Drivetrain" },
+                         class: "form-control select-primary" %>
+
             <i class="fa fa-wrench fa-lg form-icon" 
                aria-hidden="true"></i>
                
@@ -241,63 +207,134 @@
     </div>
   </div>
   
+  <div class="slider-filters">
+    <div class="row">
+      
+      <div class="col-md-4 year">
+        <div class="form-group form-group-primary">
+          
+          <%= f.label :with_year_gte, "Earliest Year" %>
+          
+          <span id="year_slider_val" class="slider-label">1900</span>
+          
+          <%= f.text_field :with_year_gte, 
+                           id: 'year_slider', 
+                           type: 'text',
+                           data: { 'slider-min'   => '1900',
+                                   'slider-max'   => '2016',
+                                   'slider-step'  => '1',
+                                   'slider-value' => '1900' } %>
+        </div>
+      </div>
+      
+      <div class="col-md-4 price">
+        <div class="form-group form-group-primary">
+          
+          <%= f.label :with_price_lte, "Max Price" %>
+          
+          <span id="price_slider_val" class="slider-label">
+            $200000
+          </span>
+          
+          <%= f.text_field :with_price_lte, 
+                           id: 'price_slider', 
+                           type: 'text',
+                           data: { 'slider-min'   => '0',
+                                   'slider-max'   => '200000',
+                                   'slider-step'  => '1',
+                                   'slider-value' => '200000' } %>
+        </div>
+      </div>
+      
+      <div class="col-md-4 mileage">
+        <div class="form-group form-group-primary">
+          
+          <%= f.label :with_mileage_lte, "Max Mileage" %>
+          
+          <span id="mileage_slider_val" class="slider-label">
+            300000 km
+          </span>
+          
+          <%= f.text_field :with_mileage_lte,
+                           id: 'mileage_slider', 
+                           type: 'text',
+                           data: { 'slider-min'   => '0',
+                                   'slider-max'   => '300000',
+                                   'slider-step'  => '1',
+                                   'slider-value' => '300000' } %>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <div class="installed-options checkbox-filters">
     
     <h4 class="installed-options-title">Installed Options</h4>
     
     <ul class="installed-options-list">
       
-      <!--<li>-->
-      <!--  <(perc)= f.check_box :is_autonomy %>-->
-      <!--  <(perc)= f.label :is_autonomy, "Autonomy" %>         -->
-      <!--</li>-->
-      
       <li>
-        <%= check_box_tag :is_backup_camera %>
-        <%= label_tag :is_backup_camera, "Backup Camera" %> 
+        <%= f.check_box :with_backup_camera %>
+        <%= f.label :with_backup_camera, "Backup Camera" %> 
       </li>
       
       <li>
-        <%= check_box_tag :is_bluetooth %>
-        <%= label_tag :is_bluetooth, "Bluetooth" %> 
+        <%= check_box_tag :with_bluetooth %>
+        <%= label_tag :with_bluetooth, "Bluetooth" %> 
       </li>
       
       <li>
-        <%= check_box_tag :is_dvd_entertainment_system %>
-        <%= label_tag :is_dvd_entertainment_system, 
+        <%= check_box_tag :with_dvd_entertainment_system %>
+        <%= label_tag :with_dvd_entertainment_system, 
                       "DVD Entertainment System" %> 
       </li>
       
       <li>
-        <%= check_box_tag :is_leather_seats %>
-        <%= label_tag :is_leather_seats, "Leather Seats" %>
+        <%= check_box_tag :with_leather_seats %>
+        <%= label_tag :with_leather_seats, "Leather Seats" %>
       </li>
       
       <li>
-        <%= check_box_tag :is_navigation_system %>
-        <%= label_tag :is_navigation_system, "Navigation System" %> 
+        <%= check_box_tag :with_navigation_system %>
+        <%= label_tag :with_navigation_system, "Navigation System" %> 
       </li>
       
       <li>
-        <%= check_box_tag :is_remote_start %>
-        <%= label_tag :is_remote_start, "Remote Start" %> 
+        <%= check_box_tag :with_remote_start %>
+        <%= label_tag :with_remote_start, "Remote Start" %> 
       </li>
       
       <li>
-        <%= check_box_tag :is_sunroof %>
-        <%= label_tag :is_sunroof, "Sunroof" %>       
+        <%= check_box_tag :with_sunroof %>
+        <%= label_tag :with_sunroof, "Sunroof" %>       
       </li>
       
       <li>
-        <%= check_box_tag :is_tow_package %>
-        <%= label_tag :is_tow_package, "Tow Package" %>          
+        <%= check_box_tag :with_tow_package %>
+        <%= label_tag :with_tow_package, "Tow Package" %>          
       </li>
     </ul>
   </div>
   
-  <%= submit_tag "Apply Filters", class: "btn btn-apply-filters" %>
-<% end %>
-
-<button class="btn btn-cancel-filters">Cancel</button>
+  <div class="row">
     
-<div class="filter-button-filler"></div>
+    <div class="col-md-4">
+      <%= f.submit "Apply", class: "btn btn-apply-filters" %>
+    </div>
+    
+    <div class="col-md-4">
+      <%= link_to("Reset", 
+                  reset_filterrific_url, 
+                  class: "btn btn-cancel-filters") %>
+    </div>
+    
+    <div class="col-md-4">
+      <div class="btn btn-cancel-filters">Cancel</div>
+    </div>
+  </div>
+  
+  <!--<div>-->
+  <!--  Sorted by-->
+  <!--  <(perc)= f.select(:sorted_by, @filterrific.select_options[:sorted_by]) %>-->
+  <!--</div>-->
+<% end %>

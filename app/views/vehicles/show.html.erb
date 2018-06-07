@@ -66,8 +66,8 @@
           
           <% else %>
             <%= form_for @conversation, 
-                       url: conversations_path(@conversation), 
-                       method: :post do |f| %>
+                         url: conversations_path(@conversation), 
+                         method: :post do |f| %>
                        
               <%= f.hidden_field :sender_id,          value: current_user.id if 
                                                              current_user %>
@@ -87,105 +87,213 @@
               <% end %>
             <% end %>
           <% end %>
-          
-          <!--<(perc) else %>-->
-          <!--  <div class="btn-navbar-share-hidden">-->
-          <!--    $<(perc)= @vehicle.price %>-->
-          <!--  </div>-->
-          <!--<(perc) end %>-->
-          
-          <!--<div class="single-action">-->
-          <!--  <= form_for @conversation, -->
-          <!--               url: conversations_path(@conversation), -->
-          <!--               method: :post do |f| %>-->
-                     
-          <!--    <= f.hidden_field :sender_id,          value: current_user.id if -->
-          <!--                                                   current_user %>-->
-              
-          <!--    <= f.hidden_field :recipient_id,       value: @user.id %>-->
-              
-          <!--    <= f.hidden_field :sender_archived,    value: false %>-->
-            
-          <!--    <= f.hidden_field :recipient_archived, value: false %>-->
-              
-          <!--    <= button_tag(class: "hidden-xs") do %>-->
-          <!--      <i class='fa fa-comments-o single-action-icon'></i>-->
-          <!--    < end %>-->
-          <!--  < end %>-->
-          <!--</div>-->
-          
-          <!--<(perc)= form_for @conversation, -->
-          <!--             url: conversations_path(@conversation), -->
-          <!--             method: :post do |f| %>-->
-                       
-          <!--  <(perc)= f.hidden_field :sender_id,          value: current_user.id if -->
-          <!--                                                 current_user %>-->
-            
-          <!--  <(perc)= f.hidden_field :recipient_id,       value: @user.id %>-->
-            
-          <!--  <(perc)= f.hidden_field :sender_archived,    value: false %>-->
-
-          <!--  <(perc)= f.hidden_field :recipient_archived, value: false %>-->
-            
-          <!--  <(perc)= f.submit "Chat with " + @user.first_name, -->
-          <!--               class: "btn-navbar-contact-hidden" %>-->
-          <!--<(perc) end %>-->
         </div>
       </div>
     </div>
   </div>
 </div>
 
-<div id="vehicle-overview">
-  <div class="vehicle-overview-content">
-    <div class="row">
-    
-      <div class="col-md-7">
-        <div class="vehicle-overview-text">
+<%= form_for @conversation do |f| %>
+  
+  <% if @vehicle.user.dealership_id.present? %>
+    <div class="modal" id="modal-test-drive" role="dialog">
+      
+      <div class="modal-test-drive-header">
+        
+        <i class="fa fa-times fa-lg modal-test-drive-close" 
+           aria-hidden="true"></i>
+        
+        <div class="row modal-test-drive-header-content vertical-align">
           
-          <div class="vehicle-overview-title">
-            
-            <h1 class="vehicle-overview-heading visible-xs">
-              <%= @vehicle.listing_name %>
-            </h1>
-            
-            <div class="row vertical-align">
-            
-              <div class="col-md-2 col-xs-4 avatar-and-online">
-                
-                <%= link_to user_path(@vehicle.user) do %>
-                  <div class="vehicle-overview-avatar avatar-general", 
-                       style="background-image: url(
-                               '<%= @vehicle.user.avatar.url(:thumb) %>')">
-                  </div>
-                <% end %>
-
-                <% if @vehicle.user.online? %>
-                  <div class="online online-lg-primary hidden-xs"></div>
-                <% end %>
-              </div>
-              
-              <div class="col-md-10 col-xs-8">
-
-                <h1 class="vehicle-overview-heading hidden-xs">
-                  <%= @vehicle.listing_name %>
-                </h1>
-                
-                <%= link_to @vehicle.user.full_name, 
-                            @vehicle.user,
-                            class: "vehicle-overview-subheading" %>
-                
-                <span class="hidden-xs"> · </span>
-                            
-                <span class="average-rating"></span>
-              </div>
-            </div>
+          <div class="col-md-4">
+            <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/dealer-select.png") %>
           </div>
           
-          <!--<(perc) if logged_in? && -->
-          <!--      !current_user.favorite_vehicles.exists?(vehicle_id:-->
-          <!--                                              @vehicle.id) %>-->
-                                                        
+          <div class="col-md-8">
+            <h1 class="modal-test-drive-title">Select An Associate</h1>
+          </div>
+        </div>
+      </div>
+      
+      <div class="modal-test-drive-body">
+        <div class="modal-test-drive-body-content">
+          
+          <h2 class="modal-test-drive-subtitle">
+            At Mototrova, we believe in the power of the consumer.
+          </h2>
+          
+          <span class="modal-test-drive-info">
+            Select the dealer that you would most like to work with.
+          </span>
+          
+          <div class="modal-test-drive-scroll">
+            
+            <i class="fa fa-lg fa-chevron-left modal-test-drive-left"></i>
+    
+            <i class="fa fa-lg fa-chevron-right modal-test-drive-right"></i>
+            
+            <ol class="modal-test-drive-list">
+              <% User.where(dealership_id: @vehicle.user.dealership_id).each do 
+                    |dealer| %>
+                <li class="modal-test-drive-item">
+  
+                  <%= f.hidden_field :recipient_id, value: dealer.id %>
+                  
+                  <%= button_tag(class: "test-drive-button") do %>
+                    <div class="row vertical-align">
+                      
+                      <div class="col-md-3 avatar-and-online">
+                        
+                        <div class="test-drive-avatar avatar-general",
+                             style="background-image: url(
+                                     '<%= dealer.avatar.url(:thumb) %>')">
+                        </div>
+                        
+                        <!--<(perc) if @vehicle.user.online? %>-->
+                        <!--  <div class="online online-lg-primary hidden-xs"></div>-->
+                        <!--<(perc) end %>-->
+                      </div>
+                      
+                      <div class="col-md-9 test-drive-info">
+                
+                        <span class="test-drive-name hidden-xs">
+                          <%= dealer.full_name %>
+                        </span>
+                                    
+                        <span class="average-rating"></span>
+                        
+                        <span class="test-drive-reviews">
+                           · <%= pluralize(@vehicle.reviews.count, "review") %>
+                        </span>
+                      </div>
+                    </div>
+                  <% end %>
+                </li>
+              <% end %>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+
+  <div id="vehicle-overview">
+    <div class="vehicle-overview-content">
+      <div class="row">
+      
+        <div class="col-md-7">
+          <div class="vehicle-overview-text">
+            
+            <div class="vehicle-overview-title">
+              
+              <h1 class="vehicle-overview-heading visible-xs">
+                <%= @vehicle.listing_name %>
+              </h1>
+              
+              <div class="row vertical-align">
+              
+                <div class="col-md-2 col-xs-4">
+                  
+                  <% if @vehicle.user.dealership_id.present? %>
+                    <%= link_to Dealership.find(@vehicle.user.dealership_id) do %>
+                      <div class="vehicle-overview-avatar avatar-general"
+                           style="background-image: url(
+                                   '<%= Dealership.
+                                          find(@vehicle.user.dealership_id).
+                                          photo.
+                                          url() %>')">
+                      </div>
+                    <% end %>
+                    
+                  <% else %>
+                    <%= link_to @vehicle.user do %>
+                      <div class="vehicle-overview-avatar avatar-general"
+                           style="background-image: url(
+                                   '<%= @vehicle.user.avatar.url(:thumb) %>')">
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+                
+                <div class="col-md-10 col-xs-8">
+  
+                  <h1 class="vehicle-overview-heading hidden-xs">
+                    <%= @vehicle.listing_name %>
+                  </h1>
+                  
+                  <% if @vehicle.user.dealership_id.present? %>
+                    <div class="row vertical-align">
+                      
+                      <div class="col-xs-1">
+                        <div class="dealer-a-avatar avatar-general"
+                             style="background-image: url(
+                                     '<%= User.
+                                            where(dealership_id: 
+                                                    @vehicle.user.dealership_id).
+                                            first.
+                                            avatar.
+                                            url(:thumb) %>">
+                          
+                          <% if User.
+                                where(dealership_id: @vehicle.user.dealership_id).
+                                second.
+                                present? %>
+                            <div class="dealer-b-avatar avatar-general"
+                                 style="background-image: url(
+                                         '<%= User.
+                                                where(dealership_id: 
+                                                        @vehicle.user.dealership_id).
+                                                second.
+                                                avatar.
+                                                url(:thumb) %>">
+                            </div>
+                          <% end %>
+                          
+                          <% if User.
+                                where(dealership_id: @vehicle.user.dealership_id).
+                                third.
+                                present? %>
+                            <div class="dealer-c-avatar avatar-general"
+                                 style="background-image: url(
+                                         '<%= User.
+                                                where(dealership_id: 
+                                                        @vehicle.user.dealership_id).
+                                                third.
+                                                avatar.
+                                                url(:thumb) %>">
+                            </div>
+                          <% end %>
+                        </div>
+                      </div>
+                      
+                      <div class="col-xs-11">
+                        
+                        <%= link_to Dealership.find(@vehicle.user.dealership_id).name, 
+                                    Dealership.find(@vehicle.user.dealership_id),
+                                    class: "vehicle-overview-subheading
+                                            vehicle-overview-subheading-dealer" %>
+                        
+                        <span class="hidden-xs"> · </span>
+                                    
+                        <span class="average-rating"></span>
+                      </div>
+                    </div>
+                  
+                  <% else %>
+                    
+                    <%= link_to @vehicle.user.full_name, 
+                                @vehicle.user,
+                                class: "vehicle-overview-subheading
+                                        vehicle-overview-subheading-private" %>
+  
+                    <span class="hidden-xs"> · </span>
+                                
+                    <span class="average-rating"></span>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            
             <%= link_to favorite_vehicle_path(@vehicle), 
                         class: "vehicle-overview-link",
                         method: :put do %>
@@ -195,89 +303,127 @@
                    
               Add to Shortlist
             <% end %>
-          <!--<(perc) end %>-->
-          
-          <p class="vehicle-overview-description"><%= @vehicle.summary %></p>
-          
-          <div class="vehicle-overview-views">
-            <div class="row vertical-align">
-              
-              <div class="col-md-2">
-                <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/creativity.png") %>
-              </div>
-              
-              <div class="col-md-10">
-                <p class="vehicle-overview-views-info">
-                  
-                  <strong>
-                    <%= @vehicle.user.first_name %>'s car is on people's minds.
-                  </strong>
-                  
-                  <br>
-                  
-                  It's received 500+ views this week.
-                </p>
+  
+            <p class="vehicle-overview-description"><%= @vehicle.summary %></p>
+            
+            <div class="vehicle-overview-views">
+              <div class="row vertical-align">
+                
+                <div class="col-md-2">
+                  <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/creativity.png") %>
+                </div>
+                
+                <div class="col-md-10">
+                  <p class="vehicle-overview-views-info">
+                    
+                    <strong>
+                      <% if @vehicle.user.dealership_id.present? %>
+                        This
+                      <% else %>
+                        <%= @vehicle.user.first_name %>'s 
+                      <% end %>
+                      car is on people's minds.
+                    </strong>
+                    
+                    <br>
+                    
+                    It's received 500+ views this week.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
-
-          <!--<div class="vehicle-overview-products">-->
-              
-          <!--  <span class="products-title">Add to Wish List</span>-->
-            
-          <!--  <(perc)= link_to "Spoiler at Reduced Cost", -->
-          <!--              '#', -->
-          <!--              class: "products-link" %>-->
-          <!--</div>-->
-        </div>
-      </div>
-      
-      <div class="col-md-4 col-md-offset-1">
-  
-        <div class="appointment hidden-xs">
-          
-          <%= render "conversations/appointment_form" %>
-
-          <!--<(perc) if logged_in? && -->
-          <!--      !current_user.favorite_vehicles.exists?(vehicle_id:-->
-          <!--                                              @vehicle.id) %>-->
-                    
-          <!--  <(perc)= link_to favorite_vehicle_path(@vehicle), -->
-          <!--              class: "btn btn-tertiary btn-wish-list" do %>-->
-                          
-          <!--      <i class="fa fa-heart-o" -->
-          <!--         aria-hidden="true"></i> -->
-                   
-          <!--      Add to Wish List-->
-          <!--  <(perc) end %>-->
-          <!--<(perc) end %>-->
-
-          <!--<(perc)= link_to 'Purchase',-->
-          <!--            new_vehicle_payment_path(@vehicle),-->
-          <!--            class: "btn btn-tertiary" %>-->
         </div>
         
-        <div class="vehicle-reviews">
-          
-          <span class="vehicle-reviews-title">Need Some Advice?</span>
-          
-          <p class="vehicle-reviews-info">
-            Read <%= @vehicle.user.first_name %>'s reviews!
-          </p>
-          
-          <%= link_to user_path(@vehicle.user, anchor: "profile-reviews"), 
-                      class: "btn btn-secondary" do %>
-          
-            Reviews
+        <div class="col-md-4 col-md-offset-1">
+    
+          <div class="appointment hidden-xs">
             
-            <i class="fa fa-arrow-right next-button-icon" 
-               aria-hidden="true"></i> 
-          <% end %>
+            <%= f.hidden_field :sender_id,           value: current_user.id if 
+                                                            current_user %>
+            
+            <% if @vehicle.dealership_id.blank? %>
+              <%= f.hidden_field :recipient_id,      value: @vehicle.user.id %>
+            <% end %>
+            
+            <%= f.hidden_field :next_contributor_id, value: @vehicle.user.id %>
+            
+            <%= f.hidden_field :is_sender_anonymous, value: false %>
+            
+            <%= f.hidden_field :latest_message_read, value: false %>
+            
+            <%= f.hidden_field :sender_archived,     value: false %>
+            
+            <%= f.hidden_field :recipient_archived,  value: false %>
+          
+            <%= f.fields_for :appointments, Appointment.new do |ff| %>
+            
+              <% if @vehicle.user.dealership_id.present? || 
+                      @vehicle.availabilities.exists? %>
+                <a class="availability-link">Click for availability</a>
+              <% end %>
+            
+              <div class="form-element form-element-availability">
+                  
+                <%= ff.text_field :date, 
+                                  placeholder: "Test Drive", 
+                                  id: "appointment-time",
+                                  class: "form-control form-control-secondary" %>
+                    
+                <i class="fa fa-calendar-o fa-lg form-icon" 
+                   aria-hidden="true"></i>
+                   
+                <i class="fa fa-caret-down fa-lg form-caret" 
+                   aria-hidden="true"></i>
+              </div>
+              
+              <%= ff.hidden_field :status,              value: "pending" %>
+              
+              <%= ff.hidden_field :seller_id,           value: @vehicle.user.id %>
+              
+              <%= ff.hidden_field :buyer_id, value: current_user.id if current_user %>
+              
+              <%= ff.hidden_field :vehicle_id,          value: @vehicle.id %>
+            <% end %>
+            
+            <% if @vehicle.user.dealership_id.present? %>
+              <div class="btn btn-tertiary btn-appointment">
+                Book!
+              </div>
+              
+            <% else %>
+              <%= f.submit "Book!", 
+                           class: "btn btn-tertiary btn-appointment" %>
+            <% end %>
+          </div>
+          
+          <div class="vehicle-reviews">
+            
+            <span class="vehicle-reviews-title">Need Some Advice?</span>
+            
+            <p class="vehicle-reviews-info">
+              <% if @vehicle.user.dealership_id.present? %>
+                Read reviews of 
+                <%= Dealership.find(@vehicle.user.dealership_id).name %>!
+              <% else %>
+                Read <%= @vehicle.user.first_name %>'s reviews!
+              <% end %>
+            </p>
+            
+            <%= link_to user_path(@vehicle.user, anchor: "profile-reviews"), 
+                        class: "btn btn-secondary" do %>
+            
+              Reviews
+              
+              <i class="fa fa-arrow-right next-button-icon" 
+                 aria-hidden="true"></i> 
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+<% end %>
 
 <div id="vehicle-details">
   <div class="vehicle-details-content">
@@ -492,7 +638,13 @@
                   <p class="negotiate-info">
                     
                     <strong>
-                      Make <%= @vehicle.user.first_name %> an offer.
+                      Make 
+                      <% if @vehicle.user.dealership_id.present? %>
+                        <%= Dealership.find(@vehicle.user.dealership_id).name %> 
+                      <% else %>
+                        <%= @vehicle.user.first_name %>
+                      <% end %>
+                      an offer.
                     </strong>
                     
                     <br>
@@ -1055,8 +1207,21 @@
 
 <div id="map-and-brochure">
   <div class="row map-and-brochure-content">
-
-    <div class="col-md-6" id="vehicle-map"></div>
+    
+    <% if @vehicle.user.dealership_id.present? %>
+      <div class="vehicle-map-address">
+        <strong>
+          <%= Dealership.find(@vehicle.user.dealership_id).name %>
+        </strong>
+          <br>
+        <%= @vehicle.street_address %>, <!--<(perc)= @vehicle.building %>-->
+          <br>
+        <%= @vehicle.city %>, <%= @vehicle.state %> 
+      </div>
+    <% end %>
+    
+    <div class="col-md-6" id="vehicle-map">
+    </div>
     
     <%= link_to posts_vehicle_make_path(@vehicle.vehicle_make), 
                 target: "_blank" do %>
@@ -1215,15 +1380,30 @@
         }
       }, function() {
         
-        markers = handler.addCircles( [{
-                    lat: <%= @vehicle.latitude %>, 
-                    lng: <%= @vehicle.longitude %>, 
-                    radius: 700
-                  }], { 
-                    strokeColor: '#38b2a6',
-                    fillColor: '#38b2a6',
-                    strokeWeight: 2 
-                  });
+        <% if @vehicle.user.dealership_id.present? %>
+          markers = handler.addMarkers([
+                      {
+                        lat: <%= @vehicle.latitude %>,
+                        lng: <%= @vehicle.longitude %>,
+                        picture: {
+                          url:    "https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/map-marker-aqua.png",
+                          width:  32,
+                          height: 32
+                        }
+                      }
+                    ]);
+        
+        <% else %>
+          markers = handler.addCircles( [{
+                      lat: <%= @vehicle.latitude %>, 
+                      lng: <%= @vehicle.longitude %>, 
+                      radius: 700
+                    }], { 
+                      strokeColor: '#38b2a6',
+                      fillColor: '#38b2a6',
+                      strokeWeight: 2 
+                    });
+        <% end %>
         
         handler.bounds.extendWith(markers);
         handler.fitMapToBounds();

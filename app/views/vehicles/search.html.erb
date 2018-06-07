@@ -19,14 +19,18 @@
     
     <h1 class="search-summary-title">
 
-      <!--params vehicle present fix with matches-->
+      <% if @filterrific.with_vehicle_make_id.present? %>
 
-      <% if params[:vehicle].present? && 
-            params[:vehicle][:vehicle_make_id].present? %>
-      
-        <%= VehicleMake.find_by(id: params[:vehicle][:vehicle_make_id]).name %>
-        <%= VehicleModel.find_by(id: params[:vehicle][:vehicle_model_id]).name  if VehicleModel.find_by(id: params[:vehicle][:vehicle_model_id]).name != "All models" %>
+        <%= VehicleMake.find(@filterrific.with_vehicle_make_id).name %>
         
+        <% if @filterrific.with_vehicle_model_id.present? && 
+                VehicleModel.
+                  find(@filterrific.with_vehicle_model_id).
+                  name != "All Models" %>
+
+          <%= VehicleModel.find(@filterrific.with_vehicle_model_id).name %>
+        <% end %>
+      
       <% else %>
         All Makes and Models
       <% end %>
@@ -34,10 +38,10 @@
     
     <h2 class="search-summary-info">
       
-      <% if params[:city].present? %>
-      
+      <% if @filterrific.with_city.present? %>
+
         <%= pluralize(@vehicles.count, "vehicle") %> found near 
-        <%= params[:city] %>
+        <%= @filterrific.with_city %>
 
       <% else %>
         Enter a city to narrow your search
@@ -103,9 +107,9 @@
                       
                       Newest Listings 
                       
-                      <!--<(perc) if params[:city].present? %>-->
-                      <!--  - <(perc)= params[:city] %>-->
-                      <!--<(perc) end %>-->
+                      <% if params[:city].present? %>
+                        - <%= params[:city] %>
+                      <% end %>
                     </span>
                   </div>
                   
@@ -162,10 +166,21 @@
                 
                 <div class="form-element-primary">
                   
-                  <select class="form-control search-sort-form-control" id="sort">
-                    <option><%= link_to "Nearest", '#' %></option>
-                    <option><%= link_to "Most Popular", '#' %></option>
-                    <option><%= link_to "Lowest Price", :sort => "price" %></option>
+                  <select class="form-control search-sort-form-control" 
+                          id="sort">
+                    
+                    <option>
+                      -
+                      <!--<(perc)= link_to "Nearest", '#' %>-->
+                    </option>
+                    
+                    <!--<option>-->
+                      <!--<(perc)= link_to "Most Popular", '#' %>-->
+                    <!--</option>-->
+                    
+                    <!--<option>-->
+                      <!--<(perc)= link_to "Lowest Price", :sort => "price" %>-->
+                    <!--</option>-->
                   </select>
                   
                   <i class="fa fa-caret-down fa-lg form-caret" 

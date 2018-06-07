@@ -15,33 +15,50 @@
   <h1 class="search-parameter-title">What are you looking to pay?</h1>
   
   <div class="search-parameter-form">
-    <%= form_for [current_user, @personalized_search],
-                 url: user_personalized_search_path(current_user) do |f| %>
+    <%= form_for @personalized_search do |f| %>
+                 <!--url: user_personalized_search_path(current_user) do |f| %>-->
 
       <div class="form-group form-group-search-parameter">
         
-        <%= label_tag :price, "Max Price" %>
+        <!--<(perc)= label_tag :price, "Max Price" %>-->
         
-        <%= f.text_field :price, 
-                           placeholder: "Email address", 
-                           class: 'form-control form-control-primary' %>
+        <!--<(perc)= f.text_field :price, -->
+        <!--                   placeholder: "Email address", -->
+        <!--                   class: 'form-control form-control-primary' %>-->
         
-        <!--<span id="personalized_price_slider_val" class="slider-label">-->
-        <!--  $200000-->
-        <!--</span>-->
+        <%= f.label :price, "Max Price" %>
         
-        <!--<(perc)= text_field_tag :price, -->
-        <!--                   nil,-->
-        <!--                   id: 'personalized_price_slider', -->
-        <!--                   type: 'text',-->
-        <!--                   data: { 'slider-min'   => '0',-->
-        <!--                           'slider-max'   => '200000',-->
-        <!--                           'slider-step'  => '1',-->
-        <!--                           'slider-value' => '200000' } %>-->
+        <span id="personalized_price_slider_val" class="slider-label">
+          <% if @personalized_search.price.present? %>
+            $<%= @personalized_search.price %>
+          <% else %>
+            $200000
+          <% end %>
+        </span>
+        
+        <% if @personalized_search.price.present? %>
+          <%= f.text_field :price, 
+                           id: 'personalized_price_slider', 
+                           type: 'text',
+                           data: { 'slider-min'   => '0',
+                                   'slider-max'   => '200000',
+                                   'slider-step'  => '1',
+                                   'slider-value' => 
+                                     @personalized_search.price } %>
+                                     
+        <% else %>
+          <%= f.text_field :price, 
+                           id: 'personalized_price_slider', 
+                           type: 'text',
+                           data: { 'slider-min'   => '0',
+                                   'slider-max'   => '200000',
+                                   'slider-step'  => '1',
+                                   'slider-value' => '200000' } %>
+        <% end %>
       </div>
       
       <%= hidden_field_tag :redirect_location, 
-                           mileage_user_personalized_search_path %>
+            mileage_personalized_search_path(@personalized_search) %>
     
       <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
         
@@ -63,10 +80,10 @@
     priceSlider.slider();
     
     priceSlider.on('slide', function(slideEvt) {
-    	priceSliderValue.text(slideEvt.value);
+    	priceSliderValue.text('$' + slideEvt.value);
     });
     
     priceSlider.on('slideStop', function(slideEvt) {
-    	priceSliderValue.text(slideEvt.value);
+    	priceSliderValue.text('$' + slideEvt.value);
     });
 </script>

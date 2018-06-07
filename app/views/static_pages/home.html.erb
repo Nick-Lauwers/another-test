@@ -40,47 +40,48 @@
       Discover vehicles in your own backyard
     </h2>
     
-    <%= form_tag search_vehicles_path, 
-                 method: :get, 
-                 class: "hidden-xs search-form-primary" do %>
-                 
+    <%= form_for_filterrific @filterrific, 
+          url: search_vehicles_path, 
+          html: { 
+            id:    "filterrific-no-ajax-auto-submit",
+            class: "hidden-xs search-form-primary" 
+          } do |f| %>
+          
       <div class="row search-form-primary-content">
         
         <div class="col-xs-3 search-bar-primary">
-          
-          <%= collection_select :vehicle, 
-                                :vehicle_make_id,
-                                VehicleMake.all,
-                                :id,
-                                :name,
-                                { include_blank: true,
-                                  prompt: "All makes" },
-                                id: "vehicle-make-search",
-                                class: "form-control
-                                        search-select-primary" %>
-          
+                       
+          <%= f.collection_select(:with_vehicle_make_id,
+                                  VehicleMake.all,
+                                  :id,
+                                  :name,
+                                  { include_blank: true,
+                                    prompt: "Select make" },
+                                  id: "vehicle-make-home",
+                                  class: "form-control 
+                                          search-select-primary") %>
+
           <i class="fa fa-search fa-lg search-bar-primary-icon" 
              aria-hidden="true"></i>
-             
+          
           <i class="fa fa-caret-down fa-lg form-caret" 
              aria-hidden="true"></i>
         </div>
         
         <div class="col-xs-3 search-bar-primary">
           
-          <%= grouped_collection_select :vehicle, 
-                                        :vehicle_model_id, 
-                                        VehicleMake.order(:name),
-                                        :vehicle_models,
-                                        :name,
-                                        :id,
-                                        :name,
-                                        { prompt: "All models",
-                                          include_blank: true },
-                                        id: "vehicle-model-search",
-                                        class: "form-control
-                                                search-select-secondary" %>
-                                                
+          <%= f.grouped_collection_select(:with_vehicle_model_id,
+                                          VehicleMake.order(:name),
+                                          :vehicle_models,
+                                          :name,
+                                          :id,
+                                          :name,
+                                          { include_blank: true,
+                                            prompt: "Select model" },
+                                          id: "vehicle-model-home",
+                                          class: "form-control 
+                                                  search-select-secondary") %>
+                       
           <i class="fa fa-caret-down fa-lg form-caret" 
              aria-hidden="true"></i>
         </div>
@@ -90,19 +91,71 @@
           <i class="fa fa-map-pin fa-lg search-bar-primary-icon" 
              aria-hidden="true"></i>
           
-          <%= text_field_tag :city, 
-                             params[:city], 
-                             placeholder: "City (Eg. San Francisco, CA)", 
-                             class: "form-control 
-                                     search-form-control 
-                                     typeahead" %>
+          <%= f.text_field :with_city, 
+                           placeholder: "City (Eg. San Francisco, CA)", 
+                           class: "form-control 
+                                   search-form-control 
+                                   typeahead" %>
         </div>
-        
+
         <div class="col-xs-2 search-button-primary">
-          <%= submit_tag "Search", class: "btn btn-search" %>
+          <%= f.submit "Search", class: "btn btn-search" %>
         </div>
       </div>
     <% end %>
+    
+    <!--<(perc)= form_tag search_vehicles_path, -->
+    <!--             method: :get, -->
+    <!--             class: "hidden-xs search-form-primary" do %>-->
+                 
+    <!--  <div class="row search-form-primary-content">-->
+        
+    <!--    <div class="col-xs-3 search-bar-primary">-->
+          
+    <!--      <i class="fa fa-search fa-lg search-bar-primary-icon" -->
+    <!--         aria-hidden="true"></i>-->
+             
+    <!--      <i class="fa fa-caret-down fa-lg form-caret" -->
+    <!--         aria-hidden="true"></i>-->
+    <!--    </div>-->
+        
+    <!--    <div class="col-xs-3 search-bar-primary">-->
+          
+    <!--      <(perc)= grouped_collection_select :vehicle, -->
+    <!--                                    :vehicle_model_id, -->
+    <!--                                    VehicleMake.order(:name),-->
+    <!--                                    :vehicle_models,-->
+    <!--                                    :name,-->
+    <!--                                    :id,-->
+    <!--                                    :name,-->
+    <!--                                    { prompt: "All models",-->
+    <!--                                      include_blank: true },-->
+    <!--                                    id: "vehicle-model-search",-->
+    <!--                                    class: "form-control-->
+    <!--                                            search-select-secondary" %>-->
+                                                
+    <!--      <i class="fa fa-caret-down fa-lg form-caret" -->
+    <!--         aria-hidden="true"></i>-->
+    <!--    </div>-->
+        
+    <!--    <div class="col-xs-4 search-bar-primary">-->
+          
+    <!--      <i class="fa fa-map-pin fa-lg search-bar-primary-icon" -->
+    <!--         aria-hidden="true"></i>-->
+          
+    <!--      <(perc)= text_field_tag :city, -->
+    <!--                         params[:city], -->
+    <!--                         placeholder: "City (Eg. San Francisco, CA)", -->
+    <!--                         class: "form-control -->
+    <!--                                 search-form-control -->
+    <!--                                 typeahead" %>-->
+    <!--    </div>-->
+        
+    <!--    <div class="col-xs-2 search-button-primary">-->
+    <!--      <(perc)= submit_tag "Search", class: "btn btn-search" %>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--<(perc) end %>-->
     
     <!--<(perc)= form_tag search_vehicles_path, -->
     <!--             method: :get, -->

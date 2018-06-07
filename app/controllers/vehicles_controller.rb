@@ -101,116 +101,54 @@ class VehiclesController < ApplicationController
     @hasReview = @reviews.find_by(reviewer_id: current_user.id) if current_user
     
     @questions = @vehicle.questions
-    # @question  = current_user.questions.build if logged_in?
+
     @question = Question.new
     
-    # @answer     = current_user.answers.build   if logged_in?
     @answer = Answer.new
     
     @availabilities = @vehicle.availabilities
-
-    # gon.vehicle = @vehicle
-
-    # @replies   = @question.replies
-    # @reply     = @question.replies.build   if logged_in?
   end
   
   def search
 
-    # <!--params vehicle present fix with matches-->
-  
-    if params[:vehicle].present?
+    # @filterrific = initialize_filterrific(
       
-      if params[:vehicle][:vehicle_make_id].present? && 
-         params[:city].present?
-        
-        coordinates = Geocoder.coordinates(params[:city])
-         
-        if VehicleModel.find_by(id: params[:vehicle][:vehicle_model_id]).name != "All models"
-          @vehicles = Vehicle.search params[:vehicle][:vehicle_make_id],
-                                     where: { vehicle_make_id: 
-                                                params[:vehicle][:vehicle_model_id],
-                                              vehicle_model_id: 
-                                                params[:vehicle][:vehicle_model_id],
-                                              location: { near: {
-                                                                lat: coordinates[0], 
-                                                                lon: coordinates[1]
-                                                                }, 
-                                                                within: "20mi" },
-                                              sold_at: nil,
-                                              posted_at: { not: nil } },
-                                     page: params[:page], 
-                                     per_page: 10,
-                                     order: { bumped_at: :desc, 
-                                              created_at: :desc }
-  
-        else 
-          @vehicles = Vehicle.search params[:vehicle][:vehicle_make_id],
-                                     where: { vehicle_make_id: 
-                                                params[:vehicle][:vehicle_make_id],
-                                              location: { near: {
-                                                                lat: coordinates[0], 
-                                                                lon: coordinates[1]
-                                                                }, 
-                                                                within: "20mi" },
-                                              sold_at: nil,
-                                              posted_at: { not: nil } },
-                                     page: params[:page], 
-                                     per_page: 10,
-                                     order: { bumped_at: :desc, 
-                                              created_at: :desc }
-        end
-  
-      elsif params[:vehicle][:vehicle_make_id].present?
-        
-        if VehicleModel.find_by(id: params[:vehicle][:vehicle_model_id]).name != "All models"
-          @vehicles = Vehicle.search params[:vehicle][:vehicle_make_id],
-                                     where: { vehicle_make_id:
-                                                params[:vehicle][:vehicle_make_id],
-                                              vehicle_model_id: 
-                                                params[:vehicle][:vehicle_model_id],
-                                              sold_at: nil,
-                                              posted_at: { not: nil },
-                                              latitude: { not: nil } },
-                                     page: params[:page], 
-                                     per_page: 10,
-                                     order: { bumped_at: :desc, 
-                                              created_at: :desc }
-        
-        else
-          @vehicles = Vehicle.search params[:vehicle][:vehicle_make_id],
-                                     where: { vehicle_make_id:
-                                                params[:vehicle][:vehicle_make_id],
-                                              sold_at: nil,
-                                              posted_at: { not: nil },
-                                              latitude: { not: nil } },
-                                     page: params[:page], 
-                                     per_page: 10,
-                                     order: { bumped_at: :desc, 
-                                              created_at: :desc }
-        end
+    #   Vehicle,
+    #   params[:filterrific],
       
-      elsif params[:city].present?
-        @vehicles = Vehicle.near(params[:city], 20).
-                            where(sold_at: nil).
-                            where.not(posted_at: nil).
-                            paginate(page: params[:page], per_page: 10).
-                            order(bumped_at: :desc, created_at: :desc)
-                            
-      else
-        @vehicles = Vehicle.all.where(sold_at: nil).
-                                where.not(posted_at: nil, latitude: nil).
-                                paginate(page: params[:page], per_page: 10).
-                                order(bumped_at: :desc, created_at: :desc)
-      end
+    #   select_options: {
+    #     sorted_by:             Vehicle.options_for_sorted_by,
+    #     with_vehicle_make_id:  VehicleMake.options_for_select,
+    #     with_vehicle_model_id: VehicleModel.options_for_select
+    #   },
+      
+    #   persistence_id: false,
+    #   default_filter_params: {},
+      
+    #   available_filters: [
+    #     :with_vehicle_make_id, 
+    #     :with_vehicle_model_id,
+    #     :with_city,
+    #     :with_year_gte,
+    #     :with_price_lte,
+    #     :with_mileage_lte,
+    #     :with_body_style,
+    #     :with_color,
+    #     :with_transmission,
+    #     :with_fuel_type,
+    #     :with_drivetrain,
+    #     :with_backup_camera,
+    #     :with_bluetooth,
+    #     :with_dvd_entertainment_system,
+    #     :with_leather_seats,
+    #     :with_navigation_system,
+    #     :with_remote_start,
+    #     :with_sunroof,
+    #     :with_tow_package
+    #   ],
+    # ) or return
     
-    else
-      @vehicles = Vehicle.all.where(sold_at: nil).
-                                where.not(posted_at: nil, latitude: nil).
-                                paginate(page: params[:page], per_page: 10).
-                                order(bumped_at: :desc, created_at: :desc)
-
-    end
+    @vehicles = @filterrific.find.paginate(page: params[:page], per_page: 10)
     
     @hash = Gmaps4rails.build_markers(@vehicles) do |vehicle, marker|
       
@@ -226,8 +164,18 @@ class VehiclesController < ApplicationController
       marker.json({ :id => vehicle.id })
     end
     
-    @vehicle             = Vehicle.new
-    @personalized_search = PersonalizedSearch.new
+    @vehicle = Vehicle.new
+    
+    if current_user && current_user.personalized_search.present?
+      @personalized_search = current_user.personalized_search
+    else
+      @personalized_search = PersonalizedSearch.new
+    end
+    
+    # respond_to do |format|
+    #   format.html
+    #   format.js
+    # end
   end
   
   def basics
@@ -263,12 +211,32 @@ class VehiclesController < ApplicationController
   
   def favorite
     
-    if current_user.favorite_vehicles.exists?(vehicle_id: @vehicle.id)
+    if current_user.favorite_vehicles.exists?(vehicle:  @vehicle,
+                                              is_loved: true)
       flash[:failure] = "#{ @vehicle.listing_name } has already been added to 
                          your shortlist!"
     
+    elsif current_user.favorite_vehicles.exists?(vehicle: @vehicle)
+      
+      current_user.
+        favorite_vehicles.
+        where(vehicle: @vehicle).
+        first.
+        update_attribute(:is_loved, true)
+        
+      flash[:success] = "#{ @vehicle.listing_name } was added to your 
+                         shortlist!"
+    
     else
+      
       current_user.favorites << @vehicle
+      
+      current_user.
+        favorite_vehicles.
+        where(vehicle: @vehicle).
+        first.
+        update_attribute(:is_loved, true)
+        
       flash[:success] = "#{ @vehicle.listing_name } was added to your 
                          shortlist!"
     end
@@ -300,9 +268,34 @@ class VehiclesController < ApplicationController
       { listing_name: vehicle.listing_name, city: vehicle.address.city, value: vehicle.id }
     end
   end
-
-  private
   
+  private
+    
+    # Gets filterrific
+    def get_filterrific
+      
+      @filterrific = initialize_filterrific(
+      
+      Vehicle,
+      params[:filterrific],
+      
+      select_options: {
+        sorted_by:             Vehicle.options_for_sorted_by,
+        with_vehicle_make_id:  VehicleMake.options_for_select,
+        with_vehicle_model_id: VehicleModel.options_for_select
+      },
+      
+      persistence_id: false,
+      default_filter_params: {},
+      
+      available_filters: [
+        :with_vehicle_make_id, 
+        :with_vehicle_model_id,
+        :with_city
+      ],
+    ) or return
+    end
+    
     def vehicle_params
       params.require(:vehicle).permit(:body_style, :color, :transmission, 
                                       :fuel_type, :drivetrain, :vin, 

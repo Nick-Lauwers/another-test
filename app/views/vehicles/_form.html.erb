@@ -147,12 +147,12 @@
           <%= f.hidden_field :street_address, 
                              value: Dealership.
                                       find(current_user.dealership_id).
-                                      address %>
+                                      street_address %>
           
-          <%= f.hidden_field :building, 
-                             value: Dealership.
-                                      find(current_user.dealership_id).
-                                      building %>
+          <!--<(perc)= f.hidden_field :building, -->
+          <!--                   value: Dealership.-->
+          <!--                            find(current_user.dealership_id).-->
+          <!--                            building %>-->
           
           <%= f.hidden_field :city, 
                              value: Dealership.

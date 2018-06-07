@@ -17,13 +17,23 @@
         <%= link_to "Shortlist", shortlist_user_path(current_user) %>
       </li>
       
-      <li class="<%= 'nav-active' if 
-        (current_page?(summary_user_personalized_search_path(current_user)) ||
-         current_page?(edit_user_personalized_search_path(current_user))) %>">
-        <%= link_to "Matches", 
-                    summary_user_personalized_search_path(current_user) %>
-      </li>
-      
+      <% if current_user.personalized_search.present? %>
+        <li class="<%= 'nav-active' if 
+          (current_page?(personalized_search_path(current_user.
+                                                  personalized_search)) ||
+           current_page?(edit_personalized_search_path(current_user.
+                                                       personalized_search))) %>">
+          <%= link_to "Matches", current_user.personalized_search %>
+        </li>
+        
+      <% else %>
+        <li class="<%= 'nav-active' if 
+          (current_page?(new_personalized_search_path) || 
+           current_page?(start_personalized_searches_path)) %>">
+          <%= link_to "Matches", start_personalized_searches_path %>
+        </li>
+      <% end %>
+
       <li class="<%= 'nav-active' if current_page?(vehicles_path) %>"> 
          <!--current_page?(customers_path) ||-->
          <!--current_page?(orders_received_path) ||-->
@@ -67,8 +77,13 @@
     </a>
   <% end %>
   
-  <% if (current_page?(summary_user_personalized_search_path(current_user)) ||
-         current_page?(edit_user_personalized_search_path(current_user))) %>
+  <% if ( current_user.personalized_search.present? && 
+          ( current_page?(personalized_search_path(current_user.
+                                                   personalized_search)) ||
+            current_page?(edit_personalized_search_path(current_user.
+                                                        personalized_search)) ) ) ||
+        ( current_page?(new_personalized_search_path) ||
+          current_page?(start_personalized_searches_path) ) %>
     <a href='#' class="dropdown-toggle" data-toggle="dropdown">
       Matches <b class="caret"></b>
     </a>
@@ -114,12 +129,22 @@
       <%= link_to "Shortlist", shortlist_user_path(current_user) %>
     </li>
     
-    <li class="<%= 'dropdown-active' if 
-      (current_page?(summary_user_personalized_search_path(current_user)) ||
-       current_page?(edit_user_personalized_search_path(current_user))) %>">
-      <%= link_to "Matches", 
-                  summary_user_personalized_search_path(current_user) %>
-    </li>
+    <% if current_user.personalized_search.present? %>
+      <li class="<%= 'dropdown-active' if 
+        (current_page?(personalized_search_path(current_user.
+                                                personalized_search)) ||
+         current_page?(edit_personalized_search_path(current_user.
+                                                     personalized_search))) %>">
+        <%= link_to "Matches", current_user.personalized_search %>
+      </li>
+      
+    <% else %>
+      <li class="<%= 'dropdown-active' if 
+        (current_page?(new_personalized_search_path) || 
+         current_page?(start_personalized_searches_path)) %>">
+        <%= link_to "Matches", start_personalized_searches_path %>
+      </li>
+    <% end %>
     
     <li class="<%= 'dropdown-active' if current_page?(vehicles_path) %>"> 
        <!--current_page?(customers_path) ||-->

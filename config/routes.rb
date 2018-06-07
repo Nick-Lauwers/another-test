@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get    'test-drives'             => 'appointments#test_drives'
   get    'purchases_made'          => 'purchases#purchases_made'
   get    'orders_received'         => 'purchases#orders_received'
+  # get    'start_personalized_search' => 'personalized_searches#start'
   get    'payment_method'          => 'users#payment'
   get    'payout_method'           => 'users#payout'
   get    'signup'                  => 'users#new'
@@ -58,20 +59,20 @@ Rails.application.routes.draw do
       get :autocomplete
     end
   end
-
+  
   resources :users do
     
     resources :reviews, only: [:index, :destroy]
     
-    resource :personalized_search do
-      member do
-        get 'price'
-        get 'mileage'
-        get 'year'
-        get 'installed_options'
-        get 'summary'
-      end
-    end
+    # resource :personalized_search do
+    #   member do
+    #     get 'price'
+    #     get 'mileage'
+    #     get 'year'
+    #     get 'installed_options'
+    #     get 'summary'
+    #   end
+    # end
 
     member do
       get 'profile_pic'
@@ -200,6 +201,20 @@ Rails.application.routes.draw do
       get 'billing'
       get 'employment'
       get 'financial'
+    end
+  end
+  
+  resources :personalized_searches do
+    
+    collection do
+      get 'start'
+    end
+    
+    member do
+      get 'price'
+      get 'mileage'
+      get 'year'
+      get 'installed_options'
     end
   end
   

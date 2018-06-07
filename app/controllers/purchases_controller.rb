@@ -7,7 +7,8 @@ class PurchasesController < ApplicationController
   
   def new
     
-    @vehicle  = Vehicle.find(params[:vehicle_id])
+    @vehicle = Vehicle.find(params[:vehicle_id])
+    @dealer  = User.find(params[:seller_id])
     
     if Purchase.where('vehicle_id = ? AND buyer_id = ?', @vehicle.id, current_user.id).exists?
       redirect_to basics_purchase_path(Purchase.where('vehicle_id = ? AND buyer_id = ?', @vehicle.id, current_user.id).first)
@@ -21,7 +22,28 @@ class PurchasesController < ApplicationController
     @purchase = current_user.purchases_made.create!(purchase_params)
     
     if @purchase.save
+      
+      if current_user.favorite_vehicles.exists?(vehicle: @purchase.vehicle)
+
+        current_user.
+          favorite_vehicles.
+          where(vehicle: @purchase.vehicle).
+          first.
+          update_attribute(:is_purchase, true)
+      
+      else
+        
+        current_user.favorites << @purchase.vehicle
+        
+        current_user.
+          favorite_vehicles.
+          where(vehicle: @purchase.vehicle).
+          first.
+          update_attribute(:is_purchase, true)
+      end
+        
       flash[:success] = "Basics saved."
+      
       redirect_to details_purchase_path(@purchase)
     
     else

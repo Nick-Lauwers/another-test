@@ -17,29 +17,43 @@
   </h1>
   
   <div class="search-parameter-form">
-    <%= form_for @personalized_search, 
-                 url: user_personalized_search_path do |f| %>
+    <%= form_for @personalized_search do |f| %>
       
       <div class="form-group form-group-search-parameter">
         
-        <%= label_tag :mileage, "Max Mileage" %>
+        <%= f.label :mileage, "Max Mileage" %>
     
         <span id="personalized_mileage_slider_val" class="slider-label">
-          300000 km
+          <% if @personalized_search.mileage.present? %>
+            <%= @personalized_search.mileage%> mi
+          <% else %>  
+            300000 mi
+          <% end %>
         </span>
         
-        <%= text_field_tag :mileage,
-                           nil,
+        <% if @personalized_search.mileage.present? %>
+          <%= f.text_field :mileage,
+                           id: 'personalized_mileage_slider', 
+                           type: 'text',
+                           data: { 'slider-min'   => '0',
+                                   'slider-max'   => '300000',
+                                   'slider-step'  => '1',
+                                   'slider-value' => 
+                                     @personalized_search.mileage } %>
+        
+        <% else %>
+          <%= f.text_field :mileage,
                            id: 'personalized_mileage_slider', 
                            type: 'text',
                            data: { 'slider-min'   => '0',
                                    'slider-max'   => '300000',
                                    'slider-step'  => '1',
                                    'slider-value' => '300000' } %>
+        <% end %>
       </div>
       
       <%= hidden_field_tag :redirect_location, 
-                           year_user_personalized_search_path %>
+            year_personalized_search_path(@personalized_search) %>
     
       <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
         
@@ -61,10 +75,10 @@
     mileageSlider.slider();
     
     mileageSlider.on('slide', function(slideEvt) {
-    	mileageSliderValue.text(slideEvt.value);
+    	mileageSliderValue.text(slideEvt.value + ' mi');
     });
     
     mileageSlider.on('slideStop', function(slideEvt) {
-    	mileageSliderValue.text(slideEvt.value);
+    	mileageSliderValue.text(slideEvt.value + ' mi');
     });
 </script>

@@ -15,55 +15,49 @@
   <h1 class="search-parameter-title">Which options would you like included?</h1>
   
   <div class="search-parameter-form">
-    <%= form_for @personalized_search,
-                 url: user_personalized_search_path do |f| %>
+    <%= form_for @personalized_search do |f| %>
       
       <ul class="installed-options-list">
   
-        <!--<li>-->
-        <!--  <(perc)= f.check_box :is_autonomy %>-->
-        <!--  <(perc)= f.label :is_autonomy, "Autonomy" %>         -->
-        <!--</li>-->
-        
         <li>
-          <%= check_box_tag :is_backup_camera %>
-          <%= label_tag :is_backup_camera, "Backup Camera" %> 
+          <%= f.check_box :is_backup_camera %>
+          <%= f.label :is_backup_camera, "Backup Camera" %> 
         </li>
         
         <li>
-          <%= check_box_tag :is_bluetooth %>
-          <%= label_tag :is_bluetooth, "Bluetooth" %> 
+          <%= f.check_box :is_bluetooth %>
+          <%= f.label :is_bluetooth, "Bluetooth" %> 
         </li>
         
         <li>
-          <%= check_box_tag :is_dvd_entertainment_system %>
-          <%= label_tag :is_dvd_entertainment_system, 
+          <%= f.check_box :is_dvd_entertainment_system %>
+          <%= f.label :is_dvd_entertainment_system, 
                         "DVD Entertainment System" %> 
         </li>
         
         <li>
-          <%= check_box_tag :is_leather_seats %>
-          <%= label_tag :is_leather_seats, "Leather Seats" %>
+          <%= f.check_box :is_leather_seats %>
+          <%= f.label :is_leather_seats, "Leather Seats" %>
         </li>
         
         <li>
-          <%= check_box_tag :is_navigation_system %>
-          <%= label_tag :is_navigation_system, "Navigation System" %> 
+          <%= f.check_box :is_navigation_system %>
+          <%= f.label :is_navigation_system, "Navigation System" %> 
         </li>
         
         <li>
-          <%= check_box_tag :is_remote_start %>
-          <%= label_tag :is_remote_start, "Remote Start" %> 
+          <%= f.check_box :is_remote_start %>
+          <%= f.label :is_remote_start, "Remote Start" %> 
         </li>
         
         <li>
-          <%= check_box_tag :is_sunroof %>
-          <%= label_tag :is_sunroof, "Sunroof" %>       
+          <%= f.check_box :is_sunroof %>
+          <%= f.label :is_sunroof, "Sunroof" %>       
         </li>
         
         <li>
-          <%= check_box_tag :is_tow_package %>
-          <%= label_tag :is_tow_package, "Tow Package" %>          
+          <%= f.check_box :is_tow_package %>
+          <%= f.label :is_tow_package, "Tow Package" %>          
         </li>
       </ul>
     

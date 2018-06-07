@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180521203846) do
+ActiveRecord::Schema.define(version: 20180604152132) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "content"
@@ -280,8 +280,12 @@ ActiveRecord::Schema.define(version: 20180521203846) do
   create_table "favorite_vehicles", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "vehicle_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.boolean  "is_liked"
+    t.boolean  "is_loved"
+    t.boolean  "is_test_drive"
+    t.boolean  "is_purchase"
   end
 
   add_index "favorite_vehicles", ["user_id", "created_at"], name: "index_favorite_vehicles_on_user_id_and_created_at"

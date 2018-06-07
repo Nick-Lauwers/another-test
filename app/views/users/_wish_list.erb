@@ -2,7 +2,12 @@
 <!--replace favorite_vehicle.vehicle with favorites? -->
 <!--favorite_vehicle.vehicle needed for correct order-->
 
-<li id="wish-list-item-<%= vehicle.id %>" class="col-md-6 search-item">
+<li id="wish-list-item-<%= vehicle.id %>" 
+    class="col-md-6 search-item shortlist-item-<%= current_user.
+                                                     favorite_vehicles.
+                                                     where(vehicle: vehicle).
+                                                     first.
+                                                     vehicle_id %>">
   
   <div class="search-item-image">
     
