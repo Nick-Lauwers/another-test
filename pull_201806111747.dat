@@ -1,1 +1,0 @@
-{"klass":"Taps::Pull","database_url":"mysql2://b163e9a78aee90:2e38901a@us-cdbr-iron-east-04.cleardb.net/heroku_d7a3bc19e63b20d","remote_url":"http://user:pass@localhost:5000","session_uri":"/sessions/9466148054","stream_state":{},"completed_tables":[],"table_filter":null,"remote_tables_info":{"picture":200,"source":200,"vehicle":200}}
