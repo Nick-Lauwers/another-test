@@ -43,7 +43,6 @@ gem 'cocoon'
 gem 'trix'
 gem 'yaml_db'
 gem 'taps2'
-gem 'immigrant'
 gem 'aws-sdk-s3'
 
 group :development, :test do
