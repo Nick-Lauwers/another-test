@@ -664,11 +664,17 @@ ActiveRecord::Schema.define(version: 20180612011702) do
   add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
+  add_foreign_key "answers", "questions"
   add_foreign_key "answers", "questions", name: "answers_question_id_fk"
+  add_foreign_key "answers", "users"
   add_foreign_key "answers", "users", name: "answers_user_id_fk"
+  add_foreign_key "appointments", "conversations"
   add_foreign_key "appointments", "conversations", name: "appointments_conversation_id_fk"
+  add_foreign_key "appointments", "users", column: "buyer_id"
   add_foreign_key "appointments", "users", column: "buyer_id", name: "appointments_buyer_id_fk"
+  add_foreign_key "appointments", "vehicles"
   add_foreign_key "appointments", "vehicles", name: "appointments_vehicle_id_fk"
+  add_foreign_key "autopart_photos", "autoparts"
   add_foreign_key "autopart_photos", "autoparts", name: "autopart_photos_autopart_id_fk"
   add_foreign_key "autoparts", "users"
   add_foreign_key "availabilities", "vehicles"
