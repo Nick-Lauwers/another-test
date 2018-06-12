@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180604152132) do
+ActiveRecord::Schema.define(version: 20180612011702) do
 
   create_table "answers", force: :cascade do |t|
     t.text     "content",      limit: 65535
@@ -492,6 +492,9 @@ ActiveRecord::Schema.define(version: 20180604152132) do
     t.integer "purchase_id", limit: 4, null: false
   end
 
+  add_index "purchases_upgrades", ["purchase_id"], name: "purchases_upgrades_purchase_id_fk", using: :btree
+  add_index "purchases_upgrades", ["upgrade_id"], name: "purchases_upgrades_upgrade_id_fk", using: :btree
+
   create_table "questions", force: :cascade do |t|
     t.text     "content",      limit: 65535
     t.integer  "likes",        limit: 4
@@ -581,6 +584,7 @@ ActiveRecord::Schema.define(version: 20180604152132) do
     t.integer  "industry_experience", limit: 4
   end
 
+  add_index "users", ["dealership_id"], name: "users_dealership_id_fk", using: :btree
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
   create_table "vehicle_makes", force: :cascade do |t|
@@ -660,6 +664,12 @@ ActiveRecord::Schema.define(version: 20180604152132) do
   add_index "votes", ["votable_id", "votable_type", "vote_scope"], name: "index_votes_on_votable_id_and_votable_type_and_vote_scope", using: :btree
   add_index "votes", ["voter_id", "voter_type", "vote_scope"], name: "index_votes_on_voter_id_and_voter_type_and_vote_scope", using: :btree
 
+  add_foreign_key "answers", "questions", name: "answers_question_id_fk"
+  add_foreign_key "answers", "users", name: "answers_user_id_fk"
+  add_foreign_key "appointments", "conversations", name: "appointments_conversation_id_fk"
+  add_foreign_key "appointments", "users", column: "buyer_id", name: "appointments_buyer_id_fk"
+  add_foreign_key "appointments", "vehicles", name: "appointments_vehicle_id_fk"
+  add_foreign_key "autopart_photos", "autoparts", name: "autopart_photos_autopart_id_fk"
   add_foreign_key "autoparts", "users"
   add_foreign_key "availabilities", "vehicles"
   add_foreign_key "blogs", "users"
@@ -704,6 +714,8 @@ ActiveRecord::Schema.define(version: 20180604152132) do
   add_foreign_key "purchases", "users", column: "buyer_id"
   add_foreign_key "purchases", "users", column: "seller_id"
   add_foreign_key "purchases", "vehicles"
+  add_foreign_key "purchases_upgrades", "purchases", name: "purchases_upgrades_purchase_id_fk"
+  add_foreign_key "purchases_upgrades", "upgrades", name: "purchases_upgrades_upgrade_id_fk"
   add_foreign_key "questions", "users"
   add_foreign_key "questions", "vehicles"
   add_foreign_key "reviews", "dealerships"
@@ -712,6 +724,7 @@ ActiveRecord::Schema.define(version: 20180604152132) do
   add_foreign_key "reviews", "vehicles"
   add_foreign_key "special_offers", "vehicles"
   add_foreign_key "upgrades", "vehicles"
+  add_foreign_key "users", "dealerships", name: "users_dealership_id_fk"
   add_foreign_key "vehicle_models", "vehicle_makes"
   add_foreign_key "vehicles", "dealerships"
   add_foreign_key "vehicles", "users"

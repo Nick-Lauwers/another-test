@@ -43,6 +43,7 @@ gem 'cocoon'
 gem 'trix'
 gem 'yaml_db'
 gem 'taps2'
+gem 'immigrant'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'
