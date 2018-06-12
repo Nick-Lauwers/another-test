@@ -20,7 +20,7 @@ gem 'momentjs-rails',                  '>= 2.9.0'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.17.43'
 gem 'stripe',                          '~> 3.0.0'
 gem 'omniauth-stripe-connect',         '~> 2.10.0'
-# gem 'mysql2',                          '~> 0.3.18'
+gem 'mysql2',                          '~> 0.3.18'
 gem 'sdoc',                            '0.4.0', group: :doc
 gem 'paperclip'               
 gem 'geocoder'
@@ -42,6 +42,7 @@ gem 'rails_or'
 gem 'cocoon'
 gem 'trix'
 gem 'yaml_db'
+gem 'taps2'
 
 group :development, :test do
   gem 'sqlite3',     '1.3.9'
@@ -57,7 +58,7 @@ group :test do
 end
 
 group :production do
-  gem 'pg',             '0.17.1'
+  # gem 'pg',             '0.17.1'
   gem 'rails_12factor', '0.0.2'
   gem 'puma',           '3.1.0'
 end

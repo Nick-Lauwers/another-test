@@ -1,36 +1,15 @@
 default: &default
   adapter: sqlite3
-  encoding: utf8
-  reconnect: false
   pool: 5
-  username: yukon519
+  timeout: 5000
 
 development:
-#   adapter: mysql2
-#   encoding: utf8
-#   database: mototrova_development
-#   reconnect: false
-#   pool: 5
-#   username: root
-   <<: *default
-  
-#   # database: db/development.mysql2
-  
-#   # database: db/development.sqlite3
-
-test:
-#   adapter: mysql2
-#   encoding: utf8
-#   database: mototrova_test
-#   reconnect: false
-#   pool: 5
-#   username: root
-
   <<: *default
-  
-#   database: db/test.mysql2
-  
-#   # database: db/test.sqlite3
+  database: db/development.sqlite3
+
+test: &test
+  <<: *default
+  database: db/test.sqlite3
 
 production:
-  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>
