@@ -348,7 +348,6 @@ GEM
       mime-types
       mimemagic (~> 0.3.0)
       terrapin (~> 0.6.0)
-    pg (0.17.1)
     phony (2.16.4)
     phony_rails (0.14.7)
       activesupport (>= 3.0)
@@ -496,7 +495,6 @@ DEPENDENCIES
   omniauth-google-oauth2
   omniauth-stripe-connect (~> 2.10.0)
   paperclip
-  pg (= 0.17.1)
   phony_rails
   private_pub
   puma (= 3.1.0)

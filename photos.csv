@@ -1,152 +1,666 @@
-vehicle_id,image_url
-1,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle01a.jpg
-1,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle01b.jpg
-1,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle01c.jpg
-1,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle01d.jpg
-1,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle01e.jpg
-1,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle01f.jpg
-1,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle01g.jpg
-1,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle01h.jpg
-2,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle02a.jpg
-2,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle02b.jpg
-2,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle02c.jpg
-2,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle02d.jpg
-2,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle02e.jpg
-2,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle02f.jpg
-2,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle02g.jpg
-2,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle02h.jpg
-3,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle03a.jpg
-3,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle03b.jpg
-3,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle03c.jpg
-3,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle03d.jpg
-3,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle03e.jpg
-3,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle03f.jpg
-3,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle03g.jpg
-3,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle03h.jpg
-4,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle04a.jpg
-4,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle04b.jpg
-4,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle04c.jpg
-4,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle04d.jpg
-4,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle04e.jpg
-4,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle04f.jpg
-4,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle04g.jpg
-4,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle04h.jpg
-5,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle05a.jpg
-5,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle05b.jpg
-5,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle05c.jpg
-5,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle05d.jpg
-5,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle05e.jpg
-5,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle05f.jpg
-5,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle05g.jpg
-5,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle05h.jpg
-6,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle06a.jpg
-6,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle06b.jpg
-6,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle06c.jpg
-6,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle06d.jpg
-6,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle06e.jpg
-6,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle06f.jpg
-6,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle06g.jpg
-6,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle06h.jpg
-7,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle07a.jpg
-7,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle07b.jpg
-7,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle07c.jpg
-7,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle07d.jpg
-7,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle07e.jpg
-7,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle07f.jpg
-7,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle07g.jpg
-7,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle07h.jpg
-8,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle08a.jpg
-8,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle08b.jpg
-8,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle08c.jpg
-8,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle08d.jpg
-8,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle08e.jpg
-8,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle08f.jpg
-8,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle08g.jpg
-8,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle08h.jpg
-9,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle09a.jpg
-9,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle09b.jpg
-9,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle09c.jpg
-9,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle09d.jpg
-9,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle09e.jpg
-9,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle09f.jpg
-9,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle09g.jpg
-9,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle09h.jpg
-10,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle10a.jpg
-10,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle10b.jpg
-10,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle10c.jpg
-10,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle10d.jpg
-10,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle10e.jpg
-10,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle10f.jpg
-10,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle10g.jpg
-10,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle10h.jpg
-11,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle11a.jpg
-11,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle11b.jpg
-11,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle11c.jpg
-11,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle11d.jpg
-11,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle11e.jpg
-11,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle11f.jpg
-11,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle11g.jpg
-11,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle11h.jpg
-12,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle12a.jpg
-12,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle12b.jpg
-12,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle12c.jpg
-12,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle12d.jpg
-12,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle12e.jpg
-12,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle12f.jpg
-12,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle12g.jpg
-13,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle13a.jpg
-13,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle13b.jpg
-13,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle13c.jpg
-13,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle13d.jpg
-13,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle13e.jpg
-13,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle13f.jpg
-13,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle13g.jpg
-13,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle13h.jpg
-14,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle14a.jpg
-14,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle14b.jpg
-14,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle14c.jpg
-14,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle14d.jpg
-14,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle14e.jpg
-14,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle14f.jpg
-14,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle14g.jpg
-14,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle14h.jpg
-15,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle15a.jpg
-15,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle15b.jpg
-15,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle15c.jpg
-15,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle15d.jpg
-15,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle15e.jpg
-15,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle15f.jpg
-15,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle15g.jpg
-15,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle15h.jpg
-16,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle16a.jpg
-16,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle16b.jpg
-16,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle16c.jpg
-16,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle16d.jpg
-16,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle16e.jpg
-16,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle16f.jpg
-16,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle16g.jpg
-16,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle16h.jpg
-17,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle17a.jpg
-17,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle17b.jpg
-17,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle17c.jpg
-17,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle17d.jpg
-17,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle17e.jpg
-17,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle17f.jpg
-17,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle17g.jpg
-17,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle17h.jpg
-18,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle18a.jpg
-18,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle18b.jpg
-18,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle18c.jpg
-18,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle18d.jpg
-18,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle18e.jpg
-18,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle18f.jpg
-18,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle18g.jpg
-18,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle18h.jpg
-19,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle19a.jpg
-19,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle19b.jpg
-19,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle19c.jpg
-19,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle19d.jpg
-19,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle19e.jpg
-19,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle19f.jpg
-19,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle19g.jpg
-19,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle19h.jpg
+id,vehicle_id,image_url,last_found_at
+1,1,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle01a.jpg,NULL
+2,1,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle01b.jpg,NULL
+3,1,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle01c.jpg,NULL
+4,1,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle01d.jpg,NULL
+5,1,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle01e.jpg,NULL
+6,1,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle01f.jpg,NULL
+7,1,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle01g.jpg,NULL
+8,1,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle01h.jpg,NULL
+9,2,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle02a.jpg,NULL
+10,2,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle02b.jpg,NULL
+11,2,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle02c.jpg,NULL
+12,2,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle02d.jpg,NULL
+13,2,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle02e.jpg,NULL
+14,2,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle02f.jpg,NULL
+15,2,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle02g.jpg,NULL
+16,2,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle02h.jpg,NULL
+17,3,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle03a.jpg,NULL
+18,3,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle03b.jpg,NULL
+19,3,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle03c.jpg,NULL
+20,3,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle03d.jpg,NULL
+21,3,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle03e.jpg,NULL
+22,3,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle03f.jpg,NULL
+23,3,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle03g.jpg,NULL
+24,3,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle03h.jpg,NULL
+25,4,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle04a.jpg,NULL
+26,4,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle04b.jpg,NULL
+27,4,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle04c.jpg,NULL
+28,4,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle04d.jpg,NULL
+29,4,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle04e.jpg,NULL
+30,4,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle04f.jpg,NULL
+31,4,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle04g.jpg,NULL
+32,4,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle04h.jpg,NULL
+33,5,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle05a.jpg,NULL
+34,5,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle05b.jpg,NULL
+35,5,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle05c.jpg,NULL
+36,5,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle05d.jpg,NULL
+37,5,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle05e.jpg,NULL
+38,5,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle05f.jpg,NULL
+39,5,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle05g.jpg,NULL
+40,5,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle05h.jpg,NULL
+41,6,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle06a.jpg,NULL
+42,6,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle06b.jpg,NULL
+43,6,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle06c.jpg,NULL
+44,6,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle06d.jpg,NULL
+45,6,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle06e.jpg,NULL
+46,6,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle06f.jpg,NULL
+47,6,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle06g.jpg,NULL
+48,6,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle06h.jpg,NULL
+49,7,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle07a.jpg,NULL
+50,7,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle07b.jpg,NULL
+51,7,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle07c.jpg,NULL
+52,7,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle07d.jpg,NULL
+53,7,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle07e.jpg,NULL
+54,7,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle07f.jpg,NULL
+55,7,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle07g.jpg,NULL
+56,7,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle07h.jpg,NULL
+57,8,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle08a.jpg,NULL
+58,8,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle08b.jpg,NULL
+59,8,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle08c.jpg,NULL
+60,8,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle08d.jpg,NULL
+61,8,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle08e.jpg,NULL
+62,8,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle08f.jpg,NULL
+63,8,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle08g.jpg,NULL
+64,8,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle08h.jpg,NULL
+65,9,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle09a.jpg,NULL
+66,9,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle09b.jpg,NULL
+67,9,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle09c.jpg,NULL
+68,9,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle09d.jpg,NULL
+69,9,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle09e.jpg,NULL
+70,9,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle09f.jpg,NULL
+71,9,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle09g.jpg,NULL
+72,9,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle09h.jpg,NULL
+73,10,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle10a.jpg,NULL
+74,10,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle10b.jpg,NULL
+75,10,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle10c.jpg,NULL
+76,10,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle10d.jpg,NULL
+77,10,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle10e.jpg,NULL
+78,10,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle10f.jpg,NULL
+79,10,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle10g.jpg,NULL
+80,10,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle10h.jpg,NULL
+81,11,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle11a.jpg,NULL
+82,11,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle11b.jpg,NULL
+83,11,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle11c.jpg,NULL
+84,11,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle11d.jpg,NULL
+85,11,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle11e.jpg,NULL
+86,11,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle11f.jpg,NULL
+87,11,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle11g.jpg,NULL
+88,11,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle11h.jpg,NULL
+89,12,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle12a.jpg,NULL
+90,12,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle12b.jpg,NULL
+91,12,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle12c.jpg,NULL
+92,12,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle12d.jpg,NULL
+93,12,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle12e.jpg,NULL
+94,12,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle12f.jpg,NULL
+95,12,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle12g.jpg,NULL
+96,13,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle13a.jpg,NULL
+97,13,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle13b.jpg,NULL
+98,13,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle13c.jpg,NULL
+99,13,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle13d.jpg,NULL
+100,13,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle13e.jpg,NULL
+101,13,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle13f.jpg,NULL
+102,13,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle13g.jpg,NULL
+103,13,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle13h.jpg,NULL
+104,14,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle14a.jpg,NULL
+105,14,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle14b.jpg,NULL
+106,14,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle14c.jpg,NULL
+107,14,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle14d.jpg,NULL
+108,14,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle14e.jpg,NULL
+109,14,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle14f.jpg,NULL
+110,14,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle14g.jpg,NULL
+111,14,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle14h.jpg,NULL
+112,15,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle15a.jpg,NULL
+113,15,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle15b.jpg,NULL
+114,15,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle15c.jpg,NULL
+115,15,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle15d.jpg,NULL
+116,15,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle15e.jpg,NULL
+117,15,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle15f.jpg,NULL
+118,15,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle15g.jpg,NULL
+119,15,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle15h.jpg,NULL
+120,16,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle16a.jpg,NULL
+121,16,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle16b.jpg,NULL
+122,16,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle16c.jpg,NULL
+123,16,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle16d.jpg,NULL
+124,16,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle16e.jpg,NULL
+125,16,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle16f.jpg,NULL
+126,16,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle16g.jpg,NULL
+127,16,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle16h.jpg,NULL
+128,17,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle17a.jpg,NULL
+129,17,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle17b.jpg,NULL
+130,17,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle17c.jpg,NULL
+131,17,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle17d.jpg,NULL
+132,17,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle17e.jpg,NULL
+133,17,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle17f.jpg,NULL
+134,17,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle17g.jpg,NULL
+135,17,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle17h.jpg,NULL
+136,18,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle18a.jpg,NULL
+137,18,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle18b.jpg,NULL
+138,18,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle18c.jpg,NULL
+139,18,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle18d.jpg,NULL
+140,18,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle18e.jpg,NULL
+141,18,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle18f.jpg,NULL
+142,18,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle18g.jpg,NULL
+143,18,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle18h.jpg,NULL
+144,19,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle19a.jpg,NULL
+145,19,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle19b.jpg,NULL
+146,19,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle19c.jpg,NULL
+147,19,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle19d.jpg,NULL
+148,19,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle19e.jpg,NULL
+149,19,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle19f.jpg,NULL
+150,19,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle19g.jpg,NULL
+151,19,https://s3.us-east-2.amazonaws.com/online-dealership-assets/seed-data/photos/vehicle19h.jpg,NULL
+152,20,https://static.edealer.ca/V3_1/assets/images/new_vehicles_images_coming.png,6/11/18 10:00
+153,21,https://images.edealer.ca/2/49472331.jpeg,6/12/18 10:00
+154,21,https://images.edealer.ca/2/49472335.jpeg,6/12/18 10:00
+155,21,https://images.edealer.ca/2/49472341.jpeg,6/12/18 10:00
+156,21,https://images.edealer.ca/2/49472344.jpeg,6/12/18 10:00
+157,21,https://images.edealer.ca/2/49472346.jpeg,6/12/18 10:00
+158,21,https://images.edealer.ca/2/49472347.jpeg,6/12/18 10:00
+159,21,https://images.edealer.ca/2/49472349.jpeg,6/12/18 10:00
+160,21,https://images.edealer.ca/2/49472350.jpeg,6/12/18 10:00
+161,21,https://images.edealer.ca/2/49472351.jpeg,6/12/18 10:00
+162,21,https://images.edealer.ca/2/49472353.jpeg,6/12/18 10:00
+163,21,https://images.edealer.ca/2/49472357.jpeg,6/12/18 10:00
+164,21,https://images.edealer.ca/2/49472361.jpeg,6/12/18 10:00
+165,21,https://images.edealer.ca/2/49472365.jpeg,6/12/18 10:00
+166,21,https://images.edealer.ca/2/49472375.jpeg,6/12/18 10:00
+167,21,https://images.edealer.ca/2/49472403.jpeg,6/12/18 10:00
+168,21,https://images.edealer.ca/2/49472431.jpeg,6/12/18 10:00
+169,21,https://images.edealer.ca/2/49472451.jpeg,6/12/18 10:00
+170,21,https://images.edealer.ca/2/49472462.jpeg,6/12/18 10:00
+171,21,https://images.edealer.ca/2/49472472.jpeg,6/12/18 10:00
+172,21,https://images.edealer.ca/2/49472478.jpeg,6/12/18 10:00
+173,22,https://images.edealer.ca/2/49528221.jpeg,6/12/18 10:00
+174,23,https://images.edealer.ca/2/49649716.jpeg,6/12/18 10:00
+175,23,https://images.edealer.ca/2/49649717.jpeg,6/12/18 10:00
+176,23,https://images.edealer.ca/2/49649719.jpeg,6/12/18 10:00
+177,23,https://images.edealer.ca/2/49649720.jpeg,6/12/18 10:00
+178,23,https://images.edealer.ca/2/49649729.jpeg,6/12/18 10:00
+179,23,https://images.edealer.ca/2/49649731.jpeg,6/12/18 10:00
+180,23,https://images.edealer.ca/2/49649733.jpeg,6/12/18 10:00
+181,23,https://images.edealer.ca/2/49649741.jpeg,6/12/18 10:00
+182,23,https://images.edealer.ca/2/49649770.jpeg,6/12/18 10:00
+183,23,https://images.edealer.ca/2/49649783.jpeg,6/12/18 10:00
+184,23,https://images.edealer.ca/2/49649812.jpeg,6/12/18 10:00
+185,23,https://images.edealer.ca/2/49649824.jpeg,6/12/18 10:00
+186,23,https://images.edealer.ca/2/49649827.jpeg,6/12/18 10:00
+187,23,https://images.edealer.ca/2/49649829.jpeg,6/12/18 10:00
+188,23,https://images.edealer.ca/2/49649833.jpeg,6/12/18 10:00
+189,23,https://images.edealer.ca/2/49649842.jpeg,6/12/18 10:00
+190,23,https://images.edealer.ca/2/49649850.jpeg,6/12/18 10:00
+191,23,https://images.edealer.ca/2/49649851.jpeg,6/12/18 10:00
+192,23,https://images.edealer.ca/2/49649852.jpeg,6/12/18 10:00
+193,23,https://images.edealer.ca/2/49649854.jpeg,6/12/18 10:00
+194,24,https://static.edealer.ca/V3_1/assets/images/new_vehicles_images_coming.png,6/4/18 17:28
+195,25,https://static.edealer.ca/V3_1/assets/images/new_vehicles_images_coming.png,6/11/18 10:00
+196,26,https://images.edealer.ca/2/49187673.jpeg,6/12/18 10:00
+197,27,https://images.edealer.ca/2/44165678.jpeg,6/6/18 10:00
+198,27,https://images.edealer.ca/2/44165679.jpeg,6/6/18 10:00
+199,27,https://images.edealer.ca/2/44165680.jpeg,6/6/18 10:00
+200,27,https://images.edealer.ca/2/44165681.jpeg,6/6/18 10:00
+201,27,https://images.edealer.ca/2/44165683.jpeg,6/6/18 10:00
+202,27,https://images.edealer.ca/2/44165684.jpeg,6/6/18 10:00
+203,27,https://images.edealer.ca/2/44165685.jpeg,6/6/18 10:00
+204,27,https://images.edealer.ca/2/44165686.jpeg,6/6/18 10:00
+205,27,https://images.edealer.ca/2/44165689.jpeg,6/6/18 10:00
+206,27,https://images.edealer.ca/2/44165691.jpeg,6/6/18 10:00
+207,27,https://images.edealer.ca/2/44165693.jpeg,6/6/18 10:00
+208,27,https://images.edealer.ca/2/44165695.jpeg,6/6/18 10:00
+209,27,https://images.edealer.ca/2/44165697.jpeg,6/6/18 10:00
+210,27,https://images.edealer.ca/2/44165701.jpeg,6/6/18 10:00
+211,27,https://images.edealer.ca/2/44165706.jpeg,6/6/18 10:00
+212,27,https://images.edealer.ca/2/44165715.jpeg,6/6/18 10:00
+213,27,https://images.edealer.ca/2/44165722.jpeg,6/6/18 10:00
+214,27,https://images.edealer.ca/2/44165729.jpeg,6/6/18 10:00
+215,27,https://images.edealer.ca/2/44165732.jpeg,6/6/18 10:00
+216,27,https://images.edealer.ca/2/44165736.jpeg,6/6/18 10:00
+217,27,https://images.edealer.ca/2/44165743.jpeg,6/6/18 10:00
+218,27,https://images.edealer.ca/2/44165746.jpeg,6/6/18 10:00
+219,27,https://images.edealer.ca/2/44165749.jpeg,6/6/18 10:00
+220,27,https://images.edealer.ca/2/44165753.jpeg,6/6/18 10:00
+221,27,https://images.edealer.ca/2/44165759.jpeg,6/6/18 10:00
+222,27,https://images.edealer.ca/2/44165763.jpeg,6/6/18 10:00
+223,27,https://images.edealer.ca/2/44165767.jpeg,6/6/18 10:00
+224,27,https://images.edealer.ca/2/44165770.jpeg,6/6/18 10:00
+225,27,https://images.edealer.ca/2/44165774.jpeg,6/6/18 10:00
+226,27,https://images.edealer.ca/2/44165780.jpeg,6/6/18 10:00
+227,27,https://images.edealer.ca/2/44165787.jpeg,6/6/18 10:00
+228,27,https://images.edealer.ca/2/44165793.jpeg,6/6/18 10:00
+229,27,https://images.edealer.ca/2/44165798.jpeg,6/6/18 10:00
+230,27,https://images.edealer.ca/2/44165803.jpeg,6/6/18 10:00
+231,27,https://images.edealer.ca/2/44165807.jpeg,6/6/18 10:00
+232,27,https://images.edealer.ca/2/44165810.jpeg,6/6/18 10:00
+233,28,https://images.edealer.ca/2/48729544.jpeg,6/12/18 10:00
+234,28,https://images.edealer.ca/2/48729550.jpeg,6/12/18 10:00
+235,28,https://images.edealer.ca/2/48729557.jpeg,6/12/18 10:00
+236,28,https://images.edealer.ca/2/48729558.jpeg,6/12/18 10:00
+237,28,https://images.edealer.ca/2/48729567.jpeg,6/12/18 10:00
+238,28,https://images.edealer.ca/2/48729593.jpeg,6/12/18 10:00
+239,28,https://images.edealer.ca/2/48729640.jpeg,6/12/18 10:00
+240,28,https://images.edealer.ca/2/48729666.jpeg,6/12/18 10:00
+241,28,https://images.edealer.ca/2/45774616.jpeg,6/12/18 10:00
+242,28,https://images.edealer.ca/2/45774641.jpeg,6/12/18 10:00
+243,28,https://images.edealer.ca/2/45774648.jpeg,6/12/18 10:00
+244,28,https://images.edealer.ca/2/45774655.jpeg,6/12/18 10:00
+245,28,https://images.edealer.ca/2/45774659.jpeg,6/12/18 10:00
+246,28,https://images.edealer.ca/2/45774661.jpeg,6/12/18 10:00
+247,28,https://images.edealer.ca/2/45774668.jpeg,6/12/18 10:00
+248,28,https://images.edealer.ca/2/45774673.jpeg,6/12/18 10:00
+249,28,https://images.edealer.ca/2/45774689.jpeg,6/12/18 10:00
+250,28,https://images.edealer.ca/2/45774693.jpeg,6/12/18 10:00
+251,29,https://images.edealer.ca/2/48729469.jpeg,6/12/18 10:00
+252,29,https://images.edealer.ca/2/48729506.jpeg,6/12/18 10:00
+253,29,https://images.edealer.ca/2/48729515.jpeg,6/12/18 10:00
+254,29,https://images.edealer.ca/2/48729553.jpeg,6/12/18 10:00
+255,29,https://images.edealer.ca/2/48729525.jpeg,6/12/18 10:00
+256,29,https://images.edealer.ca/2/48729580.jpeg,6/12/18 10:00
+257,29,https://images.edealer.ca/2/48729630.jpeg,6/12/18 10:00
+258,29,https://images.edealer.ca/2/48729660.jpeg,6/12/18 10:00
+259,29,https://images.edealer.ca/2/45683221.jpeg,6/12/18 10:00
+260,29,https://images.edealer.ca/2/45683223.jpeg,6/12/18 10:00
+261,29,https://images.edealer.ca/2/45683236.jpeg,6/12/18 10:00
+262,29,https://images.edealer.ca/2/45683225.jpeg,6/12/18 10:00
+263,29,https://images.edealer.ca/2/45683227.jpeg,6/12/18 10:00
+264,29,https://images.edealer.ca/2/45683229.jpeg,6/12/18 10:00
+265,29,https://images.edealer.ca/2/45683230.jpeg,6/12/18 10:00
+266,29,https://images.edealer.ca/2/45683231.jpeg,6/12/18 10:00
+267,29,https://images.edealer.ca/2/45683233.jpeg,6/12/18 10:00
+268,29,https://images.edealer.ca/2/45683234.jpeg,6/12/18 10:00
+269,29,https://images.edealer.ca/2/45683232.jpeg,6/12/18 10:00
+270,29,https://images.edealer.ca/2/45683235.jpeg,6/12/18 10:00
+271,30,https://images.edealer.ca/2/49285163.jpeg,6/12/18 10:00
+272,30,https://images.edealer.ca/2/49285166.jpeg,6/12/18 10:00
+273,30,https://images.edealer.ca/2/49285172.jpeg,6/12/18 10:00
+274,30,https://images.edealer.ca/2/49285175.jpeg,6/12/18 10:00
+275,30,https://images.edealer.ca/2/49285178.jpeg,6/12/18 10:00
+276,30,https://images.edealer.ca/2/49285181.jpeg,6/12/18 10:00
+277,30,https://images.edealer.ca/2/49285202.jpeg,6/12/18 10:00
+278,30,https://images.edealer.ca/2/49285208.jpeg,6/12/18 10:00
+279,30,https://images.edealer.ca/2/49285211.jpeg,6/12/18 10:00
+280,30,https://images.edealer.ca/2/49285213.jpeg,6/12/18 10:00
+281,30,https://images.edealer.ca/2/49285216.jpeg,6/12/18 10:00
+282,30,https://images.edealer.ca/2/49285219.jpeg,6/12/18 10:00
+283,30,https://images.edealer.ca/2/49285221.jpeg,6/12/18 10:00
+284,30,https://images.edealer.ca/2/49285225.jpeg,6/12/18 10:00
+285,30,https://images.edealer.ca/2/49285229.jpeg,6/12/18 10:00
+286,30,https://images.edealer.ca/2/49285232.jpeg,6/12/18 10:00
+287,30,https://images.edealer.ca/2/49285237.jpeg,6/12/18 10:00
+288,30,https://images.edealer.ca/2/49285244.jpeg,6/12/18 10:00
+289,30,https://images.edealer.ca/2/49285254.jpeg,6/12/18 10:00
+290,30,https://images.edealer.ca/2/49285266.jpeg,6/12/18 10:00
+291,30,https://images.edealer.ca/2/49285259.jpeg,6/12/18 10:00
+292,30,https://images.edealer.ca/2/49285275.jpeg,6/12/18 10:00
+293,30,https://images.edealer.ca/2/49285283.jpeg,6/12/18 10:00
+294,31,https://images.edealer.ca/2/49077302.jpeg,6/12/18 10:00
+295,32,https://static.edealer.ca/V3_1/assets/images/new_vehicles_images_coming.png,6/11/18 10:00
+296,33,https://images.edealer.ca/2/48804901.jpeg,6/12/18 10:00
+297,33,https://images.edealer.ca/2/48804904.jpeg,6/12/18 10:00
+298,33,https://images.edealer.ca/2/48804908.jpeg,6/12/18 10:00
+299,33,https://images.edealer.ca/2/48804918.jpeg,6/12/18 10:00
+300,33,https://images.edealer.ca/2/48804920.jpeg,6/12/18 10:00
+301,33,https://images.edealer.ca/2/48804926.jpeg,6/12/18 10:00
+302,33,https://images.edealer.ca/2/48804927.jpeg,6/12/18 10:00
+303,33,https://images.edealer.ca/2/48804929.jpeg,6/12/18 10:00
+304,33,https://images.edealer.ca/2/48152545.jpeg,6/12/18 10:00
+305,33,https://images.edealer.ca/2/48152282.jpeg,6/12/18 10:00
+306,33,https://images.edealer.ca/2/48152290.jpeg,6/12/18 10:00
+307,33,https://images.edealer.ca/2/48152311.jpeg,6/12/18 10:00
+308,33,https://images.edealer.ca/2/48152416.jpeg,6/12/18 10:00
+309,33,https://images.edealer.ca/2/48152462.jpeg,6/12/18 10:00
+310,33,https://images.edealer.ca/2/48152399.jpeg,6/12/18 10:00
+311,33,https://images.edealer.ca/2/48152503.jpeg,6/12/18 10:00
+312,33,https://images.edealer.ca/2/48152512.jpeg,6/12/18 10:00
+313,33,https://images.edealer.ca/2/48152515.jpeg,6/12/18 10:00
+314,33,https://images.edealer.ca/2/48152527.jpeg,6/12/18 10:00
+315,34,https://images.edealer.ca/2/48524938.jpeg,6/12/18 10:00
+316,34,https://images.edealer.ca/2/48524939.jpeg,6/12/18 10:00
+317,34,https://images.edealer.ca/2/48524940.jpeg,6/12/18 10:00
+318,34,https://images.edealer.ca/2/48524941.jpeg,6/12/18 10:00
+319,34,https://images.edealer.ca/2/48524942.jpeg,6/12/18 10:00
+320,34,https://images.edealer.ca/2/48524943.jpeg,6/12/18 10:00
+321,34,https://images.edealer.ca/2/48524944.jpeg,6/12/18 10:00
+322,34,https://images.edealer.ca/2/48524947.jpeg,6/12/18 10:00
+323,34,https://images.edealer.ca/2/48524955.jpeg,6/12/18 10:00
+324,34,https://images.edealer.ca/2/48524962.jpeg,6/12/18 10:00
+325,34,https://images.edealer.ca/2/48524971.jpeg,6/12/18 10:00
+326,34,https://images.edealer.ca/2/48524979.jpeg,6/12/18 10:00
+327,34,https://images.edealer.ca/2/48524990.jpeg,6/12/18 10:00
+328,34,https://images.edealer.ca/2/48524999.jpeg,6/12/18 10:00
+329,34,https://images.edealer.ca/2/48525006.jpeg,6/12/18 10:00
+330,34,https://images.edealer.ca/2/48525011.jpeg,6/12/18 10:00
+331,35,https://images.edealer.ca/2/49046785.jpeg,6/12/18 10:00
+332,35,https://images.edealer.ca/2/49046786.jpeg,6/12/18 10:00
+333,35,https://images.edealer.ca/2/49046793.jpeg,6/12/18 10:00
+334,35,https://images.edealer.ca/2/49046795.jpeg,6/12/18 10:00
+335,35,https://images.edealer.ca/2/49046797.jpeg,6/12/18 10:00
+336,35,https://images.edealer.ca/2/49046798.jpeg,6/12/18 10:00
+337,35,https://images.edealer.ca/2/49046799.jpeg,6/12/18 10:00
+338,35,https://images.edealer.ca/2/49046801.jpeg,6/12/18 10:00
+339,35,https://images.edealer.ca/2/46217032.jpeg,6/12/18 10:00
+340,35,https://images.edealer.ca/2/46217033.jpeg,6/12/18 10:00
+341,35,https://images.edealer.ca/2/46217034.jpeg,6/12/18 10:00
+342,35,https://images.edealer.ca/2/46217035.jpeg,6/12/18 10:00
+343,35,https://images.edealer.ca/2/46217036.jpeg,6/12/18 10:00
+344,35,https://images.edealer.ca/2/49046803.jpeg,6/12/18 10:00
+345,35,https://images.edealer.ca/2/46217038.jpeg,6/12/18 10:00
+346,35,https://images.edealer.ca/2/46217040.jpeg,6/12/18 10:00
+347,35,https://images.edealer.ca/2/46217042.jpeg,6/12/18 10:00
+348,35,https://images.edealer.ca/2/46217043.jpeg,6/12/18 10:00
+349,35,https://images.edealer.ca/2/46217044.jpeg,6/12/18 10:00
+350,35,https://images.edealer.ca/2/46217045.jpeg,6/12/18 10:00
+351,36,https://images.edealer.ca/2/49059144.jpeg,6/12/18 10:00
+352,36,https://images.edealer.ca/2/49059145.jpeg,6/12/18 10:00
+353,36,https://images.edealer.ca/2/49059146.jpeg,6/12/18 10:00
+354,36,https://images.edealer.ca/2/49059147.jpeg,6/12/18 10:00
+355,36,https://images.edealer.ca/2/49059148.jpeg,6/12/18 10:00
+356,36,https://images.edealer.ca/2/49059149.jpeg,6/12/18 10:00
+357,36,https://images.edealer.ca/2/49059150.jpeg,6/12/18 10:00
+358,36,https://images.edealer.ca/2/49059153.jpeg,6/12/18 10:00
+359,36,https://images.edealer.ca/2/49059161.jpeg,6/12/18 10:00
+360,36,https://images.edealer.ca/2/49059162.jpeg,6/12/18 10:00
+361,36,https://images.edealer.ca/2/49059163.jpeg,6/12/18 10:00
+362,36,https://images.edealer.ca/2/49059164.jpeg,6/12/18 10:00
+363,36,https://images.edealer.ca/2/49059166.jpeg,6/12/18 10:00
+364,36,https://images.edealer.ca/2/49059175.jpeg,6/12/18 10:00
+365,36,https://images.edealer.ca/2/49059177.jpeg,6/12/18 10:00
+366,36,https://images.edealer.ca/2/49059178.jpeg,6/12/18 10:00
+367,36,https://images.edealer.ca/2/49059181.jpeg,6/12/18 10:00
+368,36,https://images.edealer.ca/2/49059183.jpeg,6/12/18 10:00
+369,36,https://images.edealer.ca/2/49059204.jpeg,6/12/18 10:00
+370,36,https://images.edealer.ca/2/49059207.jpeg,6/12/18 10:00
+371,36,https://images.edealer.ca/2/49059211.jpeg,6/12/18 10:00
+372,36,https://images.edealer.ca/2/49059215.jpeg,6/12/18 10:00
+373,37,https://images.edealer.ca/2/49463432.jpeg,6/12/18 10:00
+374,38,https://images.edealer.ca/2/49387877.jpeg,6/12/18 10:00
+375,38,https://images.edealer.ca/2/49387891.jpeg,6/12/18 10:00
+376,38,https://images.edealer.ca/2/49387900.jpeg,6/12/18 10:00
+377,38,https://images.edealer.ca/2/49387904.jpeg,6/12/18 10:00
+378,38,https://images.edealer.ca/2/49387906.jpeg,6/12/18 10:00
+379,38,https://images.edealer.ca/2/49387909.jpeg,6/12/18 10:00
+380,38,https://images.edealer.ca/2/49387917.jpeg,6/12/18 10:00
+381,38,https://images.edealer.ca/2/49387928.jpeg,6/12/18 10:00
+382,38,https://images.edealer.ca/2/49387939.jpeg,6/12/18 10:00
+383,38,https://images.edealer.ca/2/49387942.jpeg,6/12/18 10:00
+384,38,https://images.edealer.ca/2/49387945.jpeg,6/12/18 10:00
+385,38,https://images.edealer.ca/2/49387948.jpeg,6/12/18 10:00
+386,38,https://images.edealer.ca/2/49387950.jpeg,6/12/18 10:00
+387,38,https://images.edealer.ca/2/49387954.jpeg,6/12/18 10:00
+388,38,https://images.edealer.ca/2/49387957.jpeg,6/12/18 10:00
+389,38,https://images.edealer.ca/2/49387961.jpeg,6/12/18 10:00
+390,38,https://images.edealer.ca/2/49387971.jpeg,6/12/18 10:00
+391,38,https://images.edealer.ca/2/49387989.jpeg,6/12/18 10:00
+392,38,https://images.edealer.ca/2/49388000.jpeg,6/12/18 10:00
+393,38,https://images.edealer.ca/2/49388004.jpeg,6/12/18 10:00
+394,38,https://images.edealer.ca/2/49388005.jpeg,6/12/18 10:00
+395,38,https://images.edealer.ca/2/49388006.jpeg,6/12/18 10:00
+396,38,https://images.edealer.ca/2/49388007.jpeg,6/12/18 10:00
+397,38,https://images.edealer.ca/2/49388011.jpeg,6/12/18 10:00
+398,38,https://images.edealer.ca/2/49388015.jpeg,6/12/18 10:00
+399,39,https://images.edealer.ca/2/49387925.jpeg,6/12/18 10:00
+400,39,https://images.edealer.ca/2/49387940.jpeg,6/12/18 10:00
+401,39,https://images.edealer.ca/2/49387944.jpeg,6/12/18 10:00
+402,39,https://images.edealer.ca/2/49387947.jpeg,6/12/18 10:00
+403,39,https://images.edealer.ca/2/49387952.jpeg,6/12/18 10:00
+404,39,https://images.edealer.ca/2/49387956.jpeg,6/12/18 10:00
+405,39,https://images.edealer.ca/2/49388003.jpeg,6/12/18 10:00
+406,39,https://images.edealer.ca/2/49388008.jpeg,6/12/18 10:00
+407,39,https://images.edealer.ca/2/49388020.jpeg,6/12/18 10:00
+408,39,https://images.edealer.ca/2/49388047.jpeg,6/12/18 10:00
+409,39,https://images.edealer.ca/2/49388056.jpeg,6/12/18 10:00
+410,39,https://images.edealer.ca/2/49388092.jpeg,6/12/18 10:00
+411,39,https://images.edealer.ca/2/49388112.jpeg,6/12/18 10:00
+412,39,https://images.edealer.ca/2/49388120.jpeg,6/12/18 10:00
+413,39,https://images.edealer.ca/2/49388162.jpeg,6/12/18 10:00
+414,39,https://images.edealer.ca/2/49388177.jpeg,6/12/18 10:00
+415,39,https://images.edealer.ca/2/49388203.jpeg,6/12/18 10:00
+416,39,https://images.edealer.ca/2/49388222.jpeg,6/12/18 10:00
+417,39,https://images.edealer.ca/2/49388237.jpeg,6/12/18 10:00
+418,40,https://images.edealer.ca/2/49649693.jpeg,6/12/18 10:00
+419,40,https://images.edealer.ca/2/49649698.jpeg,6/12/18 10:00
+420,40,https://images.edealer.ca/2/49649700.jpeg,6/12/18 10:00
+421,40,https://images.edealer.ca/2/49649702.jpeg,6/12/18 10:00
+422,40,https://images.edealer.ca/2/49649711.jpeg,6/12/18 10:00
+423,40,https://images.edealer.ca/2/49649718.jpeg,6/12/18 10:00
+424,40,https://images.edealer.ca/2/49649721.jpeg,6/12/18 10:00
+425,40,https://images.edealer.ca/2/49649725.jpeg,6/12/18 10:00
+426,40,https://images.edealer.ca/2/49649730.jpeg,6/12/18 10:00
+427,40,https://images.edealer.ca/2/49649732.jpeg,6/12/18 10:00
+428,40,https://images.edealer.ca/2/49649734.jpeg,6/12/18 10:00
+429,40,https://images.edealer.ca/2/49649749.jpeg,6/12/18 10:00
+430,40,https://images.edealer.ca/2/49649777.jpeg,6/12/18 10:00
+431,40,https://images.edealer.ca/2/49649768.jpeg,6/12/18 10:00
+432,40,https://images.edealer.ca/2/49649807.jpeg,6/12/18 10:00
+433,40,https://images.edealer.ca/2/49649821.jpeg,6/12/18 10:00
+434,40,https://images.edealer.ca/2/49649825.jpeg,6/12/18 10:00
+435,40,https://images.edealer.ca/2/49649828.jpeg,6/12/18 10:00
+436,40,https://images.edealer.ca/2/49649830.jpeg,6/12/18 10:00
+437,40,https://images.edealer.ca/2/49649840.jpeg,6/12/18 10:00
+438,40,https://images.edealer.ca/2/49649848.jpeg,6/12/18 10:00
+439,40,https://images.edealer.ca/2/49649853.jpeg,6/12/18 10:00
+440,40,https://images.edealer.ca/2/49649860.jpeg,6/12/18 10:00
+441,41,https://images.edealer.ca/2/49046750.jpeg,6/12/18 10:00
+442,41,https://images.edealer.ca/2/49046755.jpeg,6/12/18 10:00
+443,41,https://images.edealer.ca/2/49046758.jpeg,6/12/18 10:00
+444,41,https://images.edealer.ca/2/49046762.jpeg,6/12/18 10:00
+445,41,https://images.edealer.ca/2/49046764.jpeg,6/12/18 10:00
+446,41,https://images.edealer.ca/2/49046768.jpeg,6/12/18 10:00
+447,41,https://images.edealer.ca/2/49046771.jpeg,6/12/18 10:00
+448,41,https://images.edealer.ca/2/49046774.jpeg,6/12/18 10:00
+449,41,https://images.edealer.ca/2/45511221.jpeg,6/12/18 10:00
+450,41,https://images.edealer.ca/2/45511222.jpeg,6/12/18 10:00
+451,41,https://images.edealer.ca/2/45511223.jpeg,6/12/18 10:00
+452,41,https://images.edealer.ca/2/49046776.jpeg,6/12/18 10:00
+453,41,https://images.edealer.ca/2/45511225.jpeg,6/12/18 10:00
+454,41,https://images.edealer.ca/2/45511226.jpeg,6/12/18 10:00
+455,41,https://images.edealer.ca/2/45511227.jpeg,6/12/18 10:00
+456,41,https://images.edealer.ca/2/45511228.jpeg,6/12/18 10:00
+457,41,https://images.edealer.ca/2/45511229.jpeg,6/12/18 10:00
+458,41,https://images.edealer.ca/2/45511230.jpeg,6/12/18 10:00
+459,42,https://static.edealer.ca/V3_1/assets/images/new_vehicles_images_coming.png,6/11/18 10:00
+460,43,https://images.edealer.ca/2/49649686.jpeg,6/12/18 10:00
+461,43,https://images.edealer.ca/2/49649688.jpeg,6/12/18 10:00
+462,43,https://images.edealer.ca/2/49649689.jpeg,6/12/18 10:00
+463,43,https://images.edealer.ca/2/49649690.jpeg,6/12/18 10:00
+464,43,https://images.edealer.ca/2/49649691.jpeg,6/12/18 10:00
+465,43,https://images.edealer.ca/2/49649694.jpeg,6/12/18 10:00
+466,43,https://images.edealer.ca/2/49649696.jpeg,6/12/18 10:00
+467,43,https://images.edealer.ca/2/49649697.jpeg,6/12/18 10:00
+468,43,https://images.edealer.ca/2/49649699.jpeg,6/12/18 10:00
+469,43,https://images.edealer.ca/2/49649701.jpeg,6/12/18 10:00
+470,43,https://images.edealer.ca/2/49649703.jpeg,6/12/18 10:00
+471,43,https://images.edealer.ca/2/49649704.jpeg,6/12/18 10:00
+472,43,https://images.edealer.ca/2/49649706.jpeg,6/12/18 10:00
+473,43,https://images.edealer.ca/2/49649707.jpeg,6/12/18 10:00
+474,43,https://images.edealer.ca/2/49649708.jpeg,6/12/18 10:00
+475,43,https://images.edealer.ca/2/49649709.jpeg,6/12/18 10:00
+476,43,https://images.edealer.ca/2/49649713.jpeg,6/12/18 10:00
+477,43,https://images.edealer.ca/2/49649710.jpeg,6/12/18 10:00
+478,43,https://images.edealer.ca/2/49649712.jpeg,6/12/18 10:00
+479,43,https://images.edealer.ca/2/49649715.jpeg,6/12/18 10:00
+480,44,https://images.edealer.ca/2/48939662.jpeg,6/12/18 10:00
+481,44,https://images.edealer.ca/2/48939675.jpeg,6/12/18 10:00
+482,44,https://images.edealer.ca/2/48939718.jpeg,6/12/18 10:00
+483,44,https://images.edealer.ca/2/48939722.jpeg,6/12/18 10:00
+484,44,https://images.edealer.ca/2/48939746.jpeg,6/12/18 10:00
+485,44,https://images.edealer.ca/2/48939748.jpeg,6/12/18 10:00
+486,44,https://images.edealer.ca/2/48939750.jpeg,6/12/18 10:00
+487,44,https://images.edealer.ca/2/48939774.jpeg,6/12/18 10:00
+488,44,https://images.edealer.ca/2/48843637.jpeg,6/12/18 10:00
+489,44,https://images.edealer.ca/2/48843651.jpeg,6/12/18 10:00
+490,44,https://images.edealer.ca/2/48843657.jpeg,6/12/18 10:00
+491,44,https://images.edealer.ca/2/48843661.jpeg,6/12/18 10:00
+492,44,https://images.edealer.ca/2/48843677.jpeg,6/12/18 10:00
+493,44,https://images.edealer.ca/2/48843695.jpeg,6/12/18 10:00
+494,44,https://images.edealer.ca/2/48843698.jpeg,6/12/18 10:00
+495,44,https://images.edealer.ca/2/48843704.jpeg,6/12/18 10:00
+496,44,https://images.edealer.ca/2/48843709.jpeg,6/12/18 10:00
+497,44,https://images.edealer.ca/2/48843713.jpeg,6/12/18 10:00
+498,44,https://images.edealer.ca/2/48843719.jpeg,6/12/18 10:00
+499,44,https://images.edealer.ca/2/48843722.jpeg,6/12/18 10:00
+500,44,https://images.edealer.ca/2/48843730.jpeg,6/12/18 10:00
+501,44,https://images.edealer.ca/2/48843732.jpeg,6/12/18 10:00
+502,44,https://images.edealer.ca/2/48939776.jpeg,6/12/18 10:00
+503,44,https://images.edealer.ca/2/48843736.jpeg,6/12/18 10:00
+504,44,https://images.edealer.ca/2/48939779.jpeg,6/12/18 10:00
+505,44,https://images.edealer.ca/2/48939783.jpeg,6/12/18 10:00
+506,44,https://images.edealer.ca/2/48939794.jpeg,6/12/18 10:00
+507,44,https://images.edealer.ca/2/48939829.jpeg,6/12/18 10:00
+508,44,https://images.edealer.ca/2/48939843.jpeg,6/12/18 10:00
+509,44,https://images.edealer.ca/2/48939845.jpeg,6/12/18 10:00
+510,44,https://images.edealer.ca/2/48939847.jpeg,6/12/18 10:00
+511,44,https://images.edealer.ca/2/48939882.jpeg,6/12/18 10:00
+512,44,https://images.edealer.ca/2/48939909.jpeg,6/12/18 10:00
+513,44,https://images.edealer.ca/2/48939910.jpeg,6/12/18 10:00
+514,44,https://images.edealer.ca/2/48939912.jpeg,6/12/18 10:00
+515,44,https://images.edealer.ca/2/48939924.jpeg,6/12/18 10:00
+516,44,https://images.edealer.ca/2/48939955.jpeg,6/12/18 10:00
+517,44,https://images.edealer.ca/2/48939966.jpeg,6/12/18 10:00
+518,44,https://images.edealer.ca/2/48939972.jpeg,6/12/18 10:00
+519,44,https://images.edealer.ca/2/48939980.jpeg,6/12/18 10:00
+520,45,https://images.edealer.ca/2/49511489.jpeg,6/12/18 10:00
+521,45,https://images.edealer.ca/2/49511500.jpeg,6/12/18 10:00
+522,45,https://images.edealer.ca/2/49511510.jpeg,6/12/18 10:00
+523,45,https://images.edealer.ca/2/49511521.jpeg,6/12/18 10:00
+524,45,https://images.edealer.ca/2/49511531.jpeg,6/12/18 10:00
+525,45,https://images.edealer.ca/2/49511542.jpeg,6/12/18 10:00
+526,45,https://images.edealer.ca/2/49511543.jpeg,6/12/18 10:00
+527,45,https://images.edealer.ca/2/49511544.jpeg,6/12/18 10:00
+528,45,https://images.edealer.ca/2/49511545.jpeg,6/12/18 10:00
+529,45,https://images.edealer.ca/2/49511546.jpeg,6/12/18 10:00
+530,45,https://images.edealer.ca/2/49511548.jpeg,6/12/18 10:00
+531,45,https://images.edealer.ca/2/49511550.jpeg,6/12/18 10:00
+532,45,https://images.edealer.ca/2/49511554.jpeg,6/12/18 10:00
+533,45,https://images.edealer.ca/2/49511560.jpeg,6/12/18 10:00
+534,45,https://images.edealer.ca/2/49511564.jpeg,6/12/18 10:00
+535,45,https://images.edealer.ca/2/49511568.jpeg,6/12/18 10:00
+536,45,https://images.edealer.ca/2/49511575.jpeg,6/12/18 10:00
+537,45,https://images.edealer.ca/2/49511580.jpeg,6/12/18 10:00
+538,45,https://images.edealer.ca/2/49511585.jpeg,6/12/18 10:00
+539,45,https://images.edealer.ca/2/49511599.jpeg,6/12/18 10:00
+540,46,https://images.edealer.ca/2/49046807.jpeg,6/12/18 10:00
+541,46,https://images.edealer.ca/2/49046810.jpeg,6/12/18 10:00
+542,46,https://images.edealer.ca/2/49046812.jpeg,6/12/18 10:00
+543,46,https://images.edealer.ca/2/49046814.jpeg,6/12/18 10:00
+544,46,https://images.edealer.ca/2/49046816.jpeg,6/12/18 10:00
+545,46,https://images.edealer.ca/2/49046818.jpeg,6/12/18 10:00
+546,46,https://images.edealer.ca/2/49046819.jpeg,6/12/18 10:00
+547,46,https://images.edealer.ca/2/49046821.jpeg,6/12/18 10:00
+548,46,https://images.edealer.ca/2/44734947.jpeg,6/12/18 10:00
+549,46,https://images.edealer.ca/2/44734946.jpeg,6/12/18 10:00
+550,46,https://images.edealer.ca/2/44734948.jpeg,6/12/18 10:00
+551,46,https://images.edealer.ca/2/44734950.jpeg,6/12/18 10:00
+552,46,https://images.edealer.ca/2/44734951.jpeg,6/12/18 10:00
+553,46,https://images.edealer.ca/2/44734952.jpeg,6/12/18 10:00
+554,46,https://images.edealer.ca/2/44734953.jpeg,6/12/18 10:00
+555,46,https://images.edealer.ca/2/44734954.jpeg,6/12/18 10:00
+556,46,https://images.edealer.ca/2/44734955.jpeg,6/12/18 10:00
+557,46,https://images.edealer.ca/2/44734956.jpeg,6/12/18 10:00
+558,46,https://images.edealer.ca/2/44734957.jpeg,6/12/18 10:00
+559,46,https://images.edealer.ca/2/44734958.jpeg,6/12/18 10:00
+560,46,https://images.edealer.ca/2/44734959.jpeg,6/12/18 10:00
+561,46,https://images.edealer.ca/2/44734960.jpeg,6/12/18 10:00
+562,46,https://images.edealer.ca/2/44734961.jpeg,6/12/18 10:00
+563,46,https://images.edealer.ca/2/44734962.jpeg,6/12/18 10:00
+564,46,https://images.edealer.ca/2/44734963.jpeg,6/12/18 10:00
+565,46,https://images.edealer.ca/2/44734965.jpeg,6/12/18 10:00
+566,46,https://images.edealer.ca/2/44734966.jpeg,6/12/18 10:00
+567,46,https://images.edealer.ca/2/44734967.jpeg,6/12/18 10:00
+568,46,https://images.edealer.ca/2/44734968.jpeg,6/12/18 10:00
+569,46,https://images.edealer.ca/2/44734969.jpeg,6/12/18 10:00
+570,47,https://images.edealer.ca/2/44970988.jpeg,6/12/18 10:00
+571,47,https://images.edealer.ca/2/44970989.jpeg,6/12/18 10:00
+572,47,https://images.edealer.ca/2/44970990.jpeg,6/12/18 10:00
+573,47,https://images.edealer.ca/2/44970991.jpeg,6/12/18 10:00
+574,48,https://images.edealer.ca/2/49271336.jpeg,6/12/18 10:00
+575,25,https://static.edealer.ca/V3_1/assets/images/new_vehicles_images_coming.png,6/5/18 8:54
+576,49,https://images.edealer.ca/2/49664603.jpeg,6/11/18 10:00
+577,50,https://images.edealer.ca/2/49782584.jpeg,6/12/18 10:00
+578,20,https://images.edealer.ca/2/49895870.jpeg,6/12/18 10:00
+579,20,https://images.edealer.ca/2/49895871.jpeg,6/12/18 10:00
+580,20,https://images.edealer.ca/2/49895873.jpeg,6/12/18 10:00
+581,20,https://images.edealer.ca/2/49895875.jpeg,6/12/18 10:00
+582,20,https://images.edealer.ca/2/49895880.jpeg,6/12/18 10:00
+583,20,https://images.edealer.ca/2/49895885.jpeg,6/12/18 10:00
+584,20,https://images.edealer.ca/2/49895891.jpeg,6/12/18 10:00
+585,20,https://images.edealer.ca/2/49895897.jpeg,6/12/18 10:00
+586,20,https://images.edealer.ca/2/49895902.jpeg,6/12/18 10:00
+587,20,https://images.edealer.ca/2/49895905.jpeg,6/12/18 10:00
+588,20,https://images.edealer.ca/2/49895907.jpeg,6/12/18 10:00
+589,20,https://images.edealer.ca/2/49895910.jpeg,6/12/18 10:00
+590,20,https://images.edealer.ca/2/49895915.jpeg,6/12/18 10:00
+591,20,https://images.edealer.ca/2/49895924.jpeg,6/12/18 10:00
+592,20,https://images.edealer.ca/2/49895934.jpeg,6/12/18 10:00
+593,20,https://images.edealer.ca/2/49895944.jpeg,6/12/18 10:00
+594,20,https://images.edealer.ca/2/49895957.jpeg,6/12/18 10:00
+595,20,https://images.edealer.ca/2/49895968.jpeg,6/12/18 10:00
+596,20,https://images.edealer.ca/2/49895980.jpeg,6/12/18 10:00
+597,20,https://images.edealer.ca/2/49895987.jpeg,6/12/18 10:00
+598,20,https://images.edealer.ca/2/49895996.jpeg,6/12/18 10:00
+599,20,https://images.edealer.ca/2/49896008.jpeg,6/12/18 10:00
+600,20,https://images.edealer.ca/2/49896015.jpeg,6/12/18 10:00
+601,20,https://images.edealer.ca/2/49896024.jpeg,6/12/18 10:00
+602,51,https://images.edealer.ca/2/49739248.jpeg,6/12/18 10:00
+603,25,https://images.edealer.ca/2/49895972.jpeg,6/12/18 10:00
+604,25,https://images.edealer.ca/2/49895990.jpeg,6/12/18 10:00
+605,25,https://images.edealer.ca/2/49896000.jpeg,6/12/18 10:00
+606,25,https://images.edealer.ca/2/49896012.jpeg,6/12/18 10:00
+607,25,https://images.edealer.ca/2/49896023.jpeg,6/12/18 10:00
+608,25,https://images.edealer.ca/2/49896037.jpeg,6/12/18 10:00
+609,25,https://images.edealer.ca/2/49896061.jpeg,6/12/18 10:00
+610,25,https://images.edealer.ca/2/49896067.jpeg,6/12/18 10:00
+611,25,https://images.edealer.ca/2/49896070.jpeg,6/12/18 10:00
+612,25,https://images.edealer.ca/2/49896076.jpeg,6/12/18 10:00
+613,25,https://images.edealer.ca/2/49896094.jpeg,6/12/18 10:00
+614,25,https://images.edealer.ca/2/49896113.jpeg,6/12/18 10:00
+615,25,https://images.edealer.ca/2/49896129.jpeg,6/12/18 10:00
+616,25,https://images.edealer.ca/2/49896132.jpeg,6/12/18 10:00
+617,25,https://images.edealer.ca/2/49896135.jpeg,6/12/18 10:00
+618,25,https://images.edealer.ca/2/49896139.jpeg,6/12/18 10:00
+619,25,https://images.edealer.ca/2/49896170.jpeg,6/12/18 10:00
+620,25,https://images.edealer.ca/2/49896180.jpeg,6/12/18 10:00
+621,25,https://images.edealer.ca/2/49896187.jpeg,6/12/18 10:00
+622,25,https://images.edealer.ca/2/49896193.jpeg,6/12/18 10:00
+623,32,https://images.edealer.ca/2/49895909.jpeg,6/12/18 10:00
+624,32,https://images.edealer.ca/2/49895918.jpeg,6/12/18 10:00
+625,32,https://images.edealer.ca/2/49895926.jpeg,6/12/18 10:00
+626,32,https://images.edealer.ca/2/49895938.jpeg,6/12/18 10:00
+627,32,https://images.edealer.ca/2/49895947.jpeg,6/12/18 10:00
+628,32,https://images.edealer.ca/2/49895959.jpeg,6/12/18 10:00
+629,32,https://images.edealer.ca/2/49895969.jpeg,6/12/18 10:00
+630,32,https://images.edealer.ca/2/49895981.jpeg,6/12/18 10:00
+631,32,https://images.edealer.ca/2/49895994.jpeg,6/12/18 10:00
+632,32,https://images.edealer.ca/2/49896003.jpeg,6/12/18 10:00
+633,32,https://images.edealer.ca/2/49896014.jpeg,6/12/18 10:00
+634,32,https://images.edealer.ca/2/49896021.jpeg,6/12/18 10:00
+635,32,https://images.edealer.ca/2/49896029.jpeg,6/12/18 10:00
+636,32,https://images.edealer.ca/2/49896039.jpeg,6/12/18 10:00
+637,32,https://images.edealer.ca/2/49896049.jpeg,6/12/18 10:00
+638,32,https://images.edealer.ca/2/49896056.jpeg,6/12/18 10:00
+639,32,https://images.edealer.ca/2/49896060.jpeg,6/12/18 10:00
+640,32,https://images.edealer.ca/2/49896063.jpeg,6/12/18 10:00
+641,32,https://images.edealer.ca/2/49896065.jpeg,6/12/18 10:00
+642,52,https://images.edealer.ca/2/49914775.jpeg,6/12/18 10:00
+643,42,https://images.edealer.ca/2/49895866.jpeg,6/12/18 10:00
+644,42,https://images.edealer.ca/2/49895867.jpeg,6/12/18 10:00
+645,42,https://images.edealer.ca/2/49895868.jpeg,6/12/18 10:00
+646,42,https://images.edealer.ca/2/49895869.jpeg,6/12/18 10:00
+647,42,https://images.edealer.ca/2/49895872.jpeg,6/12/18 10:00
+648,42,https://images.edealer.ca/2/49895874.jpeg,6/12/18 10:00
+649,42,https://images.edealer.ca/2/49895882.jpeg,6/12/18 10:00
+650,42,https://images.edealer.ca/2/49895888.jpeg,6/12/18 10:00
+651,42,https://images.edealer.ca/2/49895901.jpeg,6/12/18 10:00
+652,42,https://images.edealer.ca/2/49895904.jpeg,6/12/18 10:00
+653,42,https://images.edealer.ca/2/49895906.jpeg,6/12/18 10:00
+654,42,https://images.edealer.ca/2/49895913.jpeg,6/12/18 10:00
+655,42,https://images.edealer.ca/2/49895922.jpeg,6/12/18 10:00
+656,42,https://images.edealer.ca/2/49895931.jpeg,6/12/18 10:00
+657,42,https://images.edealer.ca/2/49895950.jpeg,6/12/18 10:00
+658,42,https://images.edealer.ca/2/49895961.jpeg,6/12/18 10:00
+659,42,https://images.edealer.ca/2/49895976.jpeg,6/12/18 10:00
+660,42,https://images.edealer.ca/2/49895986.jpeg,6/12/18 10:00
+661,42,https://images.edealer.ca/2/49895997.jpeg,6/12/18 10:00
+662,42,https://images.edealer.ca/2/49896007.jpeg,6/12/18 10:00
+663,42,https://images.edealer.ca/2/49896017.jpeg,6/12/18 10:00
+664,42,https://images.edealer.ca/2/49896028.jpeg,6/12/18 10:00
+665,53,https://images.edealer.ca/2/49914755.jpeg,6/12/18 10:00

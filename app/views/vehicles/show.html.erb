@@ -51,10 +51,10 @@
         <div class="listing-navbar-button">
         
           <div class="navbar-price-container">
-            <p class="navbar-price-visible">$<%= @vehicle.price %></p>
+            <p class="navbar-price-visible">$<%= @vehicle.actual_price %></p>
           </div>
           
-          <% if @vehicle.user.dealership_id.present? %>
+          <% if @vehicle.dealership.present? %>
           
             <div class="btn-navbar-contact-hidden btn-buy-online">
               
@@ -95,7 +95,7 @@
 
 <%= form_for @conversation do |f| %>
   
-  <% if @vehicle.user.dealership_id.present? %>
+  <% if @vehicle.dealership.present? %>
     <div class="modal" id="modal-test-drive" role="dialog">
       
       <div class="modal-test-drive-header">
@@ -133,7 +133,7 @@
             <i class="fa fa-lg fa-chevron-right modal-test-drive-right"></i>
             
             <ol class="modal-test-drive-list">
-              <% User.where(dealership_id: @vehicle.user.dealership_id).each do 
+              <% User.where(dealership_id: @vehicle.dealership_id).each do 
                     |dealer| %>
                 <li class="modal-test-drive-item">
   
@@ -194,14 +194,11 @@
               
                 <div class="col-md-2 col-xs-4">
                   
-                  <% if @vehicle.user.dealership_id.present? %>
-                    <%= link_to Dealership.find(@vehicle.user.dealership_id) do %>
+                  <% if @vehicle.dealership.present? %>
+                    <%= link_to @vehicle.dealership do %>
                       <div class="vehicle-overview-avatar avatar-general"
                            style="background-image: url(
-                                   '<%= Dealership.
-                                          find(@vehicle.user.dealership_id).
-                                          photo.
-                                          url() %>')">
+                                   '<%= @vehicle.dealership.photo.url() %>')">
                       </div>
                     <% end %>
                     
@@ -221,7 +218,7 @@
                     <%= @vehicle.listing_name %>
                   </h1>
                   
-                  <% if @vehicle.user.dealership_id.present? %>
+                  <% if @vehicle.dealership.present? %>
                     <div class="row vertical-align">
                       
                       <div class="col-xs-1">
@@ -229,13 +226,13 @@
                              style="background-image: url(
                                      '<%= User.
                                             where(dealership_id: 
-                                                    @vehicle.user.dealership_id).
+                                                    @vehicle.dealership_id).
                                             first.
                                             avatar.
                                             url(:thumb) %>">
                           
                           <% if User.
-                                where(dealership_id: @vehicle.user.dealership_id).
+                                where(dealership_id: @vehicle.dealership_id).
                                 second.
                                 present? %>
                             <div class="dealer-b-avatar avatar-general"
@@ -250,7 +247,7 @@
                           <% end %>
                           
                           <% if User.
-                                where(dealership_id: @vehicle.user.dealership_id).
+                                where(dealership_id: @vehicle.dealership_id).
                                 third.
                                 present? %>
                             <div class="dealer-c-avatar avatar-general"
@@ -268,8 +265,8 @@
                       
                       <div class="col-xs-11">
                         
-                        <%= link_to Dealership.find(@vehicle.user.dealership_id).name, 
-                                    Dealership.find(@vehicle.user.dealership_id),
+                        <%= link_to @vehicle.dealership.dealership_name, 
+                                    @vehicle.dealership,
                                     class: "vehicle-overview-subheading
                                             vehicle-overview-subheading-dealer" %>
                         
@@ -304,7 +301,9 @@
               Add to Shortlist
             <% end %>
   
-            <p class="vehicle-overview-description"><%= @vehicle.summary %></p>
+            <p class="vehicle-overview-description">
+              <%= @vehicle.description_clean %>
+            </p>
             
             <div class="vehicle-overview-views">
               <div class="row vertical-align">
@@ -317,7 +316,7 @@
                   <p class="vehicle-overview-views-info">
                     
                     <strong>
-                      <% if @vehicle.user.dealership_id.present? %>
+                      <% if @vehicle.dealership.present? %>
                         This
                       <% else %>
                         <%= @vehicle.user.first_name %>'s 
@@ -342,11 +341,14 @@
             <%= f.hidden_field :sender_id,           value: current_user.id if 
                                                             current_user %>
             
-            <% if @vehicle.dealership_id.blank? %>
-              <%= f.hidden_field :recipient_id,      value: @vehicle.user.id %>
-            <% end %>
+            <% if @vehicle.user.present? %>
             
-            <%= f.hidden_field :next_contributor_id, value: @vehicle.user.id %>
+              <%= f.hidden_field :recipient_id,      
+                                 value: @vehicle.user.id %>
+                                 
+              <%= f.hidden_field :next_contributor_id, 
+                                 value: @vehicle.user.id %>
+            <% end %>
             
             <%= f.hidden_field :is_sender_anonymous, value: false %>
             
@@ -358,7 +360,7 @@
           
             <%= f.fields_for :appointments, Appointment.new do |ff| %>
             
-              <% if @vehicle.user.dealership_id.present? || 
+              <% if @vehicle.dealership.present? || 
                       @vehicle.availabilities.exists? %>
                 <a class="availability-link">Click for availability</a>
               <% end %>
@@ -379,14 +381,16 @@
               
               <%= ff.hidden_field :status,              value: "pending" %>
               
-              <%= ff.hidden_field :seller_id,           value: @vehicle.user.id %>
+              <% if @vehicle.user.present? %>
+                <%= ff.hidden_field :seller_id,         value: @vehicle.user.id %>
+              <% end %>
               
               <%= ff.hidden_field :buyer_id, value: current_user.id if current_user %>
               
               <%= ff.hidden_field :vehicle_id,          value: @vehicle.id %>
             <% end %>
             
-            <% if @vehicle.user.dealership_id.present? %>
+            <% if @vehicle.dealership.present? %>
               <div class="btn btn-tertiary btn-appointment">
                 Book!
               </div>
@@ -402,9 +406,9 @@
             <span class="vehicle-reviews-title">Need Some Advice?</span>
             
             <p class="vehicle-reviews-info">
-              <% if @vehicle.user.dealership_id.present? %>
+              <% if @vehicle.dealership.present? %>
                 Read reviews of 
-                <%= Dealership.find(@vehicle.user.dealership_id).name %>!
+                <%= @vehicle.dealership.dealership_name %>!
               <% else %>
                 Read <%= @vehicle.user.first_name %>'s reviews!
               <% end %>

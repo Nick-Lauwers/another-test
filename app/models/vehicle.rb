@@ -5,6 +5,7 @@ class Vehicle < ActiveRecord::Base
   searchkick word_start: [:listing_name, :city], locations: [:location]
 
   belongs_to :user
+  belongs_to :dealership
   belongs_to :vehicle_make
   belongs_to :vehicle_model
   
@@ -42,7 +43,7 @@ class Vehicle < ActiveRecord::Base
   # before_save      { vin.upcase! }
   # default_scope -> { order(created_at: :desc) }
   
-  validates :vehicle_make_id, :vehicle_model_id, :year, :price, :mileage, presence: true
+  validates :vehicle_make_id, :vehicle_model_id, :year, :actual_price, :mileage, presence: true
             # :user_id, :body_style, :color, :transmission, :fuel_type, 
             # :drivetrain, :street_address, :city, :state, :seating_capacity, 
             # presence: true

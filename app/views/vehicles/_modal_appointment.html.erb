@@ -32,9 +32,9 @@
         <%= f.hidden_field :sender_id,           value: current_user.id if 
                                                         current_user %>
         
-        <%= f.hidden_field :recipient_id,        value: @vehicle.user.id %>
+        <!--<(perc)= f.hidden_field :recipient_id,        value: @vehicle.user.id %>-->
         
-        <%= f.hidden_field :next_contributor_id, value: @vehicle.user.id %>
+        <!--<(perc)= f.hidden_field :next_contributor_id, value: @vehicle.user.id %>-->
         
         <%= f.hidden_field :latest_message_read, value: false %>
         
@@ -60,7 +60,7 @@
           
           <%= ff.hidden_field :status,              value: "pending" %>
           
-          <%= ff.hidden_field :seller_id,           value: @vehicle.user.id %>
+          <!--<(perc)= ff.hidden_field :seller_id,           value: @vehicle.user.id %>-->
           
           <%= ff.hidden_field :buyer_id, 
                               value: current_user.id if current_user %>
