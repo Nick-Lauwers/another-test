@@ -21,3 +21,5 @@
 
 # Ignore env file
 /.env
+config/external_db.yml
+
