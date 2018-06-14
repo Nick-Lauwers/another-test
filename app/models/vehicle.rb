@@ -2,7 +2,7 @@
 
 class Vehicle < ActiveRecord::Base
   
-  searchkick word_start: [:listing_name, :city], locations: [:location]
+#  searchkick word_start: [:listing_name, :city], locations: [:location]
 
   belongs_to :user
   belongs_to :dealership
