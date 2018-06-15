@@ -1,5 +1,9 @@
 require 'csv'
 
+[ VehicleMake, VehicleModel, User, Dealership, Vehicle, Photo, Discussion, DiscussionComment, Club, BusinessHour ].each do |model|
+  model.all.each(&:destroy)
+end
+
 # Makes
 CSV.foreach(Rails.root.join("vehicle_makes.csv"), headers: true) do |row|
   VehicleMake.create! do |vehicle_make|
@@ -39,9 +43,9 @@ end
 
 # Vehicles
 CSV.foreach(Rails.root.join("vehicles.csv"), headers: true) do |row|
-  Vehicle.create! do |vehicle|
+  v = Vehicle.create! do |vehicle|
     vehicle.id                           = row[0]
-    vehicle.dealership_id                = row[1]
+    puts row[1].inspect
     vehicle.user_id                      = row[2]
     vehicle.listing_name                 = row[3]
     vehicle.vehicle_make_name            = row[4]

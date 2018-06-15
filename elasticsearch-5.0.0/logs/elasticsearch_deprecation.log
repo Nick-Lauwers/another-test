@@ -999,3 +999,4 @@
 [2018-06-13T22:14:56,863][WARN ][o.e.d.i.m.TypeParsers    ] Expected a boolean for property [index] but got [analyzed]
 [2018-06-13T22:14:56,863][WARN ][o.e.d.i.m.TypeParsers    ] Expected a boolean for property [index] but got [analyzed]
 [2018-06-13T22:14:56,867][WARN ][o.e.d.i.m.TypeParsers    ] Expected a boolean for property [index] but got [analyzed]
+[2018-06-15T17:48:24,576][WARN ][o.e.d.s.g.GroovyScriptEngineService] [groovy] scripts are deprecated, use [painless] scripts instead

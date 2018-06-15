@@ -3,7 +3,7 @@
 class User < ActiveRecord::Base
   
   # Experiment
-  has_many :conversations,       dependent: :destroy
+  # has_many :conversations,       dependent: :destroy
   # has_many :appointments,      dependent: :destroy
   # has_many :inquiries,         dependent: :destroy
   
