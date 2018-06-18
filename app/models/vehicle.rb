@@ -63,26 +63,34 @@ class Vehicle < ActiveRecord::Base
     default_filter_params: { sorted_by: 'created_at_desc' },
     available_filters: [
       :sorted_by,
-      :with_city,
       :with_vehicle_make_id,
       :with_vehicle_model_id,
+      :with_city,
       :with_year_gte,
-      :with_price_lte,
-      :with_mileage_lte,
-      :with_seating_capacity_gte,
+      :with_actual_price_lte,
+      :with_mileage_numeric_lte,
+      # :with_seating_capacity_gte,
       :with_body_style,
-      :with_color,
-      :with_transmission,
+      :with_exterior,
+      :with_interior,
       :with_fuel_type,
+      :with_transmission,
       :with_drivetrain,
-      :with_backup_camera,
-      :with_bluetooth,
-      :with_dvd_entertainment_system,
-      :with_leather_seats,
-      :with_navigation_system,
-      :with_remote_start,
-      :with_sunroof,
-      :with_tow_package
+      :with_air_conditioning,
+      :with_power_windows,
+      :with_remote_keyless_entry,
+      :with_speed_control,
+      :with_am_fm_radio,
+      :with_wireless_phone_connectivity,
+      :with_fully_automatic_headlights,
+      :with_variably_intermittent_wipers,
+      :with_abs_brakes,
+      :with_brake_assist,
+      :with_dual_front_impact_airbags,
+      :with_electronic_stability,
+      :with_security_system,
+      :with_traction_control,
+      :with_power_steering
     ]
   )
   
@@ -116,24 +124,24 @@ class Vehicle < ActiveRecord::Base
     where('vehicles.year >= ?', ref_year)
   }
   
-  scope :with_price_lte, lambda { |ref_price|
-    where('vehicles.price <= ?', ref_price)
+  scope :with_actual_price_lte, lambda { |ref_price|
+    where('vehicles.actual_price <= ?', ref_price)
   }
   
-  scope :with_mileage_lte, lambda { |ref_mileage|
-    where('vehicles.mileage <= ?', ref_mileage)
+  scope :with_mileage_numeric_lte, lambda { |ref_mileage|
+    where('vehicles.mileage_numeric <= ?', ref_mileage)
   }
   
-  scope :with_seating_capacity_gte, lambda { |ref_capacity|
-    where('vehicles.seating_capacity >= ?', ref_capacity)
-  }
+  # scope :with_seating_capacity_gte, lambda { |ref_capacity|
+  #   where('vehicles.seating_capacity >= ?', ref_capacity)
+  # }
   
   scope :with_body_style, lambda { |body_style|
     where(body_style: body_style)
   }
   
-  scope :with_color, lambda { |color|
-    where(color: color)
+  scope :with_exterior, lambda { |exterior|
+    where(exterior: exterior)
   }
   
   scope :with_transmission, lambda { |transmission|
@@ -148,44 +156,79 @@ class Vehicle < ActiveRecord::Base
     where(drivetrain: drivetrain)
   }
   
-  scope :with_backup_camera, lambda { |flag|
+  scope :with_air_conditioning, lambda { |flag|
     return nil if 0 == flag
-    where(is_backup_camera: true)
+    where(air_conditioning: true)
   }
   
-  scope :with_bluetooth, lambda { |flag|
+  scope :with_power_windows, lambda { |flag|
     return nil if 0 == flag
-    where(is_bluetooth: true)
+    where(power_windows: true)
   }
   
-  scope :with_dvd_entertainment_system, lambda { |flag|
+  scope :with_remote_keyless_entry, lambda { |flag|
     return nil if 0 == flag
-    where(is_dvd_entertainment_system: true)
+    where(remote_keyless_entry: true)
   }
   
-  scope :with_leather_seats, lambda { |flag|
+  scope :with_speed_control, lambda { |flag|
     return nil if 0 == flag
-    where(is_leather_seats: true)
+    where(speed_control: true)
   }
   
-  scope :with_navigation_system, lambda { |flag|
+  scope :with_am_fm_radio, lambda { |flag|
     return nil if 0 == flag
-    where(is_navigation_system: true)
+    where(am_fm_radio: true)
   }
   
-  scope :with_remote_start, lambda { |flag|
+  scope :with_wireless_phone_connectivity, lambda { |flag|
     return nil if 0 == flag
-    where(is_remote_start: true)
+    where(wireless_phone_connectivity: true)
   }
   
-  scope :with_sunroof, lambda { |flag|
+  scope :with_fully_automatic_headlights, lambda { |flag|
     return nil if 0 == flag
-    where(is_sunroof: true)
+    where(fully_automatic_headlights: true)
   }
   
-  scope :with_tow_package, lambda { |flag|
+  scope :with_variably_intermittent_wipers, lambda { |flag|
     return nil if 0 == flag
-    where(is_tow_package: true)
+    where(variably_intermittent_wipers: true)
+  }
+  
+  scope :with_abs_brakes, lambda { |flag|
+    return nil if 0 == flag
+    where(abs_brakes: true)
+  }
+  
+  scope :with_brake_assist, lambda { |flag|
+    return nil if 0 == flag
+    where(brake_assist: true)
+  }
+  
+  scope :with_dual_front_impact_airbags, lambda { |flag|
+    return nil if 0 == flag
+    where(dual_front_impact_airbags: true)
+  }
+  
+  scope :with_electronic_stability, lambda { |flag|
+    return nil if 0 == flag
+    where(electronic_stability: true)
+  }
+  
+  scope :with_security_system, lambda { |flag|
+    return nil if 0 == flag
+    where(security_system: true)
+  }
+  
+  scope :with_traction_control, lambda { |flag|
+    return nil if 0 == flag
+    where(traction_control: true)
+  }
+  
+  scope :with_power_steering, lambda { |flag|
+    return nil if 0 == flag
+    where(power_steering: true)
   }
   
   # Provides sort options

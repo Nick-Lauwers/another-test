@@ -343,7 +343,7 @@
         <%= render partial: "feed_item", 
                    collection: Vehicle.
                                  where(sold_at: nil).
-                                 where.not(posted_at: nil).
+                                # where.not(posted_at: nil).
                                  order(bumped_at: :desc).
                                  first(6) %>
       </ol>
@@ -384,7 +384,7 @@
         <%= render partial: "feed_item", 
                    collection: Vehicle.
                                  where(sold_at: nil).
-                                 where.not(posted_at: nil).
+                                # where.not(posted_at: nil).
                                  order(bumped_at: :desc).
                                  offset(6).
                                  first(6) %>
@@ -426,7 +426,7 @@
         <%= render partial: "feed_item", 
                    collection: Vehicle.
                                  where(sold_at: nil).
-                                 where.not(posted_at: nil).
+                                # where.not(posted_at: nil).
                                  order(bumped_at: :desc).
                                  offset(12).
                                  first(6) %>

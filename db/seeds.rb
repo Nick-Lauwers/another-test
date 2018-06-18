@@ -1,8 +1,8 @@
 require 'csv'
 
-[ VehicleMake, VehicleModel, User, Dealership, Vehicle, Photo, Discussion, DiscussionComment, Club, BusinessHour ].each do |model|
-  model.all.each(&:destroy)
-end
+# [ VehicleMake, VehicleModel, Dealership, User, Vehicle, Photo, Discussion, DiscussionComment, Club, BusinessHour ].each do |model|
+#   model.all.each(&:destroy)
+# end
 
 # Makes
 CSV.foreach(Rails.root.join("vehicle_makes.csv"), headers: true) do |row|
@@ -19,6 +19,36 @@ CSV.foreach(Rails.root.join("vehicle_models.csv"), headers: true) do |row|
     vehicle_model.id              = row[0]
     vehicle_model.name            = row[1]
     vehicle_model.vehicle_make_id = row[2]
+  end
+end
+
+# Dealerships
+CSV.foreach(Rails.root.join("dealerships.csv"), headers: true) do |row|
+  Dealership.create! do |dealership|
+    dealership.id                         = row[0]
+    dealership.dealership_name            = row[1]
+    dealership.scrape_name                = row[2]
+    dealership.email                      = row[3]
+    dealership.activated                  = row[4]
+    dealership.activated_at               = row[5]
+    dealership.description                = row[6]
+    dealership.website                    = row[7]
+    dealership.sales_phone                = row[8]
+    dealership.service_phone              = row[9]
+    dealership.street_address             = row[10]
+    dealership.building                   = row[11]
+    dealership.city                       = row[12]
+    dealership.state                      = row[13]
+    dealership.latitude                   = row[14]
+    dealership.longitude                  = row[15]
+    dealership.logo                       = open(row[16]) unless row[16].nil?
+    dealership.photo                      = open(row[17]) unless row[17].nil?
+    dealership.last_run_start_at          = row[18]
+    dealership.last_run_end_at            = row[19]
+    dealership.last_run_total_records     = row[20]
+    dealership.last_run_new_records       = row[21]
+    dealership.last_run_duplicate_records = row[22]
+    dealership.last_run_error_records     = row[23]
   end
 end
 
@@ -43,9 +73,9 @@ end
 
 # Vehicles
 CSV.foreach(Rails.root.join("vehicles.csv"), headers: true) do |row|
-  v = Vehicle.create! do |vehicle|
+  Vehicle.create! do |vehicle|
     vehicle.id                           = row[0]
-    puts row[1].inspect
+    vehicle.dealership_id                = row[1]
     vehicle.user_id                      = row[2]
     vehicle.listing_name                 = row[3]
     vehicle.vehicle_make_name            = row[4]
@@ -84,12 +114,24 @@ CSV.foreach(Rails.root.join("vehicles.csv"), headers: true) do |row|
     vehicle.security_system              = row[37]
     vehicle.traction_control             = row[38]
     vehicle.power_steering               = row[39]
-    vehicle.street_address               = row[40]
-    vehicle.apartment                    = row[41]
-    vehicle.city                         = row[42]
-    vehicle.state                        = row[43]
-    vehicle.latitude                     = row[44]
-    vehicle.longitude                    = row[45]
+    
+    if vehicle.dealership_id.nil?
+      vehicle.street_address             = row[40]
+      vehicle.apartment                  = row[41]
+      vehicle.city                       = row[42]
+      vehicle.state                      = row[43]
+      vehicle.latitude                   = row[44]
+      vehicle.longitude                  = row[45]
+    
+    else
+      vehicle.street_address             = vehicle.dealership.street_address
+      vehicle.apartment                  = vehicle.dealership.building
+      vehicle.city                       = vehicle.dealership.city
+      vehicle.state                      = vehicle.dealership.state
+      vehicle.latitude                   = vehicle.dealership.latitude
+      vehicle.longitude                  = vehicle.dealership.longitude
+    end
+    
     vehicle.ad_url                       = row[46]
     vehicle.created_at                   = row[47]
     vehicle.posted_at                    = row[48]
@@ -139,36 +181,6 @@ CSV.foreach(Rails.root.join("clubs.csv"), headers: true) do |row|
     club.state       = row[5]
     club.latitude    = row[6]
     club.longitude   = row[7]
-  end
-end
-
-# Dealerships
-CSV.foreach(Rails.root.join("dealerships.csv"), headers: true) do |row|
-  Dealership.create! do |dealership|
-    dealership.id                         = row[0]
-    dealership.dealership_name            = row[1]
-    dealership.scrape_name                = row[2]
-    dealership.email                      = row[3]
-    dealership.activated                  = row[4]
-    dealership.activated_at               = row[5]
-    dealership.description                = row[6]
-    dealership.website                    = row[7]
-    dealership.sales_phone                = row[8]
-    dealership.service_phone              = row[9]
-    dealership.street_address             = row[10]
-    dealership.building                   = row[11]
-    dealership.city                       = row[12]
-    dealership.state                      = row[13]
-    dealership.latitude                   = row[14]
-    dealership.longitude                  = row[15]
-    dealership.logo                       = open(row[16]) unless row[16].nil?
-    dealership.photo                      = open(row[17]) unless row[17].nil?
-    dealership.last_run_start_at          = row[18]
-    dealership.last_run_end_at            = row[19]
-    dealership.last_run_total_records     = row[20]
-    dealership.last_run_new_records       = row[21]
-    dealership.last_run_duplicate_records = row[22]
-    dealership.last_run_error_records     = row[23]
   end
 end
 

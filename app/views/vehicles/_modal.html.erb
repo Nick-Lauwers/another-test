@@ -62,12 +62,12 @@
           </div>
         
         <% else %>
-          <%= link_to @vehicle.dealership do %>
-            <div class="modal-avatar avatar-general", 
-                 style="background-image: url(
-                         '<%= @vehicle.dealership.logo.url(:thumb) %>')">
-            </div>
-          <% end %>
+          <!--<(perc)= link_to @vehicle.dealership do %>-->
+          <!--  <div class="modal-avatar avatar-general", -->
+          <!--       style="background-image: url(-->
+          <!--               '<(perc)= @vehicle.dealership.logo.url(:thumb) %>')">-->
+          <!--  </div>-->
+          <!--<(perc) end %>-->
         <% end %>
         
         <div class="col-xs-9">
@@ -80,9 +80,9 @@
                         class: "modal-info" %>
                         
           <% else %>
-            <%= link_to @vehicle.dealership.dealership_name,
-                        @vehicle.dealership,
-                        class: "modal-info" %>
+            <!--<(perc)= link_to @vehicle.dealership.dealership_name,-->
+            <!--            @vehicle.dealership,-->
+            <!--            class: "modal-info" %>-->
           <% end %>
         </div>
       </div>

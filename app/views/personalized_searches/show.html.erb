@@ -61,11 +61,13 @@
                     id: "filterrific-no-ajax-auto-submit"
                   } do |f| %>
                   
-              <%= f.hidden_field :with_city,        value: "San Francisco" %>
+              <!--<(perc)= f.hidden_field :with_city,        value: "San Francisco" %>-->
               
-              <%= f.hidden_field :with_price_lte,   value: @personali %>
+              <%= f.hidden_field :with_actual_price_lte, 
+                                 value: @personalized_search.price %>
               
-              <%= f.hidden_field :with_mileage_lte, value
+              <%= f.hidden_field :with_mileage_numeric_lte, 
+                                 value: @personalized_search.mileage %>
               
               <button type="submit"
                       class="match-item">
@@ -73,7 +75,7 @@
                 <div class="match-item-photo"
                      style="background-image: url(
                        '<%= Vehicle.find(1).photos[0].image.url() if 
-                            Vehicle.find(1).photos.length > 0 %>'">
+                            Vehicle.find(1).photos.length > 0 %>')">
                 </div>
                 
                 <div class="match-item-detail">

@@ -14,7 +14,7 @@ class StaticPagesController < ApplicationController
     
     @feed_items = Vehicle.
                   where(sold_at: nil).
-                  where.not(posted_at: nil).
+                  # where.not(posted_at: nil).
                   paginate(page: params[:page], per_page: 9, total_entries: 18).
                   order(bumped_at: :desc)
     

@@ -95,19 +95,19 @@
         </div>
       </div>
       
-      <div class="col-md-4 color">
+      <div class="col-md-4 exterior">
         <div class="form-group form-group-primary">
           
-          <%= f.label :with_color, "&nbsp;".html_safe %>
+          <%= f.label :with_exterior, "&nbsp;".html_safe %>
           
           <div class="form-element">
             
-            <%= f.select :with_color, 
+            <%= f.select :with_exterior, 
                          [ "Black", "Blue", "Brown", "Gold", 
                            "Gray", "Green", "Orange", "Pink", "Purple", "Red", 
                            "Silver", "Teal", "Unknown", "White", "Yellow" ],
                          { include_blank: true,
-                           prompt: "Color" },
+                           prompt: "Exterior" },
                          class: "form-control select-primary" %>
 
             <i class="fa fa-paint-brush fa-lg form-icon" 
@@ -119,50 +119,55 @@
         </div>
       </div>
       
-      <div class="col-md-4 seating-capacity">
+      <div class="col-md-4 interior">
         <div class="form-group form-group-primary">
           
-          <%= f.label :with_seating_capacity_gte, "&nbsp;".html_safe %>
+          <%= f.label :with_interior, "&nbsp;".html_safe %>
           
           <div class="form-element">
             
-            <%= f.select :with_seating_capacity_gte, 
-                         [ ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6], 
-                           ["7", 7], ["8", 8], ["9+", 9] ],
+            <%= f.select :with_interior, 
+                         [ "Black", "Blue", "Brown", "Gold", 
+                           "Gray", "Green", "Orange", "Pink", "Purple", "Red", 
+                           "Silver", "Teal", "Unknown", "White", "Yellow" ],
                          { include_blank: true,
-                           prompt: "Seating" },
+                           prompt: "Interior" },
                          class: "form-control select-primary" %>
 
-            <i class="fa fa-users fa-lg form-icon" 
+            <i class="fa fa-paint-brush fa-lg form-icon" 
                aria-hidden="true"></i>
-               
+             
             <i class="fa fa-caret-down fa-lg form-caret" 
                aria-hidden="true"></i>
           </div>
         </div>
       </div>
+      
+      <!--<div class="col-md-4 seating-capacity">-->
+      <!--  <div class="form-group form-group-primary">-->
+          
+      <!--    <(perc)= f.label :with_seating_capacity_gte, "&nbsp;".html_safe %>-->
+          
+      <!--    <div class="form-element">-->
+            
+      <!--      <(perc)= f.select :with_seating_capacity_gte, -->
+      <!--                   [ ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6], -->
+      <!--                     ["7", 7], ["8", 8], ["9+", 9] ],-->
+      <!--                   { include_blank: true,-->
+      <!--                     prompt: "Seating" },-->
+      <!--                   class: "form-control select-primary" %>-->
+
+      <!--      <i class="fa fa-users fa-lg form-icon" -->
+      <!--         aria-hidden="true"></i>-->
+               
+      <!--      <i class="fa fa-caret-down fa-lg form-caret" -->
+      <!--         aria-hidden="true"></i>-->
+      <!--    </div>-->
+      <!--  </div>-->
+      <!--</div>-->
     </div>
     
     <div class="row">
-      
-      <div class="col-md-4 transmission">
-        <div class="form-group form-group-primary">
-          <div class="form-element">
-            
-            <%= f.select :with_transmission, 
-                         [ "Automatic", "Manual" ],
-                         { include_blank: true,
-                           prompt: "Transmission" },
-                         class: "form-control select-primary" %>
-
-            <i class="fa fa-cogs fa-lg form-icon" 
-               aria-hidden="true"></i>
-               
-            <i class="fa fa-caret-down fa-lg form-caret" 
-               aria-hidden="true"></i>
-          </div>  
-        </div>
-      </div>
       
       <div class="col-md-4 fuel-type">
         <div class="form-group form-group-primary">
@@ -182,6 +187,25 @@
             <i class="fa fa-caret-down fa-lg form-caret" 
                aria-hidden="true"></i>
           </div>
+        </div>
+      </div>
+      
+      <div class="col-md-4 transmission">
+        <div class="form-group form-group-primary">
+          <div class="form-element">
+            
+            <%= f.select :with_transmission, 
+                         [ "Automatic", "Manual" ],
+                         { include_blank: true,
+                           prompt: "Transmission" },
+                         class: "form-control select-primary" %>
+
+            <i class="fa fa-cogs fa-lg form-icon" 
+               aria-hidden="true"></i>
+               
+            <i class="fa fa-caret-down fa-lg form-caret" 
+               aria-hidden="true"></i>
+          </div>  
         </div>
       </div>
       
@@ -230,13 +254,13 @@
       <div class="col-md-4 price">
         <div class="form-group form-group-primary">
           
-          <%= f.label :with_price_lte, "Max Price" %>
+          <%= f.label :with_actual_price_lte, "Max Price" %>
           
           <span id="price_slider_val" class="slider-label">
             $200000
           </span>
           
-          <%= f.text_field :with_price_lte, 
+          <%= f.text_field :with_actual_price_lte, 
                            id: 'price_slider', 
                            type: 'text',
                            data: { 'slider-min'   => '0',
@@ -249,13 +273,13 @@
       <div class="col-md-4 mileage">
         <div class="form-group form-group-primary">
           
-          <%= f.label :with_mileage_lte, "Max Mileage" %>
+          <%= f.label :with_mileage_numeric_lte, "Max Mileage" %>
           
           <span id="mileage_slider_val" class="slider-label">
             300000 km
           </span>
           
-          <%= f.text_field :with_mileage_lte,
+          <%= f.text_field :with_mileage_numeric_lte,
                            id: 'mileage_slider', 
                            type: 'text',
                            data: { 'slider-min'   => '0',
@@ -274,44 +298,81 @@
     <ul class="installed-options-list">
       
       <li>
-        <%= f.check_box :with_backup_camera %>
-        <%= f.label :with_backup_camera, "Backup Camera" %> 
+        <%= f.check_box :with_air_conditioning %>
+        <%= f.label :with_air_conditioning, "Air Conditioning" %> 
       </li>
       
       <li>
-        <%= check_box_tag :with_bluetooth %>
-        <%= label_tag :with_bluetooth, "Bluetooth" %> 
+        <%= f.check_box :with_power_windows %>
+        <%= f.label :with_power_windows, "Power Windows" %> 
       </li>
       
       <li>
-        <%= check_box_tag :with_dvd_entertainment_system %>
-        <%= label_tag :with_dvd_entertainment_system, 
-                      "DVD Entertainment System" %> 
+        <%= f.check_box :with_remote_keyless_entry %>
+        <%= f.label :with_remote_keyless_entry, "Remote Keyless Entry" %> 
       </li>
       
       <li>
-        <%= check_box_tag :with_leather_seats %>
-        <%= label_tag :with_leather_seats, "Leather Seats" %>
+        <%= f.check_box :with_speed_control %>
+        <%= f.label :with_speed_control, "Speed Control" %>
       </li>
       
       <li>
-        <%= check_box_tag :with_navigation_system %>
-        <%= label_tag :with_navigation_system, "Navigation System" %> 
+        <%= f.check_box :with_am_fm_radio %>
+        <%= f.label :with_am_fm_radio, "AM / FM Radio" %> 
       </li>
       
       <li>
-        <%= check_box_tag :with_remote_start %>
-        <%= label_tag :with_remote_start, "Remote Start" %> 
+        <%= f.check_box :with_wireless_phone_connectivity %>
+        <%= f.label :with_wireless_phone_connectivity, "Bluetooth" %> 
       </li>
       
       <li>
-        <%= check_box_tag :with_sunroof %>
-        <%= label_tag :with_sunroof, "Sunroof" %>       
+        <%= f.check_box :with_fully_automatic_headlights %>
+        <%= f.label :with_fully_automatic_headlights, 
+                    "Fully Automatic Headlights" %>       
       </li>
       
       <li>
-        <%= check_box_tag :with_tow_package %>
-        <%= label_tag :with_tow_package, "Tow Package" %>          
+        <%= f.check_box :with_variably_intermittent_wipers %>
+        <%= f.label :with_variably_intermittent_wipers, 
+                    "Variably Intermittent Wipers" %>          
+      </li>
+      
+      <li>
+        <%= f.check_box :with_abs_brakes %>
+        <%= f.label :with_abs_brakes, "ABS Brakes" %> 
+      </li>
+      
+      <li>
+        <%= f.check_box :with_brake_assist %>
+        <%= f.label :with_brake_assist, "Brake Assist" %>
+      </li>
+      
+      <li>
+        <%= f.check_box :with_dual_front_impact_airbags %>
+        <%= f.label :with_dual_front_impact_airbags, 
+                    "Dual Front Impact Airbags" %> 
+      </li>
+      
+      <li>
+        <%= f.check_box :with_electronic_stability %>
+        <%= f.label :with_electronic_stability, "Electronic Stability" %> 
+      </li>
+      
+      <li>
+        <%= f.check_box :with_security_system %>
+        <%= f.label :with_security_system, "Security System" %>       
+      </li>
+      
+      <li>
+        <%= f.check_box :with_traction_control %>
+        <%= f.label :with_traction_control, "Traction Control" %>          
+      </li>
+      
+      <li>
+        <%= f.check_box :with_power_steering %>
+        <%= f.label :with_power_steering, "Power Steering" %>          
       </li>
     </ul>
   </div>

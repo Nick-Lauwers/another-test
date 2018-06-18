@@ -111,42 +111,49 @@ class VehiclesController < ApplicationController
   
   def search
 
-    # @filterrific = initialize_filterrific(
+    @filterrific = initialize_filterrific(
       
-    #   Vehicle,
-    #   params[:filterrific],
+      Vehicle,
+      params[:filterrific],
       
-    #   select_options: {
-    #     sorted_by:             Vehicle.options_for_sorted_by,
-    #     with_vehicle_make_id:  VehicleMake.options_for_select,
-    #     with_vehicle_model_id: VehicleModel.options_for_select
-    #   },
+      select_options: {
+        sorted_by:             Vehicle.options_for_sorted_by,
+        # with_vehicle_make_id:  VehicleMake.options_for_select,
+        # with_vehicle_model_id: VehicleModel.options_for_select
+      },
       
-    #   persistence_id: false,
-    #   default_filter_params: {},
+      persistence_id: false,
+      default_filter_params: {},
       
-    #   available_filters: [
-    #     :with_vehicle_make_id, 
-    #     :with_vehicle_model_id,
-    #     :with_city,
-    #     :with_year_gte,
-    #     :with_price_lte,
-    #     :with_mileage_lte,
-    #     :with_body_style,
-    #     :with_color,
-    #     :with_transmission,
-    #     :with_fuel_type,
-    #     :with_drivetrain,
-    #     :with_backup_camera,
-    #     :with_bluetooth,
-    #     :with_dvd_entertainment_system,
-    #     :with_leather_seats,
-    #     :with_navigation_system,
-    #     :with_remote_start,
-    #     :with_sunroof,
-    #     :with_tow_package
-    #   ],
-    # ) or return
+      available_filters: [
+        :with_vehicle_make_id, 
+        :with_vehicle_model_id,
+        :with_city,
+        :with_year_gte,
+        :with_actual_price_lte,
+        :with_mileage_numeric_lte,
+        :with_body_style,
+        :with_exterior,
+        :with_transmission,
+        :with_fuel_type,
+        :with_drivetrain,
+        :with_air_conditioning,
+        :with_power_windows,
+        :with_remote_keyless_entry,
+        :with_speed_control,
+        :with_am_fm_radio,
+        :with_wireless_phone_connectivity,
+        :with_fully_automatic_headlights,
+        :with_variably_intermittent_wipers,
+        :with_abs_brakes,
+        :with_brake_assist,
+        :with_dual_front_impact_airbags,
+        :with_electronic_stability,
+        :with_security_system,
+        :with_traction_control,
+        :with_power_steering
+      ],
+    ) or return
     
     @vehicles = @filterrific.find.paginate(page: params[:page], per_page: 10)
     

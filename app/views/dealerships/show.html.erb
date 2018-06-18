@@ -1,4 +1,4 @@
-<% provide(:title, @dealership.name) %>
+<% provide(:title, @dealership.dealership_name) %>
 
 <header class="header-static-gray">
   <%= render 'layouts/header_secondary' %>
@@ -27,7 +27,7 @@
         <div class="dealer-profile-hero-detail">
           
           <h1 class="dealer-profile-hero-title">
-            <%= @dealership.name %>
+            <%= @dealership.dealership_name %>
           </h1>
           
           <!--<div class="row vertical-align visible-xs">-->

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180614121030) do
+ActiveRecord::Schema.define(version: 20180618161107) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -387,17 +387,24 @@ ActiveRecord::Schema.define(version: 20180614121030) do
     t.boolean  "is_suv"
     t.boolean  "is_van"
     t.boolean  "is_wagon"
-    t.boolean  "is_leather_seats"
-    t.boolean  "is_sunroof"
-    t.boolean  "is_navigation_system"
-    t.boolean  "is_dvd_entertainment_system"
-    t.boolean  "is_bluetooth"
-    t.boolean  "is_backup_camera"
-    t.boolean  "is_remote_start"
-    t.boolean  "is_tow_package"
     t.integer  "user_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
+    t.boolean  "air_conditioning"
+    t.boolean  "power_windows"
+    t.boolean  "remote_keyless_entry"
+    t.boolean  "speed_control"
+    t.boolean  "am_fm_radio"
+    t.boolean  "wireless_phone_connectivity"
+    t.boolean  "fully_automatic_headlights"
+    t.boolean  "variably_intermittent_wipers"
+    t.boolean  "abs_brakes"
+    t.boolean  "brake_assist"
+    t.boolean  "dual_front_impact_airbags"
+    t.boolean  "electronic_stability"
+    t.boolean  "security_system"
+    t.boolean  "traction_control"
+    t.boolean  "power_steering"
   end
 
   add_index "personalized_searches", ["user_id"], name: "index_personalized_searches_on_user_id", using: :btree

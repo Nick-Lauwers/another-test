@@ -19,7 +19,20 @@ class Photo < ActiveRecord::Base
                     #     :rotation => a.instance.rotation,
                     #   },
                     # } }
-                    
+  
+  def image_url(url)
+    begin
+      require "open-uri"
+      f = open(url)
+      def f.original_filename ; base_uri.path.split('/').last ; end
+      
+      self.image = f
+    rescue OpenURI::HTTPError => e
+      raise(e) unless e.message == "404 Not Found"
+    ensure
+      f.close if f
+    end
+  end
 
   validates                         :vehicle_id, :image, presence: true 
   validates_attachment_content_type :image,      content_type: /\Aimage\/.*\Z/

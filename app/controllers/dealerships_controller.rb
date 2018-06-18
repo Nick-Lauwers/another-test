@@ -82,8 +82,8 @@ class DealershipsController < ApplicationController
   private
   
     def dealership_params
-      params.require(:dealership).permit(:name, :email, :description, :website,
-                                         :sales_phone, :service_phone, 
+      params.require(:dealership).permit(:dealership_name, :email, :description, 
+                                         :website, :sales_phone, :service_phone, 
                                          :street_address, :building, :city, 
                                          :state, :logo, :photo, 
                                          business_hours_attributes: [:id, :day, 
