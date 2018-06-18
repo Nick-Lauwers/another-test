@@ -144,6 +144,10 @@ class Vehicle < ActiveRecord::Base
     where(exterior: exterior)
   }
   
+  scope :with_interior, lambda { |interior|
+    where(interior: interior)
+  }
+  
   scope :with_transmission, lambda { |transmission|
     where(transmission: transmission)
   }
