@@ -26,6 +26,4 @@ test:
 
 production:
   <<: *default
-  database: online_dealership_production
-  username: online_dealership
-  password: <%= ENV['ONLINE_DEALERSHIP_PASSWORD']
+  url: <%= ENV['DATABASE_URL'] %>
