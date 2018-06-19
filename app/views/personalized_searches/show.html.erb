@@ -61,14 +61,68 @@
                     id: "filterrific-no-ajax-auto-submit"
                   } do |f| %>
                   
-              <!--<(perc)= f.hidden_field :with_city,        value: "San Francisco" %>-->
+              <!--<(perc)= f.hidden_field :with_city, value: "San Francisco" %>-->
+              
+              <%= f.hidden_field :with_year_gte, 
+                                 value: @personalized_search.year %>
               
               <%= f.hidden_field :with_actual_price_lte, 
                                  value: @personalized_search.price %>
               
               <%= f.hidden_field :with_mileage_numeric_lte, 
                                  value: @personalized_search.mileage %>
+                                 
+              <%= f.hidden_field :with_air_conditioning,
+                                 value: @personalized_search.air_conditioning %>
+                                 
+              <%= f.hidden_field :with_power_windows,
+                                 value: @personalized_search.power_windows %>
               
+              <%= f.hidden_field :with_remote_keyless_entry,
+                                 value: @personalized_search.
+                                          remote_keyless_entry %>
+              
+              <%= f.hidden_field :with_speed_control,
+                                 value: @personalized_search.speed_control %>
+                                 
+              <%= f.hidden_field :with_am_fm_radio,
+                                 value: @personalized_search.am_fm_radio %>
+              
+              <%= f.hidden_field :with_wireless_phone_connectivity,
+                                 value: @personalized_search.
+                                   wireless_phone_connectivity %>
+                                   
+              <%= f.hidden_field :with_fully_automatic_headlights,
+                                 value: @personalized_search.
+                                          fully_automatic_headlights %>
+              
+              <%= f.hidden_field :with_variably_intermittent_wipers,
+                                 value: @personalized_search.
+                                          variably_intermittent_wipers %>
+                                          
+              <%= f.hidden_field :with_abs_brakes,
+                                 value: @personalized_search.abs_brakes %>
+                                 
+              <%= f.hidden_field :with_brake_assist,
+                                 value: @personalized_search.brake_assist %>
+                                 
+              <%= f.hidden_field :with_dual_front_impact_airbags,
+                                 value: @personalized_search.
+                                          dual_front_impact_airbags %>
+                                          
+              <%= f.hidden_field :with_electronic_stability,
+                                 value: @personalized_search.
+                                          electronic_stability %>
+                                          
+              <%= f.hidden_field :with_security_system,
+                                 value: @personalized_search.security_system %>
+                                 
+              <%= f.hidden_field :with_traction_control,
+                                 value: @personalized_search.traction_control %>
+                                 
+              <%= f.hidden_field :with_power_steering,
+                                 value: @personalized_search.power_steering %>
+                                 
               <button type="submit"
                       class="match-item">
                 

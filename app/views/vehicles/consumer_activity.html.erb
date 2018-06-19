@@ -79,7 +79,9 @@
             <%= @vehicle.vehicle_model.name %>
           </div>
           
-          <span class="purchase-info-price">$ <%= @vehicle.price %></span>
+          <span class="purchase-info-price">
+            $ <%= @vehicle.actual_price %>
+          </span>
           
           <span class="purchase-info-time">
             Posted <%= time_ago_in_words(@vehicle.posted_at) %> ago

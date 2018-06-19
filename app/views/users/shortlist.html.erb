@@ -171,13 +171,13 @@
                       
                       <% if shortlist_item.vehicle.user.dealership_id.present? %>
                         <div class="special-offer" 
-                             id="search-item-special-offer-<%= shortlist_item.vehicle.vehicle.id %>">
+                             id="search-item-special-offer-<%= shortlist_item.vehicle_id %>">
                           
                           <i class="fa fa-lg fa-tag special-offer-icon"></i>
                           
                           <div type="button" 
                                class="special-offer-button" 
-                               data-id="<%= vehicle.id %>"
+                               data-id="<%= shortlist_item.vehicle_id %>"
                                data-toggle="modal" 
                                data-target="#modal-special-offer">
                             Special Offer
@@ -209,7 +209,7 @@
                           <div class="search-item-info">
                           
                             <span class="search-item-title">
-                              $<%= shortlist_item.vehicle.price %> | <%= shortlist_item.vehicle.listing_name %>
+                              $<%= shortlist_item.vehicle.actual_price %> | <%= shortlist_item.vehicle.listing_name %>
                             </span>
                   
                             <div id="average-rating-search-item-<%= shortlist_item.vehicle.id %>", 
@@ -227,40 +227,76 @@
                               
                                 <li>Vehicle Features</li>
                               
-                                <% if shortlist_item.vehicle.is_leather_seats %>
-                                  <li>Leather Seats</li>
+                                <% if shortlist_item.vehicle.air_conditioning %>
+                                  <li>Air Conditioning</li>
                                 <% end %>
                                 
-                                <% if shortlist_item.vehicle.is_sunroof %>
-                                  <li>Sunroof</li>
+                                <% if shortlist_item.vehicle.power_windows %>
+                                  <li>Power Windows</li>
                                 <% end %>
                                 
-                                <% if shortlist_item.vehicle.is_navigation_system %>
-                                  <li>Navigation System</li>
+                                <% if shortlist_item.
+                                        vehicle.
+                                        remote_keyless_entry %>
+                                  <li>Remote Keyless Entry</li>
                                 <% end %>
                                 
-                                <% if shortlist_item.vehicle.is_dvd_entertainment_system %>
-                                  <li>DVD Entertainment System</li>
+                                <% if shortlist_item.vehicle.speed_control %>
+                                  <li>Speed Control</li>
                                 <% end %>
                                 
-                                <% if shortlist_item.vehicle.is_bluetooth %>
+                                <% if shortlist_item.vehicle.am_fm_radio %>
+                                  <li>AM / FM Radio</li>
+                                <% end %>
+                                
+                                <% if shortlist_item.
+                                        vehicle.
+                                        wireless_phone_connectivity %>
                                   <li>Bluetooth</li>
                                 <% end %>
                                 
-                                <% if shortlist_item.vehicle.is_leather_seats %>
-                                  <li>Leather Seats</li>
+                                <% if shortlist_item.
+                                        vehicle.
+                                        fully_automatic_headlights %>
+                                  <li>Fully Automatic Headlights</li>
                                 <% end %>
                                 
-                                <% if shortlist_item.vehicle.is_backup_camera %>
-                                  <li>Backup Camera</li>
+                                <% if shortlist_item.
+                                        vehicle.
+                                        variably_intermittent_wipers %>
+                                  <li>Variably Intermittent Wipers</li>
                                 <% end %>
                                 
-                                <% if shortlist_item.vehicle.is_remote_start %>
-                                  <li>Remote Start</li>
+                                <% if shortlist_item.vehicle.abs_brakes %>
+                                  <li>ABS Brakes</li>
                                 <% end %>
                                 
-                                <% if shortlist_item.vehicle.is_tow_package %>
-                                  <li>Tow Package</li>
+                                <% if shortlist_item.vehicle.brake_assist %>
+                                  <li>Brake Assist</li>
+                                <% end %>
+                                
+                                <% if shortlist_item.
+                                        vehicle.
+                                        dual_front_impact_airbags %>
+                                  <li>Dual Front Impact Airbags</li>
+                                <% end %>
+                                
+                                <% if shortlist_item.
+                                        vehicle.
+                                        electronic_stability %>
+                                  <li>Electronic Stability</li>
+                                <% end %>
+                                
+                                <% if shortlist_item.vehicle.security_system %>
+                                  <li>Security System</li>
+                                <% end %>
+                                
+                                <% if shortlist_item.vehicle.traction_control %>
+                                  <li>Traction Control</li>
+                                <% end %>
+                                
+                                <% if shortlist_item.vehicle.power_steering %>
+                                  <li>Power Steering</li>
                                 <% end %>
                               </ol>
                             </div>

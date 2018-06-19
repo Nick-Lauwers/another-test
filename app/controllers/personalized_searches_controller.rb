@@ -69,11 +69,13 @@ class PersonalizedSearchesController < ApplicationController
     def personalized_search_params
       params.require(:personalized_search).permit(:is_convertible, :is_coupe, 
                     :is_crossover, :is_hatchback,:is_minivan, :is_pickup, 
-                    :is_sedan, :is_suv, :is_wagon, :is_leather_seats, 
-                    :is_sunroof, :is_navigation_system, 
-                    :is_dvd_entertainment_system, :is_bluetooth, 
-                    :is_backup_camera, :is_remote_start, :is_tow_package, 
-                    :price, :mileage, :year)
+                    :is_sedan, :is_suv, :is_wagon, :air_conditioning, 
+                    :power_windows, :remote_keyless_entry, :speed_control,
+                    :am_fm_radio, :wireless_phone_connectivity, 
+                    :fully_automatic_headlights, :variably_intermittent_wipers,
+                    :abs_brakes, :brake_assist, :dual_front_impact_airbags,
+                    :electronic_stability, :security_system, :traction_control,
+                    :power_steering, :price, :mileage, :year)
     end
     
     # Before filters

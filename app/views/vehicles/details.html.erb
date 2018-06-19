@@ -72,9 +72,9 @@
           
             <div class="form-group">
               
-              <%= f.label :summary %>
+              <%= f.label :description %>
               
-              <%= f.text_area :summary, 
+              <%= f.text_area :description, 
                               rows: 3,
                               placeholder: "Eg. Based on the XK convertible.", 
                               class: "form-control form-control-primary",
@@ -123,11 +123,11 @@
               
               <div class="col-md-6 form-group">
     
-                <%= f.label :color %>
+                <%= f.label :exterior %>
                 
                 <div class="form-element">
                   
-                  <%= f.select :color, 
+                  <%= f.select :exterior, 
                                [ "Black", "Blue", "Brown", "Gold", "Gray", 
                                  "Green", "Orange", "Pink", "Purple", "Red", 
                                  "Silver", "Teal", "Unknown", "White", 
@@ -149,25 +149,48 @@
               
               <div class="col-md-6 form-group">
     
-                <%= f.label :seating_capacity, "Seating Capacity" %>
+                <%= f.label :interior %>
                 
                 <div class="form-element">
                   
-                  <%= f.select :seating_capacity, 
-                               [ ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6], 
-                                 ["7", 7], ["8", 8], ["9+", 9] ],
-                               { include_blank: true, 
-                                 prompt: "Select seating capacity" },
-                               { required: true,
+                  <%= f.select :interior, 
+                               [ "Black", "Blue", "Brown", "Gold", "Gray", 
+                                 "Green", "Orange", "Pink", "Purple", "Red", 
+                                 "Silver", "Teal", "Unknown", "White", 
+                                 "Yellow" ],
+                               { include_blank: true, prompt: "Select color" }, 
+                               { required: true, 
                                  class: "form-control select-primary" } %>
                       
-                  <i class="fa fa-users fa-lg form-icon" 
+                  <i class="fa fa-paint-brush fa-lg form-icon" 
                    aria-hidden="true"></i>
                    
                   <i class="fa fa-caret-down fa-lg form-caret" 
                      aria-hidden="true"></i>
                 </div>
               </div>
+              
+              <!--<div class="col-md-6 form-group">-->
+    
+              <!--  <(perc)= f.label :seating_capacity, "Seating Capacity" %>-->
+                
+              <!--  <div class="form-element">-->
+                  
+              <!--    <(perc)= f.select :seating_capacity, -->
+              <!--                 [ ["2", 2], ["3", 3], ["4", 4], ["5", 5], ["6", 6], -->
+              <!--                   ["7", 7], ["8", 8], ["9+", 9] ],-->
+              <!--                 { include_blank: true, -->
+              <!--                   prompt: "Select seating capacity" },-->
+              <!--                 { required: true,-->
+              <!--                   class: "form-control select-primary" } %>-->
+                      
+              <!--    <i class="fa fa-users fa-lg form-icon" -->
+              <!--     aria-hidden="true"></i>-->
+                   
+              <!--    <i class="fa fa-caret-down fa-lg form-caret" -->
+              <!--       aria-hidden="true"></i>-->
+              <!--  </div>-->
+              <!--</div>-->
               
               <div class="col-md-6 form-group">
     
@@ -228,20 +251,20 @@
                     
                     <p class="info-text">
                       
-                      Front-Wheel Drive: Engine power is diverted to front 
-                      wheels
-                      </br>
+                      <!--Front-Wheel Drive: Engine power is diverted to front -->
+                      <!--wheels-->
+                      <!--</br>-->
                       
-                      Rear-Wheel Drive: Engine power is diverted to rear wheels
-                      </br>
+                      <!--Rear-Wheel Drive: Engine power is diverted to rear wheels-->
+                      <!--</br>-->
                       
-                      4X2:
-                      </br>
+                      <!--4X2:-->
+                      <!--</br>-->
                       
-                      Four-Wheel Drive:
-                      </br>
+                      <!--Four-Wheel Drive:-->
+                      <!--</br>-->
                       
-                      All-Wheel Drive:
+                      <!--All-Wheel Drive:-->
                     </p>
                   </div>
                 <% end %>
@@ -272,44 +295,81 @@
               <ul class="installed-options-list">
                 
                 <li>
-                  <%= f.check_box :is_backup_camera %>
-                  <%= f.label :is_backup_camera, "Backup Camera" %> 
+                  <%= f.check_box :air_conditioning %>
+                  <%= f.label :air_conditioning, "Air Conditioning" %> 
                 </li>
                 
                 <li>
-                  <%= f.check_box :is_bluetooth %>
-                  <%= f.label :is_bluetooth, "Bluetooth" %> 
+                  <%= f.check_box :power_windows %>
+                  <%= f.label :power_windows, "Power Windows" %> 
                 </li>
                 
                 <li>
-                  <%= f.check_box :is_dvd_entertainment_system %>
-                  <%= f.label :is_dvd_entertainment_system, 
-                              "DVD Entertainment System" %> 
+                  <%= f.check_box :remote_keyless_entry %>
+                  <%= f.label :remote_keyless_entry, "Remote Keyless Entry" %> 
                 </li>
                 
                 <li>
-                  <%= f.check_box :is_leather_seats %>
-                  <%= f.label :is_leather_seats, "Leather Seats" %>
+                  <%= f.check_box :speed_control %>
+                  <%= f.label :speed_control, "Speed Control" %>
                 </li>
                 
                 <li>
-                  <%= f.check_box :is_navigation_system %>
-                  <%= f.label :is_navigation_system, "Navigation System" %> 
+                  <%= f.check_box :am_fm_radio %>
+                  <%= f.label :am_fm_radio, "AM / FM Radio" %> 
                 </li>
                 
                 <li>
-                  <%= f.check_box :is_remote_start %>
-                  <%= f.label :is_remote_start, "Remote Start" %> 
+                  <%= f.check_box :wireless_phone_connectivity %>
+                  <%= f.label :wireless_phone_connectivity, "Bluetooth" %> 
                 </li>
                 
                 <li>
-                  <%= f.check_box :is_sunroof %>
-                  <%= f.label :is_sunroof, "Sunroof" %>       
+                  <%= f.check_box :fully_automatic_headlights %>
+                  <%= f.label :fully_automatic_headlights, 
+                              "Fully Automatic Headlights" %>       
                 </li>
                 
                 <li>
-                  <%= f.check_box :is_tow_package %>
-                  <%= f.label :is_tow_package, "Tow Package" %>          
+                  <%= f.check_box :variably_intermittent_wipers %>
+                  <%= f.label :variably_intermittent_wipers,
+                              "Variably Intermittent Wipers" %>          
+                </li>
+                
+                <li>
+                  <%= f.check_box :abs_brakes %>
+                  <%= f.label :abs_brakes, "ABS Brakes" %> 
+                </li>
+                
+                <li>
+                  <%= f.check_box :brake_assist %>
+                  <%= f.label :brake_assist, "Brake Assist" %>
+                </li>
+                
+                <li>
+                  <%= f.check_box :dual_front_impact_airbags %>
+                  <%= f.label :dual_front_impact_airbags, 
+                              "Dual Front Impact Airbags" %> 
+                </li>
+                
+                <li>
+                  <%= f.check_box :electronic_stability %>
+                  <%= f.label :electronic_stability, "Electronic Stability" %> 
+                </li>
+                
+                <li>
+                  <%= f.check_box :security_system %>
+                  <%= f.label :security_system, "Security System" %>       
+                </li>
+                
+                <li>
+                  <%= f.check_box :traction_control %>
+                  <%= f.label :traction_control, "Traction Control" %>          
+                </li>
+                
+                <li>
+                  <%= f.check_box :power_steering %>
+                  <%= f.label :power_steering, "Power Steering" %>          
                 </li>
               </ul>
             </div>

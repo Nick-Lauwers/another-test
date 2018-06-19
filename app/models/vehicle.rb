@@ -44,7 +44,7 @@ class Vehicle < ActiveRecord::Base
   # default_scope -> { order(created_at: :desc) }
   
   # validates :vehicle_make_id, :vehicle_model_id, 
-  validates :year, :actual_price, :mileage, presence: true
+  validates :year, :actual_price, :mileage_numeric, presence: true
             # :user_id, :body_style, :color, :transmission, :fuel_type, 
             # :drivetrain, :street_address, :city, :state, :seating_capacity, 
             # presence: true
@@ -135,6 +135,11 @@ class Vehicle < ActiveRecord::Base
   # scope :with_seating_capacity_gte, lambda { |ref_capacity|
   #   where('vehicles.seating_capacity >= ?', ref_capacity)
   # }
+  
+  scope :is_van, lambda { |flag|
+    return nil if 0 == flag
+    where(body_style: "Van")
+  }
   
   scope :with_body_style, lambda { |body_style|
     where(body_style: body_style)
