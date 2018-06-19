@@ -5,4 +5,3 @@ class ExternalDbSynchronizer
     # Sync dealerships
   end
 end
-
