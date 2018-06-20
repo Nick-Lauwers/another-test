@@ -22,4 +22,4 @@ production:
   database: mototrova
   host: office.ekiwi.net
   username: mototrova
-  password: ENV['EXTERNAL_DB_PASSWORD']
+  password: 7%2BrXBMxn^V5Yv9
