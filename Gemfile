@@ -43,6 +43,7 @@ gem 'acts_as_votable'
 gem 'rails_or'
 gem 'cocoon'
 gem 'trix'
+gem 'google_places'
 
 group :development, :test do
   gem 'byebug',      '3.4.0'

@@ -215,6 +215,7 @@
   
                   <h1 class="vehicle-overview-heading hidden-xs">
                     <%= @vehicle.listing_name %>
+                    <%= @vehicle.vehicle_make_name %> <%= @vehicle.vehicle_model_name %>
                   </h1>
                   
                   <% if @vehicle.dealership.present? %>
@@ -1230,7 +1231,7 @@
     
     <h2 class="reviews-title">Reviews</h2>
     
-    <% if @reviews.exists? %>
+    <% if @reviews.present? || @google_reviews.present? %>
       <div class="row reviews-summary">
         
         <div class="col-md-4">
@@ -1257,27 +1258,27 @@
         </div>
         
         <div class="col-md-4">
-          <!--<div class="pros-cons-list">-->
+          <div class="pros-cons-list">
             
-          <!--  <h3 class="reviews-subheading">Pros</h3>-->
+            <h3 class="reviews-subheading">Pros</h3>
             
-          <!--  <ul class="pros-cons-list-content">-->
-          <!--    <li>Security & safety (51)</li>-->
-          <!--    <li>Location (45)</li>-->
-          <!--    <li>Management / staff (40)</li>-->
-          <!--  </ul>-->
-          <!--</div>-->
+            <ul class="pros-cons-list-content">
+              <li>Security & safety (51)</li>
+              <li>Location (45)</li>
+              <li>Management / staff (40)</li>
+            </ul>
+          </div>
         </div>
         
         <div class="col-md-4">
-          <!--<div class="pros-cons-list">-->
+          <div class="pros-cons-list">
             
-          <!--  <h3 class="reviews-subheading">Cons</h3>-->
+            <h3 class="reviews-subheading">Cons</h3>
             
-          <!--  <ul class="pros-cons-list-content">-->
-          <!--    <li>Value for money (11)</li>-->
-          <!--  </ul>-->
-          <!--</div>-->
+            <ul class="pros-cons-list-content">
+              <li>Value for money (11)</li>
+            </ul>
+          </div>
         </div>
       </div>
       
@@ -1323,21 +1324,21 @@
     <div class="col-md-6" id="vehicle-map">
     </div>
     
-    <!--<(perc)= link_to posts_vehicle_make_path(@vehicle.vehicle_make), -->
-    <!--            target: "_blank" do %>-->
-    <!--  <div class="col-md-6 brochure-image",-->
-    <!--      style="background-image: url(-->
-    <!--            '<(perc)= @vehicle.vehicle_make.cover_photo_url %>')">-->
-    <!--    <div class="brochure-detail">-->
+    <%= link_to posts_vehicle_make_path(@vehicle.vehicle_make), 
+                target: "_blank" do %>
+      <div class="col-md-6 brochure-image",
+          style="background-image: url(
+                '<%= @vehicle.vehicle_make.cover_photo_url %>')">
+        <div class="brochure-detail">
           
-    <!--      <h2 class="brochure-detail-title">-->
-    <!--        <(perc)= @vehicle.vehicle_make.name %>-->
-    <!--      </h1>-->
+          <h2 class="brochure-detail-title">
+            <%= @vehicle.vehicle_make.name %>
+          </h1>
           
-    <!--      <h3 class="brochure-detail-info">Community Forums</h5>-->
-    <!--    </div>-->
-    <!--  </div>-->
-    <!--<(perc) end %>-->
+          <h3 class="brochure-detail-info">Community Forums</h5>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>
 

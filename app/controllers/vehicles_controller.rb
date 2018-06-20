@@ -85,6 +85,15 @@ class VehiclesController < ApplicationController
   
   def show
     
+    @google_reviews = GooglePlaces::Client.
+                        new(ENV['GOOGLE_API_KEY']).
+                        spots(@vehicle.latitude, 
+                              @vehicle.longitude,
+                              types: 'car_dealer',
+                              detail: true).
+                        first.
+                        reviews
+    
     @conversation = Conversation.new
     
     @user      = @vehicle.user

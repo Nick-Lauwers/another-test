@@ -261,6 +261,8 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     gmaps4rails (2.1.2)
+    google_places (1.1.0)
+      httparty (>= 0.13.1)
     guard (2.14.2)
       formatador (>= 0.2.4)
       listen (>= 2.7, < 4.0)
@@ -275,6 +277,8 @@ GEM
       minitest (>= 3.0)
     hashie (3.5.7)
     http_parser.rb (0.6.0)
+    httparty (0.16.2)
+      multi_xml (>= 0.5.2)
     i18n (0.9.5)
       concurrent-ruby (~> 1.0)
     inflecto (0.0.2)
@@ -491,6 +495,7 @@ DEPENDENCIES
   fog (= 1.36.0)
   geocoder
   gmaps4rails
+  google_places
   guard-minitest (= 2.3.1)
   jbuilder (= 2.2.3)
   jquery-rails (= 4.0.3)

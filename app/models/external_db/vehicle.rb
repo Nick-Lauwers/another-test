@@ -43,3 +43,9 @@ module ExternalDb
     end
   end
 end
+
+# Vehicle.where(dealership_id: 3).each do |vehicle|
+#   vehicle.latitude  = 50.0413454
+#   vehicle.longitude = -113.59097220000001
+#   vehicle.save
+# end
