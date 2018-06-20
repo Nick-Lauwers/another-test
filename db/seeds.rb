@@ -1,8 +1,8 @@
 require 'csv'
 
-# [ VehicleMake, VehicleModel, Dealership, User, Vehicle, Photo, Discussion, DiscussionComment, Club, BusinessHour ].each do |model|
-#   model.all.each(&:destroy)
-# end
+[ VehicleMake, VehicleModel, Dealership, User, Vehicle, Photo, Discussion, DiscussionComment, Club, BusinessHour ].each do |model|
+  model.all.each(&:destroy)
+end
 
 # Makes
 CSV.foreach(Rails.root.join("vehicle_makes.csv"), headers: true) do |row|

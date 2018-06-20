@@ -1,7 +1,7 @@
 class ExternalDbSynchronizer
   def self.sync
     # Sync vehicles
-    # Sync Pictures
-    # Sync dealerships
+    # Sync pictures
+    # Sync sources
   end
 end

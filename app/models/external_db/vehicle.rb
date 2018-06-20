@@ -6,7 +6,7 @@ module ExternalDb
     def sync_to_vehicle
       ::Vehicle.where(scraped_id: id).first_or_initialize.tap do |v|
         v.vehicle_make_name = make
-        v.dealership = find_dealership
+        v.dealership = source.sync_to_dealership
         v.vehicle_model_name = model
         %i[msrp year mileage mileage_numeric body_style engine exterior
         interior fuel_type transmission drivetrain stock_number vin trim_details
@@ -21,22 +21,25 @@ module ExternalDb
         v.posted_at = created
         v.bumped_at = created
         v.last_found_at = last_found
-        v.vehicle_make = find_vehicle_make
-        v.vehicle_model = find_vehicle_model
+        
+        normalized_vehicle_make_name  = make.downcase.gsub(/[^0-9a-z]/, '')
+        normalized_vehicle_model_name = model.downcase.gsub(/[^0-9a-z]/, '')
+        
+        VehicleMake.all.each do |vehicle_make|
+          if vehicle_make.name.downcase.gsub(/[^0-9a-z]/, '').in?(normalized_vehicle_make_name)
+            
+            v.vehicle_make = vehicle_make
+            
+            VehicleModel.all.each do |vehicle_model|
+              if vehicle_model.name.downcase.gsub(/[^0-9a-z]/, '').in?normalized_vehicle_model_name
+                v.vehicle_model = vehicle_model
+              end
+            end
+          end
+        end
+        
         v.save
       end
-    end
-
-    def find_dealership
-      source.sync_to_dealership
-    end
-
-    def find_vehicle_make
-      VehicleMake.find_by_name(make)
-    end
-
-    def find_vehicle_model
-      VehicleModel.find_by_name(model)
     end
   end
 end
