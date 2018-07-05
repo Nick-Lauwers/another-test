@@ -6,20 +6,20 @@
                         'availability', 'state_of_vehicle', 'latitude',
                         'longitude' ]).strip.html_safe %>
 <% Vehicle.all.each do |vehicle| %>
-  <%= CSV.generate_line([ vehicle.id, vehicle.listing_name,
-                          vehicle.description_clean,
+  <%= CSV.generate_line([ vehicle.id, "TITLE",
+                          "DESCRIPTION",
                           "http://www.example.com/test",
                           vehicle.vehicle_make.name, "Fusion", vehicle.year,
                           vehicle.mileage_numeric, "MI",
                           "http://www.facebook.com/teapic.jpg",
-                          vehicle.listing_name, vehicle.fuel_type,
-                          vehicle.body_style, vehicle.drivetrain, vehicle.vin,
+                          vehicle.listing_name, "Other",
+                          "OTHER", "Other", vehicle.vin,
                           nil, vehicle.actual_price,
-                          { addr1:       '550 Auto Center Dr', 
-                            city:        'Watsonville', 
-                            region:      'CA', 
-                            postal_code: '96075', 
-                            country:     'US' },
-                          vehicle.exterior, vehicle.actual_price, nil, "USED",
-                          52.35, 42.1 ]).strip.html_safe %>
+                          "{ addr1:       '550 Auto Center Dr', 
+                             city:        'Watsonville', 
+                             region:      'CA', 
+                             postal_code: '96075', 
+                             country:     'US' }",
+                          vehicle.exterior, vehicle.actual_price, "in stock", 
+                          "used", 52.35, 42.1 ]).strip.html_safe %>
 <% end %>
