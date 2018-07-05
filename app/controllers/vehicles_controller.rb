@@ -86,7 +86,7 @@ class VehiclesController < ApplicationController
     
     respond_to do |format|
       format.html
-      format.csv { render text: Vehicle.all.to_csv, content_type: 'text/plain' }
+      format.csv { send_data Vehicle.all.to_csv }
     end
   end
   
