@@ -117,7 +117,7 @@ Rails.application.routes.draw do
       end
     end
     
-    resources :photos,   only: [:create, :destroy] do
+    resources :photos, only: [:create, :destroy] do
       member do
         put :rotate
       end

@@ -262,73 +262,73 @@
       <% end %>
     </ul>
     
-    <%= form_for_filterrific @filterrific,
-                             url: search_vehicles_path,
-                             html: {
-                               id: "filterrific-no-ajax-auto-submit",
-                               class: "hidden-xs search-form-secondary"
-                             } do |f| %>
+    <!--<(perc)= form_for_filterrific @filterrific,-->
+    <!--                         url: search_vehicles_path,-->
+    <!--                         html: {-->
+    <!--                           id: "filterrific-no-ajax-auto-submit",-->
+    <!--                           class: "hidden-xs search-form-secondary"-->
+    <!--                         } do |f| %>-->
                  
-      <div class="row search-form-secondary-content">
+    <!--  <div class="row search-form-secondary-content">-->
         
-        <div class="col-xs-3 search-bar-secondary">
+    <!--    <div class="col-xs-3 search-bar-secondary">-->
           
-          <%= f.collection_select(:with_vehicle_make_id,
-                                  VehicleMake.all,
-                                  :id,
-                                  :name,
-                                  { include_blank: true,
-                                    prompt: "Select make" },
-                                  id: "vehicle-make-header",
-                                  class: "form-control
-                                          header-form-control
-                                          search-select-primary") %>
+    <!--      <(perc)= f.collection_select(:with_vehicle_make_id,-->
+    <!--                              VehicleMake.all,-->
+    <!--                              :id,-->
+    <!--                              :name,-->
+    <!--                              { include_blank: true,-->
+    <!--                                prompt: "Select make" },-->
+    <!--                              id: "vehicle-make-header",-->
+    <!--                              class: "form-control-->
+    <!--                                      header-form-control-->
+    <!--                                      search-select-primary") %>-->
           
-          <i class="fa fa-search fa-lg search-bar-secondary-icon" 
-             aria-hidden="true"></i>
+    <!--      <i class="fa fa-search fa-lg search-bar-secondary-icon" -->
+    <!--         aria-hidden="true"></i>-->
              
-          <i class="fa fa-caret-down fa-lg form-caret" 
-             aria-hidden="true"></i>
-        </div>
+    <!--      <i class="fa fa-caret-down fa-lg form-caret" -->
+    <!--         aria-hidden="true"></i>-->
+    <!--    </div>-->
         
-        <div class="col-xs-3 search-bar-secondary">
+    <!--    <div class="col-xs-3 search-bar-secondary">-->
           
-          <%= f.grouped_collection_select(:with_vehicle_model_id,
-                                          VehicleMake.order(:name),
-                                          :vehicle_models,
-                                          :name,
-                                          :id,
-                                          :name,
-                                          { include_blank: true,
-                                            prompt: "Select model" },
-                                          id: "vehicle-model-header",
-                                          class: "form-control 
-                                                  header-form-control
-                                                  header-select-secondary") %>
+    <!--      <(perc)= f.grouped_collection_select(:with_vehicle_model_id,-->
+    <!--                                      VehicleMake.order(:name),-->
+    <!--                                      :vehicle_models,-->
+    <!--                                      :name,-->
+    <!--                                      :id,-->
+    <!--                                      :name,-->
+    <!--                                      { include_blank: true,-->
+    <!--                                        prompt: "Select model" },-->
+    <!--                                      id: "vehicle-model-header",-->
+    <!--                                      class: "form-control -->
+    <!--                                              header-form-control-->
+    <!--                                              header-select-secondary") %>-->
           
-          <i class="fa fa-caret-down fa-lg form-caret" 
-             aria-hidden="true"></i>
-        </div>
+    <!--      <i class="fa fa-caret-down fa-lg form-caret" -->
+    <!--         aria-hidden="true"></i>-->
+    <!--    </div>-->
         
-        <div class="col-xs-4 search-bar-secondary">
+    <!--    <div class="col-xs-4 search-bar-secondary">-->
           
-          <i class="fa fa-map-pin fa-lg search-bar-secondary-icon" 
-             aria-hidden="true"></i>
+    <!--      <i class="fa fa-map-pin fa-lg search-bar-secondary-icon" -->
+    <!--         aria-hidden="true"></i>-->
              
-          <i class="fa fa-times fa-lg search-bar-secondary-close" 
-             aria-hidden="true"></i>
+    <!--      <i class="fa fa-times fa-lg search-bar-secondary-close" -->
+    <!--         aria-hidden="true"></i>-->
           
-          <%= f.text_field :with_city, 
-                           placeholder: "City (Eg. San Francisco, CA)", 
-                           class: "form-control 
-                                   header-form-control 
-                                   typeahead" %>
-        </div>
+    <!--      <(perc)= f.text_field :with_city, -->
+    <!--                       placeholder: "City (Eg. San Francisco, CA)", -->
+    <!--                       class: "form-control -->
+    <!--                               header-form-control -->
+    <!--                               typeahead" %>-->
+    <!--    </div>-->
         
-        <div class="col-xs-2 search-button-secondary">
-          <%= submit_tag "Search", class: "btn btn-search" %>
-        </div>
-      </div>
-    <% end %>
+    <!--    <div class="col-xs-2 search-button-secondary">-->
+    <!--      <(perc)= submit_tag "Search", class: "btn btn-search" %>-->
+    <!--    </div>-->
+    <!--  </div>-->
+    <!--<(perc) end %>-->
   </nav>
 </div>

@@ -21,6 +21,7 @@ class VehiclesController < ApplicationController
   def create
     
     @vehicle = current_user.vehicles.build(vehicle_params)
+    update_score
     
     if @vehicle.save
       
@@ -67,7 +68,7 @@ class VehiclesController < ApplicationController
       #     @vehicle.photos.create(image: image)
       #   end
       # end
-      
+      update_score
       flash[:success] = "Updates saved."
     
     else
@@ -80,19 +81,27 @@ class VehiclesController < ApplicationController
   end
   
   def index
+    
     @vehicles = current_user.vehicles
+    
+    respond_to do |format|
+      format.html
+      format.csv { render text: Vehicle.all.to_csv, content_type: 'text/plain' }
+    end
   end
   
   def show
     
-    @google_reviews = GooglePlaces::Client.
-                        new(ENV['GOOGLE_API_KEY']).
-                        spots(@vehicle.latitude, 
-                              @vehicle.longitude,
-                              types: 'car_dealer',
-                              detail: true).
-                        first.
-                        reviews
+    if @vehicle.dealership.present?
+      @google_reviews = GooglePlaces::Client.
+                          new(ENV['GOOGLE_API_KEY']).
+                          spots(@vehicle.latitude, 
+                                @vehicle.longitude,
+                                types: 'car_dealer',
+                                detail: true).
+                          first.
+                          reviews
+    end
     
     @conversation = Conversation.new
     
@@ -176,6 +185,10 @@ class VehiclesController < ApplicationController
         width:  32,
         height: 32
       })
+      
+      marker.infowindow render_to_string(partial: "map_item",
+                                         object:  vehicle,
+                                         as:      :vehicle)
       
       marker.json({ :id => vehicle.id })
     end
@@ -339,6 +352,163 @@ class VehiclesController < ApplicationController
                                       :_destroy])
     end
     
+    # Updates score
+    def update_score
+      
+      # Listing location is included and is an exact address.
+      if @vehicle.latitude.present?
+        location_score = 3
+      else
+        location_score = 0
+      end
+      
+      # Features are properly noted.
+      if @vehicle.air_conditioning || @vehicle.power_windows || 
+         @vehicle.remote_keyless_entry || @vehicle.speed_control || 
+         @vehicle.am_fm_radio || @vehicle.wireless_phone_connectivity ||
+         @vehicle.fully_automatic_headlights || 
+         @vehicle.variably_intermittent_wipers || @vehicle.abs_brakes ||
+         @vehicle.brake_assist || @vehicle.dual_front_impact_airbags ||
+         @vehicle.electronic_stability || @vehicle.security_system ||
+         @vehicle.traction_control || @vehicle.power_steering
+        features_score = 3
+        
+      else
+        features_score = 0
+      end
+      
+      # Specifications are properly noted.
+      spec_score = 0
+      
+      spec_score += 1 if @vehicle.interior.present?
+      spec_score += 1 if @vehicle.exterior.present?
+      spec_score += 1 if @vehicle.transmission.present?
+      spec_score += 1 if @vehicle.fuel_type.present?
+      spec_score += 1 if @vehicle.drivetrain.present?
+      
+      spec_score = (3/5)*spec_score
+      
+      # VIN has been properly noted.
+      if @vehicle.vin.present?
+        vin_score = 3
+      else
+        vin_score = 0
+      end
+      
+      # Vehicle is listed by a certified dealer and dealership sends a direct
+      # listing.
+      if @vehicle.dealership.present? && 
+         @vehicle.dealership.scraped_id.present?
+        certified_dealer_score = 3
+        direct_listing_score = 3
+        
+      elsif @vehicle.dealership.present?
+        certified_dealer_score = 0
+        direct_listing_score = 0
+        
+      else
+        certified_dealer_score = 3
+        direct_listing_score = 3
+      end 
+      
+      # Seller accepts test drives, on-demand.
+      test_drive_score = 3
+      
+      # Seller has many high-quality listings.
+      if @vehicle.dealership.present?
+        
+        combined_score = 0
+
+        @vehicle.dealership.vehicles.each do |vehicle|
+          if vehicle.listing_score.overall_score.present?
+            combined_score = vehicle.listing_score.overall_score + 
+                               combined_score
+          end
+        end
+        
+        if combined_score/(@vehicle.dealership.vehicles.count + 1) <= 59
+          many_listings_score = 1
+        elsif combined_score/(@vehicle.dealership.vehicles.count + 1)<=79
+          many_listings_score = 2
+        else 
+          many_listings_score = 3
+        end
+      
+      else
+        many_listings_score = 3
+      end
+
+      # Seller has several positive reviews.
+      
+      # Listing was recently posted or bumped.
+      if @vehicle.bumped_at <= 1.day.ago
+        recently_posted_score = 3
+      elsif @vehicle.bumped_at <= 3.days.ago
+        recently_posted_score = 2
+      else
+        recently_posted_score = 1
+      end
+      
+      # Listing has many photos.
+      if @vehicle.photos.count <= 3
+        photos_score = 1
+      elsif @vehicle.photos.count.between(4,7)
+        photos_score = 2
+      else
+        photos_score = 3
+      end
+      
+      # Calculate overall score.
+      overall_score = ( 100 / 30 ) * ( location_score + features_score + 
+                                       spec_score + vin_score + 
+                                       certified_dealer_score +
+                                       direct_listing_score +
+                                       test_drive_score + photos_score +
+                                       # score.reviews_score + 
+                                       recently_posted_score + 
+                                       many_listings_score )
+      
+      if @vehicle.listing_score.present?
+        @vehicle.listing_score.update_attributes(location_score:   
+                                                   location_score,
+                                                 features_score:   
+                                                   features_score,
+                                                 spec_score:    spec_score,
+                                                 vin_score:     vin_score,
+                                                 certified_dealer_score:
+                                                   certified_dealer_score,
+                                                 direct_listing_score:
+                                                   direct_listing_score,
+                                                 test_drive_score: 
+                                                   test_drive_score,
+                                                 photos_score:  photos_score,
+                                                 # reviews_score: reviews_score,
+                                                 recently_posted_score:
+                                                   recently_posted_score,
+                                                 many_listings_score:
+                                                   many_listings_score,
+                                                 overall_score: overall_score)
+      
+      else                             
+        @vehicle.build_listing_score(location_score:   location_score, 
+                                     features_score:   features_score,
+                                     spec_score:       spec_score, 
+                                     vin_score:        vin_score, 
+                                     certified_dealer_score: 
+                                       certified_dealer_score,
+                                     direct_listing_score: 
+                                       direct_listing_score,
+                                     test_drive_score: test_drive_score, 
+                                     photos_score:     photos_score,
+                                     # reviews_score:    reviews_score, 
+                                     recently_posted_score: 
+                                       recently_posted_score,
+                                     many_listings_score: 
+                                       many_listings_score, 
+                                     overall_score:    overall_score)
+      end
+    end
+  
     # Before filters
     
     # Identifies vehicle id.

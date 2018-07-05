@@ -54,6 +54,11 @@
       </div>
       
       <div class="col-md-8">
+        
+        <p class="listing-score">
+          Listing Score: <%= @vehicle.listing_score.overall_score %>
+        </p>
+        
         <%= form_for @vehicle, html: { multipart: true } do |f| %>
           
           <div class="update-panel">
@@ -178,7 +183,7 @@
                 
                 <div class= "input-group">
                   
-                  <%= f.text_field :mileage, 
+                  <%= f.text_field :mileage_numeric, 
                                    placeholder: "Eg. 25 000", 
                                    class: "form-control form-control-primary",
                                    required: true %>

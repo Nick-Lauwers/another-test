@@ -1,6 +1,11 @@
 <!--completed-->
 
-<% provide(:title, @vehicle.listing_name) %>
+<!--<(perc) if @vehicle.listing_name.present? %>-->
+  <% provide(:title, @vehicle.listing_name) %>
+<!--<(perc) else %>-->
+<!--  <(perc) provide(:title, @vehicle.year @vehicle.vehicle_make.name -->
+<!--                     @vehicle.vehicle_model.name) %>-->
+<!--<(perc) end %>-->
 
 <header class="header-static-gray">
   <%= render 'layouts/header_secondary' %>
@@ -14,9 +19,10 @@
 
 <%= render 'modal_appointment' %>
 
-<%= render 'modal_dealer_select' %>
-
-<%= render 'modal_buy_online' %>
+<% if @vehicle.dealership.present? %>
+  <%= render 'modal_dealer_select' %>
+  <%= render 'modal_buy_online' %>
+<% end %>
 
 <% if @vehicle.sold_at.present? %>
   <div class="ribbon-vehicle">SOLD</div>
@@ -28,6 +34,14 @@
      data-speed="0.3" 
      data-bleed="10"
      data-z-index="0">
+  <div class="hero-listing-score-container hidden-xs">
+    
+    <span class="hero-listing-score-number">
+      <%= @vehicle.listing_score.overall_score %>
+    </span>
+    
+    <span class="hero-listing-score-text">Listing Score</span>
+  </div>
 </div>
 
 <%= render 'modal' %>
@@ -133,7 +147,7 @@
             <i class="fa fa-lg fa-chevron-right modal-test-drive-right"></i>
             
             <ol class="modal-test-drive-list">
-              <% @vehicle.dealership.users do |dealer| %>
+              <% @vehicle.dealership.users.each do |dealer| %>
                 <li class="modal-test-drive-item">
   
                   <%= f.hidden_field :recipient_id, value: dealer.id %>
@@ -186,7 +200,14 @@
             <div class="vehicle-overview-title">
               
               <h1 class="vehicle-overview-heading visible-xs">
-                <%= @vehicle.listing_name %>
+                
+                <% if @vehicle.listing_name.present? %>
+                  <%= @vehicle.listing_name %>
+                  
+                <% else %>
+                  <%= @vehicle.year %> <%= @vehicle.vehicle_make.name %> 
+                  <%= @vehicle.vehicle_model.name %>
+                <% end %>
               </h1>
               
               <div class="row vertical-align">
@@ -214,11 +235,18 @@
                 <div class="col-md-10 col-xs-8">
   
                   <h1 class="vehicle-overview-heading hidden-xs">
-                    <%= @vehicle.listing_name %>
-                    <%= @vehicle.vehicle_make_name %> <%= @vehicle.vehicle_model_name %>
+                    
+                    <% if @vehicle.listing_name.present? %>
+                      <%= @vehicle.listing_name %>
+                      
+                    <% else %>
+                      <%= @vehicle.year %> <%= @vehicle.vehicle_make.name %> 
+                      <%= @vehicle.vehicle_model.name %>
+                    <% end %>
                   </h1>
                   
                   <% if @vehicle.dealership.present? %>
+                  
                     <div class="row vertical-align">
                       
                       <div class="col-xs-1">
@@ -265,11 +293,17 @@
                                             vehicle-overview-subheading-dealer" %>
                         
                         <span class="hidden-xs"> · </span>
-                                    
-                        <span class="average-rating"></span>
+                        
+                        <% if @vehicle.dealership.blank? %>
+                          <span class="average-rating"></span>
+                        <% end %>
                       </div>
                     </div>
-                  
+                    
+                    <% if @vehicle.dealership.present? %>
+                      <span class="average-rating"></span>
+                    <% end %>
+                    
                   <% else %>
                     
                     <%= link_to @vehicle.user.full_name, 
@@ -284,16 +318,6 @@
                 </div>
               </div>
             </div>
-            
-            <%= link_to favorite_vehicle_path(@vehicle), 
-                        class: "vehicle-overview-link",
-                        method: :put do %>
-                        
-              <i class="fa fa-heart-o" 
-                 aria-hidden="true"></i> 
-                   
-              Add to Shortlist
-            <% end %>
   
             <p class="vehicle-overview-description">
               <%= @vehicle.description_clean %>
@@ -701,93 +725,147 @@
             </div>
           </div>
           
-          <!--<(perc) if @vehicle.sellers_notes.present? %>-->
-          <!--  <div id="sellers-notes">-->
-          <!--    <h3 class="vehicle-details-title">Seller's Notes</h3>-->
-          <!--    <p class="vehicle-details-info"><(perc)= @vehicle.sellers_notes %></p>-->
-          <!--  </div>-->
-          <!--<(perc) end %>-->
+          <div id="listing-score">
           
-          <div id="pricing">
+            <h3 class="vehicle-details-title">Listing Score Breakdown</h3>
             
-            <h3 class="vehicle-details-title">Pricing</h3>
-            
-            <p class="vehicle-details-info">$<%= @vehicle.actual_price %></p>
-            
-            <% if @vehicle.dealership.present? %>
-              <div class="negotiate btn-negotiate-dealer">
-                <div class="row vertical-align">
-                
-                <div class="col-md-2">
-                  <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/deal.png") %>
-                </div>
-                  
-                <div class="col-md-10">
-                  <p class="negotiate-info">
-                    
-                    <strong>
-                      
-                      Make 
-                      
-                      <% if @vehicle.user.present? %>
-                        <%= @vehicle.user.first_name %>
-                        
-                      <% else %>
-                        <%= @vehicle.dealership.dealership_name %>
-                      <% end %>
-                      
-                      an offer.
-                    </strong>
-                    
-                    <br>
-                    
-                    Your identity will remain anonymous until an offer is 
-                    accepted.
-                  </p>
-                </div>
-              </div>
-            </div>
-            
-            <% else %>
-              <%= form_for @conversation, 
-                           url: conversations_path(@conversation), 
-                           method: :post do |f| %>
-                       
-                <%= f.hidden_field :sender_id,          value: current_user.id if 
-                                                               current_user %>
-                
-                <%= f.hidden_field :recipient_id,       value: @user.id %>
-                
-                <%= f.hidden_field :sender_archived,    value: false %>
+            <table class="vehicle-details-table">
               
-                <%= f.hidden_field :recipient_archived, value: false %>
+              <tr>
                 
-                <%= button_tag(class: "btn-negotiate-private") do %>
-                  <div class="negotiate">
-                    <div class="row vertical-align">
+                <% if @vehicle.listing_score.location_score == 3 ||
+                      @vehicle.listing_score.location_score == 2 %>
                       
-                      <div class="col-md-2">
-                        <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/deal.png") %>
-                      </div>
-                      
-                      <div class="col-md-10">
-                        <p class="negotiate-info">
-                          
-                          <strong>
-                            Make <%= @vehicle.user.first_name %> an offer.
-                          </strong>
-                          
-                          <br>
-                          
-                          Your identity will remain anonymous until an offer is 
-                          accepted.
-                        </p>
-                      </div>
-                    </div>
-                  </div>
+                  <td>
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                  </td>
+                  
+                  <td>
+                    <strong>Listing location is an exact address.</strong>
+                  </td>
                 <% end %>
-              <% end %>
-            <% end %>
+              </tr>
+              
+              <tr>
+                
+                <% if @vehicle.listing_score.features_score == 3 ||
+                      @vehicle.listing_score.features_score == 2 %>
+                      
+                  <td>
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                  </td>
+                  
+                  <td><strong>Features are properly noted.</strong></td>
+                <% end %>
+              </tr>
+              
+              <tr>
+                
+                <% if @vehicle.listing_score.spec_score == 3 ||
+                      @vehicle.listing_score.spec_score == 2 %>
+                      
+                  <td>
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                  </td>
+                
+                  <td><strong>Specifications are properly noted.</strong></td>
+                <% end %>
+              </tr>
+              
+              <tr>
+                
+                <% if @vehicle.listing_score.vin_score == 3 ||
+                      @vehicle.listing_score.vin_score == 2 %>
+                      
+                  <td>
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                  </td>
+                
+                  <td><strong>VIN is properly noted.</strong></td>
+                <% end %>
+              </tr>
+              
+              <tr>
+                
+                <% if @vehicle.listing_score.certified_dealer_score == 3 ||
+                      @vehicle.listing_score.certified_dealer_score == 2 %>
+                      
+                  <td>
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                  </td>
+                
+                  <td>
+                    <strong>
+                      Vehicle is being sold by a certified dealer.
+                    </strong>
+                  </td>
+                <% end %>
+              </tr>
+              
+              <tr>
+                
+                <% if @vehicle.listing_score.direct_listing_score == 3 ||
+                      @vehicle.listing_score.direct_listing_score == 2 %>
+                      
+                  <td>
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                  </td>
+                
+                  <td>
+                    <strong>Dealer sends a direct listing feed.</strong>  
+                  </td>
+                <% end %>
+              </tr>
+              
+              <tr>
+                
+                <% if @vehicle.listing_score.test_drive_score == 3 ||
+                      @vehicle.listing_score.test_drive_score == 2 %>
+                      
+                  <td>
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                  </td>
+                
+                  <td>
+                    <strong>
+                      Seller accepts test drive requests on demand.
+                    </strong>
+                  </td>
+                <% end %>
+              </tr>
+              
+              <tr>
+                
+                <% if @vehicle.listing_score.photos_score == 3 ||
+                      @vehicle.listing_score.photos_score == 2 %>
+                      
+                  <td>
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                  </td>
+                
+                  <td>
+                    <strong>
+                      Listing has plenty of photos of the vehicle.
+                    </strong>
+                  </td>
+                <% end %>
+              </tr>
+              
+              <tr>
+                
+                <% if @vehicle.listing_score.recently_posted_score == 3 ||
+                      @vehicle.listing_score.recently_posted_score == 2 %>
+                      
+                  <td>
+                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                  </td>
+                
+                  <td>
+                    <strong>Listing was recently posted or "bumped".</strong>
+                  </td>
+                <% end %>
+              </tr>
+            </table>
           </div>
           
           <% if @vehicle.availabilities.exists? %>
@@ -1065,6 +1143,81 @@
               <% end %>
             </div>
           <% end %>
+          
+          <% if @vehicle.dealership.present? %>
+            <div class="negotiate btn-negotiate-dealer">
+              <div class="row vertical-align">
+              
+                <div class="col-md-2">
+                  <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/deal.png") %>
+                </div>
+                  
+                <div class="col-md-10">
+                  <p class="negotiate-info">
+                    
+                    <strong>
+                      
+                      Make 
+                      
+                      <% if @vehicle.user.present? %>
+                        <%= @vehicle.user.first_name %>
+                        
+                      <% else %>
+                        <%= @vehicle.dealership.dealership_name %>
+                      <% end %>
+                      
+                      an offer.
+                    </strong>
+                    
+                    <br>
+                    
+                    Your identity will remain anonymous until an offer is 
+                    accepted.
+                  </p>
+                </div>
+              </div>
+            </div>
+          
+          <% else %>
+            <%= form_for @conversation, 
+                         url: conversations_path(@conversation), 
+                         method: :post do |f| %>
+                     
+              <%= f.hidden_field :sender_id,          value: current_user.id if 
+                                                             current_user %>
+              
+              <%= f.hidden_field :recipient_id,       value: @user.id %>
+              
+              <%= f.hidden_field :sender_archived,    value: false %>
+            
+              <%= f.hidden_field :recipient_archived, value: false %>
+              
+              <%= button_tag(class: "btn-negotiate-private") do %>
+                <div class="negotiate">
+                  <div class="row vertical-align">
+                    
+                    <div class="col-md-2">
+                      <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/deal.png") %>
+                    </div>
+                    
+                    <div class="col-md-10">
+                      <p class="negotiate-info">
+                        
+                        <strong>
+                          Make <%= @vehicle.user.first_name %> an offer.
+                        </strong>
+                        
+                        <br>
+                        
+                        Your identity will remain anonymous until an offer is 
+                        accepted.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
         <!--</div>-->
       </div>
       
@@ -1110,24 +1263,51 @@
               </div>
             </div>
           </div>
-
-          <%= link_to favorite_vehicle_path(@vehicle), 
-                      class: "vehicle-scrolled-link",
-                      method: :put do %>
-                      
-            <i class="fa fa-heart-o" 
-               aria-hidden="true"></i> 
-                 
-            Add to Shortlist
-          <% end %>
+          
+          <div class="shortlist-scrolled hidden-xs">
             
-        <!--<(perc) end %>-->
-
+            <span class="shortlist-scrolled-info">
+              Add vehicles to your shortlist by tapping "Love It" or "Maybe"
+              to compare later.
+            </span>
+            
+            <div class="row">
+              
+              <div class="col-md-6">
+                <%= link_to favorite_vehicle_path(@vehicle),
+                            class: "btn-shortlist",
+                            method: :put do %>
+                  <i class="fa fa-heart-o" aria-hidden="true"></i>
+                  Love It!
+                <% end %>
+              </div>
+              
+              <div class="col-md-6">
+                <%= link_to favorite_vehicle_path(@vehicle),
+                            class: "btn-shortlist",
+                            method: :put do %>
+                  <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                  Maybe
+                <% end %>
+              </div>
+            </div>
+          </div>
+          
+          <!--<(perc)= link_to favorite_vehicle_path(@vehicle), -->
+          <!--            class: "vehicle-scrolled-link",-->
+          <!--            method: :put do %>-->
+                      
+          <!--  <i class="fa fa-heart-o" -->
+          <!--    aria-hidden="true"></i> -->
+                 
+          <!--  Add to Shortlist-->
+          <!--<(perc) end %>-->
+            
         <!--<div class="appointment-scrolled">-->
         <!--  <(perc)= link_to '#vehicle-overview', -->
         <!--      class: "btn btn-primary btn-primary-scrolled" do %>-->
-            <!--<i class="fa fa-arrow-up up-button-icon" -->
-            <!--   aria-hidden="true"></i> -->
+        <!--    <i class="fa fa-arrow-up up-button-icon" -->
+        <!--       aria-hidden="true"></i> -->
         <!--    Test Drive-->
         <!--  <(perc) end %>-->
         <!--</div>-->
@@ -1251,7 +1431,8 @@
               <div class="average-rating"></div>
               
               <span class="number-of-reviews">
-                (based on <%= pluralize(@reviews.count, "review") %>)
+                (based on <%= pluralize(@reviews.count + @google_reviews.count, 
+                                "review") %>)
               </span> 
             </div>
           </div>
@@ -1276,7 +1457,7 @@
             <h3 class="reviews-subheading">Cons</h3>
             
             <ul class="pros-cons-list-content">
-              <li>Value for money (11)</li>
+              <li>None Listed</li>
             </ul>
           </div>
         </div>
@@ -1327,7 +1508,7 @@
     <%= link_to posts_vehicle_make_path(@vehicle.vehicle_make), 
                 target: "_blank" do %>
       <div class="col-md-6 brochure-image",
-          style="background-image: url(
+           style="background-image: url(
                 '<%= @vehicle.vehicle_make.cover_photo_url %>')">
         <div class="brochure-detail">
           
@@ -1365,56 +1546,80 @@
 
       <%= f.hidden_field :recipient_archived, value: false %>
     
-      <%= button_tag(class: "single-action-button hidden-xs") do %>
+      <%= button_tag(class: "single-action-button") do %>
         <i class='fa fa-lg fa-comments-o single-action-icon'></i>
       <% end %>
     <% end %>
   </div>
 <% end %>
 
-<div class='multi-action visible-xs'>
-  
-  <button class='action-button'><i class='fa fa-plus fa-lg'></i></button>
-  
-  <ul class='actions'>
+<div class="shortlist-nav">
+  <div class="row">
     
-    <li>
-      <%= link_to new_purchase_path(vehicle_id: @vehicle.id) do %>
-        <i class='fa fa-credit-card'></i>
-      <% end %> 
-    </li>
-    
-    <li class="btn-appointment-mobile">
-      <a>
-        <i class='fa fa-calendar-check-o'></i>
-      </a>
-    </li>
-    
-    <li>
-      <a>
-        <%= form_for @conversation, 
-                     url: conversations_path(@conversation), 
-                     method: :post do |f| %>
-                 
-          <%= f.hidden_field :sender_id,          value: current_user.id if 
-                                                         current_user %>
-          
-          <% if @vehicle.user.present? %>
-            <%= f.hidden_field :recipient_id,     value: @user.id %>
-          <% end %>
-          
-          <%= f.hidden_field :sender_archived,    value: false %>
+    <%= link_to favorite_vehicle_path(@vehicle),
+                class: "col-xs-6 btn-shortlist-nav btn-shortlist-nav-first",
+                method: :put do %>
+                
+      <i class="fa fa-heart-o btn-shortlist-nav-icon" aria-hidden="true"></i>
       
-          <%= f.hidden_field :recipient_archived, value: false %>
-          
-          <%= button_tag(class: "btn-message-mobile") do %>
-            <i class='fa fa-comments-o'></i>
-          <% end %>
-        <% end %>
-      </a>
-    </li>
-  </ul>
+      Love It!
+    <% end %>
+
+    <%= link_to favorite_vehicle_path(@vehicle),
+                class: "col-xs-6 btn-shortlist-nav",
+                method: :put do %>
+                
+      <i class="fa fa-check-circle-o btn-shortlist-nav-icon" 
+         aria-hidden="true"></i>
+      
+      Maybe
+    <% end %>
+  </div>
 </div>
+
+<!--<div class='multi-action visible-xs'>-->
+  
+<!--  <button class='action-button'><i class='fa fa-plus fa-lg'></i></button>-->
+  
+<!--  <ul class='actions'>-->
+    
+<!--    <li>-->
+<!--      <(perc)= link_to new_purchase_path(vehicle_id: @vehicle.id) do %>-->
+<!--        <i class='fa fa-credit-card'></i>-->
+<!--      <(perc) end %> -->
+<!--    </li>-->
+    
+<!--    <li class="btn-appointment-mobile">-->
+<!--      <a>-->
+<!--        <i class='fa fa-calendar-check-o'></i>-->
+<!--      </a>-->
+<!--    </li>-->
+    
+<!--    <li>-->
+<!--      <a>-->
+<!--        <(perc)= form_for @conversation, -->
+<!--                     url: conversations_path(@conversation), -->
+<!--                     method: :post do |f| %>-->
+                 
+<!--          <(perc)= f.hidden_field :sender_id,          value: current_user.id if -->
+<!--                                                         current_user %>-->
+          
+<!--          <(perc) if @vehicle.user.present? %>-->
+<!--            <(perc)= f.hidden_field :recipient_id,     value: @user.id %>-->
+<!--          <(perc) end %>-->
+          
+<!--          <(perc)= f.hidden_field :sender_archived,    value: false %>-->
+      
+<!--          <(perc)= f.hidden_field :recipient_archived, value: false %>-->
+          
+<!--          <(perc)= button_tag(class: "btn-message-mobile") do %>-->
+<!--            <i class='fa fa-comments-o'></i>-->
+<!--          <(perc) end %>-->
+<!--        <(perc) end %>-->
+<!--      </a>-->
+<!--    </li>-->
+<!--  </ul>-->
+<!--</div>-->
 
 <!--<(perc)= link_to new_club_path, class: "single-action" do %>-->
 <!--  <i class='fa fa-group fa-lg single-action-icon'></i>-->

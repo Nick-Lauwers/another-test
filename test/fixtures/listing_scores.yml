@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  location_score: 1
+  features_score: 1
+  spec_score: 1
+  vin_score: 1
+  certified_dealer_score: 1
+  direct_listing_score: 1
+  test_drive_score: 1
+  photos_score: 1
+  reviews_score: 1
+  recently_posted_score: 1
+  many_listings_score: 1
+  overall_score: 1
+
+two:
+  location_score: 1
+  features_score: 1
+  spec_score: 1
+  vin_score: 1
+  certified_dealer_score: 1
+  direct_listing_score: 1
+  test_drive_score: 1
+  photos_score: 1
+  reviews_score: 1
+  recently_posted_score: 1
+  many_listings_score: 1
+  overall_score: 1

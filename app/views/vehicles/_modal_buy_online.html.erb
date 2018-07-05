@@ -36,9 +36,7 @@
         
         <ol class="modal-buy-online-list">
           <%= render partial:    'modal_buy_online_item',
-                     collection: User.where(
-                                   dealership_id: @vehicle.dealership_id
-                                 ),
+                     collection: @vehicle.dealership.users,
                      as:         :dealer %>
         </ol>
       </div>

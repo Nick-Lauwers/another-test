@@ -1,20 +1,58 @@
-id,dealership_id,user_id,listing_name,vehicle_make_name,vehicle_make_id,vehicle_model_name,vehicle_model_id,msrp,actual_price,year,mileage,mileage_numeric,body_style,engine,exterior,interior,fuel_type,transmission,drivetrain,stock_number,vin,trim_details,description,description_clean,air_conditioning,power_windows,remote_keyless_entry,speed_control,am_fm_radio,wireless_phone_connectivity,fully_automatic_headlights,variably_intermittent_wipers,abs_brakes,brake_assist,dual_front_impact_airbags,electronic_stability,security_system,traction_control,power_steering,street_address,apartment,city,state,latitude,longitude,ad_url,created_at,posted_at,bumped_at,last_found_at
-1,,1,2009 Mazda CX-9 GT,,22,,719,,12000,2009,,139000,Crossover,,White,,Gasoline,Automatic,All-Wheel Drive,,,,"I am selling a white 2009 Mazda CX-9 with 139 000km. It is a fully-loaded Grand Touring Edition with sunroof, heated leather seats, blind spot monitors, Bose sound, bluetooth, cruise contol, a navigation system, and two TV's with DVD players in the rear headrests. The interior and exterior are in very good shape. The car was recently waxed and the paint is in excellent condition. There have been no accidents and I am the second owner (the previous owner was my father, so the vehicle has stayed in the family).","I am selling a white 2009 Mazda CX-9 with 139 000km. It is a fully-loaded Grand Touring Edition with sunroof, heated leather seats, blind spot monitors, Bose sound, bluetooth, cruise contol, a navigation system, and two TV's with DVD players in the rear headrests. The interior and exterior are in very good shape. The car was recently waxed and the paint is in excellent condition. There have been no accidents and I am the second owner (the previous owner was my father, so the vehicle has stayed in the family).",1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1840 Golden Gate Avenue,,San Francisco,CA,37.7787,-122.441,,1/1/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
-2,,2,2010 Ford F-150 Lariat,,10,,375,,23000,2010,,120000,Pickup,,White,,Gasoline,Automatic,Four-Wheel Drive,,,,"I am selling a 2010 Ford F-150 that is in very good shape. The truck has some great features: leather seats, sunroof, bluetooth, trailer tow package, power seats, power locks, and heated seats. It has been well maintained and has always been kept up to date with synthetic oil changes. It's a clean truck, inside and out.","I am selling a 2010 Ford F-150 that is in very good shape. The truck has some great features: leather seats, sunroof, bluetooth, trailer tow package, power seats, power locks, and heated seats. It has been well maintained and has always been kept up to date with synthetic oil changes. It's a clean truck, inside and out.",1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1000 3rd Street,,San Francisco,CA,37.7752,-122.3902,,1/2/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
-3,,3,2016 Dodge Charger HellCat Demo,,8,,291,,73000,2016,,3800,Sedan,,White,,Gasoline,Automatic,Front-Wheel Drive,,,,"Experience the HellCat 'Viagara'. Guaranteed to get you 'up' and running. The brand new Charger HellCat demo looks awesome, sounds awesome! There is plenty of power to spare: 707hp from a 6.2L supercharged hemi! The Charger is fully loaded with navigation, sunroof, heated / ventilated seats, and much more.","Experience the HellCat 'Viagara'. Guaranteed to get you 'up' and running. The brand new Charger HellCat demo looks awesome, sounds awesome! There is plenty of power to spare: 707hp from a 6.2L supercharged hemi! The Charger is fully loaded with navigation, sunroof, heated / ventilated seats, and much more.",1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2639 18th Avenue,,San Francisco,CA,37.7386,-122.4746,,1/3/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
-4,,4,2009 Mercedes B200 Turbo,,23,,756,,7500,2009,,99000,Hatchback,,Grey,,Gasoline,Automatic,Front-Wheel Drive,,,,The Mercedes B200 features a 2.0L turbo engine. It is very clean and has just received new brakes and an oil change.,The Mercedes B200 features a 2.0L turbo engine. It is very clean and has just received new brakes and an oil change.,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3011 Van Ness Avenue,,San Francisco,CA,37.8034,-122.4252,,1/4/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
-5,,5,2007 MINI Cooper,,25,,807,,7000,2007,,144000,Hatchback,,Red,,Gasoline,Automatic,Front-Wheel Drive,,,,The MINI Cooper features a 1.6L engine that uses a timing chain. It is very clean and has just received new brakes and an oil change. All four tires are in good condition,The MINI Cooper features a 1.6L engine that uses a timing chain. It is very clean and has just received new brakes and an oil change. All four tires are in good condition,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,229 Brannan Street,,San Francisco,CA,37.7825,-122.3902,,1/5/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
-6,,6,2013 Mazda 3 Skyactive,,22,,721,,14000,2013,,33000,Sedan,,Black,,Gasoline,Automatic,Front-Wheel Drive,,,,The Mazda 3 Skyactive is a clean car with low mileage. It has heated leather seats and many more features.,The Mazda 3 Skyactive is a clean car with low mileage. It has heated leather seats and many more features.,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,347 Lisbon Street,,San Francisco,CA,37.7227,-122.4328,,1/6/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
-7,,7,2016 Chevrolet Malibu LT,,6,,207,,17000,2016,,40275,Sedan,,White,,Gasoline,Automatic,Front-Wheel Drive,,,,"The 2016 Chevrolet Malibu LT features air conditioning, alloy wheels, AM / FM radio, cruise control, floor mats, folding rear seats, power options, stability control, and telescopic and tilt steering. The vehicle is accident free, smoker free, and pet free.","The 2016 Chevrolet Malibu LT features air conditioning, alloy wheels, AM / FM radio, cruise control, floor mats, folding rear seats, power options, stability control, and telescopic and tilt steering. The vehicle is accident free, smoker free, and pet free.",1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1325 Lake Street,,San Francisco,CA,37.7861,-122.4737,,1/7/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
-8,,8,2011 Chevrolet Malibu LS,,6,,207,,10000,2011,,123000,Sedan,,Grey,,Flex Fuel,Automatic,Front-Wheel Drive,,,,I am selling a grey 2011 Chevrolet Malibu LS for $10 000. It is flex fuel capable and features bluetooth and power options.,I am selling a grey 2011 Chevrolet Malibu LS for $10 000. It is flex fuel capable and features bluetooth and power options.,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,21 Stillman Street,,San Francisco,CA,37.783,-122.3945,,1/8/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
-9,,9,2011 Kia Optima EX,,17,,610,,13500,2011,,86685,Sedan,,Black,,Gasoline,Automatic,Front-Wheel Drive,,,,"This vehicle is a five-passenger sedan with alloy wheels. It features a USB port, a touch screen, and an auxiliary input. I am the original owner and it is accident free.","This vehicle is a five-passenger sedan with alloy wheels. It features a USB port, a touch screen, and an auxiliary input. I am the original owner and it is accident free.",1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1075 Market Street,,San Francisco,CA,37.7806,-122.4116,,1/9/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
-10,,10,2015 Chrysler Town & Country Touring,,7,,281,,22975,2015,,57620,Van,,White,,Gasoline,Automatic,Front-Wheel Drive,,,,"I am selling a white Chrysler Town & Country. It is both smoker free and pet free. It has satellite radio, a CD player, an MP3 decoder, and DVD audio. ","I am selling a white Chrysler Town & Country. It is both smoker free and pet free. It has satellite radio, a CD player, an MP3 decoder, and DVD audio. ",1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2270 40th Avenue,,San Francisco,CA,37.7445,-122.4981,,1/10/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
-11,,11,2010 Lexus RX 350 SUV,,19,,678,,14800,2010,,39000,SUV,,White,,Gasoline,Automatic,All-Wheel Drive,,,,"Features CD player, premium sound, XM satellite, Bluetooth Wireless, keyless start, alloy wheels, and privacy glass","Features CD player, premium sound, XM satellite, Bluetooth Wireless, keyless start, alloy wheels, and privacy glass",1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,338 Main Street,,San Francisco,CA,37.7888,-122.3913,,1/11/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
-12,,12,2003 Chevrolet Duramax 4X4,,6,,223,,14000,2003,,220000,Pickup,,Silver,,Diesel,Automatic,Four-Wheel Drive,,,,"Has a clean black interior, cloth seats, all-power options, a tow package, tinted windows, an MBRP exhaust, and aftermarket head-lights and tail-lights. All fluids are regularly maintained and there are no scratches on the wheels","Has a clean black interior, cloth seats, all-power options, a tow package, tinted windows, an MBRP exhaust, and aftermarket head-lights and tail-lights. All fluids are regularly maintained and there are no scratches on the wheels",1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,2526 Francisco Street,,San Francisco,CA,37.8006,-122.4469,,1/12/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
-13,,13,2013 Nissan Versa,,27,,867,,6000,2013,,58000,Sedan,,Red,,Gasoline,Automatic,Front-Wheel Drive,,,,I am selling a red 2013 Nissan Versa that runs well. It is a great economy car that gets around 37MPG at highway speed.,I am selling a red 2013 Nissan Versa that runs well. It is a great economy car that gets around 37MPG at highway speed.,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,688 25th Avenue,,San Francisco,CA,37.7767,-122.4842,,1/13/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
-14,,14,2005 Honda CRV SUV,,12,,492,,3950,2005,,139400,SUV,,Green,,Gasoline,Automatic,Front-Wheel Drive,,,,"Features power steering, tilt wheel, AM / FM stereo, CD, air conditioning, power windows, power door locks, cruise control, dual airbags, and steel wheels","Features power steering, tilt wheel, AM / FM stereo, CD, air conditioning, power windows, power door locks, cruise control, dual airbags, and steel wheels",1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1317 Cole Street,,San Francisco,CA,37.7622,-122.4495,,1/14/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
-15,,15,2016 Nissan Altima S,,27,,838,,12500,2016,,24000,Sedan,,Red,,Gasoline,Automatic,Front-Wheel Drive,,,,"The Nissan Altima has MP3. Bluetooth Wireless, keyless entry, keyless start, backup camera, dual airbags, side airbags, F&R head curtain airbags, and steel wheels. ","The Nissan Altima has MP3. Bluetooth Wireless, keyless entry, keyless start, backup camera, dual airbags, side airbags, F&R head curtain airbags, and steel wheels. ",1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,400 Beale Street,,San Francisco,CA,37.7871,-122.391,,1/15/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
-16,,16,2015 Jeep Wrangler Rubicon,,16,,600,,39000,2015,,30000,Off-Road,,Black,,Gasoline,Automatic,Four-Wheel Drive,,,,"This is as nice of a used Jeep as you can get. It has a lot of extras. I bought it with great intentions and never used it. It has never been off-road and has no damage. I had the following parts added by my dealer: 4in lift and steering correction, high steer drag link, bracket relocation, adjustable rear control arms with spring correction brackets, a one tonne rear drive shaft, 35"" BF Goodrich all-terrain tires with a spare, a warn bumper and winch, and an LED light bar and pods with a pillar guard","This is as nice of a used Jeep as you can get. It has a lot of extras. I bought it with great intentions and never used it. It has never been off-road and has no damage. I had the following parts added by my dealer: 4in lift and steering correction, high steer drag link, bracket relocation, adjustable rear control arms with spring correction brackets, a one tonne rear drive shaft, 35"" BF Goodrich all-terrain tires with a spare, a warn bumper and winch, and an LED light bar and pods with a pillar guard",1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,219 Arguello Boulevard,,San Francisco,CA,37.7865,-122.4596,,1/16/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
-17,,17,2012 Toyota RAV4,,35,,1001,,13000,2012,,120000,Crossover,,Green,,Gasoline,Automatic,Front-Wheel Drive,,,,"We will consider a decent trade or an RV motorhome. It is very clean and has been smoker-, pet-, and child-free. It is well maintained and has been on a maintenance schedule with the company that the owner currently works for.","We will consider a decent trade or an RV motorhome. It is very clean and has been smoker-, pet-, and child-free. It is well maintained and has been on a maintenance schedule with the company that the owner currently works for.",1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,400 Grove Street,,San Francisco,CA,37.7779,-122.4235,,1/17/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
-18,,18,2007 Subaru Impreza,,33,,956,,10000,2007,,115500,Sedan,,Grey,,Gasoline,Manual,Front-Wheel Drive,,,,"I am selling my Impreza. I rarely drive it. It runs great and the interior was swapped out with blue and black leather seats. All the brakes have been redone, except for the front rotors. I just did an oil change and tested the air conditioning.","I am selling my Impreza. I rarely drive it. It runs great and the interior was swapped out with blue and black leather seats. All the brakes have been redone, except for the front rotors. I just did an oil change and tested the air conditioning.",1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,540 Funston Avenue,,San Francisco,CA,37.778,-122.4714,,1/18/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
-19,,19,2014 Toyota Tundra,,35,,1009,,27999,2014,,81000,Pickup,,Blue,,Gasoline,Automatic,Four-Wheel Drive,,,,"Our Tundra features power windows, power locks, power seats, keyless entry, remote start, a spray-in liner, a tonneau cover, a back-up camera, TRD exhaust, fog lamps, and bluetooth phone.","Our Tundra features power windows, power locks, power seats, keyless entry, remote start, a spray-in liner, a tonneau cover, a back-up camera, TRD exhaust, fog lamps, and bluetooth phone.",1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,3749 Clement Street,,San Francisco,CA,37.7812,-122.4995,,1/19/00 12:59,1/1/00 12:59,1/1/00 12:59,NULL
+1,2009 Mazda CX-9 GT
+2,2010 Ford F-150 Lariat
+3,2016 Dodge Charger HellCat Demo
+4,2009 Mercedes B200 Turbo
+5,2007 MINI Cooper
+6,2013 Mazda 3 Skyactive
+7,2016 Chevrolet Malibu LT
+8,2011 Chevrolet Malibu LS
+9,2011 Kia Optima EX
+10,2015 Chrysler Town & Country Touring
+11,2010 Lexus RX 350 SUV
+12,2003 Chevrolet Duramax 4X4
+13,2013 Nissan Versa
+14,2005 Honda CRV SUV
+15,2016 Nissan Altima S
+16,2015 Jeep Wrangler Rubicon
+17,2012 Toyota RAV4
+18,2007 Subaru Impreza
+19,2014 Toyota Tundra
+27,
+22,
+23,
+24,
+25,
+26,
+29,
+31,
+32,
+34,
+36,
+38,
+40,
+42,
+44,
+45,
+47,
+48,
+49,
+51,
+53,
+55,
+56,
+57,
+58,
+20,
+21,
+28,
+30,
+33,
+35,
+37,
+39,
+41,
+43,
+46,
+50,
+52,
+54,

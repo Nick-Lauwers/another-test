@@ -14,7 +14,7 @@
 
 <%= render 'layouts/modal_special_offer' %>
 
-<div class="search-summary">
+<div class="search-summary hidden-xs">
   <div class="search-summary-content">
     
     <h1 class="search-summary-title">
@@ -52,13 +52,13 @@
 
 <div class="search-results">
   
-  <div id="search-map" class="hidden-xs"></div>
+  <div id="search-map"></div>
   
   <div class="search-results-background">
     <div class="search-list-container">
       <div class="row">
         
-        <div class="col-md-4 hidden-xs">
+        <div class="col-md-4">
           <!--intentionally left empty-->
         </div>
         
@@ -70,7 +70,7 @@
           
           <div class="search-items-container">
             
-            <div class="search-introduction">
+            <div class="search-introduction hidden-xs">
             
               <div class="search-introduction-static">
                 
@@ -266,13 +266,35 @@
   </div>
 </div>
 
-<%= render 'personalized_searches/form' %>
+<div class="hidden-xs">
+  <%= render 'personalized_searches/form' %>
+</div>
+
+<div class="search-nav-mobile visible-xs">
+
+    <div class="search-nav-grid search-nav-grid-inactive">
+      <i class="fa 
+                fa-th-large 
+                search-nav-grid-icon 
+                search-nav-grid-icon-inactive" 
+         aria-hidden="true"></i> 
+    </div>
+    
+    <div class="search-nav-map search-nav-map-inactive">
+      <i class="fa 
+                fa-map 
+                search-nav-map-icon
+                search-nav-map-icon-inactive" 
+         aria-hidden="true"></i> 
+    </div>
+  </div>
+</div>
 
 <script type="text/javascript">
   $(document).ready(function() {
     
-    // map
-    
+    // search map
+      
       var hoverMarkerIcon = {
         url:    "https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/map-marker-aqua.png",
         width:  32,
@@ -289,7 +311,7 @@
           scrollwheel:       false,
           mapTypeControl:    false,
           streetViewControl: false,
-          
+
           zoomControlOptions: {
             position: google.maps.ControlPosition.TOP_LEFT
           },

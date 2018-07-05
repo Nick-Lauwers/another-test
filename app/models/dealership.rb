@@ -32,11 +32,11 @@ class Dealership < ActiveRecord::Base
   
   has_attached_file :logo, styles: { thumb: "200x200#"}, 
     default_url: "https://s3.us-east-2.amazonaws.com/motominion-assets/static-assets/photo.png"
-  validates_attachment_content_type :logo, content_type: /\Aimage\/.*\z/
+  validates_attachment_content_type :logo, content_type: /\Aimage\/.*\Z/
   
   has_attached_file :photo,
     default_url: "https://s3.us-east-2.amazonaws.com/motominion-assets/static-assets/photo.png"
-  validates_attachment_content_type :photo, content_type: /\Aimage\/.*\z/
+  validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
   
   class << self
     

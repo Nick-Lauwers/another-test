@@ -169,7 +169,7 @@
                       <!--  <i class="fa fa-2x fa-heart-o wish-list-icon" aria-hidden="true"></i>-->
                       <!--<(perc) end %>-->
                       
-                      <% if shortlist_item.vehicle.user.dealership_id.present? %>
+                      <% if shortlist_item.vehicle.dealership.present? %>
                         <div class="special-offer" 
                              id="search-item-special-offer-<%= shortlist_item.vehicle_id %>">
                           
@@ -191,17 +191,36 @@
                         
                         <div class="col-xs-3 search-item-user">
                           <div class="search-item-user-content">
-                            <div class="avatar-and-online">
                             
+                            <% if shortlist_item.vehicle.user.present? %>
+                              <div class="avatar-and-online">
+                              
+                                <div class="search-item-avatar avatar-general", 
+                                     style="background-image: url(
+                                           '<%= shortlist_item.
+                                                  vehicle.
+                                                  user.
+                                                  avatar.
+                                                  url(:thumb) %>')">
+                                </div>
+                            
+                                <% if shortlist_item.vehicle.user.online? %>
+                                  <div class="online 
+                                              online-lg-primary 
+                                              hidden-xs"></div>
+                                <% end %>
+                              </div>
+                            
+                            <% else %>
                               <div class="search-item-avatar avatar-general", 
                                    style="background-image: url(
-                                         '<%= shortlist_item.vehicle.user.avatar.url(:thumb) %>')">
+                                         '<%= shortlist_item.
+                                                vehicle.
+                                                dealership.
+                                                photo.
+                                                url() %>')">
                               </div>
-                          
-                              <% if shortlist_item.vehicle.user.online? %>
-                                <div class="online online-lg-primary hidden-xs"></div>
-                              <% end %>
-                            </div>
+                            <% end %>
                           </div>
                         </div>
                       
@@ -209,7 +228,8 @@
                           <div class="search-item-info">
                           
                             <span class="search-item-title">
-                              $<%= shortlist_item.vehicle.actual_price %> | <%= shortlist_item.vehicle.listing_name %>
+                              $<%= shortlist_item.vehicle.actual_price %> | 
+                              <%= shortlist_item.vehicle.listing_name %>
                             </span>
                   
                             <div id="average-rating-search-item-<%= shortlist_item.vehicle.id %>", 

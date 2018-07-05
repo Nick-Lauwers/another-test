@@ -1,6 +1,6 @@
 require 'csv'
 
-[ VehicleMake, VehicleModel, Dealership, User, Vehicle, Photo, Discussion, DiscussionComment, Club, BusinessHour ].each do |model|
+[ VehicleMake, VehicleModel, ListingScore, Dealership, User, Vehicle, Photo, Discussion, DiscussionComment, Club, BusinessHour ].each do |model|
   model.all.each(&:destroy)
 end
 
@@ -137,6 +137,26 @@ CSV.foreach(Rails.root.join("vehicles.csv"), headers: true) do |row|
     vehicle.posted_at                    = row[48]
     vehicle.bumped_at                    = row[49]
     vehicle.last_found_at                = row[50]
+  end
+end
+
+# Listing Scores
+CSV.foreach(Rails.root.join("listing_scores.csv"), headers: true) do |row|
+  ListingScore.create! do |listing_score|
+    listing_score.id                     = row[0]
+    listing_score.vehicle_id             = row[1]
+    listing_score.location_score         = row[2]
+    listing_score.features_score         = row[3]
+    listing_score.spec_score             = row[4]
+    listing_score.vin_score              = row[5]
+    listing_score.certified_dealer_score = row[6]
+    listing_score.direct_listing_score   = row[7]
+    listing_score.test_drive_score       = row[8]
+    listing_score.photos_score           = row[9]
+    listing_score.reviews_score          = row[10]
+    listing_score.recently_posted_score  = row[11]
+    listing_score.many_listings_score    = row[12]
+    listing_score.overall_score          = row[13]
   end
 end
 

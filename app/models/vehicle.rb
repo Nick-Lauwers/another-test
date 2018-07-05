@@ -31,6 +31,8 @@ class Vehicle < ActiveRecord::Base
   
   has_many :special_offers, dependent: :destroy
   accepts_nested_attributes_for :special_offers, allow_destroy: true
+  
+  has_one :listing_score
 
   # MINIMUM_PHOTOS = 2
 
@@ -288,4 +290,84 @@ class Vehicle < ActiveRecord::Base
   def mileage=(val)
     write_attribute :mileage, val.to_s.gsub(/[\s,]/, '').to_i
   end
+  
+  # Generates csv file.
+  def self.to_csv
+    
+    attributes = %w{ vehicle_id 
+                     title
+                     description
+                     url
+                     make 
+                     model 
+                     year 
+                     mileage.value
+                     mileage.unit
+                     image[0].url
+                     image[0].tag[0]
+                     fuel_type
+                     body_style 
+                     drivetrain 
+                     vin
+                     condition
+                     price
+                     address
+                     exterior_color
+                     sale_price
+                     availability
+                     state_of_vehicle
+                     latitude
+                     longitude }
+
+    CSV.generate(headers: true) do |csv|
+      csv << attributes
+
+      all.each do |vehicle|
+        csv << [ vehicle.id,
+                 vehicle.listing_name,
+                 vehicle.description_clean,
+                 "http://www.example.com/test",
+                 vehicle.vehicle_make.name,
+                 "Fusion",
+                 vehicle.year,
+                 vehicle.mileage_numeric,
+                 "MI",
+                 "http://www.facebook.com/teapic.jpg",
+                 vehicle.listing_name,
+                 vehicle.fuel_type,
+                 vehicle.body_style,
+                 vehicle.drivetrain,
+                 vehicle.vin,
+                 nil,
+                 vehicle.actual_price,
+                 { addr1:       '550 Auto Center Dr', 
+                   city:        'Watsonville', 
+                   region:      'CA', 
+                   postal_code: '96075', 
+                   country:     'US' },
+                 vehicle.exterior,
+                 vehicle.actual_price,
+                 nil,
+                 "USED",
+                 52.35,
+                 42.1 ]
+      end
+    end
+    
+    # CSV.generate do |csv|
+    #   csv << column_names
+    #   all.each do |vehicle|
+    #     csv << vehicle.attributes.values_at(*column_names)
+    #   end
+    # end
+  end
 end
+
+# Vehicle.where(dealership_id: 3).each do |vehicle|
+#   vehicle.latitude = 50.041345
+#   vehicle.longitude = -113.590972
+#   vehicle.street_address = "25 Alberta Rd"
+#   vehicle.city = "Claresholm"
+#   vehicle.state = "AB"
+#   vehicle.save
+# end

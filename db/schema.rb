@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180618161107) do
+ActiveRecord::Schema.define(version: 20180622164045) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -329,6 +329,26 @@ ActiveRecord::Schema.define(version: 20180618161107) do
   add_index "invitations", ["club_id", "created_at"], name: "index_invitations_on_club_id_and_created_at", using: :btree
   add_index "invitations", ["recipient_id", "created_at"], name: "index_invitations_on_recipient_id_and_created_at", using: :btree
   add_index "invitations", ["sender_id", "created_at"], name: "index_invitations_on_sender_id_and_created_at", using: :btree
+
+  create_table "listing_scores", force: :cascade do |t|
+    t.integer  "location_score"
+    t.integer  "features_score"
+    t.integer  "spec_score"
+    t.integer  "vin_score"
+    t.integer  "certified_dealer_score"
+    t.integer  "direct_listing_score"
+    t.integer  "test_drive_score"
+    t.integer  "photos_score"
+    t.integer  "reviews_score"
+    t.integer  "recently_posted_score"
+    t.integer  "many_listings_score"
+    t.integer  "overall_score"
+    t.integer  "vehicle_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "listing_scores", ["vehicle_id"], name: "index_listing_scores_on_vehicle_id", using: :btree
 
   create_table "memberships", force: :cascade do |t|
     t.boolean  "admin"
@@ -724,6 +744,7 @@ ActiveRecord::Schema.define(version: 20180618161107) do
   add_foreign_key "invitations", "clubs"
   add_foreign_key "invitations", "users", column: "recipient_id"
   add_foreign_key "invitations", "users", column: "sender_id"
+  add_foreign_key "listing_scores", "vehicles"
   add_foreign_key "memberships", "clubs"
   add_foreign_key "memberships", "users"
   add_foreign_key "messages", "conversations"
