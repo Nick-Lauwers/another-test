@@ -5,16 +5,32 @@
                         'address', 'exterior_color', 'sale_price', 
                         'availability', 'state_of_vehicle', 'latitude',
                         'longitude' ]).strip.html_safe %>
+                        
 <% Vehicle.all.each do |vehicle| %>
-  <%= CSV.generate_line([ vehicle.id, "TITLE",
-                          "DESCRIPTION",
-                          "http://www.example.com/test",
+
+  <% if vehicle.listing_name.present? %>
+    <% title = vehicle.listing_name %>
+  <% else %>
+    <% title = vehicle.vehicle_make.name %>
+  <% end %>
+  
+  <% if vehicle.description_clean.present? %>
+    <% description = vehicle.description_clean %>
+  <% else %>
+    <% description = "Schedule a test drive today!" %>
+  <% end %>
+  
+  <% if vehicle.photos[0].present? %>
+    <% image = vehicle.photos[0].image.url() %>
+  <% else %>
+    <% image = "http://www.facebook.com/teapic.jpg" %>
+  <% end %>
+  
+  <%= CSV.generate_line([ vehicle.id, title, description, url_for(vehicle),
                           vehicle.vehicle_make.name, "Fusion", vehicle.year,
-                          vehicle.mileage_numeric, "MI",
-                          "http://www.facebook.com/teapic.jpg",
-                          vehicle.listing_name, "Other",
-                          "OTHER", "Other", vehicle.vin,
-                          nil, vehicle.actual_price,
+                          vehicle.mileage_numeric, "MI", image, 
+                          vehicle.listing_name, "Other", "OTHER", "Other", 
+                          vehicle.vin, nil, vehicle.actual_price,
                           "{ addr1:       '550 Auto Center Dr', 
                              city:        'Watsonville', 
                              region:      'CA', 
