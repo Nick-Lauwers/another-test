@@ -26,7 +26,7 @@
     <% image = "http://www.facebook.com/teapic.jpg" %>
   <% end %>
   
-  <%= CSV.generate_line([ vehicle.id, title, description, url_for(vehicle),
+  <%= CSV.generate_line([ vehicle.id, title, description, asset_url(url_for(vehicle)),
                           vehicle.vehicle_make.name, "Fusion", vehicle.year,
                           vehicle.mileage_numeric, "MI", image, 
                           vehicle.listing_name, "Other", "OTHER", "Other", 
