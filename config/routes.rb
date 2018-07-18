@@ -195,7 +195,7 @@ Rails.application.routes.draw do
       
       put :submit
       
-      get 'order_received'
+      get 'order'
       get 'basics'
       get 'details'
       get 'billing'

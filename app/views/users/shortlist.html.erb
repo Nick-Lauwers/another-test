@@ -20,61 +20,56 @@
 
 <%= render 'layouts/secondary_navbar' %>
 
-<div class="search-results">
+<div class="shortlist-results">
   
-  <div id="shortlist-map" class="hidden-xs"></div>
+  <div id="shortlist-map"></div>
   
-  <div class="search-results-background">
-    <div class="search-list-container">
+  <div class="shortlist-results-background">
+    <div class="shortlist-list-container">
       <div class="row">
         
         <div class="col-md-4 hidden-xs">
           <!--intentionally left empty-->
         </div>
         
-        <div class="col-md-8 search-list-content">
+        <div class="col-md-8 shortlist-list-content">
           
-          <div class="shortlist-purchases">
-            
-            <div class="search-introduction">
-            
-              <div class="search-introduction-static">
-                
-                <div class="row vertical-align">
+          <% if @purchases.exists? %>
+            <div class="shortlist-purchases">
+              
+              <div class="search-introduction">
+              
+                <div class="search-introduction-static">
                   
-                  <div class="col-md-2">
-                    <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/purchase.png",
-                                  class: "search-introduction-static-image") %>
-                  </div>
-                  
-                  <div class="col-md-10">
+                  <div class="row vertical-align">
                     
-                    <span class="search-introduction-static-title">
-                      Purchases (<%= @purchases.count %>)
-                    </span>
-                
-                    <p class="search-introduction-static-info">
-                      If you have purchased any vehicles online, the details can 
-                      be viewed here. Make changes when necessary, but keep in 
-                      mind that modifications may slow processing time.
-                    </p>
+                    <div class="col-md-2 hidden-xs">
+                      <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/purchase.png",
+                                    class: "search-introduction-static-image") %>
+                    </div>
+                    
+                    <div class="col-md-10">
+                      
+                      <span class="search-introduction-static-title">
+                        Purchases (<%= @purchases.count %>)
+                      </span>
+                  
+                      <p class="search-introduction-static-info">
+                        If you have purchased any vehicles online, the details can 
+                        be viewed here. Make changes when necessary, but keep in 
+                        mind that modifications may slow processing time.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-            
-            <% if @purchases.exists? %>
+
               <ol class="row backend-list">
                 <%= render partial:    "purchases/purchase", 
                            collection: @purchases %>
               </ol>
-              
-            <% else %>
-              <p class="empty-list-info">
-                No purchases made
-              </p>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
           
           <div class="shortlist-test-drives">
           
@@ -84,8 +79,8 @@
                 
                 <div class="row vertical-align">
                   
-                  <div class="col-md-2">
-                    <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/test-drives.png",
+                  <div class="col-md-2 hidden-xs">
+                    <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/test-drives-large.png",
                                   class: "search-introduction-static-image") %>
                   </div>
                   
@@ -119,7 +114,7 @@
             <% end %>
           </div>
           
-          <div class="shortlist-favorites">
+          <div class="shortlist-loves">
 
             <div class="search-introduction">
             
@@ -127,7 +122,7 @@
                 
                 <div class="row vertical-align">
                   
-                  <div class="col-md-2">
+                  <div class="col-md-2 hidden-xs">
                     <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/shortlist.png",
                                   class: "search-introduction-static-image") %>
                   </div>
@@ -135,217 +130,67 @@
                   <div class="col-md-10">
                     
                     <span class="search-introduction-static-title">
-                      Shortlist (<%= @shortlist_items.count %>)
+                      Love It! (<%= @loved_items.count %>)
                     </span>
                 
                     <p class="search-introduction-static-info">
-                      Any vehicles that have been added to your shortlist will 
-                      be saved below. Compare your favorites to ensure that you
-                      are making the right decision.
+                      These are vehicles that you can't do without!
                     </p>
                   </div>
                 </div>
               </div>
             </div>
             
-            <% if @shortlist_items.exists? %>
+            <% if @loved_items.exists? %>
               <ol class="row search-items">
-                <% @shortlist_items.each do |shortlist_item| %>
-                  <li id="wish-list-item-<%= shortlist_item.vehicle_id %>" 
-                      class="col-md-6 search-item shortlist-item-<%= shortlist_item.vehicle_id %>">
-                    
-                    <div class="search-item-image">
-                      
-                      <%= link_to shortlist_item.vehicle, target: "_blank" do %>
-                        <div class="search-item-image-content", 
-                             style="background-image: url('<%= shortlist_item.vehicle.photos[0].image.url() if 
-                                                               shortlist_item.vehicle.photos.length > 0 %>')">
-                          
-                        </div>
-                      <% end %>
-                      
-                      <!--<(perc)= link_to favorite_vehicle_path(vehicle), -->
-                      <!--          method: :put do %>-->
-                      <!--  <i class="fa fa-2x fa-heart-o wish-list-icon" aria-hidden="true"></i>-->
-                      <!--<(perc) end %>-->
-                      
-                      <% if shortlist_item.vehicle.dealership.present? %>
-                        <div class="special-offer" 
-                             id="search-item-special-offer-<%= shortlist_item.vehicle_id %>">
-                          
-                          <i class="fa fa-lg fa-tag special-offer-icon"></i>
-                          
-                          <div type="button" 
-                               class="special-offer-button" 
-                               data-id="<%= shortlist_item.vehicle_id %>"
-                               data-toggle="modal" 
-                               data-target="#modal-special-offer">
-                            Special Offer
-                          </div>
-                        </div>
-                      <% end %>
-                    </div>
-                    
-                    <%= link_to shortlist_item.vehicle, target: "_blank" do %>
-                      <div class="row">
-                        
-                        <div class="col-xs-3 search-item-user">
-                          <div class="search-item-user-content">
-                            
-                            <% if shortlist_item.vehicle.user.present? %>
-                              <div class="avatar-and-online">
-                              
-                                <div class="search-item-avatar avatar-general", 
-                                     style="background-image: url(
-                                           '<%= shortlist_item.
-                                                  vehicle.
-                                                  user.
-                                                  avatar.
-                                                  url(:thumb) %>')">
-                                </div>
-                            
-                                <% if shortlist_item.vehicle.user.online? %>
-                                  <div class="online 
-                                              online-lg-primary 
-                                              hidden-xs"></div>
-                                <% end %>
-                              </div>
-                            
-                            <% else %>
-                              <div class="search-item-avatar avatar-general", 
-                                   style="background-image: url(
-                                         '<%= shortlist_item.
-                                                vehicle.
-                                                dealership.
-                                                photo.
-                                                url() %>')">
-                              </div>
-                            <% end %>
-                          </div>
-                        </div>
-                      
-                        <div class="col-xs-9">
-                          <div class="search-item-info">
-                          
-                            <span class="search-item-title">
-                              $<%= shortlist_item.vehicle.actual_price %> | 
-                              <%= shortlist_item.vehicle.listing_name %>
-                            </span>
-                  
-                            <div id="average-rating-search-item-<%= shortlist_item.vehicle.id %>", 
-                                 class="average-rating-search-item"></div>
-                            
-                            <span class="search-item-review-count">
-                              <%= pluralize(shortlist_item.vehicle.reviews.count, "review") %>
-                            </span>
-                            
-                            <div class="feature-list">
-                              
-                              <i class="fa fa-lg fa-info-circle feature-list-icon"></i>
-                    
-                              <ol class="feature-list-content">
-                              
-                                <li>Vehicle Features</li>
-                              
-                                <% if shortlist_item.vehicle.air_conditioning %>
-                                  <li>Air Conditioning</li>
-                                <% end %>
-                                
-                                <% if shortlist_item.vehicle.power_windows %>
-                                  <li>Power Windows</li>
-                                <% end %>
-                                
-                                <% if shortlist_item.
-                                        vehicle.
-                                        remote_keyless_entry %>
-                                  <li>Remote Keyless Entry</li>
-                                <% end %>
-                                
-                                <% if shortlist_item.vehicle.speed_control %>
-                                  <li>Speed Control</li>
-                                <% end %>
-                                
-                                <% if shortlist_item.vehicle.am_fm_radio %>
-                                  <li>AM / FM Radio</li>
-                                <% end %>
-                                
-                                <% if shortlist_item.
-                                        vehicle.
-                                        wireless_phone_connectivity %>
-                                  <li>Bluetooth</li>
-                                <% end %>
-                                
-                                <% if shortlist_item.
-                                        vehicle.
-                                        fully_automatic_headlights %>
-                                  <li>Fully Automatic Headlights</li>
-                                <% end %>
-                                
-                                <% if shortlist_item.
-                                        vehicle.
-                                        variably_intermittent_wipers %>
-                                  <li>Variably Intermittent Wipers</li>
-                                <% end %>
-                                
-                                <% if shortlist_item.vehicle.abs_brakes %>
-                                  <li>ABS Brakes</li>
-                                <% end %>
-                                
-                                <% if shortlist_item.vehicle.brake_assist %>
-                                  <li>Brake Assist</li>
-                                <% end %>
-                                
-                                <% if shortlist_item.
-                                        vehicle.
-                                        dual_front_impact_airbags %>
-                                  <li>Dual Front Impact Airbags</li>
-                                <% end %>
-                                
-                                <% if shortlist_item.
-                                        vehicle.
-                                        electronic_stability %>
-                                  <li>Electronic Stability</li>
-                                <% end %>
-                                
-                                <% if shortlist_item.vehicle.security_system %>
-                                  <li>Security System</li>
-                                <% end %>
-                                
-                                <% if shortlist_item.vehicle.traction_control %>
-                                  <li>Traction Control</li>
-                                <% end %>
-                                
-                                <% if shortlist_item.vehicle.power_steering %>
-                                  <li>Power Steering</li>
-                                <% end %>
-                              </ol>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    <% end %>
-                  </li>
-                  
-                  <script type="text/javascript">
-                    $(document).ready(function() {
-                      
-                      // rating
-                      
-                        var averageRating = $('#average-rating-search-item-<%= shortlist_item.vehicle.id %>');
-                    
-                        averageRating.raty({
-                          path:     '/assets',
-                          readOnly: true,
-                          score:    <%= shortlist_item.vehicle.average_rating %>
-                        });  
-                    });
-                  </script>
-                <% end %>
+                <%= render partial: "shortlist_item",
+                           collection: @loved_items %>
               </ol>
             
             <% else %>
               <p class="empty-list-info">
-                Shortlist is empty
+                No vehicles added
+              </p>
+            <% end %>
+          </div>
+          
+          <div class="shortlist-loves">
+
+            <div class="search-introduction">
+            
+              <div class="search-introduction-static">
+                
+                <div class="row vertical-align">
+                  
+                  <div class="col-md-2 hidden-xs">
+                    <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/liked.png",
+                                  class: "search-introduction-static-image") %>
+                  </div>
+                  
+                  <div class="col-md-10">
+                    
+                    <span class="search-introduction-static-title">
+                      Maybe (<%= @liked_items.count %>)
+                    </span>
+                
+                    <p class="search-introduction-static-info">
+                      These are vehicles that you are still considering and so 
+                      you have added them to your shortlist.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <% if @liked_items.exists? %>
+              <ol class="row search-items">
+                <%= render partial: "shortlist_item",
+                           collection: @liked_items %>
+              </ol>
+            
+            <% else %>
+              <p class="empty-list-info">
+                No vehicles added
               </p>
             <% end %>
           </div>
@@ -355,8 +200,38 @@
   </div>
 </div>
 
+<div class="shortlist-nav-mobile visible-xs">
+
+  <div class="shortlist-nav-grid shortlist-nav-grid-active">
+    <i class="fa 
+              fa-lg
+              fa-th-large 
+              shortlist-nav-grid-icon 
+              shortlist-nav-grid-icon-active" 
+       aria-hidden="true"></i> 
+  </div>
+  
+  <div class="shortlist-nav-map shortlist-nav-map-inactive">
+    <i class="fa 
+              fa-lg
+              fa-map-marker 
+              shortlist-nav-map-icon
+              shortlist-nav-map-icon-inactive" 
+       aria-hidden="true"></i> 
+  </div>
+</div>
+
 <script type="text/javascript">
   $(document).ready(function() {
+    
+    // shortlist results height
+      
+      var shortlistResults           = $('.shortlist-results');
+      var shortlistResultsBackground = $('.shortlist-results-background');
+      
+      if ( $(window).width() <= 768 ) {    
+        shortlistResults.height(shortlistResultsBackground.outerHeight());
+      }
     
     // map
     
@@ -376,6 +251,7 @@
           scrollwheel:       false,
           mapTypeControl:    false,
           streetViewControl: false,
+          clickableIcons:    false,
           
           zoomControlOptions: {
             position: google.maps.ControlPosition.TOP_LEFT
@@ -448,17 +324,21 @@
           id: 'shortlist-map'
         }
       }, function() {
-            
-        vehicle_markers    = handler.addMarkers(<%= raw @vehicles_hash.to_json %>);
-        // test_drive_markers = handler.addMarkers(<(perc)= raw @test_drives_hash.to_json %>);
-        // purchase_markers   = handler.addMarkers(<(perc)= raw @purchases_hash.to_json %>);
         
-        _.each(<%= raw @vehicles_hash.to_json %>, function(json, index) {
+        if ( $(window).width() > 768 ) { 
+          markers = handler.addMarkers(<%= raw @hash.to_json %>,
+                                       { clickable: false }) }
+        
+        else {
+          markers = handler.addMarkers(<%= raw @hash.to_json %>,
+                                       { clickable: true }) }
+                                       
+        _.each(<%= raw @hash.to_json %>, function(json, index) {
           
           var hoverMarker = {};
           
-          hoverMarker.vehicle_marker = void 0;
-          json.vehicle_marker = vehicle_markers[index];
+          hoverMarker.marker = void 0;
+          json.marker = markers[index];
           
           $(".shortlist-item-" + json.id).on("mouseover", function() {
             
@@ -468,61 +348,15 @@
               picture: hoverMarkerIcon
             };
             
-            handler.removeMarker(json.vehicle_marker);
-            hoverMarker.vehicle_marker = handler.addMarker(hoverMarker);
+            handler.removeMarker(json.marker);
+            hoverMarker.marker = handler.addMarker(hoverMarker);
           }).on("mouseout", function() {
-            handler.removeMarker(hoverMarker.vehicle_marker);
-            json.vehicle_marker = handler.addMarker(json);
+            handler.removeMarker(hoverMarker.marker);
+            json.marker = handler.addMarker(json);
           });
         });
-        
-        // _.each(<(perc)= raw @test_drives_hash.to_json %>, function(json, index) {
-          
-        //   var hoverMarker = {};
-          
-        //   hoverMarker.test_drive_marker = void 0;
-        //   json.test_drive_marker = test_drive_markers[index];
-          
-        //   $("#test-drive-item-" + json.id).on("mouseover", function() {
-            
-        //     hoverMarker = {
-        //       lat: json.lat,
-        //       lng: json.lng,
-        //       picture: hoverMarkerIcon
-        //     };
-            
-        //     handler.removeMarker(json.test_drive_marker);
-        //     hoverMarker.test_drive_marker = handler.addMarker(hoverMarker);
-        //   }).on("mouseout", function() {
-        //     handler.removeMarker(hoverMarker.test_drive_marker);
-        //     json.test_drive_marker = handler.addMarker(json);
-        //   });
-        // });
-        
-        // _.each(<(perc)= raw @purchases_hash.to_json %>, function(json, index) {
-          
-        //   var hoverMarker = {};
-          
-        //   hoverMarker.purchase_marker = void 0;
-        //   json.purchase_marker = purchase_markers[index];
-          
-        //   $("#purchase-item-" + json.id).on("mouseover", function() {
-            
-        //     hoverMarker = {
-        //       lat: json.lat,
-        //       lng: json.lng,
-        //       picture: hoverMarkerIcon
-        //     };
-            
-        //     handler.removeMarker(json.purchase_marker);
-        //     hoverMarker.purchase_marker = handler.addMarker(hoverMarker);
-        //   }).on("mouseout", function() {
-        //     handler.removeMarker(hoverMarker.purchase_marker);
-        //     json.purchase_marker = handler.addMarker(json);
-        //   });
-        // });
-        
-        handler.bounds.extendWith(vehicle_markers);
+
+        handler.bounds.extendWith(markers);
         handler.fitMapToBounds();
       });
   });

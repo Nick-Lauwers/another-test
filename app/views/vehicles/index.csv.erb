@@ -21,7 +21,7 @@
   <% end %>
   
   <% if vehicle.photos[0].present? %>
-    <% image = asset_url(vehicle.photos[0].image.url) %>
+    <% image = URI.unescape(vehicle.photos[0].image) %>
   <% else %>
     <% image = "http://www.facebook.com/teapic.jpg" %>
   <% end %>

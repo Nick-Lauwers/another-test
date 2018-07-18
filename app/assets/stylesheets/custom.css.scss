@@ -97,27 +97,7 @@ html {
   display: none;
 }
 
-// .gm-style .gm-style-iw {
-//             background-color: transparent !important;
-//             top: 0 !important;
-//             left: 0 !important;
-//             bottom: 0 !important;
-//             right: 0 !important;
-//             // width: auto !important;
-//             // height: auto !important;
-//             min-height: 210px !important;
-//             min-width: 150px !important;
-//             // min-height: 120px !important;
-//             // min-width: 300px !important;
-//         }    
-
-// .gm-style-iw + div { display: none; }
-
 /* responsive design */
-
-// header {
-//   min-width: 1008px;
-// }
 
 .navbar-left {
   float: left;
@@ -475,7 +455,8 @@ p {
 }
 
 .btn-apply-filters,
-.btn-cancel-filters {
+.btn-cancel-filters,
+.btn-modal-filters {
   color: $gray-text;
   background-color: transparent;
   border-radius: 2px;
@@ -488,6 +469,10 @@ p {
 
 .btn-cancel-filters {
   border: 1px solid $gray-light;
+}
+
+.btn-modal-filters {
+  border: 1px solid $green;
 }
 
 .btn-forum,
@@ -962,6 +947,7 @@ label {
 
 .form-icon, 
 .form-caret,
+.form-pin,
 .select-caret {
   cursor: pointer;
   position: absolute;
@@ -975,12 +961,17 @@ label {
 }
 
 .form-caret,
+.form-pin,
 .select-caret {
   color: $gray-light;
 }
 
 .form-caret {
   right: 0.9em;
+}
+
+.form-pin {
+  left: 0.9em;
 }
 
 .select-caret {
@@ -1418,35 +1409,40 @@ footer {
 #modal-menu,
 #modal-search,
 #modal-appointment,
-#modal-mobile-map {
+#modal-mobile-map,
+#modal-filters,
+#modal-special-offer-mobile,
+#modal-dealer-select-mobile,
+#modal-buy-online-mobile,
+#modal-test-drive-mobile {
   background-color: white;
   z-index: 10000;
 }
 
-#modal-special-offer,
-#modal-dealer-select,
-#modal-buy-online,
-#modal-test-drive,
+#modal-special-offer-desktop,
+#modal-dealer-select-desktop,
+#modal-buy-online-desktop,
+#modal-test-drive-desktop,
 #modal-purchase {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
-#modal-special-offer,
-#modal-dealer-select,
-#modal-buy-online,
-#modal-test-drive {
+#modal-special-offer-desktop,
+#modal-dealer-select-desktop,
+#modal-buy-online-desktop,
+#modal-test-drive-desktop {
   width: 42%;
 }
 
-#modal-special-offer {
+#modal-special-offer-desktop {
   height: 60%;
 }
 
-#modal-dealer-select,
-#modal-buy-online,
-#modal-test-drive {
+#modal-dealer-select-desktop,
+#modal-buy-online-desktop,
+#modal-test-drive-desktop {
   height: 75%;
 }
 
@@ -1455,10 +1451,10 @@ footer {
   height: 80%;
 }
 
-.modal-special-offer-header,
-.modal-dealer-select-header,
-.modal-buy-online-header,
-.modal-test-drive-header {
+.modal-special-offer-desktop-header,
+.modal-dealer-select-desktop-header,
+.modal-buy-online-desktop-header,
+.modal-test-drive-desktop-header {
   text-align: center;
   color: white;
   background-image: url("https://www.transparenttextures.com/patterns/inspiration-geometry.png");
@@ -1466,88 +1462,88 @@ footer {
   position: relative;
 }
 
-.modal-special-offer-header {
+.modal-special-offer-desktop-header {
   background-color: $red;
 }
 
-.modal-dealer-select-header,
-.modal-buy-online-header,
-.modal-test-drive-header {
+.modal-dealer-select-desktop-header,
+.modal-buy-online-desktop-header,
+.modal-test-drive-desktop-header {
   background-color: $green;
 }
 
-.modal-special-offer-header-content,
-.modal-dealer-select-header-content,
-.modal-buy-online-header-content,
-.modal-test-drive-header-content {
+.modal-special-offer-desktop-header-content,
+.modal-dealer-select-desktop-header-content,
+.modal-buy-online-desktop-header-content,
+.modal-test-drive-desktop-header-content {
   margin: 0 auto;
 }
 
-.modal-special-offer-header-content {
+.modal-special-offer-desktop-header-content {
   width: 65%;
 }
 
-.modal-dealer-select-header-content,
-.modal-buy-online-header-content,
-.modal-test-drive-header-content {
+.modal-dealer-select-desktop-header-content,
+.modal-buy-online-desktop-header-content,
+.modal-test-drive-desktop-header-content {
   width: 75%;
 }
 
-.modal-special-offer-title,
-.modal-dealer-select-title,
-.modal-buy-online-title,
-.modal-test-drive-title {
+.modal-special-offer-desktop-title,
+.modal-dealer-select-desktop-title,
+.modal-buy-online-desktop-title,
+.modal-test-drive-desktop-title {
   font-size: 28px;
   font-weight: bold;
   margin: 0;
 }
 
-.modal-special-offer-body,
-.modal-dealer-select-body,
-.modal-buy-online-body,
-.modal-test-drive-body {
+.modal-special-offer-desktop-body,
+.modal-dealer-select-desktop-body,
+.modal-buy-online-desktop-body,
+.modal-test-drive-desktop-body {
   color: $gray-text;
   background-color: white;
 }
 
-.modal-special-offer-body-content,
-.modal-dealer-select-body-content,
-.modal-buy-online-body-content,
-.modal-test-drive-body-content {
+.modal-special-offer-desktop-body-content,
+.modal-dealer-select-desktop-body-content,
+.modal-buy-online-desktop-body-content,
+.modal-test-drive-desktop-body-content {
   padding: 4em 0;
   margin: 0 auto;
 }
 
-.modal-dealer-select-body-content,
-.modal-buy-online-body-content,
-.modal-test-drive-body-content {
+.modal-dealer-select-desktop-body-content,
+.modal-buy-online-desktop-body-content,
+.modal-test-drive-desktop-body-content {
   position: relative;
 }
 
-.modal-special-offer-body-content {
+.modal-special-offer-desktop-body-content {
   width: 65%;
 }
 
-.modal-dealer-select-body-content,
-.modal-buy-online-body-content,
-.modal-test-drive-body-content {
+.modal-dealer-select-desktop-body-content,
+.modal-buy-online-desktop-body-content,
+.modal-test-drive-desktop-body-content {
   width: 75%;
 }
 
-.modal-special-offer-subtitle,
-.modal-dealer-select-subtitle,
-.modal-buy-online-subtitle,
-.modal-test-drive-subtitle {
+.modal-special-offer-desktop-subtitle,
+.modal-dealer-select-desktop-subtitle,
+.modal-buy-online-desktop-subtitle,
+.modal-test-drive-desktop-subtitle {
   font-size: 16px;
   font-weight: bold;
   line-height: 24px;
   margin: 0 0 8px;
 }
 
-.modal-special-offer-info,
-.modal-dealer-select-info,
-.modal-buy-online-info,
-.modal-test-drive-info {
+.modal-special-offer-desktop-info,
+.modal-dealer-select-desktop-info,
+.modal-buy-online-desktop-info,
+.modal-test-drive-desktop-info {
   font-size: 14px;
   line-height: 24px;
   color: $gray-dark;
@@ -1561,13 +1557,59 @@ footer {
 
 .modal-menu-body-content,
 .modal-search-form,
-.modal-appointment-body-content {
+.modal-appointment-body-content,
+.modal-filters-body,
+.modal-special-offer-mobile-body,
+.modal-buy-online-mobile-body,
+.modal-dealer-select-mobile-body,
+.modal-test-drive-mobile-body {
   margin: 0 5%;
 }
 
 .modal-menu-body-content,
-.modal-search-form {
+.modal-search-form,
+.modal-filters-body,
+.modal-special-offer-mobile-body,
+.modal-buy-online-mobile-body,
+.modal-dealer-select-mobile-body,
+.modal-test-drive-mobile-body {
   padding: 1.1em 0;
+}
+
+.modal-buy-online-mobile-subtitle,
+.modal-dealer-select-mobile-subtitle {
+  font-size: 1.1em;
+  font-weight: bold;
+  margin-bottom: 0.7em;
+  display: block;
+}
+
+.modal-buy-online-mobile-info,
+.modal-dealer-select-mobile-info {
+  font-size: 1em;
+  color: $gray-dark;
+  display: block;
+  margin-bottom: 3em;
+}
+
+.modal-buy-online-mobile-list,
+.modal-dealer-select-mobile-list,
+.modal-test-drive-mobile-list {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.modal-filters-body {
+  padding-bottom: 75px;
+  position: relative;
+}
+
+.modal-filters-button-container {
+  background-color: white;
+  width: 90%;
+  padding: 1.5em 0;
+  position: fixed;
+  bottom: 0;
 }
 
 .modal-appointment-body-content {
@@ -1592,37 +1634,67 @@ footer {
   color: $gray-text;
 }
 
-.modal-appointment-header {
-  background-color: $gray-darkest;
+.modal-appointment-header,
+.modal-filters-header,
+.modal-special-offer-mobile-header,
+.modal-buy-online-mobile-header,
+.modal-dealer-select-mobile-header,
+.modal-test-drive-mobile-header {
   height: 50px;
 }
 
-.modal-appointment-header-content {
+.modal-appointment-header {
+  background-color: $gray-darkest;
+}
+
+.modal-filters-header,
+.modal-buy-online-mobile-header,
+.modal-dealer-select-mobile-header,
+.modal-test-drive-mobile-header  {
+  background-color: $green;
+}
+
+.modal-special-offer-mobile-header {
+  background-color: $red;
+}
+
+.modal-appointment-header-content,
+.modal-filters-header-content,
+.modal-special-offer-mobile-header-content,
+.modal-buy-online-mobile-header-content,
+.modal-dealer-select-mobile-header-content,
+.modal-test-drive-mobile-header-content {
   margin: 0 5%;
 }
 
-.modal-appointment-header-title {
+.modal-appointment-header-title,
+.modal-filters-header-title,
+.modal-special-offer-mobile-header-title,
+.modal-buy-online-mobile-header-title,
+.modal-dealer-select-mobile-header-title,
+.modal-test-drive-mobile-header-title {
   font-size: 1.1em;
   font-weight: bold;
   line-height: 50px;
   color: white;
 }
 
-.modal-appointment-header-close {
-  color: $gray-light;
+.modal-appointment-header-close,
+.modal-filters-header-close,
+.modal-special-offer-mobile-header-close,
+.modal-buy-online-mobile-header-close,
+.modal-dealer-select-mobile-header-close,
+.modal-test-drive-mobile-header-close {
+  color: white;
   padding: 0.9em 0 0.9em 1em;
   cursor: pointer;
-  &:hover,
-  &:focus {
-    color: white;
-  }
 }
 
-.modal-appointment-availability {
+.modal-test-drive-mobile-availability {
   margin-bottom: 2em;
 }
 
-.modal-appointment-availability-title {
+.modal-test-drive-mobile-availability-title {
   font-size: 1.2em;
   font-weight: bold;
   line-height: 1.4;
@@ -1635,12 +1707,7 @@ footer {
 .modal-dealer-select-scroll,
 .modal-buy-online-scroll,
 .modal-test-drive-scroll {
-  width: 30em;
   margin-top: 2em;
-	overflow: hidden;
-	&::-webkit-scrollbar { 
-    width: 0;
-  }
 }
 
 .modal-dealer-select-left,
@@ -1674,22 +1741,15 @@ footer {
 
 .modal-dealer-select-list,
 .modal-buy-online-list,
-.modal-test-drive-list {
+.modal-test-drive-list,
+.modal-dealer-select-mobile-list,
+.modal-buy-online-mobile-list,
+.modal-test-drive-mobile-list {
   list-style: none;
-  height: 75px;
-  width: 1000em;
   padding-left: 0;
-  margin-left: 4em;
-}
-
-.modal-dealer-select-item,
-.modal-buy-online-item,
-.modal-test-drive-item {
-  display: inline-block;
 }
 
 .modal-buy-online-item {
-  width: 22em;
   transition: 0.3s;
   &:hover,
   &:focus {
@@ -2223,6 +2283,31 @@ footer {
   margin-bottom: 3em;
 }
 
+.map-item {
+  width: 250px;
+  overflow: hidden;
+}
+
+.map-item-image-content {
+  background-color: $gray-darkest;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 175px;
+}
+
+.map-item-user {
+  position: relative;
+  height: 35px;
+}
+
+.map-item-avatar {
+  border: 2px solid white;
+  border-radius: 50%;
+  height: 70px;
+  width: 70px;
+}
+
 .mobile-listing-item,
 .wish-list-item, 
 .dealer-vehicle-item {
@@ -2396,19 +2481,19 @@ body {
 }
 
 .special-offer {
-  font-size: 1.05em;
-  font-weight: bold;
-  line-height: 30px;
+  // font-size: 1.05em;
+  // font-weight: bold;
+  // line-height: 30px;
   text-align: center;
-  color: white;
+  // color: white;
   background-color: $red;
   height: 30px;
   padding: 0 3em 0 0.5em;
   position: absolute;
   bottom: 10px;
-  right: -135px;
-  transition: transform 0.5s;
+  right: -140px;
   cursor: pointer;
+  transition: transform 0.5s;
   &:hover {
     transform: translateX(-100px)
   }
@@ -2418,21 +2503,30 @@ body {
   content: '';
   position: absolute;
   left: -7px;
-  border-left: 7px solid transparent;
   border-top: 15px solid $red;
+  border-left: 7px solid transparent;
   border-bottom: 15px solid $red;
 }
 
-.special-offer-icon {
-  margin-right: 0.3em;
+.special-offer-score,
+.special-offer-description {
+  font-size: 1.05em;
+  font-weight: bold;
+  line-height: 30px;
+  color: white;
 }
 
-.special-offer-button {
-  background-color: $red;
-  border: none;
-  padding: 0;
-  display: inline-block;
+.special-offer-score {
+  margin-right: 0.7em;
 }
+
+// .special-offer-button {
+//   background-color: $red;
+//   border: none;
+//   padding: 0;
+//   margin-left: 0.7em;
+//   display: inline-block;
+// }
 
 // .feed-item-icon {
 //   color: $yellow-dark;
@@ -2792,7 +2886,8 @@ body {
   margin: 0;
 }
 
-.search-results {
+.search-results,
+.shortlist-results {
   position: relative;
 }
 
@@ -2804,7 +2899,8 @@ body {
   left: 0;
 }
 
-#search-map {
+#search-map,
+#shortlist-map {
   height: calc(100vh - 50px);
 }
 
@@ -2818,16 +2914,19 @@ body {
   top: 50px;
 }
 
-.search-results-background {
+.search-results-background,
+.shortlist-results-background {
   background-color: $gray-lightest;
 }
 
-.search-list-container {
+.search-list-container,
+.shortlist-list-container {
   max-width: 1008px;
   margin: 0 auto;
 }
 
-.search-list-content {
+.search-list-content,
+.shortlist-list-content {
   background-color: $gray-lightest;
   border-left: 1px solid $gray-border;
   min-height: calc(100vh - 50px);
@@ -3085,7 +3184,8 @@ ul.pagination {
   pointer-events: none;
 }
 
-.search-nav-mobile {
+.search-nav-mobile,
+.shortlist-nav-mobile {
   position: fixed;
   right: 0;
   bottom: 0;
@@ -3093,44 +3193,56 @@ ul.pagination {
 }
 
 .search-nav-grid,
-.search-nav-map {
+.search-nav-map,
+.shortlist-nav-grid,
+.shortlist-nav-map {
   padding: 1em;
   cursor: pointer;
 }
 
-.search-nav-grid-inactive {
+.search-nav-grid-inactive,
+.shortlist-nav-grid-inactive {
   background-color: $red;
   transition: 0.3s;
 }
 
-.search-nav-map-inactive {
+.search-nav-map-inactive,
+.shortlist-nav-map-inactive {
   background-color: $yellow-dark;
   transition: 0.3s;
 }
 
 .search-nav-grid-active,
-.search-nav-map-active {
+.search-nav-map-active,
+.shortlist-nav-grid-active,
+.shortlist-nav-map-active {
   background-color: $tan;
   transition: 0.3s;
 }
 
 .search-nav-grid-icon,
-.search-nav-map-icon {
+.search-nav-map-icon,
+.shortlist-nav-grid-icon,
+.shortlist-nav-map-icon {
   position: relative;
   left: 50%;
   transform: translateX(-50%);
 }
 
 .search-nav-grid-icon-inactive,
-.search-nav-map-icon-inactive {
+.search-nav-map-icon-inactive,
+.shortlist-nav-grid-icon-inactive,
+.shortlist-nav-map-icon-inactive {
   color: $tan;
 }
 
-.search-nav-grid-icon-active {
+.search-nav-grid-icon-active,
+.shortlist-nav-grid-icon-active {
   color: $red;
 }
 
-.search-nav-map-icon-active {
+.search-nav-map-icon-active,
+.shortlist-nav-map-icon-active {
   color: $yellow-dark;
 }
 
@@ -3777,7 +3889,7 @@ ul.pagination {
   z-index: 3;
 }
 
-.vehicle-overview-subheading,
+.vehicle-overview-subheading-content,
 .purchase-hero-subheading {
   font-size: 1.1em;
   line-height: 2;
@@ -3789,10 +3901,6 @@ ul.pagination {
     color: $gray-text;
     // opacity: 0.4;
   }
-}
-
-.vehicle-overview-subheading-dealer {
-  margin-left: 1.5em;
 }
 
 .vehicle-overview-description {
@@ -3813,6 +3921,26 @@ ul.pagination {
   text-align: left;
   color: $gray-text;
   margin: 0;
+}
+
+.vehicle-details-test-drive-info,
+.vehicle-details-purchase-info {
+  font-size: 0.95em;
+  line-height: 1.8;
+  margin: 0 0 0 1em;
+  text-align: left;
+  color: $gray-text;
+}
+
+.vehicle-details-test-drive,
+.vehicle-details-purchase {
+  margin-bottom: 1.7em;
+  cursor: pointer;
+  transition: 0.3s;
+  &:hover,
+  &:focus {
+    opacity: 0.4;
+  }
 }
 
 .hero-listing-score-number {
@@ -3911,7 +4039,8 @@ ul.pagination {
 #specifications,
 #features,
 #pricing,
-#sellers-notes {
+#sellers-notes,
+#listing-score {
   margin-bottom: 4em;
 }
 
@@ -3957,6 +4086,13 @@ ul.pagination {
   font-size: 1em;
   td {
     padding-right: 1.5em;
+  }
+}
+
+#features,
+#listing-score {
+  .vehicle-details-table {
+    font-weight: bold;
   }
 }
 
@@ -4060,9 +4196,9 @@ ul.pagination {
   background-color: $gray-lightest;
 }
 
-.shortlist-scrolled {
-  padding: 0 1.6em;
-}
+// .shortlist-scrolled {
+//   padding: 0 1.6em;
+// }
 
 .shortlist-scrolled-info {
   font-size: 0.9em;
@@ -4073,6 +4209,15 @@ ul.pagination {
   display: block;
 }
 
+.shortlist-buttons {
+  width: 100%;
+  table-layout: fixed; 
+}
+
+.shortlist-button {
+  width: 33%;
+}
+
 .btn-shortlist {
   font-size: 0.85em;
   font-weight: bold;
@@ -4081,9 +4226,10 @@ ul.pagination {
   background-color: white;
   border: 1px solid $gray-dark;
   border-radius: 2px;
-  width: 100%;
+  width: 90%;
   padding-top: 10px;
   padding-bottom: 10px;
+  margin: 0 auto;
   display: block;
   transition: 0.3s;
   &:hover,
@@ -4358,6 +4504,7 @@ ul.pagination {
   border: 2px solid white;
   height: 450px;
   padding: 0;
+  position: relative;
 }
 
 .vehicle-map-address {
@@ -4370,6 +4517,11 @@ ul.pagination {
   right: 51%;
   bottom: 5%;
   z-index: 100;
+}
+
+.brochure:hover,
+.brichure:focus {
+  text-decoration: none;
 }
 
 .brochure-image {
@@ -4467,10 +4619,10 @@ ul.pagination {
   padding: 1.8em 0;
 }
 
-.btn-modal-special-offer,
-.modal-dealer-select-close,
-.modal-buy-online-close,
-.modal-test-drive-close {
+.modal-special-offer-desktop-close,
+.modal-dealer-select-desktop-close,
+.modal-buy-online-desktop-close,
+.modal-test-drive-desktop-close {
   color: white;
   cursor: pointer;
   position: absolute;
@@ -6534,7 +6686,7 @@ a.remove_fields {
 
 .shortlist-purchases,
 .shortlist-test-drives,
-.shortlist-favorites {
+.shortlist-loves {
   margin-bottom: 4em;
 }
 
@@ -7652,13 +7804,13 @@ a.remove_fields {
 }
 
 .single-action {
-  background-color: $yellow-dark;
+  background-color: $red;
   border-radius: 50%;
   box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 5px 0 rgba(0, 0, 0, 0.26);
   height: 56px;
   width: 56px;
   position: fixed;
-  bottom: 60px;
+  bottom: 15px;
   right: 15px;
   z-index: 1000;
 }
@@ -7680,7 +7832,7 @@ a.remove_fields {
 }
 
 .shortlist-nav {
-  font-size: 1.15em;
+  font-size: 1em;
   font-weight: bold;
   text-align: center;
   width: 100%;
@@ -7692,8 +7844,8 @@ a.remove_fields {
 .btn-shortlist-nav {
   color: white;
   background-color: $green;
-  padding-top: 0.6em;
-  padding-bottom: 0.6em;
+  padding-top: 0.7em;
+  padding-bottom: 0.7em;
   &:hover,
   &:focus {
     text-decoration: none;
@@ -7702,12 +7854,13 @@ a.remove_fields {
   }
 }
 
-.btn-shortlist-nav-first {
+.btn-shortlist-nav-middle {
+  border-left: 1px solid white;
   border-right: 1px solid white;
 }
 
 .btn-shortlist-nav-icon {
-  margin-right: 0.5em;
+  margin-right: 0.6em;
 }
 
 .club-profile-hero,
@@ -9415,6 +9568,34 @@ a.remove_fields {
     padding-left: 1.7em;
   }
   
+  .modal-dealer-select-scroll,
+  .modal-buy-online-scroll,
+  .modal-test-drive-scroll {
+    width: 30em;
+  	overflow: hidden;
+  	&::-webkit-scrollbar { 
+      width: 0;
+    }
+  }
+  
+  .modal-dealer-select-list,
+  .modal-buy-online-list,
+  .modal-test-drive-list {
+    height: 75px;
+    width: 1000em;
+    margin-left: 4em;
+  }
+  
+  .modal-dealer-select-item,
+  .modal-buy-online-item,
+  .modal-test-drive-item {
+    display: inline-block;
+  }
+  
+  .modal-buy-online-item {
+    width: 22em;
+  }
+  
   // .clubs-overview-cover-photo,
   // .clubs-search-cover-photo {
   //   max-width: 1008px;
@@ -9519,6 +9700,7 @@ a.remove_fields {
   .feed-content,
   .search-summary-content,
   .search-list-container,
+  .shortlist-list-container,
   .vehicle-overview-content,
   .vehicle-details-content,
   .reviews-content,
@@ -9607,22 +9789,71 @@ a.remove_fields {
     padding-bottom: 2.3em;
   }
   
+  .vehicle-overview-title {
+    margin: 1.5em 0 0.5em;
+  }
+  
   .vehicle-overview-heading {
-    line-height: 1.3;
-    max-height: 3em;
-    margin: 0.25em 0 0.5em;
+    font-size: 1.5em;
+    max-height: 1.3em;
+    margin: 0 0 0.5em;
     overflow: hidden;
   }
   
+  .vehicle-overview-avatar {
+    height: 55px;
+    width: 55px;
+  }
+  
   .vehicle-overview-subheading {
-    font-size: 1.4em;
-    line-height: 1.4;
+    margin-left: 0.5em;
+  }
+  
+  .vehicle-overview-subheading-content {
+    font-size: 1em;
     font-weight: bold;
+    font-style: italic;
+    line-height: 1.4;
     display: block;
   }
   
+  .vehicle-overview-description {
+    font-size: 0.95em;
+    line-height: 1.8;
+    margin: 0.8em 0 0;
+  }
+  
+  .vehicle-overview-views {
+    margin-top: 1.3em;
+  }
+  
+  .vehicle-overview-views-info {
+    font-size: 0.95em;
+    line-height: 1.8;
+    margin-left: 1em;
+  }
+  
+  .vehicle-details-content {
+    padding: 2.3em 0;
+  }
+  
+  #specifications,
+  #features,
+  #pricing,
+  #sellers-notes,
+  #listing-score,
+  #availability {
+    margin-bottom: 1.7em;
+  }
+  
   .vehicle-details-title {
-    margin: 0 0 2em;
+    font-size: 1em;
+    margin: 0 0 0.5em;
+  }
+  
+  .vehicle-details-table {
+    font-size: 0.95em;
+    line-height: 1.8;
   }
   
   #vehicle-scrolled {
@@ -10299,28 +10530,122 @@ a.remove_fields {
     right: 0;
   }
   
-  #search-map {
-    visibility: hidden;
+  #search-map,
+  #shortlist-map {
     width: 100%;
-    z-index: 200;
+    z-index: -1000;
   }
   
-  .search-items-container {
-    padding-top: 50px;
+  #search-map {
+    position: absolute;
+    top: 50px;
   }
   
-  .vehicle-overview-title {
-    margin-bottom: 3em;
+  .search-results-background {
+    position: absolute;
+    top: 50px;
   }
   
-  .vehicle-overview-description {
+  .purchase-introduction-detail,
+  .matches-introduction-detail {
+    margin-left: 0;
+  }
+  
+  .btn-export {
+    margin-top: 0.7em;
+  }
+  
+  #vehicle-scrolled {
+    margin-top: 0;
+  }
+  
+  // #features,
+  // #listing-score {
+  //   .vehicle-details-table {
+  //     font-weight: normal;
+  //   }
+  // }
+  
+  .questions-title-content {
     font-size: 1em;
   }
+  
+  .vehicle-scrolled-content {
+    margin-bottom: 0;
+  }
+  
+  .reviews-content {
+    padding: 2.3em 0;
+  }
+  
+  .reviews-title {
+    font-size: 1em;
+    margin: 0 0 1em;
+  }
+  
+  .reviews-subheading {
+    font-size: 0.95em;
+    line-height: 1.8;
+    margin: 0 0 0.7em;
+  }
+  
+  .number-of-reviews,
+  .pros-cons-list-content,
+  .review-comment {
+    font-size: 0.95em;
+    line-height: 1.8;
+  }
+  
+  .pros-cons-list {
+    padding-left: 0;
+    margin: 1.5em 0 0;
+  }
+  
+  .author-name,
+  .review-title,
+  .review-date {
+    font-size: 0.95em;
+  }
+  
+  .vehicle-map-address {
+    font-size: 1em;
+    right: 10px;
+    bottom: 160px;
+  }
+  
+  .brochure-detail {
+    padding-top: 2em;
+    padding-left: 3.5em;
+  }
+  
+  .brochure-detail-title {
+    font-size: 1.5em;
+  }
+  
+  .brochure-detail-info {
+    font-size: 1em;
+    font-style: italic;
+  }
+  
+  .single-action {
+    background-color: $yellow-dark;
+    bottom: 60px;
+  }
+  
+  .dealer-select-avatar {
+    width: 55px;
+    height: 55px;
+  }
+  
+  .dealer-select-name {
+    font-size: 1.1em
+  }
+  
+  .dealer-select-reviews {
+    font-size: 1em;
+    font-weight: normal;
+  }
 }
-
-// .update-panel {
-//   margin-bottom: 3em;
-// }
 
 .multi-action {
   display: inline-block;

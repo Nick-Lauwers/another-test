@@ -17,11 +17,25 @@
 
 <%= render 'layouts/contact' %>
 
-<%= render 'modal_appointment' %>
+<%= render 'modal_test_drive_mobile' %>
 
 <% if @vehicle.dealership.present? %>
-  <%= render 'modal_dealer_select' %>
-  <%= render 'modal_buy_online' %>
+
+  <div class="modal" id="modal-dealer-select-desktop" role="dialog">
+    <%= render "modal_dealer_select_desktop" %>
+  </div>
+  
+  <div class="modal" id="modal-dealer-select-mobile" role="dialog">
+    <%= render "modal_dealer_select_mobile" %>
+  </div>
+
+  <div class="modal" id="modal-buy-online-desktop" role="dialog">
+    <%= render "modal_buy_online_desktop" %>
+  </div>
+  
+  <div class="modal" id="modal-buy-online-mobile" role="dialog">
+    <%= render "modal_buy_online_mobile" %>
+  </div>
 <% end %>
 
 <% if @vehicle.sold_at.present? %>
@@ -110,33 +124,33 @@
 <%= form_for @conversation do |f| %>
   
   <% if @vehicle.dealership.present? %>
-    <div class="modal" id="modal-test-drive" role="dialog">
+    <div class="modal" id="modal-test-drive-desktop" role="dialog">
       
-      <div class="modal-test-drive-header">
+      <div class="modal-test-drive-desktop-header">
         
-        <i class="fa fa-times fa-lg modal-test-drive-close" 
+        <i class="fa fa-times fa-lg modal-test-drive-desktop-close" 
            aria-hidden="true"></i>
         
-        <div class="row modal-test-drive-header-content vertical-align">
+        <div class="row modal-test-drive-desktop-header-content vertical-align">
           
           <div class="col-md-4">
             <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/dealer-select.png") %>
           </div>
           
           <div class="col-md-8">
-            <h1 class="modal-test-drive-title">Select An Associate</h1>
+            <h1 class="modal-test-drive-desktop-title">Select An Associate</h1>
           </div>
         </div>
       </div>
       
-      <div class="modal-test-drive-body">
-        <div class="modal-test-drive-body-content">
+      <div class="modal-test-drive-desktop-body">
+        <div class="modal-test-drive-desktop-body-content">
           
-          <h2 class="modal-test-drive-subtitle">
+          <h2 class="modal-test-drive-desktop-subtitle">
             At Mototrova, we believe in the power of the consumer.
           </h2>
           
-          <span class="modal-test-drive-info">
+          <span class="modal-test-drive-desktop-info">
             Select the dealer that you would most like to work with.
           </span>
           
@@ -212,7 +226,7 @@
               
               <div class="row vertical-align">
               
-                <div class="col-md-2 col-xs-4">
+                <div class="col-md-2 col-xs-2">
                   
                   <% if @vehicle.dealership.present? %>
                     <%= link_to @vehicle.dealership do %>
@@ -232,7 +246,7 @@
                   <% end %>
                 </div>
                 
-                <div class="col-md-10 col-xs-8">
+                <div class="col-md-10 col-xs-10">
   
                   <h1 class="vehicle-overview-heading hidden-xs">
                     
@@ -245,76 +259,23 @@
                     <% end %>
                   </h1>
                   
-                  <% if @vehicle.dealership.present? %>
-                  
-                    <div class="row vertical-align">
-                      
-                      <div class="col-xs-1">
-                        <div class="dealer-a-avatar avatar-general"
-                             style="background-image: url(
-                                     '<%= @vehicle.
-                                            dealership.
-                                            users.
-                                            first.
-                                            avatar.
-                                            url(:thumb) %>">
-                          
-                          <% if @vehicle.dealership.users.second.present? %>
-                            <div class="dealer-b-avatar avatar-general"
-                                 style="background-image: url(
-                                         '<%= @vehicle.
-                                                dealership.
-                                                users.
-                                                second.
-                                                avatar.
-                                                url(:thumb) %>">
-                            </div>
-                          <% end %>
-                          
-                          <% if @vehicle.dealership.users.third.present? %>
-                            <div class="dealer-c-avatar avatar-general"
-                                 style="background-image: url(
-                                         '<%= @vehicle.
-                                                dealership.
-                                                users.
-                                                third.
-                                                avatar.
-                                                url(:thumb) %>">
-                            </div>
-                          <% end %>
-                        </div>
-                      </div>
-                      
-                      <div class="col-xs-11">
-                        
-                        <%= link_to @vehicle.dealership.dealership_name, 
-                                    @vehicle.dealership,
-                                    class: "vehicle-overview-subheading
-                                            vehicle-overview-subheading-dealer" %>
-                        
-                        <span class="hidden-xs"> · </span>
-                        
-                        <% if @vehicle.dealership.blank? %>
-                          <span class="average-rating"></span>
-                        <% end %>
-                      </div>
-                    </div>
+                  <div class="vehicle-overview-subheading">
                     
                     <% if @vehicle.dealership.present? %>
-                      <span class="average-rating"></span>
-                    <% end %>
-                    
-                  <% else %>
-                    
-                    <%= link_to @vehicle.user.full_name, 
-                                @vehicle.user,
-                                class: "vehicle-overview-subheading
-                                        vehicle-overview-subheading-private" %>
+                      <%= link_to @vehicle.dealership.dealership_name, 
+                                  @vehicle.dealership,
+                                  class: "vehicle-overview-subheading-content" %>
   
+                    <% else %>
+                      <%= link_to @vehicle.user.full_name, 
+                                  @vehicle.user,
+                                  class: "vehicle-overview-subheading-content" %>
+                    <% end %>
+                          
                     <span class="hidden-xs"> · </span>
-                                
+                          
                     <span class="average-rating"></span>
-                  <% end %>
+                  </div>
                 </div>
               </div>
             </div>
@@ -326,11 +287,16 @@
             <div class="vehicle-overview-views">
               <div class="row vertical-align">
                 
-                <div class="col-md-2">
-                  <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/creativity.png") %>
+                <div class="col-md-2 col-xs-1">
+                  
+                  <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/creativity-large.png", 
+                                class: "hidden-xs") %>
+                                
+                  <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/creativity-small.png", 
+                                class: "visible-xs") %>
                 </div>
                 
-                <div class="col-md-10">
+                <div class="col-md-10 col-xs-11">
                   <p class="vehicle-overview-views-info">
                     
                     <strong>
@@ -419,7 +385,7 @@
             <% end %>
           </div>
           
-          <div class="vehicle-reviews">
+          <div class="vehicle-reviews hidden-xs">
             
             <span class="vehicle-reviews-title">Need Some Advice?</span>
             
@@ -522,7 +488,7 @@
 
                   <tr>
                     <td>Mileage</td>
-                    <td><strong><%= @vehicle.mileage %> mi</strong></td>
+                    <td><strong><%= @vehicle.mileage_numeric %> mi</strong></td>
                   </tr>
                   
                   <tr>
@@ -573,7 +539,7 @@
                       <i class="fa fa-snowflake-o" aria-hidden="true"></i>
                     </td>
                     
-                    <td><strong>Air Conditioning</strong></td>
+                    <td>Air Conditioning</td>
                   </tr>
                   
                   <tr class="<%= 'unavailable-feature' if 
@@ -583,7 +549,7 @@
                       <i class="fa fa-umbrella" aria-hidden="true"></i>
                     </td>
                     
-                    <td><strong>Power Windows</strong></td>
+                    <td>Power Windows</td>
                   </tr>
                   
                   <tr class="<%= 'unavailable-feature' if 
@@ -593,7 +559,7 @@
                       <i class="fa fa-key" aria-hidden="true"></i>
                     </td>
                     
-                    <td><strong>Remote Keyless Entry</strong></td>
+                    <td>Remote Keyless Entry</td>
                   </tr>
                   
                   <tr class="<%= 'unavailable-feature' if 
@@ -603,7 +569,7 @@
                       <i class="fa fa-dashboard" aria-hidden="true"></i>
                     </td>
                     
-                    <td><strong>Speed Control</strong></td>
+                    <td>Speed Control</td>
                   </tr>
                   
                   <tr class="<%= 'unavailable-feature' if 
@@ -613,7 +579,7 @@
                       <i class="fa fa-feed" aria-hidden="true"></i>
                     </td>
                     
-                    <td><strong>AM / FM Radio</strong></td>
+                    <td>AM / FM Radio</td>
                   </tr>
                   
                   <tr class="<%= 'unavailable-feature' if 
@@ -623,7 +589,7 @@
                       <i class="fa fa-bluetooth-b" aria-hidden="true"></i>
                     </td>
                     
-                    <td><strong>Bluetooth</strong></td>
+                    <td>Bluetooth</td>
                   </tr>
                   
                   <tr class="<%= 'unavailable-feature' if 
@@ -633,7 +599,7 @@
                       <i class="fa fa-lightbulb-o" aria-hidden="true"></i>
                     </td>
                     
-                    <td><strong>Fully Automatic Headlights</strong></td>
+                    <td>Fully Automatic Headlights</td>
                   </tr>
                   
                   <tr class="<%= 'unavailable-feature' if 
@@ -643,7 +609,7 @@
                       <i class="fa fa-clock-o" aria-hidden="true"></i>
                     </td>
                     
-                    <td><strong>Variably Intermittent Wipers</strong></td>
+                    <td>Variably Intermittent Wipers</td>
                   </tr>
                 </table>
               </div>
@@ -658,7 +624,7 @@
                       <i class="fa fa-hand-stop-o" aria-hidden="true"></i>
                     </td>
                     
-                    <td><strong>ABS Brakes</strong></td>
+                    <td>ABS Brakes</td>
                   </tr>
                   
                   <tr class="<%= 'unavailable-feature' if 
@@ -668,7 +634,7 @@
                       <i class="fa fa-anchor" aria-hidden="true"></i>
                     </td>
                     
-                    <td><strong>Brake Assist</strong></td>
+                    <td>Brake Assist</td>
                   </tr>
                   
                   <tr class="<%= 'unavailable-feature' if 
@@ -678,7 +644,7 @@
                       <i class="fa fa-cloud" aria-hidden="true"></i>
                     </td>
                     
-                    <td><strong>Dual Front Impact Airbags</strong></td>
+                    <td>Dual Front Impact Airbags</td>
                   </tr>
                   
                   <tr class="<%= 'unavailable-feature' if 
@@ -688,7 +654,7 @@
                       <i class="fa fa-crosshairs" aria-hidden="true"></i>
                     </td>
                     
-                    <td><strong>Electronic Stability</strong></td>
+                    <td>Electronic Stability</td>
                   </tr>
                   
                   <tr class="<%= 'unavailable-feature' if 
@@ -698,7 +664,7 @@
                       <i class="fa fa-lock" aria-hidden="true"></i>
                     </td>
                     
-                    <td><strong>Security System</strong></td>
+                    <td>Security System</td>
                   </tr>
                   
                   <tr class="<%= 'unavailable-feature' if 
@@ -708,7 +674,7 @@
                       <i class="fa fa-cog" aria-hidden="true"></i>
                     </td>
                     
-                    <td><strong>Traction Control</strong></td>
+                    <td>Traction Control</td>
                   </tr>
                   
                   <tr class="<%= 'unavailable-feature' if 
@@ -718,7 +684,7 @@
                       <i class="fa fa-bolt" aria-hidden="true"></i>
                     </td>
                     
-                    <td><strong>Power Steering</strong></td>
+                    <td>Power Steering</td>
                   </tr>
                 </table>
               </div>
@@ -737,11 +703,11 @@
                       @vehicle.listing_score.location_score == 2 %>
                       
                   <td>
-                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    <i class="fa fa-check" aria-hidden="true"></i>
                   </td>
                   
                   <td>
-                    <strong>Listing location is an exact address.</strong>
+                    Listing location is an exact address.
                   </td>
                 <% end %>
               </tr>
@@ -752,10 +718,10 @@
                       @vehicle.listing_score.features_score == 2 %>
                       
                   <td>
-                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    <i class="fa fa-check" aria-hidden="true"></i>
                   </td>
                   
-                  <td><strong>Features are properly noted.</strong></td>
+                  <td>Features are properly noted.</td>
                 <% end %>
               </tr>
               
@@ -765,10 +731,10 @@
                       @vehicle.listing_score.spec_score == 2 %>
                       
                   <td>
-                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    <i class="fa fa-check" aria-hidden="true"></i>
                   </td>
                 
-                  <td><strong>Specifications are properly noted.</strong></td>
+                  <td>Specifications are properly noted.</td>
                 <% end %>
               </tr>
               
@@ -778,10 +744,10 @@
                       @vehicle.listing_score.vin_score == 2 %>
                       
                   <td>
-                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    <i class="fa fa-check" aria-hidden="true"></i>
                   </td>
                 
-                  <td><strong>VIN is properly noted.</strong></td>
+                  <td>VIN is properly noted.</td>
                 <% end %>
               </tr>
               
@@ -791,13 +757,11 @@
                       @vehicle.listing_score.certified_dealer_score == 2 %>
                       
                   <td>
-                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    <i class="fa fa-check" aria-hidden="true"></i>
                   </td>
                 
                   <td>
-                    <strong>
-                      Vehicle is being sold by a certified dealer.
-                    </strong>
+                    Vehicle is being sold by a certified dealer.
                   </td>
                 <% end %>
               </tr>
@@ -808,11 +772,11 @@
                       @vehicle.listing_score.direct_listing_score == 2 %>
                       
                   <td>
-                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    <i class="fa fa-check" aria-hidden="true"></i>
                   </td>
                 
                   <td>
-                    <strong>Dealer sends a direct listing feed.</strong>  
+                    Dealer sends a direct listing feed.  
                   </td>
                 <% end %>
               </tr>
@@ -823,13 +787,11 @@
                       @vehicle.listing_score.test_drive_score == 2 %>
                       
                   <td>
-                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    <i class="fa fa-check" aria-hidden="true"></i>
                   </td>
                 
                   <td>
-                    <strong>
-                      Seller accepts test drive requests on demand.
-                    </strong>
+                    Seller accepts test drive requests on demand.
                   </td>
                 <% end %>
               </tr>
@@ -840,13 +802,11 @@
                       @vehicle.listing_score.photos_score == 2 %>
                       
                   <td>
-                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    <i class="fa fa-check" aria-hidden="true"></i>
                   </td>
                 
                   <td>
-                    <strong>
-                      Listing has plenty of photos of the vehicle.
-                    </strong>
+                    Listing has plenty of photos of the vehicle.
                   </td>
                 <% end %>
               </tr>
@@ -857,295 +817,293 @@
                       @vehicle.listing_score.recently_posted_score == 2 %>
                       
                   <td>
-                    <i class="fa fa-check-circle-o" aria-hidden="true"></i>
+                    <i class="fa fa-check" aria-hidden="true"></i>
                   </td>
                 
                   <td>
-                    <strong>Listing was recently posted or "bumped".</strong>
+                    Listing was recently posted or "bumped".
                   </td>
                 <% end %>
               </tr>
             </table>
           </div>
           
-          <% if @vehicle.availabilities.exists? %>
-            <div id="availability">
-              
-              <% if @vehicle.dealership.present? %>
+          <div id="availability">
             
-                <h3 class="vehicle-details-title">Hours of Operation</h3>
-            
-                <div class="row">
-                  
-                  <div class="col-md-6">
-                    <table class="vehicle-details-table">
-                      <tr>
-                      
-                        <td class="specifications-table-column">Monday</td>
-                        
-                        <td><strong>
-                          
-                          <% if @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Monday").
-                                  first.
-                                  is_closed == true %> 
-                            Closed
-                            
-                          <% else %>
-                          
-                            <%= @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Monday").
-                                  first.
-                                  open_time.
-                                  strftime("%-l:%M%p") %> - 
-                            
-                            <%= @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Monday").
-                                  first.
-                                  close_time.
-                                  strftime("%-l:%M%p") %>
-                          <% end %>
-                        </strong></td>
-                      </tr>
-                      
-                      <tr>
-                        
-                        <td>Tuesday</td>
-                        
-                        <td><strong>
-                          
-                          <% if @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Tuesday").
-                                  first.
-                                  is_closed == true %> 
-                            Closed
-                            
-                          <% else %>
-                          
-                            <%= @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Tuesday").
-                                  first.
-                                  open_time.
-                                  strftime("%-l:%M%p") %> - 
-                            
-                            <%= @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Tuesday").
-                                  first.
-                                  close_time.
-                                  strftime("%-l:%M%p") %>
-                          <% end %>
-                        </strong></td>
-                      </tr>
-                      
-                      <tr>
-                        
-                        <td>Wednesday</td>
-                        
-                        <td><strong>
-                          
-                          <% if @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Wednesday").
-                                  first.
-                                  is_closed == true %> 
-                            Closed
-                            
-                          <% else %>
-                          
-                            <%= @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Wednesday").
-                                  first.
-                                  open_time.
-                                  strftime("%-l:%M%p") %> - 
-                            
-                            <%= @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Wednesday").
-                                  first.
-                                  close_time.
-                                  strftime("%-l:%M%p") %>
-                          <% end %>
-                        </strong></td>
-                      </tr>
-                      
-                      <tr>
-                        
-                        <td>Thursday</td>
-                        
-                        <td><strong>
-                          
-                          <% if @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Thursday").
-                                  first.
-                                  is_closed == true %> 
-                            Closed
-                            
-                          <% else %>
-                          
-                            <%= @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Thursday").
-                                  first.
-                                  open_time.
-                                  strftime("%-l:%M%p") %> - 
-                            
-                            <%= @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Thursday").
-                                  first.
-                                  close_time.
-                                  strftime("%-l:%M%p") %>
-                          <% end %>
-                        </strong></td>
-                      </tr>
-                    </table>
-                  </div>
-                  
-                  <div class="col-md-6">
-                    <table class="vehicle-details-table">
-                      
-                      <tr>
-                        
-                        <td class="specifications-table-column">Friday</td>
-                        
-                        <td><strong>
-                          
-                          <% if @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Friday").
-                                  first.
-                                  is_closed == true %> 
-                            Closed
-                            
-                          <% else %>
-                          
-                            <%= @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Friday").
-                                  first.
-                                  open_time.
-                                  strftime("%-l:%M%p") %> - 
-                            
-                            <%= @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Friday").
-                                  first.
-                                  close_time.
-                                  strftime("%-l:%M%p") %>
-                          <% end %>
-                        </strong></td>
-                      </tr>
-                      
-                      <tr>
-                        
-                        <td>Saturday</td>
-                        
-                        <td><strong>
-                          
-                          <% if @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Saturday").
-                                  first.
-                                  is_closed == true %> 
-                            Closed
-                            
-                          <% else %>
-                          
-                            <%= @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Saturday").
-                                  first.
-                                  open_time.
-                                  strftime("%-l:%M%p") %> - 
-                            
-                            <%= @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Saturday").
-                                  first.
-                                  close_time.
-                                  strftime("%-l:%M%p") %>
-                          <% end %>
-                        </strong></td>
-                      </tr>
-                      
-                      <tr>
-                        
-                        <td>Sunday</td>
-                        
-                        <td><strong>
-                          
-                          <% if @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Sunday").
-                                  first.
-                                  is_closed == true %> 
-                            Closed
-                            
-                          <% else %>
-                          
-                            <%= @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Sunday").
-                                  first.
-                                  open_time.
-                                  strftime("%-l:%M%p") %> - 
-                            
-                            <%= @vehicle.
-                                  dealership.
-                                  business_hours.
-                                  where(day: "Sunday").
-                                  first.
-                                  close_time.
-                                  strftime("%-l:%M%p") %>
-                          <% end %>
-                        </strong></td>
-                      </tr>
-                    </table>
-                  </div>
-                </div>
-                
-              <% elsif @vehicle.availabilities.exists? %>
-              
-                <h3 class="vehicle-details-title">General Availability</h3>
-                
-                <div class="row">
-                  <%= render partial:    "availability", 
-                             collection: @availabilities %>
-                </div>
-              <% end %>
-            </div>
-          <% end %>
+            <% if @vehicle.dealership.present? %>
           
+              <h3 class="vehicle-details-title">Hours of Operation</h3>
+          
+              <div class="row">
+                
+                <div class="col-md-6">
+                  <table class="vehicle-details-table">
+                    <tr>
+                    
+                      <td class="specifications-table-column">Monday</td>
+                      
+                      <td><strong>
+                        
+                        <% if @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Monday").
+                                first.
+                                is_closed == true %> 
+                          Closed
+                          
+                        <% else %>
+                        
+                          <%= @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Monday").
+                                first.
+                                open_time.
+                                strftime("%-l:%M%p") %> - 
+                          
+                          <%= @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Monday").
+                                first.
+                                close_time.
+                                strftime("%-l:%M%p") %>
+                        <% end %>
+                      </strong></td>
+                    </tr>
+                    
+                    <tr>
+                      
+                      <td>Tuesday</td>
+                      
+                      <td><strong>
+                        
+                        <% if @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Tuesday").
+                                first.
+                                is_closed == true %> 
+                          Closed
+                          
+                        <% else %>
+                        
+                          <%= @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Tuesday").
+                                first.
+                                open_time.
+                                strftime("%-l:%M%p") %> - 
+                          
+                          <%= @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Tuesday").
+                                first.
+                                close_time.
+                                strftime("%-l:%M%p") %>
+                        <% end %>
+                      </strong></td>
+                    </tr>
+                    
+                    <tr>
+                      
+                      <td>Wednesday</td>
+                      
+                      <td><strong>
+                        
+                        <% if @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Wednesday").
+                                first.
+                                is_closed == true %> 
+                          Closed
+                          
+                        <% else %>
+                        
+                          <%= @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Wednesday").
+                                first.
+                                open_time.
+                                strftime("%-l:%M%p") %> - 
+                          
+                          <%= @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Wednesday").
+                                first.
+                                close_time.
+                                strftime("%-l:%M%p") %>
+                        <% end %>
+                      </strong></td>
+                    </tr>
+                    
+                    <tr>
+                      
+                      <td>Thursday</td>
+                      
+                      <td><strong>
+                        
+                        <% if @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Thursday").
+                                first.
+                                is_closed == true %> 
+                          Closed
+                          
+                        <% else %>
+                        
+                          <%= @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Thursday").
+                                first.
+                                open_time.
+                                strftime("%-l:%M%p") %> - 
+                          
+                          <%= @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Thursday").
+                                first.
+                                close_time.
+                                strftime("%-l:%M%p") %>
+                        <% end %>
+                      </strong></td>
+                    </tr>
+                  </table>
+                </div>
+                
+                <div class="col-md-6">
+                  <table class="vehicle-details-table">
+                    
+                    <tr>
+                      
+                      <td class="specifications-table-column">Friday</td>
+                      
+                      <td><strong>
+                        
+                        <% if @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Friday").
+                                first.
+                                is_closed == true %> 
+                          Closed
+                          
+                        <% else %>
+                        
+                          <%= @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Friday").
+                                first.
+                                open_time.
+                                strftime("%-l:%M%p") %> - 
+                          
+                          <%= @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Friday").
+                                first.
+                                close_time.
+                                strftime("%-l:%M%p") %>
+                        <% end %>
+                      </strong></td>
+                    </tr>
+                    
+                    <tr>
+                      
+                      <td>Saturday</td>
+                      
+                      <td><strong>
+                        
+                        <% if @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Saturday").
+                                first.
+                                is_closed == true %> 
+                          Closed
+                          
+                        <% else %>
+                        
+                          <%= @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Saturday").
+                                first.
+                                open_time.
+                                strftime("%-l:%M%p") %> - 
+                          
+                          <%= @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Saturday").
+                                first.
+                                close_time.
+                                strftime("%-l:%M%p") %>
+                        <% end %>
+                      </strong></td>
+                    </tr>
+                    
+                    <tr>
+                      
+                      <td>Sunday</td>
+                      
+                      <td><strong>
+                        
+                        <% if @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Sunday").
+                                first.
+                                is_closed == true %> 
+                          Closed
+                          
+                        <% else %>
+                        
+                          <%= @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Sunday").
+                                first.
+                                open_time.
+                                strftime("%-l:%M%p") %> - 
+                          
+                          <%= @vehicle.
+                                dealership.
+                                business_hours.
+                                where(day: "Sunday").
+                                first.
+                                close_time.
+                                strftime("%-l:%M%p") %>
+                        <% end %>
+                      </strong></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+              
+            <% elsif @vehicle.availabilities.exists? %>
+            
+              <h3 class="vehicle-details-title">General Availability</h3>
+              
+              <div class="row">
+                <%= render partial:    "availability", 
+                           collection: @availabilities %>
+              </div>
+            <% end %>
+          </div>
+
           <% if @vehicle.dealership.present? %>
-            <div class="negotiate btn-negotiate-dealer">
+            <div class="negotiate btn-negotiate-dealer hidden-xs">
               <div class="row vertical-align">
               
                 <div class="col-md-2">
@@ -1177,7 +1135,7 @@
                 </div>
               </div>
             </div>
-          
+            
           <% else %>
             <%= form_for @conversation, 
                          url: conversations_path(@conversation), 
@@ -1192,12 +1150,12 @@
             
               <%= f.hidden_field :recipient_archived, value: false %>
               
-              <%= button_tag(class: "btn-negotiate-private") do %>
+              <%= button_tag(class: "btn-negotiate-private hidden-xs") do %>
                 <div class="negotiate">
                   <div class="row vertical-align">
                     
                     <div class="col-md-2">
-                      <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/deal.png") %>
+                      <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/deal-large.png") %>
                     </div>
                     
                     <div class="col-md-10">
@@ -1217,6 +1175,43 @@
                 </div>
               <% end %>
             <% end %>
+          <% end %>  
+
+          <div class="vehicle-details-test-drive visible-xs">
+            <div class="row vertical-align">
+              
+              <div class="col-xs-1">
+                <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/test-drives-small.png" ) %>
+              </div>
+              
+              <div class="col-xs-11">
+                <p class="vehicle-details-test-drive-info">
+                  <strong>Book A Test Drive</strong>
+                  <br>
+                  Interested in this vehicle? Book a test drive, instantly!
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <% if @vehicle.dealership.present? %>  
+            <div class="vehicle-details-purchase visible-xs">
+              <div class="row vertical-align">
+                
+                <div class="col-xs-1">
+                  <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/deal-small.png" ) %>
+                </div>
+                
+                <div class="col-xs-11">
+                  <p class="vehicle-details-purchase-info">
+                    <strong>Make A Purchase</strong>
+                    <br>
+                    Complete our online paperwork and reserve this vehicle for
+                    purchase for 72 hours.
+                  </p>
+                </div>
+              </div>
+            </div>
           <% end %>
         <!--</div>-->
       </div>
@@ -1271,26 +1266,38 @@
               to compare later.
             </span>
             
-            <div class="row">
-              
-              <div class="col-md-6">
-                <%= link_to favorite_vehicle_path(@vehicle),
-                            class: "btn-shortlist",
-                            method: :put do %>
-                  <i class="fa fa-heart-o" aria-hidden="true"></i>
-                  Love It!
-                <% end %>
-              </div>
-              
-              <div class="col-md-6">
-                <%= link_to favorite_vehicle_path(@vehicle),
-                            class: "btn-shortlist",
-                            method: :put do %>
-                  <i class="fa fa-check-circle-o" aria-hidden="true"></i>
-                  Maybe
-                <% end %>
-              </div>
-            </div>
+            <table  class="shortlist-buttons">
+              <tr>
+                
+                <td class="shortlist-button">
+                  <%= link_to favorite_vehicle_path(@vehicle, is_loved: true),
+                              class: "btn-shortlist",
+                              method: :put do %>
+                    <i class="fa fa-heart-o" aria-hidden="true"></i>
+                    Love It!
+                  <% end %>
+                </td>
+                
+                <td class="shortlist-button">
+                  <%= link_to favorite_vehicle_path(@vehicle, is_liked: true),
+                              class: "btn-shortlist",
+                              method: :put do %>
+                    <i class="fa fa-check" aria-hidden="true"></i>
+                    Maybe
+                  <% end %>
+                </td>
+                
+                <td class="shortlist-button">
+                  <%= link_to favorite_vehicle_path(@vehicle, 
+                                                    is_disliked: true),
+                              class: "btn-shortlist",
+                              method: :put do %>
+                    <i class="fa fa-trash-o" aria-hidden="true"></i>
+                    Nope
+                  <% end %>
+                </td>
+              </tr>
+            </table>
           </div>
           
           <!--<(perc)= link_to favorite_vehicle_path(@vehicle), -->
@@ -1505,7 +1512,8 @@
     <div class="col-md-6" id="vehicle-map">
     </div>
     
-    <%= link_to posts_vehicle_make_path(@vehicle.vehicle_make), 
+    <%= link_to posts_vehicle_make_path(@vehicle.vehicle_make),
+                class: "brochure",
                 target: "_blank" do %>
       <div class="col-md-6 brochure-image",
            style="background-image: url(
@@ -1553,26 +1561,28 @@
   </div>
 <% end %>
 
-<div class="shortlist-nav">
+<div class="shortlist-nav visible-xs">
   <div class="row">
     
-    <%= link_to favorite_vehicle_path(@vehicle),
-                class: "col-xs-6 btn-shortlist-nav btn-shortlist-nav-first",
+    <%= link_to favorite_vehicle_path(@vehicle, is_loved: true),
+                class: "col-xs-4 btn-shortlist-nav",
                 method: :put do %>
-                
       <i class="fa fa-heart-o btn-shortlist-nav-icon" aria-hidden="true"></i>
-      
       Love It!
     <% end %>
 
-    <%= link_to favorite_vehicle_path(@vehicle),
-                class: "col-xs-6 btn-shortlist-nav",
+    <%= link_to favorite_vehicle_path(@vehicle, is_liked: true),
+                class: "col-xs-4 btn-shortlist-nav btn-shortlist-nav-middle",
                 method: :put do %>
-                
-      <i class="fa fa-check-circle-o btn-shortlist-nav-icon" 
-         aria-hidden="true"></i>
-      
+      <i class="fa fa-check btn-shortlist-nav-icon" aria-hidden="true"></i>
       Maybe
+    <% end %>
+    
+    <%= link_to favorite_vehicle_path(@vehicle, is_disliked: true),
+                class: "col-xs-4 btn-shortlist-nav",
+                method: :put do %>
+      <i class="fa fa-trash-o btn-shortlist-nav-icon" aria-hidden="true"></i>
+      Nope
     <% end %>
   </div>
 </div>
@@ -1663,7 +1673,7 @@
       });
     
     // map
-    
+      
       handler = Gmaps.build('Google');
       
       handler.buildMap({ 

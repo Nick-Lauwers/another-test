@@ -23,24 +23,15 @@ class PurchasesController < ApplicationController
     
     if @purchase.save
       
-      if current_user.favorite_vehicles.exists?(vehicle: @purchase.vehicle)
-
-        current_user.
-          favorite_vehicles.
-          where(vehicle: @purchase.vehicle).
-          first.
-          update_attribute(:is_purchase, true)
-      
-      else
-        
+      if !current_user.favorite_vehicles.exists?(vehicle: @purchase.vehicle)
         current_user.favorites << @purchase.vehicle
-        
-        current_user.
-          favorite_vehicles.
-          where(vehicle: @purchase.vehicle).
-          first.
-          update_attribute(:is_purchase, true)
       end
+      
+      current_user.
+        favorite_vehicles.
+        where(vehicle: @purchase.vehicle).
+        first.
+        update_attribute(:is_purchase, true)
         
       flash[:success] = "Basics saved."
       
@@ -72,28 +63,7 @@ class PurchasesController < ApplicationController
                                      Time.now)
   end
   
-  # def index
-    
-  #   @purchases = Purchase.all
-    
-  #   @test_drives = Appointment.where("buyer_id = ? AND date >= ?", 
-  #                                   current_user.id, 
-  #                                   Time.now)
-  # end
-  
-  def purchases_made
-    
-    @purchases = Purchase.where(buyer_id: current_user.id)
-    
-    @test_drives = Appointment.where("buyer_id = ? AND date >= ?", 
-                                     current_user.id, 
-                                     Time.now)
-  end
-  
-  def orders_received
-    @orders = Purchase.
-                where(seller_id: current_user.id).
-                where.not(processed_at: nil)
+  def order
   end
 
   def basics

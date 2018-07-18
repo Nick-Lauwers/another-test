@@ -1,8 +1,8 @@
 require 'csv'
 
-[ VehicleMake, VehicleModel, ListingScore, Dealership, User, Vehicle, Photo, Discussion, DiscussionComment, Club, BusinessHour ].each do |model|
-  model.all.each(&:destroy)
-end
+# [ VehicleMake, VehicleModel, Dealership, User, Vehicle, Photo, ListingScore, Discussion, DiscussionComment, Club, BusinessHour ].each do |model|
+#   model.all.each(&:destroy)
+# end
 
 # Makes
 CSV.foreach(Rails.root.join("vehicle_makes.csv"), headers: true) do |row|
@@ -65,7 +65,7 @@ CSV.foreach(Rails.root.join("users.csv"), headers: true) do |row|
     user.admin                 = row[7]
     user.activated             = row[8]
     user.activated_at          = row[9]
-    user.avatar                = open(row[10])
+    user.avatar                = open(row[10]) unless row[10].nil?
     user.dealership_id         = row[11]
     user.dealership_admin      = row[12]
   end
@@ -115,7 +115,7 @@ CSV.foreach(Rails.root.join("vehicles.csv"), headers: true) do |row|
     vehicle.traction_control             = row[38]
     vehicle.power_steering               = row[39]
     
-    if vehicle.dealership_id.nil?
+    # if vehicle.dealership_id.nil?
       vehicle.street_address             = row[40]
       vehicle.apartment                  = row[41]
       vehicle.city                       = row[42]
@@ -123,14 +123,14 @@ CSV.foreach(Rails.root.join("vehicles.csv"), headers: true) do |row|
       vehicle.latitude                   = row[44]
       vehicle.longitude                  = row[45]
     
-    else
-      vehicle.street_address             = vehicle.dealership.street_address
-      vehicle.apartment                  = vehicle.dealership.building
-      vehicle.city                       = vehicle.dealership.city
-      vehicle.state                      = vehicle.dealership.state
-      vehicle.latitude                   = vehicle.dealership.latitude
-      vehicle.longitude                  = vehicle.dealership.longitude
-    end
+    # else
+    #   vehicle.street_address             = vehicle.dealership.street_address
+    #   vehicle.apartment                  = vehicle.dealership.building
+    #   vehicle.city                       = vehicle.dealership.city
+    #   vehicle.state                      = vehicle.dealership.state
+    #   vehicle.latitude                   = vehicle.dealership.latitude
+    #   vehicle.longitude                  = vehicle.dealership.longitude
+    # end
     
     vehicle.ad_url                       = row[46]
     vehicle.created_at                   = row[47]
@@ -165,7 +165,7 @@ CSV.foreach(Rails.root.join("photos.csv"), headers: true) do |row|
   Photo.create! do |photo|
     photo.id            = row[0]
     photo.vehicle_id    = row[1]
-    photo.image         = open(row[2])
+    photo.image         = open(row[2]) unless row[2].nil?
     photo.last_found_at = row[3]
   end
 end

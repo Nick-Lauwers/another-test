@@ -240,37 +240,49 @@ class VehiclesController < ApplicationController
   
   def favorite
     
-    if current_user.favorite_vehicles.exists?(vehicle:  @vehicle,
-                                              is_loved: true)
-      flash[:failure] = "#{ @vehicle.listing_name } has already been added to 
-                         your shortlist!"
-    
-    elsif current_user.favorite_vehicles.exists?(vehicle: @vehicle)
+    if !current_user.favorite_vehicles.exists?(vehicle: @vehicle)
+      current_user.favorites << @vehicle 
+    end
+      
+    if params[:is_loved] == "true"
       
       current_user.
-        favorite_vehicles.
-        where(vehicle: @vehicle).
-        first.
-        update_attribute(:is_loved, true)
-        
-      flash[:success] = "#{ @vehicle.listing_name } was added to your 
-                         shortlist!"
+      favorite_vehicles.
+      where(vehicle: @vehicle).
+      first.
+      update_attributes(is_loved: true, is_liked: false, is_disliked: false)
     
+      flash[:success] = "#{ @vehicle.listing_name } has been added to your 
+                         shortlist!"
+      
+      redirect_to shortlist_user_path
+                         
+    elsif params[:is_liked] == "true"
+      
+      current_user.
+      favorite_vehicles.
+      where(vehicle: @vehicle).
+      first.
+      update_attributes(is_loved: false, is_liked: true, is_disliked: false)
+      
+      flash[:success] = "#{ @vehicle.listing_name } has been added to your 
+                         shortlist!"
+      
+      redirect_to shortlist_user_path
+                         
     else
       
-      current_user.favorites << @vehicle
-      
       current_user.
-        favorite_vehicles.
-        where(vehicle: @vehicle).
-        first.
-        update_attribute(:is_loved, true)
-        
-      flash[:success] = "#{ @vehicle.listing_name } was added to your 
-                         shortlist!"
+      favorite_vehicles.
+      where(vehicle: @vehicle).
+      first.
+      update_attributes(is_loved: false, is_liked: false, is_disliked: true)
+      
+      flash[:failure] = "#{ @vehicle.listing_name } will be removed from your
+                         feed." 
+                         
+      redirect_to @vehicle
     end
-    
-    redirect_to :back
   end
   
   def sold

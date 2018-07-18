@@ -12,7 +12,15 @@
 
 <%= render 'layouts/contact' %>
 
-<%= render 'layouts/modal_special_offer' %>
+<%= render 'modal_filters' %>
+
+<!--<div class="modal" id="modal-special-offer-desktop" role="dialog">-->
+<!--  <(perc)= render "layouts/modal_special_offer_desktop" %>-->
+<!--</div>-->
+
+<!--<div class="modal" id="modal-special-offer-mobile" role="dialog">-->
+<!--  <(perc)= render "layouts/modal_special_offer_mobile" %>-->
+<!--</div>-->
 
 <div class="search-summary hidden-xs">
   <div class="search-summary-content">
@@ -107,8 +115,8 @@
                       
                       Newest Listings 
                       
-                      <% if params[:city].present? %>
-                        - <%= params[:city] %>
+                      <% if @filterrific.with_city.present? %>
+                        - <%= @filterrific.with_city %>
                       <% end %>
                     </span>
                   </div>
@@ -272,27 +280,41 @@
 
 <div class="search-nav-mobile visible-xs">
 
-    <div class="search-nav-grid search-nav-grid-inactive">
-      <i class="fa 
-                fa-th-large 
-                search-nav-grid-icon 
-                search-nav-grid-icon-inactive" 
-         aria-hidden="true"></i> 
-    </div>
-    
-    <div class="search-nav-map search-nav-map-inactive">
-      <i class="fa 
-                fa-map 
-                search-nav-map-icon
-                search-nav-map-icon-inactive" 
-         aria-hidden="true"></i> 
-    </div>
+  <div class="search-nav-grid search-nav-grid-active">
+    <i class="fa 
+              fa-lg
+              fa-th-large 
+              search-nav-grid-icon 
+              search-nav-grid-icon-active" 
+       aria-hidden="true"></i> 
+  </div>
+  
+  <div class="search-nav-map search-nav-map-inactive">
+    <i class="fa 
+              fa-lg
+              fa-map-marker 
+              search-nav-map-icon
+              search-nav-map-icon-inactive" 
+       aria-hidden="true"></i> 
   </div>
 </div>
+
+<script>
+  fbq('track', 'Search');
+</script>
 
 <script type="text/javascript">
   $(document).ready(function() {
     
+    // search results height
+      
+      var searchResults           = $('.search-results');
+      var searchResultsBackground = $('.search-results-background');
+      
+      if ( $(window).width() <= 768 ) {    
+        searchResults.height(searchResultsBackground.outerHeight() + 50);
+      }
+      
     // search map
       
       var hoverMarkerIcon = {
@@ -311,6 +333,7 @@
           scrollwheel:       false,
           mapTypeControl:    false,
           streetViewControl: false,
+          clickableIcons:    false,
 
           zoomControlOptions: {
             position: google.maps.ControlPosition.TOP_LEFT
@@ -383,8 +406,14 @@
           id: 'search-map'
         }
       }, function() {
-            
-        markers = handler.addMarkers(<%=raw @hash.to_json %>);
+        
+        if ( $(window).width() > 768 ) {    
+          markers = handler.addMarkers(<%= raw @hash.to_json %>, 
+                                       { clickable: false }) } 
+        
+        else {
+          markers = handler.addMarkers(<%= raw @hash.to_json %>, 
+                                       { clickable: true }) }
         
         _.each(<%=raw @hash.to_json %>, function(json, index) {
           var hoverMarker = {};
@@ -414,33 +443,57 @@
       
     // filters
     
-      var filtersButton        = $('.btn-filters');
-      var cancelButton         = $('.btn-cancel-filters');
-      var searchFilters        = $('.search-filters');
-      var searchItemsContainer = $('.search-items-container')
+      var filtersButton           = $('.btn-filters');
+      var modalFilters            = $('#modal-filters');
+      var cancelButton            = $('.btn-cancel-filters');
+      var searchFilters           = $('.search-filters');
+      var searchItemsContainer    = $('.search-items-container');
+      var modalFiltersHeaderClose = $('.modal-filters-header-close');
   
       filtersButton.click(function() {
-        searchFilters.slideToggle();
-        searchItemsContainer.slideToggle();
-      });
-      
-      cancelButton.click(function() {
-        searchFilters.slideToggle();
-        searchItemsContainer.slideToggle();
+        
+        if ( $(window).width() > 768 ) { 
+          
+          searchFilters.slideToggle();
+          searchItemsContainer.slideToggle();
+          
+          cancelButton.click(function() {
+            searchFilters.slideToggle();
+            searchItemsContainer.slideToggle();
+          });
+        } 
+        
+        else {
+          
+          modalFilters.modal('show');
+          
+          modalFiltersHeaderClose.click(function() {
+            modalFilters.modal('hide');
+          }); 
+        }
       });
     
     // sliders
     
-      var priceSlider        = $('#price_slider');
-      var mileageSlider      = $('#mileage_slider');
-      var yearSlider         = $('#year_slider');
-      var priceSliderValue   = $('#price_slider_val');
-      var mileageSliderValue = $('#mileage_slider_val');
-      var yearSliderValue    = $('#year_slider_val');
+      var priceSlider             = $('#price_slider');
+      var mileageSlider           = $('#mileage_slider');
+      var yearSlider              = $('#year_slider');
+      var priceSliderModal        = $('#price_slider_modal');
+      var mileageSliderModal      = $('#mileage_slider_modal');
+      var yearSliderModal         = $('#year_slider_modal');
+      var priceSliderValue        = $('#price_slider_val');
+      var mileageSliderValue      = $('#mileage_slider_val');
+      var yearSliderValue         = $('#year_slider_val');
+      var priceSliderValueModal   = $('#price_slider_val_modal');
+      var mileageSliderValueModal = $('#mileage_slider_val_modal');
+      var yearSliderValueModal    = $('#year_slider_val_modal');
       
       priceSlider.slider();
       mileageSlider.slider();
       yearSlider.slider();
+      priceSliderModal.slider();
+      mileageSliderModal.slider();
+      yearSliderModal.slider();
       
       priceSlider.on('slide', function(slideEvt) {
       	priceSliderValue.text('$' + slideEvt.value);
@@ -451,6 +504,15 @@
       yearSlider.on('slide', function(slideEvt) {
       	yearSliderValue.text(slideEvt.value);
       });
+      priceSliderModal.on('slide', function(slideEvt) {
+      	priceSliderValueModal.text('$' + slideEvt.value);
+      });
+      mileageSliderModal.on('slide', function(slideEvt) {
+      	mileageSliderValueModal.text(slideEvt.value + ' km');
+      });
+      yearSliderModal.on('slide', function(slideEvt) {
+      	yearSliderValueModal.text(slideEvt.value);
+      });
       
       priceSlider.on('slideStop', function(slideEvt) {
       	priceSliderValue.text('$' + slideEvt.value);
@@ -460,6 +522,15 @@
       });
       yearSlider.on('slideStop', function(slideEvt) {
       	yearSliderValue.text(slideEvt.value);
+      });
+      priceSliderModal.on('slideStop', function(slideEvt) {
+      	priceSliderValueModal.text('$' + slideEvt.value);
+      });
+      mileageSliderModal.on('slideStop', function(slideEvt) {
+      	mileageSliderValueModal.text(slideEvt.value + ' km');
+      });
+      yearSliderModal.on('slideStop', function(slideEvt) {
+      	yearSliderValueModal.text(slideEvt.value);
       });
   });
 </script>

@@ -30,7 +30,7 @@
             
           <div class="row vertical-align">
               
-            <div class="col-md-2">
+            <div class="col-md-2 hidden-xs">
               <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/matches.png",
                             class: "matches-introduction-image") %>
             </div>
@@ -43,9 +43,8 @@
                 </span>
             
                 <span class="matches-introduction-info">
-                  <%= current_user.first_name %>, we’ve grouped the vehicles 
-                  near your location based on how well they match your 
-                  preferences.
+                  <%= current_user.first_name %>, we’ve grouped vehicles near 
+                  your location based on how well they match your preferences.
                 </span>
               </div>
             </div>

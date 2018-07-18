@@ -107,51 +107,29 @@ class UsersController < ApplicationController
                                      current_user.id, 
                                      Time.now)
     
-    @shortlist_items = current_user.favorite_vehicles.where(is_loved: true)
+    @loved_items = current_user.favorite_vehicles.where(is_loved: true)
+    
+    @liked_items = current_user.favorite_vehicles.where(is_liked: true)
     
     @vehicles = current_user.favorites
 
-    @vehicles_hash = Gmaps4rails.build_markers(@vehicles) do |vehicle, vehicle_marker|
+    @hash = Gmaps4rails.build_markers(@vehicles) do |vehicle, marker|
       
-      vehicle_marker.lat vehicle.latitude
-      vehicle_marker.lng vehicle.longitude
+      marker.lat vehicle.latitude
+      marker.lng vehicle.longitude
       
-      vehicle_marker.picture({
+      marker.picture({
         url: "https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/map-marker-red.png",
         width:  32,
         height: 32
       })
       
-      vehicle_marker.json({ :id => vehicle.id })
+      marker.infowindow render_to_string(partial: "vehicles/map_item",
+                                         object:  vehicle,
+                                         as:      :vehicle)
+      
+      marker.json({ :id => vehicle.id })
     end
-    
-    # @test_drives_hash = Gmaps4rails.build_markers(@test_drives) do |test_drive, test_drive_marker|
-      
-    #   test_drive_marker.lat test_drive.vehicle.latitude
-    #   test_drive_marker.lng test_drive.vehicle.longitude
-      
-    #   test_drive_marker.picture({
-    #     url: "https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/map-marker-red.png",
-    #     width:  32,
-    #     height: 32
-    #   })
-      
-    #   test_drive_marker.json({ :id => test_drive.id })
-    # end
-    
-    # @purchases_hash = Gmaps4rails.build_markers(@purchases) do |purchase, purchase_marker|
-      
-    #   purchase_marker.lat purchase.vehicle.latitude
-    #   purchase_marker.lng purchase.vehicle.longitude
-      
-    #   purchase_marker.picture({
-    #     url: "https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/map-marker-red.png",
-    #     width:  32,
-    #     height: 32
-    #   })
-      
-    #   purchase_marker.json({ :id => purchase.id })
-    # end
   end
   
   def payment
