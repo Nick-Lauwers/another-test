@@ -345,3 +345,11 @@ end
 #                                                     date:       Faker::Date.forward(10)) }
 # vehicle1s.each { |vehicle1| user2.appointments.create!(vehicle_id: vehicle1.id,
 #                                                     date:       Faker::Date.forward(10)) }
+
+# User.create(first_name: "Leslie", last_name: "Young", email: "leslie@davisgmc.com", password: "98391003", password_confirmation: "98391003", avatar: open("https://randomuser.me/api/portraits/women/23.jpg"), dealership_id: 3)
+# User.create(first_name: "Matt", last_name: "Graves", email: "matt@royalauto.com", password: "98391004", password_confirmation: "98391004", avatar: open("https://randomuser.me/api/portraits/men/31.jpg"), dealership_id: 4)
+# User.create(first_name: "Nicole", last_name: "Pratt", email: "nicole@sfhonda.com", password: "98391005", password_confirmation: "98391005", avatar: open("https://randomuser.me/api/portraits/women/49.jpg"), dealership_id: 5)
+# User.create(first_name: "Neal", last_name: "Reyes", email: "neal@sftoyota.com", password: "98391006", password_confirmation: "98391006", avatar: open("https://randomuser.me/api/portraits/men/94.jpg"), dealership_id: 6)
+# User.create(first_name: "Deanna", last_name: "Pearson", email: "deanna@sfbenz.com", password: "98391007", password_confirmation: "98391007", avatar: open("https://randomuser.me/api/portraits/women/23.jpg"), dealership_id: 7)
+# User.create(first_name: "Noah", last_name: "Gray", email: "noah@bmwsf.com", password: "98391008", password_confirmation: "98391008", avatar: open("https://randomuser.me/api/portraits/men/85.jpg"), dealership_id: 8)
+# User.create(first_name: "Lindsay", last_name: "Trieu", email: "lindsay@sfnissan.com", password: "98391009", password_confirmation: "98391009", avatar: open("https://randomuser.me/api/portraits/women/2.jpg"), dealership_id: 9)

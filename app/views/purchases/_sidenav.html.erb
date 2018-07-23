@@ -32,7 +32,8 @@
       !@purchase.residence_type.blank? %>
   <div class="post-listing-button">
     <%= link_to submit_purchase_path(@purchase), 
-                method: :put, 
+                method: :put,
+                id:     "btn-submit-purchase",
                 class:  "btn-post-listing" do %>
                           
       <i class="fa fa-thumb-tack fa-lg profile-preview-icon" 
@@ -43,3 +44,12 @@
     <% end %>
   </div>
 <% end %>
+
+<script type="text/javascript">
+  
+  // Facebook
+  
+    $('#btn-submit-purchase').click(function() {
+      fbq('track', 'Purchase');
+    })
+</script>

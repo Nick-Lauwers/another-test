@@ -84,7 +84,8 @@
           
           <% if @vehicle.dealership.present? %>
           
-            <div class="btn-navbar-contact-hidden btn-buy-online">
+            <div id="buy-online-desktop"
+                 class="btn-navbar-contact-hidden btn-buy-online">
               
               <i class="fa fa-shopping-cart listing-navbar-icon" 
                  aria-hidden="true"></i>
@@ -1271,7 +1272,7 @@
                 
                 <td class="shortlist-button">
                   <%= link_to favorite_vehicle_path(@vehicle, is_loved: true),
-                              class: "btn-shortlist",
+                              class: "btn-shortlist add-to-wish-list",
                               method: :put do %>
                     <i class="fa fa-heart-o" aria-hidden="true"></i>
                     Love It!
@@ -1280,7 +1281,7 @@
                 
                 <td class="shortlist-button">
                   <%= link_to favorite_vehicle_path(@vehicle, is_liked: true),
-                              class: "btn-shortlist",
+                              class: "btn-shortlist add-to-wishlist",
                               method: :put do %>
                     <i class="fa fa-check" aria-hidden="true"></i>
                     Maybe
@@ -1565,14 +1566,17 @@
   <div class="row">
     
     <%= link_to favorite_vehicle_path(@vehicle, is_loved: true),
-                class: "col-xs-4 btn-shortlist-nav",
+                class: "col-xs-4 btn-shortlist-nav add-to-wish-list",
                 method: :put do %>
       <i class="fa fa-heart-o btn-shortlist-nav-icon" aria-hidden="true"></i>
       Love It!
     <% end %>
 
     <%= link_to favorite_vehicle_path(@vehicle, is_liked: true),
-                class: "col-xs-4 btn-shortlist-nav btn-shortlist-nav-middle",
+                class: "col-xs-4 
+                        btn-shortlist-nav 
+                        btn-shortlist-nav-middle
+                        add-to-wish-list",
                 method: :put do %>
       <i class="fa fa-check btn-shortlist-nav-icon" aria-hidden="true"></i>
       Maybe
@@ -1660,6 +1664,7 @@
 <!--</div>-->
 
 <script type="text/javascript">
+
   $(document).ready(function() {
     
     // rating

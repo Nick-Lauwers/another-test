@@ -6,15 +6,32 @@
   <div class="search-item-image">
     
     <%= link_to vehicle, target: "_blank" do %>
-      <div class="search-item-image-content", 
-           style="background-image: url('<%= vehicle.photos[0].image.url() if 
-                                             vehicle.photos.length > 0 %>')">
-        
-      </div>
+      
+      <% if vehicle.dealership_id == 4 %>
+        <div class="search-item-image-content", 
+             style="background-image: url('<%= vehicle.photos.last.image.url() if 
+                                               vehicle.photos.last.present? %>')">
+        </div>
+      
+      <% elsif vehicle.dealership_id == 5 || vehicle.dealership_id == 6 ||
+            vehicle.dealership_id == 7 %>
+        <div class="search-item-image-content", 
+             style="background-image: url('<%= vehicle.photos.second.image.url() if 
+                                               vehicle.photos.second.present? %>')">
+        </div>
+      
+      <% else %>
+        <div class="search-item-image-content", 
+             style="background-image: url('<%= vehicle.photos[0].image.url() if 
+                                               vehicle.photos.length > 0 %>')">
+          
+        </div>
+      <% end %>
     <% end %>
     
     <%= link_to favorite_vehicle_path(vehicle), 
-              method: :put do %>
+              method: :put,
+              class: "add-to-wish-list" do %>
       <i class="fa fa-2x fa-heart-o wish-list-icon" aria-hidden="true"></i>
     <% end %>
     
@@ -58,22 +75,30 @@
         <div class="search-item-user-content">
           
           <% if vehicle.user.present? %>
-            <div class="avatar-and-online">
+            <!--<div class="avatar-and-online">-->
             
               <div class="search-item-avatar avatar-general", 
                    style="background-image: url(
                          '<%= vehicle.user.avatar.url(:thumb) %>')">
               </div>
           
-              <% if vehicle.user.online? %>
-                <div class="online online-lg-primary hidden-xs"></div>
-              <% end %>
-            </div>
+              <!--<(perc) if vehicle.user.online? %>-->
+              <!--  <div class="online online-lg-primary hidden-xs"></div>-->
+              <!--<(perc) end %>-->
+            <!--</div>-->
           
           <% else %>
-            <div class="search-item-avatar avatar-general", 
-                 style="background-image: url(
-                       '<%= vehicle.dealership.photo.url() %>')">
+            <div class="avatar-verified">
+              
+              <div class="search-item-avatar avatar-general", 
+                   style="background-image: url(
+                         '<%= vehicle.dealership.users.sample(1).first.avatar.url(:thumb) %>')">
+              </div>
+              
+              <div class="verified-check">
+                <i class="fa fa-check verified-check-icon" 
+                   aria-hidden="true"></i>
+              </div>
             </div>
           <% end %>
         </div>
@@ -83,16 +108,7 @@
         <div class="search-item-info">
         
           <span class="search-item-title">
-            
-            $<%= vehicle.actual_price %> |
-            
-            <% if vehicle.listing_name.present? %>
-              <%= vehicle.listing_name %>
-              
-            <% else %>
-              <%= vehicle.year %> <% vehicle.vehicle_make.name %>
-              <%= vehicle.vehicle_model.name %>
-            <% end %>
+            $<%= vehicle.actual_price %> | <%= vehicle.listing_name %>
           </span>
 
           <div id="average-rating-search-item-<%= vehicle.id %>", 
@@ -178,6 +194,7 @@
 </li>
 
 <script type="text/javascript">
+
   $(document).ready(function() {
     
     // rating

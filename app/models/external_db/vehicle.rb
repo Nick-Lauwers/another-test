@@ -16,6 +16,7 @@ module ExternalDb
         electronic_stability security_system traction_control power_steering ad_url].each do |f|
           v.send("#{f}=", send(f))
         end
+        v.listing_name = "#{year} #{make} #{model}"
         v.actual_price = price
         v.created_at = created
         v.posted_at = created

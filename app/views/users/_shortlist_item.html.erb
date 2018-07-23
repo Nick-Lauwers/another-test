@@ -4,11 +4,27 @@
   <div class="search-item-image">
     
     <%= link_to shortlist_item.vehicle, target: "_blank" do %>
-      <div class="search-item-image-content", 
-           style="background-image: url('<%= shortlist_item.vehicle.photos[0].image.url() if 
-                                             shortlist_item.vehicle.photos.length > 0 %>')">
-        
-      </div>
+    
+      <% if shortlist_item.vehicle.dealership_id == 4 %>
+        <div class="search-item-image-content", 
+             style="background-image: url('<%= shortlist_item.vehicle.photos.last.image.url() if 
+                                               shortlist_item.vehicle.photos.last.present? %>')">
+        </div>
+      
+      <% elsif shortlist_item.vehicle.dealership_id == 5 || shortlist_item.vehicle.dealership_id == 6 ||
+               shortlist_item.vehicle.dealership_id == 7 %>
+        <div class="search-item-image-content", 
+             style="background-image: url('<%= shortlist_item.vehicle.photos.second.image.url() if 
+                                               shortlist_item.vehicle.photos.second.present? %>')">
+        </div>
+      
+      <% else %>
+        <div class="search-item-image-content", 
+             style="background-image: url('<%= shortlist_item.vehicle.photos[0].image.url() if 
+                                               shortlist_item.vehicle.photos.length > 0 %>')">
+          
+        </div>
+      <% end %>
     <% end %>
     
     <!--<(perc)= link_to favorite_vehicle_path(vehicle), -->
@@ -43,7 +59,7 @@
         <div class="search-item-user-content">
           
           <% if shortlist_item.vehicle.user.present? %>
-            <div class="avatar-and-online">
+            <!--<div class="avatar-and-online">-->
             
               <div class="search-item-avatar avatar-general", 
                    style="background-image: url(
@@ -54,21 +70,25 @@
                                 url(:thumb) %>')">
               </div>
           
-              <% if shortlist_item.vehicle.user.online? %>
-                <div class="online 
-                            online-lg-primary 
-                            hidden-xs"></div>
-              <% end %>
-            </div>
+            <!--  <(perc) if shortlist_item.vehicle.user.online? %>-->
+            <!--    <div class="online -->
+            <!--                online-lg-primary -->
+            <!--                hidden-xs"></div>-->
+            <!--  <(perc) end %>-->
+            <!--</div>-->
           
           <% else %>
-            <div class="search-item-avatar avatar-general", 
-                 style="background-image: url(
-                       '<%= shortlist_item.
-                              vehicle.
-                              dealership.
-                              photo.
-                              url() %>')">
+            <div class="avatar-verified">
+              
+              <div class="search-item-avatar avatar-general", 
+                   style="background-image: url(
+                         '<%= shortlist_item.dealership.users.sample(1).first.avatar.url(:thumb) %>')">
+              </div>
+              
+              <div class="verified-check">
+                <i class="fa fa-check verified-check-icon" 
+                   aria-hidden="true"></i>
+              </div>
             </div>
           <% end %>
         </div>
