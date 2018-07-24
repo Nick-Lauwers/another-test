@@ -6,7 +6,8 @@ module ExternalDb
     def sync_to_vehicle
       ::Vehicle.where(scraped_id: id).first_or_initialize.tap do |v|
         v.vehicle_make_name = make
-        v.dealership = source.sync_to_dealership
+        v.dealership = ::Dealership.where(scraped_id: source_id).first
+        # v.dealership = source.sync_to_dealership
         v.vehicle_model_name = model
         %i[msrp year mileage mileage_numeric body_style engine exterior
         interior fuel_type transmission drivetrain stock_number vin trim_details
