@@ -7,14 +7,14 @@
     
     <%= link_to vehicle, target: "_blank" do %>
       
-      <% if vehicle.dealership_id == 6 %>
+      <% if vehicle.dealership_id == 4 %>
         <div class="search-item-image-content", 
              style="background-image: url('<%= vehicle.photos.last.image.url() if 
                                                vehicle.photos.last.present? %>')">
         </div>
       
-      <% elsif vehicle.dealership_id == 7 || vehicle.dealership_id == 8 ||
-            vehicle.dealership_id == 9 %>
+      <% elsif vehicle.dealership_id == 5 || vehicle.dealership_id == 6 ||
+            vehicle.dealership_id == 7 %>
         <div class="search-item-image-content", 
              style="background-image: url('<%= vehicle.photos.second.image.url() if 
                                                vehicle.photos.second.present? %>')">

@@ -2,14 +2,22 @@ module ExternalDb
   class Vehicle < Record
     self.table_name = 'vehicle'
     belongs_to :source
+    has_many :photos
 
     def sync_to_vehicle
-      if ( vehicle_type_id == 1 || vehicle_type_id.nil? )
+      if ( vehicle_type_id.nil? || vehicle_type_id == 1 )
         ::Vehicle.where(scraped_id: id).first_or_initialize.tap do |v|
-          v.vehicle_make_name = make
+          
           v.dealership = ::Dealership.where(scraped_id: source_id).first
-          # v.dealership = source.sync_to_dealership
+          v.vehicle_make_name = make
           v.vehicle_model_name = model
+          v.listing_name = "#{year} #{make} #{model}"
+          v.actual_price = price
+          v.created_at = created
+          v.posted_at = created
+          v.bumped_at = created
+          v.last_found_at = last_found
+          
           %i[msrp year mileage mileage_numeric body_style engine exterior
           interior fuel_type transmission drivetrain stock_number vin trim_details
           description description_clean air_conditioning power_windows remote_keyless_entry
@@ -18,14 +26,6 @@ module ExternalDb
           electronic_stability security_system traction_control power_steering ad_url].each do |f|
             v.send("#{f}=", send(f))
           end
-          v.listing_name = "#{year} #{make} #{model}"
-          v.actual_price = price
-          v.created_at = created
-          v.posted_at = created
-          v.bumped_at = created
-          v.last_found_at = last_found
-          
-          update_score(v)
           
           normalized_vehicle_make_name  = make.downcase.gsub(/[^0-9a-z]/, '')
           normalized_vehicle_model_name = model.downcase.gsub(/[^0-9a-z]/, '')
@@ -42,6 +42,8 @@ module ExternalDb
               end
             end
           end
+          
+          update_score(v)
           
           v.save
         end

@@ -5,14 +5,14 @@
     
     <%= link_to feed_item, target: "_blank" do %>
     
-      <% if feed_item.dealership_id == 6 %>
+      <% if feed_item.dealership_id == 4 %>
         <div class="feed-item-image-content", 
              style="background-image: url('<%= feed_item.photos.last.image.url() if 
                                                feed_item.photos.last.present? %>')">
         </div>
       
-      <% elsif feed_item.dealership_id == 7 || feed_item.dealership_id == 8 ||
-               feed_item.dealership_id == 9 %>
+      <% elsif feed_item.dealership_id == 5 || feed_item.dealership_id == 6 ||
+               feed_item.dealership_id == 7 %>
         <div class="feed-item-image-content", 
              style="background-image: url('<%= feed_item.photos.second.image.url() if 
                                                feed_item.photos.second.present? %>')">
