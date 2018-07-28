@@ -1,5 +1,6 @@
 module ExternalDb
   class Source < Record
+    
     self.table_name = 'source'
     has_many :vehicles
 

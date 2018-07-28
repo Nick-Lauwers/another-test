@@ -6,65 +6,79 @@ module ExternalDb
     has_many :photos
 
     def sync_to_vehicle
-      if ( vehicle_type_id.nil? || vehicle_type_id == 1 )
+      
+      if ( vehicle_type_id.nil? || vehicle_type_id == 1 ) &&
+         ( last_found >= 1.day.ago )
         ::Vehicle.where(scraped_id: id).first_or_initialize.tap do |v|
           
-          v.dealership = ::Dealership.where(scraped_id: source_id).first
-          v.vehicle_make_name = make
+          v.dealership         = ::Dealership.where(scraped_id: source_id).first
+          v.vehicle_make_name  = make
           v.vehicle_model_name = model
-          v.listing_name = "#{year} #{make} #{model}"
-          v.actual_price = price
-          v.created_at = created
-          v.posted_at = created
-          v.bumped_at = created
-          v.last_found_at = last_found
+          v.listing_name       = "#{year} #{make} #{model}"
+          v.actual_price       = price
+          v.created_at         = created
+          v.posted_at          = created
+          v.bumped_at          = created
+          v.last_found_at      = last_found
           
-          %i[msrp year mileage mileage_numeric body_style engine exterior
-          interior fuel_type transmission drivetrain stock_number vin trim_details
-          description description_clean air_conditioning power_windows remote_keyless_entry
-          speed_control am_fm_radio wireless_phone_connectivity fully_automatic_headlights
-          variably_intermittent_wipers abs_brakes brake_assist dual_front_impact_airbags
-          electronic_stability security_system traction_control power_steering ad_url].each do |f|
+          %i[ msrp year mileage mileage_numeric body_style engine exterior
+              interior fuel_type transmission drivetrain stock_number vin 
+              trim_details description description_clean air_conditioning 
+              power_windows remote_keyless_entry speed_control am_fm_radio 
+              wireless_phone_connectivity fully_automatic_headlights 
+              variably_intermittent_wipers abs_brakes brake_assist 
+              dual_front_impact_airbags electronic_stability security_system 
+              traction_control power_steering ad_url ].each do |f|
             v.send("#{f}=", send(f))
           end
           
-          normalized_vehicle_make_name  = make.downcase.gsub(/[^0-9a-z]/, '')
-          normalized_vehicle_model_name = model.downcase.gsub(/[^0-9a-z]/, '')
-          
-          VehicleMake.all.each do |vehicle_make|
-            if vehicle_make.name.downcase.gsub(/[^0-9a-z]/, '').in?(normalized_vehicle_make_name)
-              
-              v.vehicle_make = vehicle_make
-              
-              VehicleModel.all.each do |vehicle_model|
-                if vehicle_model.name.downcase.gsub(/[^0-9a-z]/, '').in?normalized_vehicle_model_name
-                  v.vehicle_model = vehicle_model
-                end
-              end
-            end
-          end
-          
+          update_make_model_id(v)
           update_score(v)
-          
           v.save
+        end
+        
+      elsif ( vehicle_type_id.nil? || vehicle_type_id == 1 )
+        if ::Vehicle.where(scraped_id: id).exists?
+          ::Vehicle.where(scraped_id: id).first.destroy
         end
       end
     end
     
-    def update_score(v)
+    # Update make and model ids
+    def update_make_model_id(vehicle)
       
-      # Listing location is an exact address
+      normalized_make  = make.downcase.gsub(/[^0-9a-z]/, '')
+      normalized_model = model.downcase.gsub(/[^0-9a-z]/, '')
+          
+      VehicleMake.all.each do |vehicle_make|
+        if vehicle_make.name.downcase.gsub(/[^0-9a-z]/, '').in?(normalized_make)
+          
+          vehicle.vehicle_make = vehicle_make
+          
+          VehicleModel.all.each do |vehicle_model|
+            if vehicle_model.name.downcase.gsub(/[^0-9a-z]/, '').in?normalized_model
+              vehicle.vehicle_model = vehicle_model
+            end
+          end
+        end
+      end
+    end
+    
+    # Update listing score
+    def update_score(vehicle)
+      
+      # Listing location is an exact address.
       location_score = 100
       
       # Features are properly noted.
-      if v.air_conditioning || v.power_windows || 
-         v.remote_keyless_entry || v.speed_control || 
-         v.am_fm_radio || v.wireless_phone_connectivity ||
-         v.fully_automatic_headlights || 
-         v.variably_intermittent_wipers || v.abs_brakes ||
-         v.brake_assist || v.dual_front_impact_airbags ||
-         v.electronic_stability || v.security_system ||
-         v.traction_control || v.power_steering
+      if vehicle.air_conditioning || vehicle.power_windows || 
+         vehicle.remote_keyless_entry || vehicle.speed_control || 
+         vehicle.am_fm_radio || vehicle.wireless_phone_connectivity ||
+         vehicle.fully_automatic_headlights || 
+         vehicle.variably_intermittent_wipers || vehicle.abs_brakes ||
+         vehicle.brake_assist || vehicle.dual_front_impact_airbags ||
+         vehicle.electronic_stability || vehicle.security_system ||
+         vehicle.traction_control || vehicle.power_steering
         features_score = 100
         
       else
@@ -74,16 +88,16 @@ module ExternalDb
       # Specifications are properly noted.
       spec_score = 0
       
-      spec_score += 1 if v.interior.present?
-      spec_score += 1 if v.exterior.present?
-      spec_score += 1 if v.transmission.present?
-      spec_score += 1 if v.fuel_type.present?
-      spec_score += 1 if v.drivetrain.present?
+      spec_score += 1 if vehicle.interior.present?
+      spec_score += 1 if vehicle.exterior.present?
+      spec_score += 1 if vehicle.transmission.present?
+      spec_score += 1 if vehicle.fuel_type.present?
+      spec_score += 1 if vehicle.drivetrain.present?
       
-      spec_score = (100/5)*spec_score
+      spec_score = 20 * spec_score
       
       # VIN has been properly noted.
-      if v.vin.present?
+      if vehicle.vin.present?
         vin_score = 100
       else
         vin_score = 0
@@ -103,9 +117,9 @@ module ExternalDb
       # Seller has several positive reviews.
       
       # Listing was recently posted or bumped.
-      if v.bumped_at <= 1.day.ago
+      if vehicle.bumped_at >= 1.day.ago
         recently_posted_score = 100
-      elsif v.bumped_at <= 3.days.ago
+      elsif vehicle.bumped_at >= 3.days.ago
         recently_posted_score = 67
       else
         recently_posted_score = 33
@@ -129,53 +143,45 @@ module ExternalDb
       many_listings_score = 100
       
       # Calculate overall score.
-      overall_score = ( location_score + features_score + 
-                        spec_score + vin_score + 
-                        certified_dealer_score +
-                        direct_listing_score +
-                        test_drive_score + ( 3 * photos_score ) +
+      overall_score = ( location_score + features_score + spec_score + 
+                        vin_score + certified_dealer_score +
+                        direct_listing_score + test_drive_score + 
+                        ( 3 * photos_score ) +
                         # score.reviews_score + 
-                        recently_posted_score + 
-                        many_listings_score ) / 12
+                        ( 2 * recently_posted_score ) + 
+                        many_listings_score ) / 13
       
-      if v.listing_score.present?
-        v.listing_score.update_attributes(location_score:   
-                                            location_score,
-                                          features_score:   
-                                            features_score,
-                                          spec_score:    spec_score,
-                                          vin_score:     vin_score,
-                                          certified_dealer_score:
-                                            certified_dealer_score,
-                                          direct_listing_score:
-                                            direct_listing_score,
-                                          test_drive_score: 
-                                            test_drive_score,
-                                          photos_score:  photos_score,
-                                          # reviews_score: reviews_score,
-                                          recently_posted_score:
-                                            recently_posted_score,
-                                          many_listings_score:
-                                            many_listings_score,
-                                          overall_score: overall_score)
+      if vehicle.listing_score.present?
+        vehicle.listing_score.update_attributes(
+          location_score:         location_score,
+          features_score:         features_score,
+          spec_score:             spec_score,
+          vin_score:              vin_score,
+          certified_dealer_score: certified_dealer_score,
+          direct_listing_score:   direct_listing_score,
+          test_drive_score:       test_drive_score,
+          photos_score:           photos_score,
+          # reviews_score:        reviews_score,
+          recently_posted_score:  recently_posted_score,
+          many_listings_score:    many_listings_score,
+          overall_score:          overall_score
+        )
       
       else                             
-        v.build_listing_score(location_score:   location_score, 
-                              features_score:   features_score,
-                              spec_score:       spec_score, 
-                              vin_score:        vin_score, 
-                              certified_dealer_score: 
-                                certified_dealer_score,
-                              direct_listing_score: 
-                                direct_listing_score,
-                              test_drive_score: test_drive_score, 
-                              photos_score:     photos_score,
-                              # reviews_score:    reviews_score, 
-                              recently_posted_score: 
-                                recently_posted_score,
-                              many_listings_score: 
-                                many_listings_score, 
-                              overall_score:    overall_score)
+        vehicle.build_listing_score(
+          location_score:         location_score, 
+          features_score:         features_score,
+          spec_score:             spec_score, 
+          vin_score:              vin_score, 
+          certified_dealer_score: certified_dealer_score,
+          direct_listing_score:   direct_listing_score,
+          test_drive_score:       test_drive_score, 
+          photos_score:           photos_score,
+          # reviews_score:        reviews_score, 
+          recently_posted_score:  recently_posted_score,
+          many_listings_score:    many_listings_score, 
+          overall_score:          overall_score
+        )
       end
     end
   end
