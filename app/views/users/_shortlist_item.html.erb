@@ -12,7 +12,7 @@
         </div>
       
       <% elsif shortlist_item.vehicle.dealership_id == 5 || shortlist_item.vehicle.dealership_id == 6 ||
-               shortlist_item.vehicle.dealership_id == 7 %>
+               shortlist_item.vehicle.dealership_id == 7 || vehicle.dealership_id == 8 %>
         <div class="search-item-image-content", 
              style="background-image: url('<%= shortlist_item.vehicle.photos.second.image.url() if 
                                                shortlist_item.vehicle.photos.second.present? %>')">

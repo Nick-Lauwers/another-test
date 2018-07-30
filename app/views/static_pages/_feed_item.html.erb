@@ -12,7 +12,7 @@
         </div>
       
       <% elsif feed_item.dealership_id == 5 || feed_item.dealership_id == 6 ||
-               feed_item.dealership_id == 7 %>
+               feed_item.dealership_id == 7 || vehicle.dealership_id == 8 %>
         <div class="feed-item-image-content", 
              style="background-image: url('<%= feed_item.photos.second.image.url() if 
                                                feed_item.photos.second.present? %>')">
