@@ -1,4 +1,4 @@
-<% provide(:title, "Personalized Search") %>
+<% provide(:title, "Matches") %>
 
 <header class="header-static-gray">
   <%= render 'layouts/header_secondary' %>
@@ -12,97 +12,164 @@
 
 <div class="search-parameter">
   
+  <div class="search-parameter-progress-bar">
+    
+    <div class="search-parameter-complete">
+      
+      <%= link_to style_personalized_search_path do %>
+        <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/style.png",
+                      class: "search-parameter-icon
+                              search-parameter-icon-start") %>
+      <% end %>   
+      
+      <%= link_to price_personalized_search_path do %>
+        <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/price.png",
+                      class: "search-parameter-icon
+                              search-parameter-icon-end") %>
+      <% end %>
+    </div>
+    
+    <div class="search-parameter-complete">
+      <%= link_to mileage_personalized_search_path do %>
+        <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/mileage.png",
+                      class: "search-parameter-icon
+                              search-parameter-icon-end") %> 
+      <% end %>
+    </div>
+    
+    <div class="search-parameter-complete">
+      <%= link_to year_personalized_search_path do %>
+        <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/year.png",
+                      class: "search-parameter-icon
+                              search-parameter-icon-end") %>  
+      <% end %>
+    </div>
+    
+    <div class="search-parameter-complete">
+      <%= link_to installed_options_personalized_search_path do %>
+        <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/features.png",
+                      class: "search-parameter-icon
+                              search-parameter-icon-end") %>
+      <% end %>
+    </div>
+  </div>
+  
   <h1 class="search-parameter-title">Which options would you like included?</h1>
   
-  <div class="search-parameter-form">
+  <div class="search-parameter-form-large">
     <%= form_for @personalized_search do |f| %>
       
-      <ul class="installed-options-list">
-  
-        <li>
-          <%= f.check_box :air_conditioning %>
-          <%= f.label :air_conditioning, "Air Conditioning" %> 
-        </li>
+      <div class="row">
+                    
+        <div class="col-md-4 installed-option">
+          <%= f.check_box :with_air_conditioning %>
+          <%= f.label :with_air_conditioning, "Air Conditioning" %> 
+        </div>
         
-        <li>
-          <%= f.check_box :power_windows %>
-          <%= f.label :power_windows, "Power Windows" %> 
-        </li>
+        <div class="col-md-4 installed-option">
+          <%= f.check_box :with_power_windows %>
+          <%= f.label :with_power_windows, "Power Windows" %> 
+        </div>
         
-        <li>
-          <%= f.check_box :remote_keyless_entry %>
-          <%= f.label :remote_keyless_entry, "Remote Keyless Entry" %> 
-        </li>
+        <div class="col-md-4 installed-option">
+          <%= f.check_box :with_remote_keyless_entry %>
+          <%= f.label :with_remote_keyless_entry, "Remote Keyless Entry" %> 
+        </div>
+      </div>
+      
+      <div class="row">
         
-        <li>
-          <%= f.check_box :speed_control %>
-          <%= f.label :speed_control, "Speed Control" %>
-        </li>
+        <div class="col-md-4 installed-option">
+          <%= f.check_box :with_speed_control %>
+          <%= f.label :with_speed_control, "Speed Control" %>
+        </div>
         
-        <li>
-          <%= f.check_box :am_fm_radio %>
-          <%= f.label :am_fm_radio, "AM / FM Radio" %> 
-        </li>
+        <div class="col-md-4 installed-option">
+          <%= f.check_box :with_am_fm_radio %>
+          <%= f.label :with_am_fm_radio, "AM / FM Radio" %> 
+        </div>
         
-        <li>
-          <%= f.check_box :wireless_phone_connectivity %>
-          <%= f.label :wireless_phone_connectivity, "Bluetooth" %> 
-        </li>
+        <div class="col-md-4 installed-option">
+          <%= f.check_box :with_wireless_phone_connectivity %>
+          <%= f.label :with_wireless_phone_connectivity, "Bluetooth" %>
+        </div>
+      </div>
+      
+      <div class="row">
         
-        <li>
-          <%= f.check_box :fully_automatic_headlights %>
-          <%= f.label :fully_automatic_headlights, 
-                      "Fully Automatic Headlights" %>       
-        </li>
+        <div class="col-md-4 installed-option">
+          <%= f.check_box :with_fully_automatic_headlights %>
+          <%= f.label :with_fully_automatic_headlights, 
+                      "Fully Automatic Headlights" %> 
+        </div>
         
-        <li>
-          <%= f.check_box :variably_intermittent_wipers %>
-          <%= f.label :variably_intermittent_wipers, 
-                      "Variably Intermittent Wipers" %>          
-        </li>
+        <div class="col-md-4 installed-option">
+          <%= f.check_box :with_variably_intermittent_wipers %>
+          <%= f.label :with_variably_intermittent_wipers, 
+                      "Variably Intermittent Wipers" %>  
+        </div>
         
-        <li>
-          <%= f.check_box :abs_brakes %>
-          <%= f.label :abs_brakes, "ABS Brakes" %> 
-        </li>
+        <div class="col-md-4 installed-option">
+          <%= f.check_box :with_abs_brakes %>
+          <%= f.label :with_abs_brakes, "ABS Brakes" %> 
+        </div>
+      </div>
+      
+      <div class="row">
         
-        <li>
-          <%= f.check_box :brake_assist %>
-          <%= f.label :brake_assist, "Brake Assist" %>
-        </li>
+        <div class="col-md-4 installed-option">
+          <%= f.check_box :with_brake_assist %>
+          <%= f.label :with_brake_assist, "Brake Assist" %>
+        </div>
         
-        <li>
-          <%= f.check_box :dual_front_impact_airbags %>
-          <%= f.label :dual_front_impact_airbags, 
-                      "Dual Front Impact Airbags" %> 
-        </li>
+        <div class="col-md-4 installed-option">
+          <%= f.check_box :with_dual_front_impact_airbags %>
+          <%= f.label :with_dual_front_impact_airbags, 
+                      "Dual Front Impact Airbags" %>  
+        </div>
         
-        <li>
-          <%= f.check_box :electronic_stability %>
-          <%= f.label :electronic_stability, "Electronic Stability" %> 
-        </li>
+        <div class="col-md-4 installed-option">
+          <%= f.check_box :with_electronic_stability %>
+          <%= f.label :with_electronic_stability, "Electronic Stability" %> 
+        </div>
+      </div>
+      
+      <div class="row">
         
-        <li>
-          <%= f.check_box :security_system %>
-          <%= f.label :security_system, "Security System" %>       
-        </li>
+        <div class="col-md-4 installed-option">
+          <%= f.check_box :with_security_system %>
+          <%= f.label :with_security_system, "Security System" %> 
+        </div>
         
-        <li>
-          <%= f.check_box :traction_control %>
-          <%= f.label :traction_control, "Traction Control" %>          
-        </li>
+        <div class="col-md-4 installed-option">
+          <%= f.check_box :with_traction_control %>
+          <%= f.label :with_traction_control, "Traction Control" %>  
+        </div>
         
-        <li>
-          <%= f.check_box :power_steering %>
-          <%= f.label :power_steering, "Power Steering" %>          
-        </li>
-      </ul>
-    
-      <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+        <div class="col-md-4 installed-option">
+          <%= f.check_box :with_power_steering %>
+          <%= f.label :with_power_steering, "Power Steering" %>                   
+        </div>
+      </div>
+
+      <%= button_tag(type: "submit",
+                     class: "next-button
+                             personalized-search-button-a") do %>
         
-        Next
+        <div class="personalized-search-button-text">
+          
+          <span class="personalized-search-button-title">
+            Save
+          </span>
+          
+          <span class="personalized-search-button-subtitle">
+            View Results
+            <i class="fa fa-angle-right" aria-hidden="true"></i>
+          </span>
+        </div>
         
-        <i class="fa fa-arrow-right search-parameter-next"></i>
+        <%= image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/matches-next.png",
+                      class: "personalized-search-button-icon") %>
       <% end %>
     <% end %>
   </div>
