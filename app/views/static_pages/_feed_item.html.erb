@@ -218,7 +218,7 @@
         averageRating.raty({
           path:     '/assets',
           readOnly: true,
-          score:    <%= feed_item.google_place_rating %>
+          score:    <%= feed_item.dealership.google_place_rating %>
         });
       
       <% else %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180806212450) do
+ActiveRecord::Schema.define(version: 20180807000922) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -215,7 +215,7 @@ ActiveRecord::Schema.define(version: 20180806212450) do
     t.datetime "photo_updated_at"
     t.integer  "scraped_id"
     t.string   "google_place_id"
-    t.integer  "google_place_rating"
+    t.float    "google_place_rating"
   end
 
   add_index "dealerships", ["user_id"], name: "index_dealerships_on_user_id", using: :btree
@@ -313,6 +313,7 @@ ActiveRecord::Schema.define(version: 20180806212450) do
     t.integer  "dealership_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.float    "rating"
   end
 
   add_index "google_reviews", ["dealership_id"], name: "index_google_reviews_on_dealership_id", using: :btree
