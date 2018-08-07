@@ -7,30 +7,30 @@ module ExternalDb
     def sync_to_dealership 
       if vehicles.where(vehicle_type_id: [nil, 1]).exists?
         
-        # if ::Dealership.where(scraped_id: id).exists?
-        #   ::Dealership.where(scraped_id: id).first.tap do |d|
+        if ::Dealership.where(scraped_id: id).exists?
+          ::Dealership.where(scraped_id: id).first.tap do |d|
             
-        #     d.last_run_start_at = last_run_start
-        #     d.last_run_end_at = last_run_end
-        #     d.last_run_total_records= last_run_total_records
-        #     d.last_run_new_records = last_run_new_records
-        #     d.last_run_duplicate_records = last_run_duplicate_records
-        #     d.last_run_error_records = last_run_error_records
+            d.last_run_start_at = last_run_start
+            d.last_run_end_at = last_run_end
+            d.last_run_total_records= last_run_total_records
+            d.last_run_new_records = last_run_new_records
+            d.last_run_duplicate_records = last_run_duplicate_records
+            d.last_run_error_records = last_run_error_records
             
-        #     if d.google_place_id.present?
+            if d.google_place_id.present?
               
-        #       g = GooglePlaces::Client.
-        #             new(ENV['GOOGLE_API_KEY']).
-        #             spot(d.google_place_id)
+              g = GooglePlaces::Client.
+                    new(ENV['GOOGLE_API_KEY']).
+                    spot(d.google_place_id)
                 
-        #       d.google_place_rating = g.rating
-        #     end
+              d.google_place_rating = g.rating
+            end
             
-        #     d.save
-        #   end
+            d.save
+          end
         
-        # else
-          ::Dealership.where(scraped_id: id).first_or_initialize.tap do |d|
+        else
+          ::Dealership.new(scraped_id: id).tap do |d|
           
             d.scrape_name = scrape_name
             d.last_run_start_at = last_run_start
@@ -75,7 +75,7 @@ module ExternalDb
                                         time:              r.time)
               end
             end
-          # end
+          end
         end
       end
     end

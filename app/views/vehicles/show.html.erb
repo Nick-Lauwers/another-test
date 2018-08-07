@@ -1693,7 +1693,7 @@
         averageRating.raty({
           path:     '/assets',
           readOnly: true,
-          score:    <% @google_reviews.rating %>
+          score:    <% @vehicle.dealership.google_place_rating %>
         });
       
       <% else %> 
