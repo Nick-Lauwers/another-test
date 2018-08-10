@@ -254,7 +254,7 @@ class VehiclesController < ApplicationController
       flash[:success] = "#{ @vehicle.listing_name } has been added to your 
                          shortlist!"
       
-      redirect_to shortlist_user_path
+      redirect_to shortlist_user_path(current_user)
                          
     elsif params[:is_liked] == "true"
       
@@ -267,7 +267,7 @@ class VehiclesController < ApplicationController
       flash[:success] = "#{ @vehicle.listing_name } has been added to your 
                          shortlist!"
       
-      redirect_to shortlist_user_path
+      redirect_to shortlist_user_path(current_user)
                          
     else
       
@@ -289,7 +289,7 @@ class VehiclesController < ApplicationController
     FavoriteVehicle.
       where(vehicle: @vehicle).
       first.
-      update_attributes(is_loved: 'false', is_liked: 'false')
+      update_attributes(is_loved: false, is_liked: false)
     
     flash[:failure] = "#{ @vehicle.listing_name } will be removed from your
                        shortlist." 
