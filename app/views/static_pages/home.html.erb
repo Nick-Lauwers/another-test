@@ -8,10 +8,6 @@
   <%= render 'layouts/header_primary' %>
 </header>
 
-<!--<header class="visible-xs header-fixed-visible">-->
-<!--  <= render 'layouts/header_secondary' %>-->
-<!--</header>-->
-
 <header class="visible-xs header-static-transparent">
   <%= render 'layouts/header_primary' %>
 </header>
@@ -32,15 +28,17 @@
 
 <div class="hidden-xs hero-desktop">
   
-  <div class="hero-desktop-video-container">
-    <video class="hero-desktop-video" 
-           autoplay="autoplay" 
-           loop="loop" 
-           volume="0">
-      <source src="https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/hero-video.mp4" 
-              type="video/mp4">
-    </video>
-  </div>
+  <!--<div class="hero-desktop-video-container">-->
+  <!--  <video class="hero-desktop-video" -->
+  <!--         autoplay="autoplay" -->
+  <!--         loop="loop" -->
+  <!--         volume="0">-->
+  <!--    <source src="https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/hero-video.mp4" -->
+  <!--            type="video/mp4">-->
+  <!--  </video>-->
+  <!--</div>-->
+  
+  <div class="hero-desktop-image"></div>
   
   <div class="hero-desktop-detail">
     
@@ -528,40 +526,6 @@
 
 <%= render 'personalized_searches/form' %>
 
-<!--<div class="press">-->
-  
-<!--  <h3 class="press-title">As seen on</h3>-->
-  
-<!--  <div class="press-logos">-->
-<!--    <div class="row">-->
-    
-<!--      <div class="col-xs-3">-->
-<!--        <(perc)= link_to image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/financial-times.png", size: "144x64"), -->
-<!--                    'http://www.ft.com/home/uk', -->
-<!--                    target: "_blank" %>-->
-<!--      </div>-->
-      
-<!--      <div class="col-xs-3">-->
-<!--        <(perc)= link_to image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/forbes.png", size: "144x64"), -->
-<!--                    'http://www.forbes.com/', -->
-<!--                    target: "_blank" %>-->
-<!--      </div>-->
-      
-<!--      <div class="col-xs-3">-->
-<!--        <(perc)= link_to image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/tech-crunch.png", size: "144x64"), -->
-<!--                    'https://techcrunch.com/', -->
-<!--                    target: "_blank" %>-->
-<!--      </div>-->
-      
-<!--      <div class="col-xs-3">-->
-<!--        <(perc)= link_to image_tag("https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/bloomberg.png", size: "144x64"), -->
-<!--                    'http://www.bloomberg.com/', -->
-<!--                    target: "_blank" %>    -->
-<!--      </div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
 <script type="text/javascript">
 
   $(document).ready(function() {
@@ -581,21 +545,5 @@
           fixedHeader.fadeOut(250);
         }
     });
-  
-    // disabled search button
-      
-      // var cityField    = $('#city');
-      // var submitButton = $('input[type="submit"]')
-      
-      // submitButton.attr('disabled', true);
-      
-      // cityField.keyup(function(){
-        
-      //   if (cityField.val() !=  "") 
-      //     submitButton.attr('disabled', false);    
-          
-      //   else
-      //     submitButton.attr('disabled', true);   
-      // });
   });
 </script>
