@@ -118,6 +118,8 @@ class VehiclesController < ApplicationController
     @answer = Answer.new
     
     @availabilities = @vehicle.availabilities
+    
+    @appointment = Appointment.new
   end
   
   def search

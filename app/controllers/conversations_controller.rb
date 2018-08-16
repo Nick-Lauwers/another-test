@@ -82,7 +82,7 @@ class ConversationsController < ApplicationController
       
     else
       
-      @conversation = Conversation.create(conversation_params)
+      @conversation = Conversation.create!(conversation_params)
       
       if conversation_params[:appointments_attributes].present?
       

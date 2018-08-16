@@ -1932,10 +1932,10 @@ footer {
 .hero-desktop-image {
   background-color: $gray-darkest;
   background-size: cover;
-  background-position: 60% center;
+  background-position: center;
   background-repeat: no-repeat;
-  background-image: url('https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/land-rover.jpg');
-  height: 125%;
+  background-image: url('https://s3.us-east-2.amazonaws.com/online-dealership-assets/static-assets/hyundai.jpg');
+  height: 100%;
   position: relative;
 }
 
