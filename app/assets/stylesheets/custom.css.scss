@@ -3629,10 +3629,14 @@ ul.pagination {
   list-style: none;
   background-color: white;
   border: 1px solid $gray-border;
+  box-shadow: 0 2px 16px 0 $gray-light;
   margin-bottom: 1.7em;
   position: relative;
   overflow: hidden;
+  transition: box-shadow 0.3s, transform 0.3s;
   &:hover {
+    box-shadow: 0 3px 24px 0 $gray-light;
+    transform: scale(1.05);
     .btn-summary-carousel-left,
     .btn-summary-carousel-right {
       opacity: 1;
