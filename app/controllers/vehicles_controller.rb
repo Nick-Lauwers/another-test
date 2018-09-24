@@ -141,7 +141,7 @@ class VehiclesController < ApplicationController
       available_filters: [
         :with_vehicle_make_id, 
         :with_vehicle_model_id,
-        :with_city,
+        :with_zip_code,
         :with_year_gte,
         :with_actual_price_lte,
         :with_mileage_numeric_lte,
@@ -346,7 +346,7 @@ class VehiclesController < ApplicationController
       available_filters: [
         :with_vehicle_make_id, 
         :with_vehicle_model_id,
-        :with_city
+        :with_zip_code
       ],
     ) or return
     end
