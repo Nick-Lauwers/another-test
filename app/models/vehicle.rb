@@ -118,7 +118,7 @@ class Vehicle < ActiveRecord::Base
     where(vehicle_model_id: vehicle_model_id)
   }
   
-  scope :with_zip_code, lambda { |city|
+  scope :with_zip_code, lambda { |ref_zip_code|
     Vehicle.near(ref_zip_code.to_s.to_region, 20, order: nil)
   }
   
