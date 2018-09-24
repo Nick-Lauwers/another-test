@@ -116,7 +116,7 @@
                       Newest Listings 
                       
                       <% if @filterrific.with_zip_code.present? %>
-                        - <%= @filterrific.with_zip_code %>
+                        - <%= @filterrific.with_zip_code.to_s.to_region %>
                       <% end %>
                     </span>
                   </div>
